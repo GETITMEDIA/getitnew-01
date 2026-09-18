@@ -276,7 +276,11 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  max-width: 1200px;
+  /* 1320 not 1200: at the 6.5rem heading cap, line two needs 11.54em of room
+     and the old 1200 box left only 11.08em, forcing a third line. Only the
+     headline uses this width (subtitle caps at 620px, the floating cards are
+     positioned against the hero, not this box). */
+  max-width: 1320px;
   padding: 0 24px;
 }
 
@@ -284,13 +288,19 @@
 .gm-hero__heading {
   /* height-aware too: on a short laptop screen three lines at 7vw pushed the
      buttons down into the scroll indicator */
-  font-size: clamp(2.8rem, min(7vw, 10.5vh), 6.5rem);
+  /* 9.2vh not 10.5vh: the typed accent makes line two as long as
+     "Experiences That Connect.", which at the old cap ran into the floating
+     side cards on height-limited laptop screens */
+  font-size: clamp(2.8rem, min(7vw, 9.2vh), 6.5rem);
   font-weight: 800;
   color: var(--gm-white);
   line-height: 1.08;
   letter-spacing: -0.03em;
   margin: 0 0 28px 0;
-  max-width: 900px;
+  /* font-relative so the headline keeps its two-line break at every viewport:
+     wide enough to hold "Experiences That Connect." (the longest typed line,
+     11.83em) but under the 13.01em at which "Experiences" jumps up to line 1 */
+  max-width: min(12.3em, 100%);
 }
 
 .gm-hero__heading-accent {
@@ -310,6 +320,54 @@
   border-radius: 2px;
   filter: blur(3px);
   opacity: 0.6;
+}
+
+/* ── Typewriter accent word (Grow. / Connect. / Convert.) ──
+   The accent span reserves the width of the longest word via a hidden sizer so
+   the centred headline never reflows while letters are typed. The glow
+   underline moves onto the typed text itself so it keeps hugging the word
+   exactly as it did before. */
+.gm-hero__heading-accent.gm-type {
+  position: relative;
+}
+
+.gm-hero__heading-accent.gm-type::after {
+  display: none;
+}
+
+.gm-hero__type-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.gm-hero__type-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+}
+
+.gm-hero__type-caret {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 0.055em;
+  height: 0.82em;
+  margin-top: 0.14em;
+  background: var(--gm-orange);
+  border-radius: 1px;
+  transform: translateX(0);
+  animation: gmTypeCaret 0.9s step-end infinite;
+}
+
+@keyframes gmTypeCaret {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-hero__type-caret { display: none; }
 }
 
 /* ── Subtitle ── */
@@ -445,19 +503,19 @@
 /* Card Positions */
 .gm-hero__card--seo {
   top: 32%;
-  left: 6%;
+  left: 2%;
   animation: gmFloat 6s ease-in-out infinite;
 }
 
 .gm-hero__card--ads {
   top: 26%;
-  right: 6%;
+  right: 2%;
   animation: gmFloat 5s ease-in-out 1.5s infinite;
 }
 
 .gm-hero__card--web {
   bottom: 22%;
-  right: 10%;
+  right: 5%;
   animation: gmFloat 7s ease-in-out 3s infinite;
 }
 

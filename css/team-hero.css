@@ -12,7 +12,7 @@
    The two halves are then a centred flex pair with a real gap, which fills
    the width instead of leaving margins at the edges or a hole in the middle.
 
-   The figure is images/about_team/3.png, a genuine transparent cutout, so
+   The figure is images/about_team/3.webp, a genuine transparent cutout, so
    it needs no blend mode and leaves no panel edge.
 
    Namespace: .hz
@@ -45,7 +45,11 @@
   /* copy: the headline takes ~44vh (4 lines at 9.5vh, plus the line masks)
      and the rest of the stack is ~259u, so the height term keeps the whole
      stack between the padding bands below the navbar */
-  --uc: clamp(0.5px, min(0.0694vw, calc((56vh - var(--hz-nav) - 2 * var(--hz-pad)) / 259)), 1.02px);
+  --uc: clamp(
+    0.5px,
+    min(0.0694vw, calc((56vh - var(--hz-nav) - 2 * var(--hz-pad)) / 259)),
+    1.02px
+  );
 
   position: relative;
   overflow: hidden;
@@ -58,9 +62,19 @@
   padding-block: calc(var(--hz-pad) + var(--hz-nav) - 76px) var(--hz-pad);
   min-height: calc(858 * var(--ua) + var(--hz-nav) - 76px);
   background:
-    radial-gradient(ellipse 52% 60% at 78% 38%, rgba(242, 193, 78, 0.14), transparent 62%),
+    radial-gradient(
+      ellipse 52% 60% at 78% 38%,
+      rgba(242, 193, 78, 0.14),
+      transparent 62%
+    ),
     var(--hz-cream);
-  font-family: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    "Poppins",
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   color: var(--hz-ink);
 }
 
@@ -71,11 +85,12 @@
   position: relative;
   z-index: 6;
   flex: 0 1 calc(620 * var(--uc));
-  min-width: 0;              /* lets it shrink rather than overflow */
+  min-width: 0; /* lets it shrink rather than overflow */
   /* the headline is sized from this box's real width below; --uc alone
      cannot do it, because flex-shrink can narrow the column without --uc
      changing, and the headline then overflows its own column */
   container-type: inline-size;
+  padding-left: 100px;
 }
 
 .hz__label {
@@ -91,7 +106,7 @@
 }
 
 .hz__label::before {
-  content: '';
+  content: "";
   width: calc(26 * var(--uc));
   height: calc(2 * var(--uc));
   background: var(--hz-orange);
@@ -99,15 +114,17 @@
 
 .hz__title {
   margin: 0;
-  font-size: calc(84 * var(--uc));            /* fallback: no container queries */
+  font-size: calc(84 * var(--uc)); /* fallback: no container queries */
   font-size: clamp(28px, min(14cqw, 9.5vh), 92px);
   font-weight: 800;
-  line-height: 1.119;
+  line-height: 1.25;
   letter-spacing: calc(-1.2 * var(--uc));
   color: var(--hz-ink);
 }
 
-.hz__title span { display: block; }
+.hz__title span {
+  display: block;
+}
 
 /* each line rides up out of its own mask; the padding/negative-margin pair
    stops the mask clipping descenders in "People" and "Brighter" */
@@ -126,7 +143,7 @@
 }
 
 .hz__mark::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -0.07em;
   right: -0.12em;
@@ -174,7 +191,10 @@
   /* the button may give up width in a tight row, but never break its label */
   white-space: nowrap;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.3s var(--hz-ease), box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s var(--hz-ease),
+    box-shadow 0.3s ease;
 }
 
 .hz__cta:hover,
@@ -196,12 +216,21 @@
 }
 
 /* --- roster cluster: real portraits, overlapped --- */
-.hz__roster { display: flex; flex: none; align-items: center; gap: calc(13 * var(--uc)); }
+.hz__roster {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: calc(13 * var(--uc));
+}
 
-.hz__faces { display: flex; }
+.hz__faces {
+  display: flex;
+}
 
 /* the portraits keep their size; flex would otherwise squash them together */
-.hz__faces > * { flex: none; }
+.hz__faces > * {
+  flex: none;
+}
 
 .hz__faces img {
   width: calc(40 * var(--uc));
@@ -214,8 +243,12 @@
   transition: transform 0.4s var(--hz-ease);
 }
 
-.hz__faces img:first-child { margin-left: 0; }
-.hz__faces:hover img { transform: translateY(calc(-3 * var(--uc))); }
+.hz__faces img:first-child {
+  margin-left: 0;
+}
+.hz__faces:hover img {
+  transform: translateY(calc(-3 * var(--uc)));
+}
 
 .hz__more {
   display: grid;
@@ -241,7 +274,11 @@
   white-space: nowrap;
 }
 
-.hz__rosterText b { display: block; color: var(--hz-ink); font-size: calc(14 * var(--uc)); }
+.hz__rosterText b {
+  display: block;
+  color: var(--hz-ink);
+  font-size: calc(14 * var(--uc));
+}
 
 /* =====================================================================
    2. ARTWORK
@@ -295,7 +332,9 @@
   margin-left: calc(-310 * var(--ua));
   height: auto;
   display: block;
-  filter: drop-shadow(0 calc(26 * var(--ua)) calc(40 * var(--ua)) rgba(0, 0, 0, 0.22));
+  filter: drop-shadow(
+    0 calc(26 * var(--ua)) calc(40 * var(--ua)) rgba(0, 0, 0, 0.22)
+  );
 }
 
 /* --- floating figure cards --- */
@@ -328,8 +367,14 @@
   white-space: nowrap;
 }
 
-.hz-card--a { left: calc(40 * var(--ua)); top: calc(300 * var(--ua)); }
-.hz-card--b { left: calc(760 * var(--ua)); top: calc(628 * var(--ua)); }
+.hz-card--a {
+  left: calc(40 * var(--ua));
+  top: calc(300 * var(--ua));
+}
+.hz-card--b {
+  left: calc(760 * var(--ua));
+  top: calc(628 * var(--ua));
+}
 
 /* =====================================================================
    3. MARGINALIA — inside the artwork, so they track the disc
@@ -337,15 +382,21 @@
 .hz-note {
   position: absolute;
   z-index: 7;
-  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-family: "Caveat", "Segoe Script", cursive;
   font-size: calc(23 * var(--ua));
   font-weight: 600;
   line-height: 1.16;
   color: #2b2b2b;
 }
 
-.hz-note--a { left: calc(120 * var(--ua)); top: calc(104 * var(--ua)); }
-.hz-note--b { left: calc(770 * var(--ua)); top: calc(89 * var(--ua)); }
+.hz-note--a {
+  left: calc(120 * var(--ua));
+  top: calc(104 * var(--ua));
+}
+.hz-note--b {
+  left: calc(770 * var(--ua));
+  top: calc(89 * var(--ua));
+}
 
 .hz-note svg {
   position: absolute;
@@ -358,8 +409,15 @@
   stroke-linecap: round;
 }
 
-.hz-note--a svg { right: calc(-52 * var(--ua)); top: calc(30 * var(--ua)); }
-.hz-note--b svg { left: calc(-52 * var(--ua)); top: calc(34 * var(--ua)); transform: scaleX(-1); }
+.hz-note--a svg {
+  right: calc(-52 * var(--ua));
+  top: calc(30 * var(--ua));
+}
+.hz-note--b svg {
+  left: calc(-52 * var(--ua));
+  top: calc(34 * var(--ua));
+  transform: scaleX(-1);
+}
 
 .hz__sticky {
   position: absolute;
@@ -372,8 +430,9 @@
   background: var(--hz-note);
   border-radius: calc(3 * var(--ua));
   transform: rotate(2deg);
-  box-shadow: calc(3 * var(--ua)) calc(5 * var(--ua)) calc(14 * var(--ua)) rgba(0, 0, 0, 0.16);
-  font-family: 'Caveat', 'Segoe Script', cursive;
+  box-shadow: calc(3 * var(--ua)) calc(5 * var(--ua)) calc(14 * var(--ua))
+    rgba(0, 0, 0, 0.16);
+  font-family: "Caveat", "Segoe Script", cursive;
   font-size: calc(22 * var(--ua));
   font-weight: 600;
   line-height: 1.2;
@@ -381,7 +440,7 @@
 }
 
 .hz__sticky::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   top: calc(-9 * var(--ua));
@@ -408,15 +467,27 @@
     min-height: 0;
   }
 
-  .hz__copy { flex: 0 0 auto; }
-  .hz__text { width: calc(470 * var(--uc)); }
-  .hz__actions { flex-wrap: wrap; }
+  .hz__copy {
+    flex: 0 0 auto;
+  }
+  .hz__text {
+    width: calc(470 * var(--uc));
+  }
+  .hz__actions {
+    flex-wrap: wrap;
+  }
 
-  .hz__art { flex: 0 0 calc(600 * var(--ua)); align-self: stretch; margin-block: 0; }
+  .hz__art {
+    flex: 0 0 calc(600 * var(--ua));
+    align-self: stretch;
+    margin-block: 0;
+  }
 
   .hz__disc,
   .hz__ring,
-  .hz__shot { left: 50%; }
+  .hz__shot {
+    left: 50%;
+  }
 
   .hz__disc {
     top: calc(40 * var(--ua));
@@ -432,23 +503,55 @@
     margin-left: calc(-248 * var(--ua));
   }
 
-  .hz__shot { width: calc(470 * var(--ua)); margin-left: calc(-235 * var(--ua)); }
+  .hz__shot {
+    width: calc(470 * var(--ua));
+    margin-left: calc(-235 * var(--ua));
+  }
 
-  .hz-card--a { left: calc(16 * var(--ua)); top: calc(190 * var(--ua)); }
-  .hz-card--b { left: auto; right: calc(16 * var(--ua)); top: calc(430 * var(--ua)); }
+  .hz-card--a {
+    left: calc(16 * var(--ua));
+    top: calc(190 * var(--ua));
+  }
+  .hz-card--b {
+    left: auto;
+    right: calc(16 * var(--ua));
+    top: calc(430 * var(--ua));
+  }
 
-  .hz-note--a { left: calc(14 * var(--ua)); top: calc(10 * var(--ua)); }
-  .hz-note--b { left: auto; right: calc(14 * var(--ua)); top: calc(10 * var(--ua)); }
-  .hz__sticky { display: none; }
+  .hz-note--a {
+    left: calc(14 * var(--ua));
+    top: calc(10 * var(--ua));
+  }
+  .hz-note--b {
+    left: auto;
+    right: calc(14 * var(--ua));
+    top: calc(10 * var(--ua));
+  }
+  .hz__sticky {
+    display: none;
+  }
 }
 
 @media (max-width: 560px) {
-  .hz { --ua: 0.62px; --uc: 0.68px; }
-  .hz__title { font-size: clamp(26px, 13cqw, 62px); }
-  .hz__text { width: 100%; }
-  .hz-note { display: none; }
-  .hz-card--a { top: calc(150 * var(--ua)); }
-  .hz-card--b { top: calc(400 * var(--ua)); }
+  .hz {
+    --ua: 0.62px;
+    --uc: 0.68px;
+  }
+  .hz__title {
+    font-size: clamp(26px, 13cqw, 62px);
+  }
+  .hz__text {
+    width: 100%;
+  }
+  .hz-note {
+    display: none;
+  }
+  .hz-card--a {
+    top: calc(150 * var(--ua));
+  }
+  .hz-card--b {
+    top: calc(400 * var(--ua));
+  }
 }
 
 /* =====================================================================
@@ -459,15 +562,26 @@
       spin never took effect.
    ===================================================================== */
 @media (prefers-reduced-motion: no-preference) {
-
   /* --- headline: each line out of its mask --- */
-  .hz__title { animation: none; }
+  .hz__title {
+    animation: none;
+  }
 
-  .hz__line > span { animation: hz-line 0.66s var(--hz-ease) both; }
-  .hz__line:nth-child(1) > span { animation-delay: 0.02s; }
-  .hz__line:nth-child(2) > span { animation-delay: 0.09s; }
-  .hz__line:nth-child(3) > span { animation-delay: 0.16s; }
-  .hz__line:nth-child(4) > span { animation-delay: 0.23s; }
+  .hz__line > span {
+    animation: hz-line 0.66s var(--hz-ease) both;
+  }
+  .hz__line:nth-child(1) > span {
+    animation-delay: 0.02s;
+  }
+  .hz__line:nth-child(2) > span {
+    animation-delay: 0.09s;
+  }
+  .hz__line:nth-child(3) > span {
+    animation-delay: 0.16s;
+  }
+  .hz__line:nth-child(4) > span {
+    animation-delay: 0.23s;
+  }
 
   /* the marker is drawn on once the last line has landed */
   .hz__mark::before {
@@ -476,9 +590,15 @@
   }
 
   /* --- the rest of the copy --- */
-  .hz__label { animation: hz-rise 0.55s var(--hz-ease) both; }
-  .hz__text { animation: hz-rise 0.6s var(--hz-ease) 0.34s both; }
-  .hz__actions { animation: hz-rise 0.6s var(--hz-ease) 0.44s both; }
+  .hz__label {
+    animation: hz-rise 0.55s var(--hz-ease) both;
+  }
+  .hz__text {
+    animation: hz-rise 0.6s var(--hz-ease) 0.34s both;
+  }
+  .hz__actions {
+    animation: hz-rise 0.6s var(--hz-ease) 0.44s both;
+  }
 
   /* --- artwork --- */
   .hz__disc {
@@ -487,56 +607,110 @@
   }
 
   /* opacity only, so the spin below owns transform outright */
-  .hz__ring { animation: hz-fade 0.8s ease both, hz-spin 90s linear infinite; }
+  .hz__ring {
+    animation:
+      hz-fade 0.8s ease both,
+      hz-spin 90s linear infinite;
+  }
 
-  .hz__shot { animation: hz-lift 0.8s var(--hz-ease) 0.14s both; }
+  .hz__shot {
+    animation: hz-lift 0.8s var(--hz-ease) 0.14s both;
+  }
 
-  .hz-card { animation: hz-pop 0.5s var(--hz-ease) both; }
-  .hz-card--a { animation-delay: 0.52s; }
-  .hz-card--b { animation-delay: 0.6s; }
+  .hz-card {
+    animation: hz-pop 0.5s var(--hz-ease) both;
+  }
+  .hz-card--a {
+    animation-delay: 0.52s;
+  }
+  .hz-card--b {
+    animation-delay: 0.6s;
+  }
 
-  .hz-note { animation: hz-rise 0.55s var(--hz-ease) 0.46s both; }
-  .hz__sticky { animation: hz-rise-sticky 0.55s var(--hz-ease) 0.52s both; }
+  .hz-note {
+    animation: hz-rise 0.55s var(--hz-ease) 0.46s both;
+  }
+  .hz__sticky {
+    animation: hz-rise-sticky 0.55s var(--hz-ease) 0.52s both;
+  }
 }
 
 @keyframes hz-line {
-  from { transform: translateY(108%); }
-  to   { transform: none; }
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: none;
+  }
 }
 
 @keyframes hz-mark {
-  from { transform: rotate(-0.5deg) scaleX(0); }
-  to   { transform: rotate(-0.5deg) scaleX(1); }
+  from {
+    transform: rotate(-0.5deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-0.5deg) scaleX(1);
+  }
 }
 
 @keyframes hz-rise {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes hz-lift {
-  from { opacity: 0; transform: translateY(30px) scale(0.985); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes hz-pop {
-  from { opacity: 0; transform: scale(0.88); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes hz-fade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* the pinned card has to keep its tilt through the rise */
 @keyframes hz-rise-sticky {
-  from { opacity: 0; transform: translateY(14px) rotate(2deg); }
-  to   { opacity: 1; transform: rotate(2deg); }
+  from {
+    opacity: 0;
+    transform: translateY(14px) rotate(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(2deg);
+  }
 }
 
 @keyframes hz-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* =====================================================================
@@ -550,7 +724,6 @@
       composes with both.
    ===================================================================== */
 @media (prefers-reduced-motion: no-preference) and (pointer: fine) {
-
   .hz__ring,
   .hz__disc,
   .hz__shot,
@@ -561,33 +734,59 @@
   }
 
   /* each layer moves by its own depth — furthest back moves least */
-  .hz__ring    { translate: calc(var(--mx) *  8px) calc(var(--my) *  6px); }
-  .hz__disc    { translate: calc(var(--mx) * 14px) calc(var(--my) * 10px); }
-  .hz__shot    { translate: calc(var(--mx) * 24px) calc(var(--my) * 14px); }
-  .hz-card--b  { translate: calc(var(--mx) * 30px) calc(var(--my) * 19px); }
-  .hz-card--a  { translate: calc(var(--mx) * 34px) calc(var(--my) * 22px); }
-  .hz-note     { translate: calc(var(--mx) * 38px) calc(var(--my) * 25px); }
-  .hz__sticky  { translate: calc(var(--mx) * 42px) calc(var(--my) * 28px); }
+  .hz__ring {
+    translate: calc(var(--mx) * 8px) calc(var(--my) * 6px);
+  }
+  .hz__disc {
+    translate: calc(var(--mx) * 14px) calc(var(--my) * 10px);
+  }
+  .hz__shot {
+    translate: calc(var(--mx) * 24px) calc(var(--my) * 14px);
+  }
+  .hz-card--b {
+    translate: calc(var(--mx) * 30px) calc(var(--my) * 19px);
+  }
+  .hz-card--a {
+    translate: calc(var(--mx) * 34px) calc(var(--my) * 22px);
+  }
+  .hz-note {
+    translate: calc(var(--mx) * 38px) calc(var(--my) * 25px);
+  }
+  .hz__sticky {
+    translate: calc(var(--mx) * 42px) calc(var(--my) * 28px);
+  }
 
   /* --- hover, once the entrance has released transform --- */
   .hz.is-settled .hz-card,
   .hz.is-settled .hz-note,
   .hz.is-settled .hz__sticky {
-    transition: translate 0.65s var(--hz-ease), transform 0.4s var(--hz-ease), box-shadow 0.4s ease;
+    transition:
+      translate 0.65s var(--hz-ease),
+      transform 0.4s var(--hz-ease),
+      box-shadow 0.4s ease;
   }
 
   .hz.is-settled .hz-card:hover {
     transform: translateY(-6px) scale(1.035);
-    box-shadow: 0 calc(24 * var(--ua)) calc(48 * var(--ua)) rgba(27, 27, 27, 0.22);
+    box-shadow: 0 calc(24 * var(--ua)) calc(48 * var(--ua))
+      rgba(27, 27, 27, 0.22);
   }
 
-  .hz.is-settled .hz-card:hover b { color: var(--hz-orange); }
-  .hz.is-settled .hz-card b { transition: color 0.35s ease; }
+  .hz.is-settled .hz-card:hover b {
+    color: var(--hz-orange);
+  }
+  .hz.is-settled .hz-card b {
+    transition: color 0.35s ease;
+  }
 
   /* the pinned card straightens slightly when you point at it */
-  .hz.is-settled .hz__sticky:hover { transform: rotate(-0.5deg) scale(1.035); }
+  .hz.is-settled .hz__sticky:hover {
+    transform: rotate(-0.5deg) scale(1.035);
+  }
 
-  .hz.is-settled .hz-note:hover { transform: scale(1.05); }
+  .hz.is-settled .hz-note:hover {
+    transform: scale(1.05);
+  }
 }
 
 /* Releasing the entrance animations is what makes the hover states above
@@ -600,6 +799,10 @@
 .hz.is-settled .hz__shot,
 .hz.is-settled .hz-card,
 .hz.is-settled .hz-note,
-.hz.is-settled .hz__sticky { animation: none; }
+.hz.is-settled .hz__sticky {
+  animation: none;
+}
 
-.hz.is-settled .hz__ring { animation: hz-spin 90s linear infinite; }
+.hz.is-settled .hz__ring {
+  animation: hz-spin 90s linear infinite;
+}

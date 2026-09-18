@@ -112,3 +112,103 @@
   }
 
 })();
+
+/* ──────────────────────────────────────────────────────────────
+   Hero accent typewriter: types the accent word, erases it, then
+   cycles to the next one (Grow. → Connect. → Convert. → …).
+   Words come from data-type-words on the accent span.
+   ────────────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  var accent = document.querySelector('.gm-hero__heading-accent.gm-type');
+  if (!accent) return;
+
+  var textEl  = accent.querySelector('.gm-hero__type-text');
+  var sizerEl = accent.querySelector('.gm-hero__type-sizer');
+  var caretEl = accent.querySelector('.gm-hero__type-caret');
+  if (!textEl || !sizerEl) return;
+
+  var words = (accent.getAttribute('data-type-words') || '').split('|');
+  var cleaned = [];
+  for (var i = 0; i < words.length; i++) {
+    if (words[i]) cleaned.push(words[i]);
+  }
+  words = cleaned;
+  if (words.length < 2) return;
+
+  // Reserve the width of the widest word so the centred headline never reflows
+  function lockWidth() {
+    var widest = words[0];
+    var max = 0;
+    for (var i = 0; i < words.length; i++) {
+      sizerEl.textContent = words[i];
+      if (sizerEl.offsetWidth > max) {
+        max = sizerEl.offsetWidth;
+        widest = words[i];
+      }
+    }
+    sizerEl.textContent = widest;
+  }
+  lockWidth();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(lockWidth).catch(function () {});
+  }
+
+  var reduced = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    textEl.textContent = words[0];
+    if (caretEl) caretEl.style.display = 'none';
+    return;
+  }
+
+  var TYPE_MS  = 95;   // per character while typing
+  var ERASE_MS = 45;   // per character while erasing
+  var HOLD_MS  = 1900; // pause on the finished word
+  var GAP_MS   = 420;  // pause after erasing, before the next word
+
+  var wordIndex = 0;
+  var charIndex = 0;
+  var erasing   = false;
+
+  function moveCaret() {
+    if (caretEl) caretEl.style.transform = 'translateX(' + textEl.offsetWidth + 'px)';
+  }
+
+  function tick() {
+    var word = words[wordIndex];
+
+    if (!erasing) {
+      charIndex++;
+      textEl.textContent = word.slice(0, charIndex);
+      moveCaret();
+      if (charIndex >= word.length) {
+        erasing = true;
+        setTimeout(tick, HOLD_MS);
+        return;
+      }
+      setTimeout(tick, TYPE_MS);
+      return;
+    }
+
+    charIndex--;
+    textEl.textContent = word.slice(0, charIndex);
+    moveCaret();
+    if (charIndex <= 0) {
+      erasing = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(tick, GAP_MS);
+      return;
+    }
+    setTimeout(tick, ERASE_MS);
+  }
+
+  // Start from the word already in the markup, after the hero reveal settles
+  charIndex = words[0].length;
+  erasing = true;
+  moveCaret();
+  setTimeout(tick, 1600);
+
+  window.addEventListener('resize', moveCaret);
+})();
