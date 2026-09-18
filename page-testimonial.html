@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from html.kodesolution.com/2025/nexella-html/page-testimonial.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Aug 2026 04:04:18 GMT -->
+<head>
+<meta charset="utf-8">
+<title>Nexella | IT Solutions & Technology HTML Template | Page Testimonial</title>
+<!-- Stylesheets -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/cursor.css" rel="stylesheet">
+    <link href="css/text-reveal.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none"><path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path></svg>
+      <div class="preloader-heading">
+        <div class="load-text">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- Back-to-top start -->
+    <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <!-- Back-to-top start -->
+
+    <!-- Main Header-->
+    <header class="main-header">
+      <!-- Header Lower -->
+      <div class="header-lower">
+        <!-- Main box -->
+        <div class="main-box">
+          <div class="logo-box">
+            <div class="logo">
+              <a href="index.html"><img src="images/logo/white-logo.png" alt="" title="nexella" data-aos="fade-up"></a>
+            </div>
+          </div>
+          <!--Nav Box-->
+          <div class="nav-outer">
+            <nav class="nav main-menu">
+              <ul class="navigation">
+                <li class="current dropdown">
+                  <a href="index.html">Home</a>
+                  <ul>
+                    <li><a href="index.html">Home Layout 1</a></li>
+                    <li><a href="index-2.html">Home Layout 2</a></li>
+                    <li><a href="index-3.html">Home Layout 3</a></li>
+                    <li><a href="index-4.html">Home Layout 4</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Pages</a>
+                  <ul>
+                <li><a href="page-about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#">Team</a>
+                        <ul>
+                          <li><a href="page-team.html">Team List</a></li>
+                          <li><a href="page-team-details.html">Team Details</a></li>
+                        </ul>
+                      <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#">Shop</a>
+                      <ul>
+                        <li><a href="shop-products.html">Products</a></li>
+                        <li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
+                        <li><a href="shop-product-details.html">Product Details</a></li>
+                        <li><a href="shop-cart.html">Cart</a></li>
+                        <li><a href="shop-checkout.html">Checkout</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="page-testimonial.html">Testimonial</a></li>
+                    <li><a href="page-pricing.html">Pricing</a></li>
+                    <li><a href="page-faq.html">FAQ</a></li>
+                    <li><a href="page-404.html">Page 404</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Projects</a>
+                  <ul>
+                    <li><a href="page-projects.html">Projects</a></li>
+                    <li><a href="page-project-details.html">Projects Details</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Services</a>
+                  <ul>
+                    <li><a href="page-services.html">Services List</a></li>
+                    <li><a href="page-service-details.html">Service Details</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#">News</a>
+                  <ul>
+                    <li><a href="news-grid.html">News Grid</a></li>
+                    <li><a href="news-details.html">News Details</a></li>
+                  </ul>
+                </li>
+                <li><a href="page-contact.html">Contact</a></li>
+              </ul>
+            </nav>
+            <!-- Main Menu End-->
+          </div>
+          <div class="outer-box">
+            <div class="ui-btn-outer">
+              <button class="ui-btn ui-btn search-btn">
+                <span class="icon lnr lnr-icon-search"> Search...</span>
+              </button>
+            </div>
+            <div class="header-btn d-none d-xxl-block">
+              <a class="header-btn-main" href="page-contact.html">
+                <span class="header-theme-btn">Get a quote</span>
+                <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+              </a>
+            </div>
+            <!-- Mobile Nav toggler -->
+            <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+          </div>
+        </div>
+      </div>
+      <!-- End Header Lower -->
+
+      <!-- Mobile Menu  -->
+      <div class="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+        <nav class="menu-box">
+          <div class="upper-box">
+            <div class="nav-logo">
+              <a href="index.html"><img src="images/logo/white-logo.png" alt="" data-aos="fade-up"></a>
+            </div>
+            <div class="close-btn"><i class="icon fa fa-times"></i></div>
+          </div>
+
+          <ul class="navigation clearfix">
+            <!--Keep This Empty / Menu will come through Javascript-->
+          </ul>
+          <ul class="contact-list-one">
+            <li>
+              <!-- Contact Info Box -->
+              <div class="contact-info-box">
+                <i class="icon lnr-icon-phone-handset"></i>
+                <span class="title">Call Now</span>
+                <a href="tel:+92880098670">+92 (8800) - 98670</a>
+              </div>
+            </li>
+            <li>
+              <!-- Contact Info Box -->
+              <div class="contact-info-box">
+                <span class="icon lnr-icon-envelope1"></span>
+                <span class="title">Send Email</span>
+                <a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#cea6aba2be8eada1a3beafa0b7e0ada1a3"><span class="__cf_email__" data-cfemail="bfd7dad3cfffdcd0d2cfded1c691dcd0d2">[email&#160;protected]</span></a>
+              </div>
+            </li>
+            <li>
+              <!-- Contact Info Box -->
+              <div class="contact-info-box">
+                <span class="icon lnr-icon-clock"></span>
+                <span class="title">Send Email</span>
+                Mon - Sat 8:00 - 6:30, Sunday - CLOSED
+              </div>
+            </li>
+          </ul>
+          <ul class="social-links">
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- End Mobile Menu -->
+
+      <!-- Header Search -->
+      <div class="search-popup">
+        <span class="search-back-drop"></span>
+        <button class="close-search"><span class="fa fa-times"></span></button>
+        <div class="search-inner">
+          <form method="post" action="#">
+            <div class="form-group">
+              <input type="search" name="search-field" value="" placeholder="Search..." required="">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End Header Search -->
+
+      <!-- Sticky Header  -->
+      <div class="sticky-header">
+        <div class="auto-container">
+          <div class="inner-container">
+            <!--Logo-->
+            <div class="logo">
+              <a href="index.html"><img src="images/logo/white-logo.png" alt="" data-aos="fade-up"></a>
+            </div>
+
+            <!--Right Col-->
+            <div class="nav-outer">
+              <!-- Main Menu -->
+              <nav class="main-menu">
+                <div class="navbar-collapse show collapse clearfix">
+                  <ul class="navigation clearfix">
+                    <!--Keep This Empty / Menu will come through Javascript-->
+                  </ul>
+                </div>
+              </nav>
+              <!-- Main Menu End-->
+
+              <!--Mobile Navigation Toggler-->
+              <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Sticky Menu -->
+    </header>
+    <!--End Main Header -->
+
+    <!-- Start main-content -->
+    <section class="page-title theme-dark" style="background-image: url(images/inner/page-title-bg.png);">
+      <div class="auto-container">
+        <div class="title-outer text-center">
+          <h1 class="title" data-aos="fade-up">Testimonial</h1>
+          <ul class="page-breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li>Testimonial</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- end main-content -->
+
+    <!-- Testimonial Section Style Three -->
+    <section class="testimonial-section-three section-padding theme-light">
+      <div class="container p-0">
+        <div class="row">
+          <div class="col-xl-4 col-lg-6 mb-20" data-aos="fade-up">
+            <div class="testimonial-single_box-three">
+              <div class="testi-inner">
+                <figure class="testimonial-author"><img src="images/home-2/autor1.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_ads"><img src="images/home-2/google.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                <div class="testi_content">
+                  <p>While undeniably compellings The reason considered the leading Of author world. Transparency To Our ability generate substantial</p>
+                  <div class="testi-bio">
+                    <h4 class="title">David X. Lunar</h4>
+                    <p>Social Marketer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 mb-20" data-aos="fade-up">
+            <div class="testimonial-single_box-three">
+              <div class="testi-inner">
+                <figure class="testimonial-author"><img src="images/home-2/autor2.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_ads"><img src="images/home-2/google.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                <div class="testi_content">
+                  <p>While undeniably compellings The reason considered the leading Of author world. Transparency To Our ability generate substantial</p>
+                  <div class="testi-bio">
+                    <h4 class="title">Donnette Castillon</h4>
+                    <p>UI/UX Designer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 mb-20" data-aos="fade-up">
+            <div class="testimonial-single_box-three">
+              <div class="testi-inner">
+                <figure class="testimonial-author"><img src="images/home-2/autor3.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_ads"><img src="images/home-2/google.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                <div class="testi_content">
+                  <p>While undeniably compellings The reason considered the leading Of author world. Transparency To Our ability generate substantial</p>
+                  <div class="testi-bio">
+                    <h4 class="title">Anjelina Watson</h4>
+                    <p>Web Developer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 mb-20" data-aos="fade-up">
+            <div class="testimonial-single_box-three">
+              <div class="testi-inner">
+                <figure class="testimonial-author"><img src="images/home-2/autor3.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_ads"><img src="images/home-2/google.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                <div class="testi_content">
+                  <p>While undeniably compellings The reason considered the leading Of author world. Transparency To Our ability generate substantial</p>
+                  <div class="testi-bio">
+                    <h4 class="title">Anjelina Watson</h4>
+                    <p>Web Developer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6 mb-20" data-aos="fade-up">
+            <div class="testimonial-single_box-three">
+              <div class="testi-inner">
+                <figure class="testimonial-author"><img src="images/home-2/autor1.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_ads"><img src="images/home-2/google.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                <div class="testi_content">
+                  <p>While undeniably compellings The reason considered the leading Of author world. Transparency To Our ability generate substantial</p>
+                  <div class="testi-bio">
+                    <h4 class="title">David X. Lunar</h4>
+                    <p>Social Marketer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-6" data-aos="fade-up">
+            <div class="testimonial-single_box-three">
+              <div class="testi-inner">
+                <figure class="testimonial-author"><img src="images/home-2/autor2.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_ads"><img src="images/home-2/google.png" alt="" data-aos="fade-up"></figure>
+                <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                <div class="testi_content">
+                  <p>While undeniably compellings The reason considered the leading Of author world. Transparency To Our ability generate substantial</p>
+                  <div class="testi-bio">
+                    <h4 class="title">Donnette Castillon</h4>
+                    <p>UI/UX Designer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Testimonial Section Style Three -->
+
+    <!-- Main Footer -->
+    <footer class="footer-section-3 theme-color-bg pb-60">
+      <div class="footer-main-wrapper">
+        <div class="footer-circle-shape">
+          <img src="images/home-3/footer-circle.png" alt="img" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="footer-widget-wrapper-3">
+              <div class="row g-4">
+                <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                  <div class="footer-widget-single-items">
+                      <div class="widget-head">
+                        <a href="index.html" class="footer-logo"><img src="images/logo/white-logo.png" alt="img" data-aos="fade-up"></a>
+                      </div>
+                      <div class="footer-content">
+                        <p class="footer-text">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit sed diam nonummy nibh euismod  dolore magna aliquam
+                        </p>
+                        <ul class="social-icon-two mt-5">
+                            <li>
+                              <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fab fa-pinterest"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-xl-2 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                  <div class="footer-widget-single-items">
+                    <div class="widget-head">
+                        <h4 class="widget-title">Quick Link</h4>
+                    </div>
+                     <ul class="list-area">
+                        <li>
+                            <a href="page-about.html">
+                               About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="page-team.html">
+                               Our Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                              Our Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                               Careers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="page-contact.html">
+                               Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xl-3 ps-xl-5 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                  <div class="footer-widget-single-items">
+                    <div class="widget-head">
+                        <h4 class="widget-title">Our Solutions</h4>
+                    </div>
+                     <ul class="list-area">
+                        <li>
+                            <a href="index.html">
+                              Web Development
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                UI/UX Design
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                              Mobile Application
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                               Cloud Service
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                               Cyber Security
+                            </a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+                 <div class="col-xl-3 ps-xxl-5 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
+                  <div class="footer-widget-single-items">
+                    <div class="widget-head">
+                        <h4 class="widget-title">Contact Us</h4>
+                    </div>
+                     <div class="widget-content">
+                          <div class="contact-info-box">
+                            <div class="icon-box">
+                              <span class="icon fa fa-envelope"></span>
+                            </div>
+                            <div class="content-box">
+                              <h6 class="title">Mail Us:</h6>
+                              <div class="text"><a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#17797272737f727b675774787a6776796e3974787a" class="link"><span class="__cf_email__" data-cfemail="167e777865797856736e777b667a733875797b">[email&#160;protected]</span></a></div>
+                            </div>
+                          </div>
+                          <div class="contact-info-box">
+                            <div class="icon-box">
+                              <span class="icon fa fa-map-marker-alt"></span>
+                            </div>
+                            <div class="content-box">
+                              <h6 class="title">Address :</h6>
+                              <div class="text">4517 Washington Ave. Newyork  39495</div>
+                            </div>
+                          </div>
+                          <div class="contact-info-box mb-0">
+                            <div class="icon-box">
+                              <span class="icon fa fa-phone"></span>
+                            </div>
+                            <div class="content-box">
+                              <h6 class="title">Phone:</h6>
+                              <div class="text"><a href="tel:123456-7890" class="link">(123) 456-7890</a></div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <p class="copyright-text wow fadeInUp" data-wow-delay=".3s">
+            © Nexella 2026 . All rights reserved by
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!--End Main Footer -->
+  </div>
+  <!-- End Page Wrapper -->
+
+
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/knob.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/splitType.js"></script>
+<script src="js/gsap-scroll-smoother.js"></script>
+<script src="js/gsap-scroll-to-plugin.js"></script>
+<script src="js/SplitText.min.js"></script>
+<script src="js/custom-gsap.js"></script>
+<script src="js/script.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"88f4fa328f314d4c95a104b4a60b2313","r":1}' crossorigin="anonymous"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+<script src="js/scroll-anim.js"></script>
+</body>
+
+<!-- Mirrored from html.kodesolution.com/2025/nexella-html/page-testimonial.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Aug 2026 04:04:23 GMT -->
+</html>

@@ -1,0 +1,773 @@
+/* =====================================================================
+   TEAM STUDIO — "Meet The Creative Minds"
+   A 3D stage rather than a card grid: four glass panels held at
+   different depths, a huge TEAM word drifting behind them, and a
+   pointer-driven parallax over the whole stage.
+
+   Depth is driven entirely by custom properties so the stylesheet owns
+   the look and js/team-studio.js only ever writes numbers:
+     --ts-mx / --ts-my   pointer, -1 .. 1, set on the stage
+     --ts-push           per-card depth offset while a sibling is active
+   ===================================================================== */
+
+.ts {
+  --ts-accent: #b6ff3d;
+  --ts-warm: #ff7a1a;
+  --ts-ink: #ffffff;
+  --ts-dim: rgba(255, 255, 255, 0.58);
+  --ts-line: rgba(255, 255, 255, 0.12);
+  --ts-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  overflow: hidden;                 /* the TEAM word must never widen the page */
+  padding: 120px 0 110px;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(182, 255, 61, 0.05), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255, 122, 26, 0.05), transparent 65%),
+    #050506;
+  color: var(--ts-ink);
+  isolation: isolate;
+}
+
+.ts__wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------------------------------------------------------------
+   The oversized word behind everything. It is decorative, so it is
+   aria-hidden and never focusable; JS drifts it horizontally.
+   --------------------------------------------------------------- */
+.ts__bg {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  z-index: 0;
+  transform: translate(-50%, 0);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(140px, 26vw, 400px);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.032);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ---------------------------------------------------------------
+   Floating marginalia
+   --------------------------------------------------------------- */
+.ts__label {
+  position: absolute;
+  top: 34%;
+  left: clamp(14px, 3vw, 46px);
+  z-index: 2;
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.ts__motto {
+  position: absolute;
+  top: 12%;
+  right: clamp(14px, 3vw, 46px);
+  z-index: 2;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.6px;
+  line-height: 2;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.62);
+  pointer-events: none;
+}
+
+.ts__motto::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin: 12px 0 0 auto;
+  background: var(--ts-accent);
+}
+
+/* ---------------------------------------------------------------
+   Heading
+   --------------------------------------------------------------- */
+.ts__head {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 10px;
+}
+
+.ts__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.ts__eyebrow::before,
+.ts__eyebrow::after {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--ts-accent);
+}
+
+.ts__title {
+  font-size: clamp(38px, 6.4vw, 86px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 20px;
+  color: var(--ts-ink);
+}
+
+.ts__title em {
+  display: block;
+  font-style: normal;
+  color: var(--ts-accent);
+}
+
+/* each heading line rides in from below its own mask */
+.ts__line { display: block; overflow: hidden; }
+.ts__line > span { display: block; }
+
+.ts__lead {
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.7;
+  color: var(--ts-dim);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------
+   The stage
+   --------------------------------------------------------------- */
+.ts__stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 26px);
+  margin-top: clamp(30px, 5vw, 64px);
+  padding: 40px 0 20px;
+  perspective: 1800px;
+  perspective-origin: 50% 50%;
+}
+
+/* ---------------------------------------------------------------
+   A card. Every transform term is a variable so the pointer parallax,
+   the hover push and the entrance can all compose without fighting.
+   --------------------------------------------------------------- */
+.ts-card {
+  --rx: 0deg;
+  --ry: 0deg;
+  --tz: 0px;
+  --ty: 0px;
+  --sc: 1;
+  --ts-push: 0px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: var(--w, clamp(150px, 16vw, 250px));
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform:
+    translateY(var(--ty))
+    translateZ(calc(var(--tz) + var(--ts-push)))
+    rotateX(calc(var(--rx) + var(--ts-my, 0) * 4deg))
+    rotateY(calc(var(--ry) + var(--ts-mx, 0) * 7deg))
+    scale(var(--sc));
+  transition:
+    transform 0.7s var(--ts-ease),
+    box-shadow 0.6s ease,
+    border-color 0.5s ease;
+
+  /* glass */
+  border: 1px solid var(--ts-line);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* the featured member carries the warm edge from the start */
+.ts-card--lead {
+  border-color: rgba(255, 122, 26, 0.55);
+  background: linear-gradient(160deg, rgba(255, 122, 26, 0.1), rgba(255, 255, 255, 0.015));
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.65), 0 0 40px rgba(255, 122, 26, 0.18);
+}
+
+/* pointing at one card pulls it forward and eases the rest back — the
+   push is set per card by the script so this stays declarative */
+/* the four resting positions — asymmetric, as the reference has them */
+.ts-card:nth-child(1) { --w: clamp(150px, 17vw, 262px); --ry:  9deg; --tz: -90px;  --ty: 6px;   --sc: 0.94; }
+.ts-card:nth-child(2) { --w: clamp(190px, 21vw, 330px); --ry:  2deg; --tz:  70px;  --ty: -18px; --sc: 1; }
+.ts-card:nth-child(3) { --w: clamp(146px, 16vw, 244px); --ry: -7deg; --tz: -130px; --ty: 34px;  --sc: 0.9; }
+.ts-card:nth-child(4) { --w: clamp(140px, 15vw, 228px); --ry: -11deg; --tz: -190px; --ty: 56px; --sc: 0.86; }
+
+.ts-card:hover,
+.ts-card:focus-within {
+  --ts-push: 130px;
+  border-color: rgba(182, 255, 61, 0.6);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.7), 0 0 60px rgba(182, 255, 61, 0.2);
+  z-index: 3;
+}
+
+.ts-card--lead:hover,
+.ts-card--lead:focus-within {
+  border-color: rgba(255, 122, 26, 0.85);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.7), 0 0 70px rgba(255, 122, 26, 0.32);
+}
+
+/* — portrait — */
+.ts-card__img {
+  position: relative;
+  aspect-ratio: 4 / 3.9;
+  overflow: hidden;
+  background: linear-gradient(150deg, rgba(182, 255, 61, 0.1), #0b0b0e);
+  /* the cut that gives the card its shape — the caption sits under it */
+  clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+}
+
+.ts-card__img img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  /* the scroll parallax scales this; keep the origin steady */
+  transform: scale(var(--ts-zoom, 1));
+  transition: transform 0.9s var(--ts-ease);
+}
+
+.ts-card:hover .ts-card__img img { transform: scale(calc(var(--ts-zoom, 1) * 1.05)); }
+
+/* the scrim the caption sits on */
+.ts-card__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(0deg,
+    rgba(5, 5, 6, 0.72) 0%, rgba(5, 5, 6, 0.12) 26%, transparent 50%);
+}
+
+/* fallback monogram behind a missing portrait */
+.ts-card__ini {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: rgba(182, 255, 61, 0.4);
+}
+
+/* — index — */
+.ts-card__no {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 4;
+  font-size: clamp(13px, 1.1vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* — the handwritten note down the side — */
+.ts-card__note {
+  position: absolute;
+  top: 13%;
+  right: 10px;
+  max-width: 46%;
+  z-index: 4;
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-size: clamp(13px, 1.05vw, 18px);
+  line-height: 1.25;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+/* — caption — */
+.ts-card:nth-child(3) .ts-card__note,
+.ts-card:nth-child(4) .ts-card__note { font-size: clamp(11px, 0.85vw, 14px); }
+
+.ts-card__body {
+  position: relative;
+  z-index: 4;
+  margin-top: -14px;              /* tuck up under the diagonal */
+  padding: 0 clamp(15px, 1.3vw, 22px) clamp(18px, 1.5vw, 24px);
+}
+
+.ts-card__name {
+  font-size: clamp(15px, 1.35vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 5px;
+  color: var(--ts-ink);
+}
+
+.ts-card__role {
+  margin: 0;
+  font-size: clamp(8.5px, 0.7vw, 11px);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ts-accent);
+}
+
+.ts-card--lead .ts-card__role { color: var(--ts-warm); }
+
+/* the arrow only the featured card carries */
+.ts-card__go {
+  position: absolute;
+  right: clamp(15px, 1.3vw, 22px);
+  bottom: clamp(18px, 1.5vw, 24px);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 122, 26, 0.8);
+  color: var(--ts-warm);
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.45s var(--ts-ease);
+}
+
+.ts-card__go:hover,
+.ts-card__go:focus-visible {
+  background: var(--ts-warm);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* ---------------------------------------------------------------
+   Hover detail. Everything here is additive — the card already reads
+   correctly without any of it, so none of it can strand content.
+   --------------------------------------------------------------- */
+
+/* a band of light sweeps across the glass as the card comes forward */
+.ts-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 45%;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(100deg,
+    transparent, rgba(255, 255, 255, 0.16) 45%, rgba(255, 255, 255, 0.24) 55%, transparent);
+  transform: skewX(-14deg);
+  opacity: 0;
+  transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ts-card:hover::before,
+  .ts-card:focus-within::before {
+    opacity: 1;
+    left: 115%;
+    transition: left 0.85s var(--ts-ease), opacity 0.25s ease;
+  }
+}
+
+/* the caption rises a touch, so the card feels like it is turning to you */
+.ts-card__body {
+  transition: transform 0.6s var(--ts-ease);
+}
+
+.ts-card:hover .ts-card__body,
+.ts-card:focus-within .ts-card__body { transform: translateY(-5px); }
+
+/* an accent rule draws itself under the name */
+.ts-card__name {
+  position: relative;
+  display: inline-block;
+}
+
+.ts-card__name::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ts-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s var(--ts-ease) 0.08s;
+}
+
+.ts-card--lead .ts-card__name::after { background: var(--ts-warm); }
+
+.ts-card:hover .ts-card__name::after,
+.ts-card:focus-within .ts-card__name::after { transform: scaleX(1); }
+
+/* the index brightens and steps back as the card advances */
+.ts-card__no { transition: color 0.4s ease, transform 0.5s var(--ts-ease); }
+
+.ts-card:hover .ts-card__no,
+.ts-card:focus-within .ts-card__no {
+  color: var(--ts-accent);
+  transform: translateY(-2px);
+}
+
+.ts-card--lead:hover .ts-card__no,
+.ts-card--lead:focus-within .ts-card__no { color: var(--ts-warm); }
+
+/* the handwriting fades up rather than sitting there */
+.ts-card__note {
+  opacity: 0.55;
+  transition: opacity 0.5s ease, transform 0.6s var(--ts-ease);
+}
+
+.ts-card:hover .ts-card__note,
+.ts-card:focus-within .ts-card__note { opacity: 1; transform: translateY(-4px); }
+
+
+/* — one-line description and the social row, as the reference has them — */
+.ts-card__line {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 10px 0 14px;
+  font-size: clamp(10px, 0.82vw, 13px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ts-card__soc { display: flex; gap: 12px; }
+
+.ts-card__soc a {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.ts-card__soc a:hover,
+.ts-card__soc a:focus-visible {
+  color: #050506;
+  background: var(--ts-accent);
+  transform: translateY(-2px);
+}
+
+.ts-card--lead .ts-card__soc a:hover,
+.ts-card--lead .ts-card__soc a:focus-visible { background: var(--ts-warm); color: #fff; }
+
+/* — the rotating seal, under the motto — */
+.ts__badge {
+  position: absolute;
+  top: 27%;
+  right: clamp(14px, 3.4vw, 60px);
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: clamp(84px, 8vw, 116px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.ts__badge svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: ts-seal 22s linear infinite;
+}
+
+.ts__badge text {
+  font-size: 7.6px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  fill: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.ts__badge i {
+  font-size: clamp(13px, 1.1vw, 17px);
+  color: #fff;
+  transform: rotate(-45deg);
+}
+
+.ts__badge::before {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+@keyframes ts-seal { to { transform: rotate(360deg); } }
+
+/* — the ridge along the base — */
+.ts__ridge::before {
+  content: "";
+  position: absolute;
+  inset: -60px 0 auto 0;
+  height: 90px;
+  background: linear-gradient(180deg, transparent, rgba(255, 122, 26, 0.05));
+}
+
+.ts__ridge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  height: clamp(90px, 13vw, 190px);
+  pointer-events: none;
+  background: linear-gradient(180deg, #2a211b 0%, #17120f 55%, #0a0809 100%);
+  clip-path: polygon(
+    0 100%, 0 62%, 7% 47%, 13% 58%, 21% 34%, 29% 52%, 36% 40%,
+    44% 61%, 52% 30%, 60% 55%, 68% 43%, 76% 63%, 84% 38%, 92% 57%, 100% 44%, 100% 100%);
+}
+
+/* — the crew stack in the footer — */
+.ts__crew {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ts__crew-stack { display: flex; align-items: center; }
+
+.ts__crew-stack i,
+.ts__crew-stack b {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #0a0a0c;
+  background-size: cover;
+  background-position: center 16%;
+  margin-left: -12px;
+}
+
+.ts__crew-stack i:first-child { margin-left: 0; }
+
+.ts__crew-stack b {
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ts__crew-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------------------------------------------------------------
+   Footer marginalia
+   --------------------------------------------------------------- */
+.ts__foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: clamp(24px, 4vw, 56px);
+}
+
+.ts__tag {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.6px;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.ts__tag::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 2px;
+  margin-bottom: 14px;
+  background: var(--ts-accent);
+}
+
+.ts__scroll {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: clamp(18px, 3vw, 40px) 0 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ts__scroll::before {
+  content: "";
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.45));
+}
+
+.ts__scroll::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  order: 1;
+}
+
+.ts__scroll span { order: 2; }
+
+/* ---------------------------------------------------------------
+   Entrance. The script adds .is-ready once it has taken over, so a
+   failure to load can never leave the section blank.
+   --------------------------------------------------------------- */
+.ts.is-ready .ts__line > span { transform: translateY(110%); }
+.ts.is-ready .ts__lead,
+.ts.is-ready .ts__eyebrow { opacity: 0; }
+.ts.is-ready .ts-card { opacity: 0; }
+
+/* ---------------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------------- */
+
+/* tablet — flatten the stage into two columns, keep the glass */
+@media (max-width: 1024px) {
+  .ts { padding: 92px 0 84px; }
+
+  .ts__stage {
+    flex-wrap: wrap;
+    perspective: none;
+    max-width: none;
+    gap: 20px;
+    padding: 20px 0 0;
+  }
+
+  .ts-card,
+  .ts-card:nth-child(n) {
+    --ry: 0deg; --rx: 0deg; --tz: 0px; --ty: 0px; --sc: 1;
+    --ts-push: 0px;
+    width: calc(50% - 10px);
+    transform: none;
+  }
+
+  .ts-card:hover,
+  .ts-card:focus-within { transform: translateY(-6px); }
+
+  .ts-card__img { aspect-ratio: 3 / 3.6; }
+
+  .ts__label,
+  .ts__badge,
+  .ts__ridge { display: none; }
+
+  .ts__crew { display: none; }
+  .ts__motto { position: static; text-align: left; margin: 0 0 26px; }
+  .ts__motto::after { margin-left: 0; }
+  .ts__head { text-align: left; margin-left: 0; }
+}
+
+/* phone — single column, no pointer 3D at all */
+@media (max-width: 640px) {
+  .ts { padding: 74px 0 70px; }
+  .ts__wrap { padding: 0 20px; }
+
+  .ts__stage { gap: 18px; }
+
+  .ts-card,
+  .ts-card:nth-child(n) { width: 100%; }
+
+  .ts-card__img { aspect-ratio: 4 / 3.4; }
+  .ts-card__note { display: none; }
+
+  .ts__bg { top: 26%; font-size: clamp(110px, 40vw, 200px); }
+  .ts__foot { flex-direction: column; align-items: flex-start; }
+  .ts__scroll { display: none; }
+}
+
+/* ---------------------------------------------------------------
+   Anyone who asked for less motion gets the section flat and still.
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .ts.is-ready .ts__line > span,
+  .ts.is-ready .ts__lead,
+  .ts.is-ready .ts__eyebrow,
+  .ts.is-ready .ts-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .ts-card,
+  .ts-card__img img,
+  .ts-card__body,
+  .ts-card__note,
+  .ts-card__no { transition: none; }
+  .ts-card::before { display: none; }
+}
+
+/* ---------------------------------------------------------------
+   The Web Development desk rides the same stage, but keeps its own
+   header, its own grid backdrop, and the department's warm accent
+   rather than the studio's neon green.
+   --------------------------------------------------------------- */
+.ts--dv {
+  --ts-accent: #ff8a3d;
+  padding: 100px 0 110px;
+  background: #05050b;
+  border-block: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ts--dv .ts__stage { margin-top: clamp(20px, 3vw, 40px); }
+
+/* the department header sits left, not centred like the studio one */
+.ts--dv .ts__wrap { max-width: 1280px; }

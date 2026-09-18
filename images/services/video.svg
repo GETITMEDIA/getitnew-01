@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="bgVideo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dfe7d4"/>
+      <stop offset="1" stop-color="#f5f1e4"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bgVideo)"/>
+  <circle cx="520" cy="110" r="80" fill="#ffffff" opacity="0.3"/>
+  <circle cx="120" cy="380" r="90" fill="#ffffff" opacity="0.3"/>
+
+  <!-- clapperboard -->
+  <g transform="translate(150 150)">
+    <rect x="0" y="50" width="300" height="180" rx="14" fill="#0A0A0A"/>
+    <path d="M0 50 L300 50 L280 0 L20 0 Z" fill="#0A0A0A"/>
+    <g fill="#fee17c">
+      <path d="M20 0 L60 0 L80 50 L40 50 Z"/>
+      <path d="M100 0 L140 0 L160 50 L120 50 Z"/>
+      <path d="M180 0 L220 0 L240 50 L200 50 Z"/>
+    </g>
+  </g>
+
+  <!-- play button -->
+  <g transform="translate(480 320)">
+    <circle cx="0" cy="0" r="70" fill="#e8622c"/>
+    <path d="M-20 -35 L35 0 L-20 35 Z" fill="#ffffff"/>
+  </g>
+</svg>

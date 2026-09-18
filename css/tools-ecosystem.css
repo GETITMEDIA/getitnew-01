@@ -1,0 +1,414 @@
+/* =====================================================================
+   Tools Ecosystem Section
+   ===================================================================== */
+
+.tools-ecosystem {
+  position: relative;
+  background-color: #050508;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.85) 100%),
+    url('../images/gads_ecosystem_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 100px 20px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  color: #FFFFFF;
+}
+
+/* Ambient Lighting Background */
+.tools-ecosystem::before,
+.tools-ecosystem::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  filter: blur(100px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tools-ecosystem::before {
+  left: 10%;
+  background: radial-gradient(circle, rgba(234, 90, 6, 0.4) 0%, rgba(234, 90, 6, 0) 70%);
+}
+
+.tools-ecosystem::after {
+  right: 10%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Header */
+.ecosystem-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.ecosystem-eyebrow {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #ea5a06;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.ecosystem-title {
+  font-family: 'Cinzel', serif;
+  font-size: 64px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95);
+}
+
+/* Visual Stage */
+.ecosystem-stage {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  aspect-ratio: 1200 / 600;
+  z-index: 10;
+}
+
+/* SVG Connectors */
+.connector-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.connector-path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1.5;
+}
+
+/* Orange gradient for all paths */
+.connector-path-left, .connector-path-right {
+  stroke: url(#orange-grad);
+}
+
+/* Central Logo Glassmorphic Hub */
+.ecosystem-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px;
+  height: 170px;
+  background: linear-gradient(135deg, rgba(22, 22, 34, 0.95) 0%, rgba(10, 10, 16, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(234, 90, 6, 0.6);
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(234, 90, 6, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  animation: float-center 6s ease-in-out infinite;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.ecosystem-center:hover {
+  border-color: rgba(234, 90, 6, 0.9);
+  box-shadow: 
+    0 40px 95px rgba(0, 0, 0, 0.95),
+    0 0 70px rgba(234, 90, 6, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+@keyframes float-center {
+  0%, 100% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, -56%); }
+}
+
+/* Standalone Google Ads / SEO Logo inside Card */
+.ads-logo-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gads-official-svg,
+.gads-official-img {
+  width: 135px;
+  height: 135px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+.ecosystem-center:hover .gads-official-svg,
+.ecosystem-center:hover .gads-official-img {
+  transform: scale(1.08) rotate(2deg);
+  filter: drop-shadow(0 12px 28px rgba(234, 90, 6, 0.5));
+}
+
+/* Glassmorphic Tool Node Cards */
+.tool-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+  width: 330px;
+  background: linear-gradient(135deg, rgba(18, 18, 28, 0.88) 0%, rgba(10, 10, 16, 0.92) 100%);
+  border: 1.5px solid rgba(234, 90, 6, 0.35);
+  border-radius: 20px;
+  padding: 16px 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.35s ease;
+}
+
+.tool-node:hover {
+  border-color: rgba(234, 90, 6, 0.8);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(234, 90, 6, 0.3);
+}
+
+/* Left side alignment */
+.tool-node.left-node {
+  flex-direction: row-reverse;
+  text-align: right;
+  right: 62.5%;
+}
+
+/* Right side alignment */
+.tool-node.right-node {
+  flex-direction: row;
+  text-align: left;
+  left: 62.5%;
+}
+
+/* Vertical positions using % to scale with aspect-ratio */
+.node-top { top: 19.166%; }
+.node-mid { top: 50%; }
+.node-bot { top: 80.833%; }
+
+.left-node.node-top { transform: translateY(-50%); }
+.left-node.node-mid { transform: translateY(-50%); }
+.left-node.node-bot { transform: translateY(-50%); }
+
+.right-node.node-top { transform: translateY(-50%); }
+.right-node.node-mid { transform: translateY(-50%); }
+.right-node.node-bot { transform: translateY(-50%); }
+
+.left-node:hover {
+  transform: translateY(-9px);
+}
+
+.right-node:hover {
+  transform: translateY(-9px);
+}
+
+/* Push middle nodes slightly further out for arc shape */
+.node-mid.left-node { right: 66.666%; margin-right: 0; }
+.node-mid.right-node { left: 66.666%; margin-left: 0; }
+
+.tool-icon {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  background: rgba(234, 90, 6, 0.15);
+  border: 1.5px solid rgba(234, 90, 6, 0.4);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #ea5a06;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(234, 90, 6, 0.2);
+}
+
+.left-node .tool-icon, .right-node .tool-icon {
+  box-shadow: 0 0 20px rgba(234, 90, 6, 0.15), inset 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.tool-content {
+  flex: 1 1 auto;
+}
+
+.tool-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+}
+
+.tool-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+}
+
+/* Responsive Breakpoints (Desktop, Tablet & Mobile) */
+@media (max-width: 1200px) {
+  .ecosystem-title {
+    font-size: 54px;
+  }
+  .tool-node {
+    width: 260px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ecosystem-title {
+    font-size: 44px;
+  }
+  .tool-node {
+    width: 230px;
+  }
+  .tool-title {
+    font-size: 14px;
+  }
+  .tool-desc {
+    font-size: 11px;
+  }
+  .ecosystem-center {
+    width: 150px;
+    height: 150px;
+  }
+  .gads-official-svg,
+  .gads-official-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tools-ecosystem {
+    padding: 50px 16px;
+    background-attachment: scroll; /* Smoother performance on mobile touch devices */
+  }
+  .ecosystem-eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .ecosystem-title {
+    font-size: 32px;
+  }
+  
+  /* Convert to clean vertical stack on tablet portrait & mobile */
+  .ecosystem-stage {
+    aspect-ratio: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-top: 10px;
+  }
+  
+  .connector-svg {
+    display: none; /* Hide desktop vector lines on mobile vertical stack */
+  }
+  
+  .ecosystem-center {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    order: -1; /* Display central Google Ads logo prominently at top of stack */
+    margin: 10px 0 25px 0;
+    width: 150px;
+    height: 150px;
+    animation: float-center 6s ease-in-out infinite;
+  }
+
+  .gads-official-svg,
+  .gads-official-img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .tool-node {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    width: 100%;
+    max-width: 440px;
+    background: rgba(14, 14, 22, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 16px 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    gap: 16px;
+  }
+  
+  /* Reset left/right alignment for mobile vertical stack */
+  .tool-node.left-node,
+  .tool-node.right-node {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .tools-ecosystem {
+    padding: 40px 14px;
+  }
+  .ecosystem-title {
+    font-size: 28px;
+  }
+  .ecosystem-center {
+    width: 130px;
+    height: 130px;
+    margin: 5px 0 15px 0;
+  }
+  .gads-official-svg,
+  .gads-official-img {
+    width: 130px;
+    height: 130px;
+  }
+  .tool-node {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .tool-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+  }
+  .tool-title {
+    font-size: 14px;
+  }
+  .tool-desc {
+    font-size: 11px;
+  }
+}

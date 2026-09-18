@@ -1,0 +1,670 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+/* ==========================================================================
+   Google My Business — Hero Section (Light Theme)
+   ========================================================================== */
+
+.gmbh {
+  --gmb-orange: #ff5722;
+  --gmb-orange-2: #ff7f37;
+  --gmb-orange-soft: #fff0e6;
+  --gmb-ink: #111827; /* For cards */
+  --gmb-body: #4b5563; /* For cards */
+  --gmb-muted: #6b7280; /* For cards */
+  --gmb-surface: #ffffff; /* For cards */
+  --gmb-text-main: #ffffff;
+  --gmb-text-muted: #b0b0ba;
+
+  /* glass surfaces for controls that sit on the dark canvas */
+  --gmb-glass: rgba(255, 255, 255, 0.06);
+  --gmb-glass-line: rgba(255, 255, 255, 0.14);
+
+  /* vertical rhythm for the left column - one scale, used everywhere below,
+     so the stack stays proportional as the viewport narrows */
+  --gmb-gap-xs: clamp(14px, 1.1vw, 18px);
+  --gmb-gap-sm: clamp(20px, 1.7vw, 28px);
+  --gmb-gap-md: clamp(26px, 2.2vw, 34px);
+  --gmb-gap-lg: clamp(34px, 3vw, 46px);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: #08080a;
+  padding: 52px 0 100px;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ---------- Background decor ---------- */
+.gmbh__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+/* Main huge circle */
+.gmbh__circle {
+  position: absolute;
+  top: 8%;
+  right: 2%;
+  width: 680px;
+  height: 680px;
+  max-width: 48vw;
+  max-height: 48vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 87, 34, 0.25) 0%, rgba(255, 87, 34, 0) 70%);
+  filter: blur(40px);
+  animation: gmbhFlow 16s ease-in-out infinite;
+}
+
+/* Medium circle top right */
+.gmbh__circle--sm {
+  position: absolute;
+  top: -2%;
+  right: -4%;
+  width: 450px;
+  height: 450px;
+  max-width: 32vw;
+  max-height: 32vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 127, 55, 0.2) 0%, rgba(255, 127, 55, 0) 70%);
+  filter: blur(40px);
+  animation: gmbhFlow 12s ease-in-out infinite reverse;
+}
+
+/* Medium circle top left */
+.gmbh__glow {
+  position: absolute;
+  top: 5%;
+  right: 22%;
+  width: 400px;
+  height: 400px;
+  max-width: 28vw;
+  max-height: 28vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 138, 61, 0.15) 0%, rgba(255, 138, 61, 0) 70%);
+  filter: blur(50px);
+  animation: gmbhFlow 14s ease-in-out infinite 2s;
+}
+
+.gmbh__corner { display: none; }
+.gmbh__grid { display: none; }
+.gmbh__vignette { display: none; }
+
+.gmbh__dots {
+  position: absolute;
+  left: 34px;
+  bottom: 80px;
+  width: 92px;
+  height: 60px;
+  background-image: radial-gradient(var(--gmb-orange) 1.5px, transparent 1.6px);
+  background-size: 14px 14px;
+  opacity: 0.3;
+}
+
+.gmbh__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Layout ---------- */
+.gmbh__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 56px;
+  display: grid;
+  grid-template-columns: 46% 54%;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Left content
+   ========================================================================== */
+.gmbh__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 5px 20px 5px 5px;
+  border-radius: 999px;
+  border: 1px solid var(--gmb-glass-line);
+  background: var(--gmb-glass);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 0 24px -14px var(--gmb-orange);
+}
+.gmbh__badge-icon {
+  display: inline-flex;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--gmb-orange-2), var(--gmb-orange));
+  color: #fff;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px -3px rgba(255, 87, 34, 0.6);
+}
+.gmbh__badge-sep { color: rgba(255, 255, 255, 0.24); font-weight: 400; }
+
+.gmbh__title {
+  margin: var(--gmb-gap-sm) 0 0;
+  font-size: clamp(2.6rem, 5.4vw, 5.4rem);
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--gmb-text-main);
+}
+.gmbh__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.gmbh__title i { display: block; font-style: normal; }
+/* first line sits back a weight so the orange payoff line carries the punch */
+.gmbh__line:first-child i { font-weight: 600; color: rgba(255, 255, 255, 0.92); }
+/* no text-shadow here - .gmbh__line clips with overflow:hidden for the rise
+   animation, which would slice a visible box out of any glow */
+.gmbh__title-accent {
+  color: var(--gmb-orange);
+  font-weight: 800;
+}
+
+.gmbh__desc {
+  margin: var(--gmb-gap-sm) 0 0;
+  max-width: 46ch;
+  font-size: clamp(1rem, 0.9vw, 1.08rem);
+  line-height: 1.72;
+  color: var(--gmb-text-muted);
+}
+
+/* ---------- CTA buttons ---------- */
+.gmbh__cta {
+  margin-top: var(--gmb-gap-md);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.gmbh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.gmbh-btn--primary {
+  padding: 8px 8px 8px 30px;
+  background: linear-gradient(135deg, var(--gmb-orange-2) 0%, var(--gmb-orange) 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 30px -10px rgba(255, 87, 34, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+.gmbh-btn--primary:hover { transform: translateY(-3px); box-shadow: 0 18px 38px -12px rgba(255, 87, 34, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.28); color: #fff; }
+.gmbh-btn__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--gmb-orange);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.gmbh-btn--ghost {
+  padding: 8px 28px 8px 8px;
+  background: var(--gmb-glass);
+  border: 1px solid var(--gmb-glass-line);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  box-shadow: none;
+}
+.gmbh-btn--ghost:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+.gmbh-btn__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 87, 34, 0.16);
+  border: 1px solid rgba(255, 87, 34, 0.34);
+  color: var(--gmb-orange-2);
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Benefits ---------- */
+.gmbh__benefits {
+  margin-top: var(--gmb-gap-lg);
+  padding-top: var(--gmb-gap-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  align-items: center;
+  /* row-gap only - horizontal separation comes from each item's padding.
+     Acts as a safety net at any width where the three still wrap. */
+  gap: 18px 0;
+  flex-wrap: wrap;
+}
+.gmbh-benefit {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 0 clamp(18px, 1.7vw, 26px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.gmbh-benefit:first-child { padding-left: 0; border-left: 0; }
+.gmbh-benefit__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  background: rgba(255, 87, 34, 0.14);
+  border: 1px solid rgba(255, 87, 34, 0.32);
+  color: var(--gmb-orange-2);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.gmbh-benefit__title {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--gmb-text-main);
+  line-height: 1.25;
+}
+.gmbh-benefit__sub {
+  margin: 3px 0 0;
+  font-size: 0.76rem;
+  color: var(--gmb-text-muted);
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   Right visual
+   ========================================================================== */
+.gmbh__visual {
+  position: relative;
+  width: 100%;
+  padding-top: 70%;
+}
+.gmbh-stage {
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+}
+
+/* --- Plant --- */
+.gmbh-plant {
+  position: absolute;
+  left: -2%;
+  bottom: 12%;
+  width: 14%;
+  z-index: 5;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.08));
+}
+.gmbh-plant svg { width: 100%; height: auto; display: block; }
+
+/* --- Laptop --- */
+.gmbh-laptop {
+  position: absolute;
+  left: 2%;
+  top: 9%;
+  width: 85%;
+  height: auto;
+  z-index: 3;
+}
+
+/* --- Phone --- */
+.gmbh-phone {
+  position: absolute;
+  right: 0%;
+  bottom: -4%;
+  width: 28%;
+  height: auto;
+  z-index: 6;
+}
+
+/* --- Google Business store icon --- */
+.gmbh-store {
+  position: absolute;
+  left: 8%;
+  bottom: 8%;
+  width: 15%;
+  z-index: 7;
+  filter: drop-shadow(0 16px 26px rgba(26, 115, 232, 0.2));
+}
+.gmbh-store svg { width: 100%; height: auto; display: block; }
+
+/* --- Curved arrow --- */
+.gmbh-arrow {
+  position: absolute;
+  right: -5%;
+  top: 30%;
+  width: 10%;
+  z-index: 2;
+}
+.gmbh-arrow svg { width: 100%; height: auto; display: block; }
+
+/* --- Unique Yellow Orb --- */
+.gmbh-orb {
+  position: absolute;
+  top: 22%;
+  right: 17%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(253, 224, 71, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+.gmbh-orb::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid rgba(253, 224, 71, 0.8);
+  animation: orbRingPulse 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.gmbh-orb span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fde047;
+  box-shadow: 0 0 10px 2px rgba(253, 224, 71, 0.6);
+}
+
+/* ---------- Floating cards ---------- */
+.gmbh-card {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 0.95em 1.25em;
+  background: var(--gmb-surface);
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  border-radius: 14px;
+  box-shadow:
+    0 24px 48px -18px rgba(0, 0, 0, 0.55),
+    0 6px 14px -8px rgba(0, 0, 0, 0.35);
+  font-size: 13px;
+  white-space: nowrap;
+}
+@container (max-width: 620px) { .gmbh-card { font-size: 11px; } }
+@container (max-width: 460px) { .gmbh-card { font-size: 9px; } }
+
+.gmbh-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  background: var(--gmb-orange-soft);
+  color: var(--gmb-orange);
+  font-size: 1.1em;
+  flex-shrink: 0;
+}
+.gmbh-card__title {
+  margin: 0;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--gmb-ink);
+  line-height: 1.25;
+}
+.gmbh-card__sub {
+  margin: 0.15em 0 0;
+  font-size: 0.85em;
+  font-weight: 400;
+  color: var(--gmb-muted);
+  line-height: 1.35;
+}
+.gmbh-card__bars { display: flex; align-items: flex-end; gap: 0.2em; height: 1.5em; margin-left: 0.5em; }
+.gmbh-card__bars span { width: 0.35em; border-radius: 999px; background: var(--gmb-orange); }
+.gmbh-card__bars span:nth-child(1) { height: 45%; opacity: 0.45; }
+.gmbh-card__bars span:nth-child(2) { height: 70%; opacity: 0.7; }
+.gmbh-card__bars span:nth-child(3) { height: 100%; }
+
+.gmbh-card--customers { left: 14%; top: 4%; }
+.gmbh-card--customers .gmbh-card__title { font-size: 1.3em; font-weight: 800; }
+.gmbh-card--customers .gmbh-card__icon { 
+  background: none; 
+  color: var(--gmb-orange); 
+  border: 1px solid #ffe0d1;
+  width: auto; height: auto; padding: 0.4em; border-radius: 8px;
+}
+.gmbh-card--local { right: 8%; top: -6%; }
+.gmbh-card--local .gmbh-card__icon { background: var(--gmb-orange); color: #fff; }
+
+.gmbh-card--maps { right: -6%; top: 18%; }
+.gmbh-card--maps .gmbh-card__icon { background: none; }
+.gmbh-card--maps .gmbh-card__icon svg { width: 1.8em; height: 1.8em; }
+
+
+/* ==========================================================================
+   Hero motion 
+   ========================================================================== */
+@keyframes gmbhFlow {
+  0% { 
+    transform: rotate(0deg) scale(1); 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.08); 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% { 
+    transform: rotate(360deg) scale(1); 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+@keyframes orbRingPulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes gmbhRise {
+  from { transform: translateY(112%); }
+  to   { transform: translateY(0); }
+}
+@keyframes gmbhFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes gmbhVisualIn {
+  from { opacity: 0; transform: translateY(26px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes gmbhCardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes gmbhDraw {
+  from { stroke-dashoffset: 420; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.gmbh:not(.is-ready) .gmbh__title i { transform: translateY(112%); }
+.gmbh:not(.is-ready) .gmbh__badge,
+.gmbh:not(.is-ready) .gmbh__desc,
+.gmbh:not(.is-ready) .gmbh__cta,
+.gmbh:not(.is-ready) .gmbh__benefits,
+.gmbh:not(.is-ready) .gmbh__visual,
+.gmbh:not(.is-ready) .gmbh-card { opacity: 0; }
+.gmbh:not(.is-ready) .gmbh-arrow path { stroke-dashoffset: 420; }
+
+.gmbh.is-ready .gmbh__title i {
+  animation: gmbhRise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+.gmbh.is-ready .gmbh__line:nth-child(2) i {
+  animation-delay: 0.29s;
+}
+
+.gmbh__ch {
+  display: inline-block;
+  will-change: transform;
+}
+.gmbh__ch--space { width: 0.26em; }
+.gmbh:not(.is-ready) .gmbh__title i.is-split { transform: none; }
+.gmbh:not(.is-ready) .gmbh__ch { transform: translateY(115%); }
+.gmbh.is-ready .gmbh__title i.is-split { animation: none; transform: none; }
+.gmbh.is-ready .gmbh__ch {
+  animation: gmbhRise 0.78s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(0.12s + var(--i) * 0.038s);
+}
+
+.gmbh.is-ready .gmbh__badge,
+.gmbh.is-ready .gmbh__desc,
+.gmbh.is-ready .gmbh__cta,
+.gmbh.is-ready .gmbh__benefits {
+  animation: gmbhFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.gmbh.is-ready .gmbh__badge    { animation-delay: 0.05s; }
+.gmbh.is-ready .gmbh__desc     { animation-delay: 0.78s; }
+.gmbh.is-ready .gmbh__cta      { animation-delay: 0.92s; }
+.gmbh.is-ready .gmbh__benefits { animation-delay: 1.06s; }
+
+.gmbh.is-ready .gmbh__visual {
+  animation: gmbhVisualIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.gmbh-arrow path { stroke-dasharray: 420; }
+.gmbh.is-ready .gmbh-arrow path {
+  animation: gmbhDraw 1.2s ease-out 1.1s both;
+}
+
+.gmbh.is-ready .gmbh-card--customers { animation: gmbhCardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both, gmbhFloat 6s ease-in-out 1.7s infinite; }
+.gmbh.is-ready .gmbh-card--local { animation: gmbhCardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.97s both, gmbhFloat 7s ease-in-out 1.85s infinite; }
+.gmbh.is-ready .gmbh-card--maps { animation: gmbhCardIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.09s both, gmbhFloat 6.5s ease-in-out 2s infinite; }
+
+@keyframes gmbhFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gmbh *, .gmbh *::after, .gmbh *::before {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+/* ---------- Video modal ---------- */
+.gmbh-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 10, 14, 0.78);
+}
+.gmbh-modal.is-open { display: flex; }
+.gmbh-modal__box {
+  position: relative;
+  width: min(900px, 100%);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.gmbh-modal__box iframe { width: 100%; height: 100%; border: 0; }
+.gmbh-modal__close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111114;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+/* While the hero is a two-column layout the content side is only 46% wide, and
+   flex-wrap cannot promise the three benefits fit on one line - between about
+   1100px and 1350px they broke to 2 + 1 and read as a collision. A fixed
+   three-column grid always fits; the labels wrap inside their own cell
+   instead. Below 1100px the layout stacks and flex takes over again. */
+@media (min-width: 1100px) {
+  .gmbh__benefits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+  }
+  .gmbh-benefit {
+    padding: 0 clamp(10px, 1.1vw, 20px);
+    min-width: 0;          /* let the text cell shrink instead of overflowing */
+  }
+  .gmbh-benefit__icon { width: 36px; height: 36px; }
+}
+
+@media (max-width: 1280px) {
+  .gmbh__inner { padding: 0 36px; gap: 12px; }
+}
+@media (max-width: 1099px) {
+  .gmbh { padding: 44px 0 80px; }
+  .gmbh__inner { grid-template-columns: 1fr; gap: 48px; }
+  .gmbh__content { max-width: 640px; }
+  .gmbh__visual { padding-top: 68%; max-width: 720px; }
+  .gmbh__circle { top: 30%; right: 0; }
+  .gmbh__desc { max-width: 100%; }
+}
+@media (max-width: 767px) {
+  .gmbh { padding: 34px 0 70px; }
+  .gmbh__inner { padding: 0 20px; }
+  .gmbh__title { font-size: clamp(2.1rem, 10vw, 3.2rem); letter-spacing: -0.03em; }
+  .gmbh__desc { font-size: 0.95rem; line-height: 1.65; }
+  .gmbh__badge { font-size: 0.72rem; }
+  .gmbh-benefit { padding: 0 14px; }
+  .gmbh__visual { padding-top: 78%; }
+  .gmbh__dots { width: 68px; height: 44px; left: 20px; bottom: 30px; }
+}
+@media (max-width: 479px) {
+  .gmbh-btn { font-size: 0.88rem; }
+  .gmbh-btn--primary { padding: 8px 8px 8px 20px; }
+  .gmbh__benefits { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .gmbh-benefit { padding: 0; border-left: 0; }
+  .gmbh__visual { padding-top: 74%; }
+  .gmbh-laptop { left: 1%; top: 6%; width: 94%; }
+  .gmbh-phone { right: 0; bottom: 6%; width: 29%; }
+  .gmbh-plant { left: -2%; bottom: 16%; width: 15%; }
+  .gmbh-store { left: 11%; bottom: 14%; width: 16%; }
+}

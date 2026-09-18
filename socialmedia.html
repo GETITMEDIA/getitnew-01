@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Social Media Marketing & Growth Engine | Getit Media Solutions</title>
+<meta name="description" content="Pondicherry's #1 Social Media Growth Engine. Cinematic 4K reels, high-converting Meta ads, and viral content that turns attention into revenue.">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- Material Symbols Outlined & FontAwesome -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<!-- Navbar CSS & FontAwesome -->
+<link href="css/navbar.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- AOS Animations CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always
+     unarm on a timer so a failed GSAP load can never leave the page
+     blank. scroll-anim.js unarms as soon as it has set its start states. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#f26522",
+            "agency-orange-bright": "#FF6B35",
+            "agency-orange-glow": "rgba(242, 101, 34, 0.18)",
+            "obsidian-base": "#08090d",
+            "obsidian-surface-1": "#0f1117",
+            "obsidian-surface-2": "#161922",
+            "canvas-pure": "#FFFFFF",
+            "canvas-light": "#F8FAFC",
+            "metric-emerald": "#10B981"
+          },
+          fontFamily: {
+            "display-xl": ["Syne", "sans-serif"],
+            "headline-lg": ["Syne", "sans-serif"],
+            "headline-md": ["Syne", "sans-serif"],
+            "headline-sm": ["Syne", "sans-serif"],
+            "label-caps": ["Space Grotesk", "sans-serif"],
+            "label-numeric": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"]
+          },
+          animation: {
+            'float-slow': 'floatSlow 6s ease-in-out infinite',
+            'float-delayed': 'floatDelayed 7s ease-in-out 1.5s infinite',
+            'float-fast': 'floatFast 5s ease-in-out 0.8s infinite',
+            'glow-pulse': 'glowPulse 4s ease-in-out infinite',
+            'gradient-shift': 'gradientShift 6s ease infinite',
+            'radar-spin': 'radarSpin 10s linear infinite'
+          },
+          keyframes: {
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(1deg)' }
+            },
+            floatDelayed: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-16px) rotate(-1.5deg)' }
+            },
+            floatFast: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            glowPulse: {
+              '0%, 100%': { opacity: '0.25', transform: 'scale(1)' },
+              '50%': { opacity: '0.45', transform: 'scale(1.08)' }
+            },
+            gradientShift: {
+              '0%': { 'background-position': '0% 50%' },
+              '50%': { 'background-position': '100% 50%' },
+              '100%': { 'background-position': '0% 50%' }
+            },
+            radarSpin: {
+              '0%': { transform: 'rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html { scroll-behavior: smooth; }
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #08090d; }
+    ::-webkit-scrollbar-thumb { background: #f26522; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #FF6B35; }
+
+    /* Animated Text Gradients */
+    .animated-gradient-text {
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    .title-gradient-glow {
+      /* brand ramp taken from the GetIt Media logo: light -> bright -> core orange */
+      background: linear-gradient(135deg, #FFA05C 0%, #FF6B35 50%, #f26522 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s linear infinite;
+    }
+
+    /* Card 3D Tilt Effect */
+    .tilt-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      transform-style: preserve-3d;
+    }
+    .tilt-card:hover {
+      transform: translateY(-8px) scale(1.01);
+    }
+
+    /* Magnetic Button Interaction */
+    .btn-magnetic {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-magnetic:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+    .btn-magnetic:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    /* Image Zoom Reveal Wrapper */
+    .img-zoom-hover {
+      overflow: hidden;
+      position: relative;
+    }
+    .img-zoom-hover img {
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+      will-change: transform;
+    }
+    .img-zoom-hover:hover img {
+      transform: scale(1.07);
+    }
+
+    /* Subtle Shine Reflection Effect on Hover */
+    .shine-sweep {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine-sweep::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(30deg) translateY(-100%);
+      transition: transform 0.8s ease;
+      pointer-events: none;
+    }
+    .shine-sweep:hover::after {
+      transform: rotate(30deg) translateY(100%);
+    }
+
+    /* Hover Lift Card Effect */
+    .hover-lift-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .hover-lift-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Pulsing Neon Border Effect */
+    .pulse-neon-border {
+      box-shadow: 0 0 0 0 rgba(242, 101, 34, 0.45);
+      animation: pulseBorder 2.5s infinite;
+    }
+    @keyframes pulseBorder {
+      0% { box-shadow: 0 0 0 0 rgba(242, 101, 34, 0.45); }
+      70% { box-shadow: 0 0 0 12px rgba(242, 101, 34, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(242, 101, 34, 0); }
+    }
+
+    .glow-orange-box {
+      box-shadow: 0 0 35px -5px rgba(242, 101, 34, 0.35);
+    }
+
+    /* Modal Backdrop */
+    .modal-active {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+
+    /* Filter Active Animation */
+    .filter-btn.active {
+      background-color: #111318;
+      color: #ffffff;
+      border-color: #111318;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    /* Shimmer Effect */
+    .shimmer-bg {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  </style>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+<body class="bg-obsidian-base font-body-md text-slate-300 antialiased selection:bg-primary-container selection:text-white">
+
+    <!-- GetIt Media Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="index.html" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span class="mega-service__icon">G</span><span class="mega-service__text"><span class="mega-service__title">Google My Business</span></span></a>
+                    <a href="google-ads.html" class="mega-service" role="menuitem"><span class="mega-service__icon">A</span><span class="mega-service__text"><span class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                    <a href="socialmedia.html" class="mega-service" role="menuitem"><span class="mega-service__icon">S</span><span class="mega-service__text"><span class="mega-service__title">Social Media Marketing</span></span></a>
+                    <a href="searchengine.html" class="mega-service" role="menuitem"><span class="mega-service__icon">Q</span><span class="mega-service__text"><span class="mega-service__title">Search Engine Optimization</span></span></a>
+                    <a href="website.html" class="mega-service" role="menuitem"><span class="mega-service__icon">W</span><span class="mega-service__text"><span class="mega-service__title">Website Design &amp; Development</span></span></a>
+                    <a href="graphic.html" class="mega-service" role="menuitem"><span class="mega-service__icon">D</span><span class="mega-service__text"><span class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="video-editor.html" class="mega-service" role="menuitem"><span class="mega-service__icon">V</span><span class="mega-service__text"><span class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span><h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4><p class="mega-promo__text">One call with us changes your digital game.</p></div>
+                    <a href="contact.html" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="contact.html" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="index.html" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up"><span class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger" id="mobileServicesTrigger" aria-expanded="false" aria-controls="mobileServicesPanel"><span>Services</span><span class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html" class="mobile-service">Google My Business</a><a href="google-ads.html" class="mobile-service">Google &amp; Meta Ads</a><a href="socialmedia.html" class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html" class="mobile-service">Video Editing</a></div></li>
+          <li><a href="team.html" class="mobile-link">Team</a></li>
+          <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+          <li><a href="price.html" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+<main class="w-full pt-20">
+<!-- ========================================================================= -->
+<!-- 2. FUTURISTIC 3D SOCIAL MEDIA HERO SECTION                                 -->
+<!-- ========================================================================= -->
+<section class="relative w-full min-h-[700px] lg:min-h-screen bg-[#050505] text-white flex items-center justify-center pt-24 pb-16 lg:py-28 overflow-hidden border-b border-white/10" id="heroSection">
+  
+  <!-- Ambient Radial Glows & Background Grid -->
+  <div class="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:28px_28px] opacity-35 pointer-events-none"></div>
+  
+  <!-- Glowing Neon Green & Purple Atmospheric Lights -->
+  <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[650px] h-[650px] bg-[#f26522]/20 blur-[160px] pointer-events-none rounded-full animate-glow-pulse"></div>
+  <div class="absolute top-1/3 right-10 w-[500px] h-[500px] bg-[#FF8A3D]/14 blur-[140px] pointer-events-none rounded-full"></div>
+  <div class="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#c2410c]/16 blur-[130px] pointer-events-none rounded-full"></div>
+
+  <!-- Background Animated Particles -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/4 left-1/5 w-2 h-2 rounded-full bg-[#FF6B35] animate-ping opacity-75"></div>
+    <div class="absolute top-2/3 left-1/3 w-1.5 h-1.5 rounded-full bg-[#f26522] animate-pulse opacity-60"></div>
+    <div class="absolute top-1/3 right-1/3 w-2 h-2 rounded-full bg-[#FF8A3D] animate-bounce opacity-50"></div>
+    <div class="absolute bottom-1/4 right-1/5 w-1.5 h-1.5 rounded-full bg-[#FF6B35] animate-pulse opacity-70"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- LEFT COLUMN: Content (~45% width on desktop) -->
+      <div class="lg:col-span-6 flex flex-col items-start text-left z-20">
+        
+        <!-- Small Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#2a1206]/75 border border-[#f26522]/45 backdrop-blur-xl mb-6 shadow-[0_0_20px_rgba(242,101,34,0.28)]" data-aos="fade-down" data-aos-delay="100">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF6B35] animate-ping"></span>
+          <span class="font-label-caps text-xs text-[#FF6B35] uppercase tracking-widest font-bold">SOCIAL MEDIA MARKETING</span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="font-headline-lg lg:font-display-xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08] mb-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
+          Turn Your Social Media Into a <br class="hidden sm:inline">
+          <span class="title-gradient-glow drop-shadow-[0_0_35px_rgba(242,101,34,0.5)]">Powerful Growth Engine</span>
+        </h1>
+
+        <!-- Supporting Text -->
+        <p class="font-body-lg text-base lg:text-lg text-zinc-300 max-w-xl mb-8 font-medium leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+          Build your brand, engage your audience, and drive measurable growth with powerful social media strategies.
+        </p>
+
+        <!-- Two CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10" data-aos="fade-up" data-aos-delay="400">
+          <a href="page-contact.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[#FF8A3D] via-[#FF6B35] to-[#f26522] text-white font-headline-sm text-sm font-extrabold shadow-[0_0_30px_rgba(242,101,34,0.55)] btn-magnetic shine-sweep pulse-neon-border transition-all duration-300">
+            <span>Get Started</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </a>
+          
+          <a href="#platforms" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white/5 hover:bg-white/10 text-white backdrop-blur-xl border border-white/15 hover:border-[#f26522]/60 font-headline-sm text-sm font-bold btn-magnetic shine-sweep transition-all duration-300 shadow-lg">
+            <span>View Our Services</span>
+            <span class="material-symbols-outlined text-lg text-[#FF6B35]">expand_more</span>
+          </a>
+        </div>
+
+        <!-- Micro Feature Badges -->
+        <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-white/10 text-xs text-zinc-400 font-label-caps uppercase tracking-wider" data-aos="fade-up" data-aos-delay="500">
+          <div class="flex items-center gap-2 hover:text-[#FF6B35] transition-colors">
+            <span class="w-2 h-2 rounded-full bg-[#FF6B35]"></span>
+            <span>4K Vertical Creative</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-[#f26522] transition-colors">
+            <span class="w-2 h-2 rounded-full bg-[#f26522]"></span>
+            <span>Direct WhatsApp Leads</span>
+          </div>
+          <div class="flex items-center gap-2 hover:text-[#FF8A3D] transition-colors">
+            <span class="w-2 h-2 rounded-full bg-[#FF8A3D]"></span>
+            <span>Real-time Telemetry</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: 3D Interactive Ecosystem (~55% width on desktop) -->
+      <div class="lg:col-span-6 relative flex items-center justify-center z-10 min-h-[520px] lg:min-h-[620px]" data-aos="zoom-in" data-aos-duration="1000">
+        
+        <!-- 3D Scene Wrapper with Perspective & Parallax Mouse Listener -->
+        <div class="relative w-full max-w-[500px] lg:max-w-[580px] h-[520px] sm:h-[600px] flex items-center justify-center transition-transform duration-300 ease-out" id="hero3DScene" style="perspective: 1200px; transform-style: preserve-3d;">
+          
+          <!-- Outer Glowing Ring -->
+          <div class="absolute w-[380px] sm:w-[460px] h-[380px] sm:h-[460px] rounded-full border border-[#f26522]/25 bg-[#f26522]/5 blur-sm animate-pulse pointer-events-none"></div>
+          <div class="absolute w-[300px] sm:w-[380px] h-[300px] sm:h-[380px] rounded-full border border-[#FF8A3D]/20 pointer-events-none"></div>
+
+          <!-- SVG Glowing Connection Orbits -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 600" fill="none">
+            <path d="M 150 150 Q 300 100 450 180" stroke="url(#gradientNeon1)" stroke-width="2" stroke-dasharray="6 6" class="animate-pulse"/>
+            <path d="M 100 380 Q 250 480 480 400" stroke="url(#gradientNeon2)" stroke-width="2" stroke-dasharray="6 6"/>
+            <path d="M 120 260 Q 300 300 480 260" stroke="#f26522" stroke-width="1.5" opacity="0.3"/>
+            <defs>
+              <linearGradient id="gradientNeon1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF8A3D"/>
+                <stop offset="100%" stop-color="#c2410c"/>
+              </linearGradient>
+              <linearGradient id="gradientNeon2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#c2410c"/>
+                <stop offset="100%" stop-color="#FF6B35"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <!-- CENTERPIECE: Floating 3D Smartphone -->
+          <div class="relative w-[270px] sm:w-[310px] aspect-[9/18] rounded-[44px] border-[6px] border-white/20 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_50px_rgba(242,101,34,0.3)] bg-[#0d0f17]/95 backdrop-blur-2xl overflow-hidden z-20 transform rotate-[-4deg] hover:rotate-0 transition-transform duration-700">
+            <!-- Screen Notch / Speaker Bar -->
+            <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-4 bg-black rounded-full z-30 flex items-center justify-center gap-2 border border-white/10">
+              <span class="w-2.5 h-2.5 rounded-full bg-black border border-white/20"></span>
+              <span class="w-2.5 h-1 rounded-full bg-white/20"></span>
+            </div>
+
+            <!-- Phone Screen UI Content (Instagram Style Feed) -->
+            <div class="w-full h-full pt-9 px-3.5 pb-4 flex flex-col justify-between text-left font-body-sm">
+              <!-- Top App Header -->
+              <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                  <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-[#FF8A3D] to-[#f26522] p-0.5">
+                    <div class="w-full h-full rounded-full bg-black flex items-center justify-center text-[10px] font-bold text-white">G</div>
+                  </div>
+                  <span class="text-xs font-bold text-white tracking-tight flex items-center gap-1">
+                    @getit_mediasolutionspy
+                    <span class="material-symbols-outlined text-xs text-[#FF6B35]">verified</span>
+                  </span>
+                </div>
+                <span class="text-[10px] font-bold text-[#FF8A3D] bg-[#2a1206]/85 px-2 py-0.5 rounded-full border border-[#f26522]/35">LIVE FEED</span>
+              </div>
+
+              <!-- Profile grid: real GetIt Media creative. Swap these nine
+                   src paths for the actual Instagram exports when ready -->
+              <div class="relative my-2 rounded-2xl overflow-hidden border border-white/15 bg-black/50 shadow-inner">
+                <div class="grid grid-cols-3 gap-[3px]">
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/festival_poster_showcase.jpg" alt="Festival campaign creative" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    <span class="absolute top-1 right-1 material-symbols-outlined text-white/90 text-[13px] drop-shadow">movie</span>
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/retail_poster_sale.jpg" alt="Retail sale poster" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/banner_design_showcase.jpg" alt="Banner design" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/brochure_grid_showcase.jpg" alt="Brochure layout" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/mobile_carousel_showcase.jpg" alt="Instagram carousel" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    <span class="absolute top-1 right-1 material-symbols-outlined text-white/90 text-[13px] drop-shadow">movie</span>
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/g_logo_showcase.jpg" alt="Logo and brand mark" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/id_card_showcase.jpg" alt="Corporate ID card design" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/newspaper_ad_mockup.jpg" alt="Newspaper advert" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                  <div class="relative aspect-square overflow-hidden bg-[#161922]">
+                    <img src="images/graphic/perfume_bottle_showcase.jpg" alt="Product campaign creative" loading="lazy" decoding="async" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                  </div>
+                </div>
+
+                <!-- scrim so the metric strip stays legible over the bottom row -->
+                <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/90 to-transparent pointer-events-none"></div>
+
+                <!-- Screen Metric Badge -->
+                <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] font-label-numeric font-bold text-white bg-black/60 px-3 py-1.5 rounded-xl border border-white/10 backdrop-blur-md">
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-heart text-[#FF6B35]"></i> 14.8K</span>
+                  <span class="flex items-center gap-1"><i class="fa-solid fa-comment text-[#FF8A3D]"></i> 3.2K</span>
+                  <span class="flex items-center gap-1 text-[#FF6B35]"><i class="fa-solid fa-arrow-trend-up"></i> +245%</span>
+                </div>
+              </div>
+
+              <!-- Animated Chart Sparkline Overlay -->
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] text-zinc-400 uppercase tracking-wider block">Audience Reach</span>
+                  <span class="font-headline-sm text-sm font-bold text-white"><span class="counter-float" data-target="1.2">0.0</span>M Views</span>
+                </div>
+                <div class="w-20 h-6">
+                  <svg viewBox="0 0 100 30" class="w-full h-full">
+                    <path d="M0 25 Q25 15 50 20 T100 5" fill="none" stroke="#FF6B35" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FLOATING 3D SOCIAL PLATFORM ICONS -->
+          
+          <!-- Instagram Icon Orb (Top-Left) -->
+          <div class="absolute -top-4 -left-6 w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-0.5 shadow-[0_0_25px_rgba(217,70,239,0.5)] animate-float-slow z-30 hover:scale-110 transition-transform">
+            <div class="w-full h-full rounded-2xl bg-black/40 backdrop-blur-sm flex items-center justify-center text-white text-2xl">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+          </div>
+
+          <!-- Facebook Icon Orb (Bottom-Left) -->
+          <div class="absolute bottom-10 -left-10 w-13 h-13 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-700 p-0.5 shadow-[0_0_25px_rgba(37,99,235,0.5)] animate-float-delayed z-30 hover:scale-110 transition-transform">
+            <div class="w-full h-full rounded-2xl bg-black/40 backdrop-blur-sm flex items-center justify-center text-white text-xl">
+              <i class="fa-brands fa-facebook-f"></i>
+            </div>
+          </div>
+
+          <!-- YouTube Icon Orb (Top-Right) -->
+          <div class="absolute top-6 -right-8 w-14 h-14 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-700 p-0.5 shadow-[0_0_25px_rgba(225,29,72,0.5)] animate-float-fast z-30 hover:scale-110 transition-transform">
+            <div class="w-full h-full rounded-2xl bg-black/40 backdrop-blur-sm flex items-center justify-center text-white text-2xl">
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+
+          <!-- LinkedIn Icon Orb (Middle-Right) -->
+          <div class="absolute top-1/2 -right-12 -translate-y-1/2 w-13 h-13 rounded-2xl bg-gradient-to-tr from-blue-700 to-cyan-800 p-0.5 shadow-[0_0_25px_rgba(3,105,161,0.5)] animate-float-slow z-30 hover:scale-110 transition-transform">
+            <div class="w-full h-full rounded-2xl bg-black/40 backdrop-blur-sm flex items-center justify-center text-white text-xl">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+          </div>
+
+          <!-- X / Twitter Icon Orb (Bottom-Left Middle) -->
+          <div class="absolute top-1/3 -left-12 w-12 h-12 rounded-2xl bg-gradient-to-tr from-zinc-800 to-black p-0.5 border border-white/20 shadow-xl animate-float-fast z-30 hover:scale-110 transition-transform">
+            <div class="w-full h-full rounded-2xl bg-black/60 backdrop-blur-sm flex items-center justify-center text-white text-lg">
+              <i class="fa-brands fa-x-twitter"></i>
+            </div>
+          </div>
+
+          <!-- FLOATING GLASSMORPHISM 3D METRIC CARDS -->
+
+          <!-- Card 1: +245% Engagement (Top Right) -->
+          <div class="absolute top-2 right-4 sm:-right-6 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[#0f1117]/90 border border-[#f26522]/35 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.8)] animate-float-slow z-40 hover:scale-105 transition-transform">
+            <div class="w-9 h-9 rounded-xl bg-[#f26522]/20 flex items-center justify-center text-[#FF6B35] shadow-inner">
+              <span class="material-symbols-outlined text-lg">trending_up</span>
+            </div>
+            <div class="text-left">
+              <span class="font-headline-sm text-sm font-bold text-white block leading-none"><span class="counter" data-target="245">+0</span>% Engagement</span>
+              <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Algorithmic Boost</span>
+            </div>
+          </div>
+
+          <!-- Card 2: 1.2M Reach (Middle Left) -->
+          <div class="hidden sm:flex absolute top-1/4 -left-10 items-center gap-3 px-4 py-3 rounded-2xl bg-[#0f1117]/90 border border-[#FF8A3D]/35 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.8)] animate-float-delayed z-40 hover:scale-105 transition-transform">
+            <div class="w-9 h-9 rounded-xl bg-[#FF8A3D]/20 flex items-center justify-center text-[#FF8A3D] shadow-inner">
+              <span class="material-symbols-outlined text-lg">visibility</span>
+            </div>
+            <div class="text-left">
+              <span class="font-headline-sm text-sm font-bold text-white block leading-none"><span class="counter-float" data-target="1.2">0.0</span>M Reach</span>
+              <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Organic Feed Impression</span>
+            </div>
+          </div>
+
+          <!-- Card 3: +85K Followers (Bottom Left) -->
+          <div class="absolute -bottom-4 left-0 sm:left-4 flex items-center gap-3 px-4 py-3 rounded-2xl bg-[#0f1117]/90 border border-[#c2410c]/45 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.8)] animate-float-fast z-40 hover:scale-105 transition-transform">
+            <div class="w-9 h-9 rounded-xl bg-[#c2410c]/25 flex items-center justify-center text-[#FF8A3D] shadow-inner">
+              <span class="material-symbols-outlined text-lg">person_add</span>
+            </div>
+            <div class="text-left">
+              <span class="font-headline-sm text-sm font-bold text-white block leading-none"><span class="counter" data-target="85">+0</span>K Followers</span>
+              <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Targeted Community</span>
+            </div>
+          </div>
+
+          <!-- Card 4: 4.8K Shares (Top Left Badge) -->
+          <div class="hidden sm:flex absolute -top-8 left-16 items-center gap-2.5 px-3.5 py-2 rounded-xl bg-black/80 border border-[#FF6B35]/35 backdrop-blur-md shadow-lg animate-float-delayed z-30">
+            <span class="material-symbols-outlined text-[#FF6B35] text-base">share</span>
+            <span class="font-headline-sm text-xs font-bold text-white"><span class="counter-float" data-target="4.8">0.0</span>K Shares</span>
+          </div>
+
+          <!-- Card 5: 98% Growth (Bottom Right Badge) -->
+          <div class="absolute bottom-12 -right-4 sm:-right-10 flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-black/80 border border-[#f26522]/35 backdrop-blur-md shadow-lg animate-float-slow z-30">
+            <span class="material-symbols-outlined text-[#FF6B35] text-base">monitoring</span>
+            <span class="font-headline-sm text-xs font-bold text-white"><span class="counter" data-target="98">0</span>% Growth</span>
+          </div>
+
+          <!-- FLOATING 3D NOTIFICATION BUBBLES -->
+          <div class="absolute top-1/2 left-2 -translate-y-full px-3 py-1.5 rounded-full bg-[#f26522]/95 text-white font-headline-sm text-[11px] font-bold shadow-[0_0_20px_rgba(242,101,34,0.65)] animate-bounce z-40 flex items-center gap-1.5">
+            <i class="fa-solid fa-heart text-xs"></i> +1.4K Likes
+          </div>
+
+          <div class="absolute bottom-1/3 right-2 px-3 py-1.5 rounded-full bg-[#FF8A3D]/95 text-black font-headline-sm text-[11px] font-extrabold shadow-[0_0_20px_rgba(255,138,61,0.6)] animate-pulse z-40 flex items-center gap-1.5">
+            <i class="fa-solid fa-comment text-xs"></i> New Inquiry!
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 3. SECTION 2: THE PROBLEM VS SOLUTION (LIGHT / PURE WHITE - #ffffff)      -->
+<!-- ========================================================================= -->
+<section class="w-full py-24 lg:py-32 bg-canvas-pure text-[#111318] relative overflow-hidden" id="problem-solution">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
+<!-- Section Title -->
+<div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up" data-aos-duration="800">
+<span class="font-label-caps text-xs text-primary-container uppercase tracking-widest font-bold block mb-2" data-aos="fade-up" data-aos-delay="100">Why Most Social Media Stalls</span>
+<h2 class="font-headline-lg text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111318]" data-aos="fade-up" data-aos-delay="200">
+  Posting More Won't Fix Weak Creative.
+</h2>
+<p class="font-body-md text-base text-zinc-600 mt-4" data-aos="fade-up" data-aos-delay="300">
+  A scroll stops for one reason: the design and the edit. Schedules, hashtags and boosted posts can't rescue creative that nobody wanted to watch. Here is what standard agencies hand you &mdash; and the work we actually run.
+</p>
+
+<!-- Interactive Comparison Toggle Switcher -->
+<div class="inline-flex items-center gap-2 p-1.5 rounded-2xl bg-zinc-100 border border-zinc-200 mt-6 shadow-inner" id="compareToggle" data-aos="fade-up" data-aos-delay="400">
+  <button class="px-5 py-2.5 rounded-xl font-label-caps text-xs uppercase font-bold transition-all bg-[#111318] text-white shadow-md btn-magnetic" onclick="switchCompareView('engine', this)" id="btnEngine">Getit Growth Engine</button>
+  <button class="px-5 py-2.5 rounded-xl font-label-caps text-xs uppercase font-bold transition-all text-zinc-500 hover:text-zinc-800 btn-magnetic" onclick="switchCompareView('old', this)" id="btnOld">Standard Agencies</button>
+</div>
+</div>
+
+<!-- Comparative Split Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-16">
+<!-- The Old Way (Muted Grey Card) -->
+<div class="p-8 lg:p-10 rounded-3xl bg-zinc-100 border border-zinc-200 flex flex-col justify-between hover-lift-card transition-all duration-300" id="cardOldWay" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-headline-sm text-xl font-bold text-zinc-800">The Old Way</span>
+<span class="px-3 py-1 rounded-full bg-red-100 text-red-700 font-label-caps text-xs uppercase font-bold">Dying Tactics</span>
+</div>
+<ul class="flex flex-col gap-4 font-body-md text-zinc-700">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 shrink-0 mt-0.5">cancel</span>
+<span><strong>Recycled template graphics:</strong> Stock Canva layouts with off-brand fonts and colours that scrolling prospects skip past.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 shrink-0 mt-0.5">cancel</span>
+<span><strong>Raw, unedited video:</strong> Shaky phone clips with no hook, captions or sound design &mdash; lost in the first two seconds.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 shrink-0 mt-0.5">cancel</span>
+<span><strong>Erratic posting schedules:</strong> Random blitzes followed by weeks of radio silence, with no content calendar behind them.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 shrink-0 mt-0.5">cancel</span>
+<span><strong>Blind &lsquo;Boost Post&rsquo; ad burn:</strong> Budget poured into boosted posts with no audience targeting, retargeting or pixel.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-red-500 shrink-0 mt-0.5">cancel</span>
+<span><strong>Invisible on local search:</strong> An unclaimed, half-empty Google Business Profile while nearby competitors take the calls.</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-6 border-t border-zinc-200 text-zinc-500 font-label-caps text-xs uppercase font-semibold">
+  Result: Vanishing Organic Reach &amp; Stalled Revenue
+</div>
+</div>
+
+<!-- The Getit Growth Engine (Elevated White Card with Orange Glow) -->
+<div class="p-8 lg:p-10 rounded-3xl bg-white border-2 border-primary-container shadow-[0_20px_50px_-12px_rgba(242,101,34,0.25)] flex flex-col justify-between relative overflow-hidden tilt-card hover-lift-card shine-sweep" id="cardGrowthEngine" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
+<div class="absolute -right-10 -bottom-10 w-44 h-44 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-headline-sm text-xl font-bold text-[#111318]">The Getit Growth Engine</span>
+<span class="px-3 py-1 rounded-full bg-orange-100 text-primary-container font-label-caps text-xs uppercase font-bold animate-pulse">Modern Blueprint</span>
+</div>
+<ul class="flex flex-col gap-4 font-body-md text-zinc-800">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-metric-emerald shrink-0 mt-0.5">check_circle</span>
+<span><strong>Graphic Design:</strong> Custom brand kits, carousels, thumbnails and ad creatives designed per platform &mdash; on-brand, never templated.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-metric-emerald shrink-0 mt-0.5">check_circle</span>
+<span><strong>Video Editing:</strong> 4K vertical reels cut hook-first with captions, motion titles, colour grading and licensed sound.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-metric-emerald shrink-0 mt-0.5">check_circle</span>
+<span><strong>Social Media Marketing:</strong> A managed content calendar, platform-native posting and community replies that compound reach weekly.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-metric-emerald shrink-0 mt-0.5">check_circle</span>
+<span><strong>Google &amp; Meta Ads:</strong> Structured campaigns with real audience targeting, retargeting and pixel tracking on every rupee.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-metric-emerald shrink-0 mt-0.5">check_circle</span>
+<span><strong>Google My Business:</strong> A fully optimised profile with posts, photos and reviews so local buyers find you first.</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-6 border-t border-orange-100 text-primary-container font-label-caps text-xs uppercase font-bold flex items-center justify-between">
+<span>Result: Predictable, Compounding Market Authority</span>
+<span class="material-symbols-outlined text-base">verified</span>
+</div>
+</div>
+</div>
+
+<!-- Creative Showcase Container -->
+<div class="mt-12 rounded-3xl p-6 lg:p-10 bg-zinc-900 text-white border border-zinc-800 shadow-2xl hover-lift-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
+<div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4" data-aos="fade-up" data-aos-delay="100">
+<div>
+<span class="font-label-caps text-xs text-[#FF6B35] uppercase tracking-wider font-bold">Recent Client Creative</span>
+<h3 class="font-headline-md text-2xl lg:text-3xl font-bold text-white">What High-Converting Creative Actually Looks Like</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-white/10 text-zinc-300 rounded-full font-label-caps text-xs uppercase font-semibold ">Designed In-House</span>
+</div>
+</div>
+
+<!-- Creative cards.  4:5 portrait matches how these posts are actually
+     exported, so every image fills its card with no letterboxing.
+     Card 1 points at the real Krishna Jayanthi file; each img falls back
+     to a local asset so a missing file never shows a broken image. -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+  <!-- Creative Card 1 -->
+  <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-800 border border-white/10 group shadow-xl hover:border-[#f26522]/60 transition-all hover:-translate-y-2 img-zoom-hover shine-sweep" data-aos="fade-up" data-aos-delay="200">
+    <img src="images/graphic/krishna-jayanthi.jpg" alt="Krishna Jayanthi Brand Post" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.onerror=null;this.src='images/graphic/festival_poster_showcase.jpg'">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent pointer-events-none"></div>
+    <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-label-caps font-bold text-white uppercase border border-white/10">Festival Creative</div>
+
+    <div class="absolute bottom-4 left-4 right-4 text-left">
+      <span class="font-headline-sm text-sm font-bold text-white block mb-1">Krishna Jayanthi Brand Post</span>
+      <div class="flex items-center justify-between text-xs text-zinc-300 font-label-numeric">
+        <span>&#10084;&#65039; 42.8K Likes</span>
+        <span class="text-[#f26522] font-bold">480K Reach</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Creative Card 2 -->
+  <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-800 border border-white/10 group shadow-xl hover:border-[#FF8A3D]/60 transition-all hover:-translate-y-2 img-zoom-hover shine-sweep" data-aos="fade-up" data-aos-delay="300">
+    <img src="images/graphic/retail_poster_sale.jpg" alt="Seasonal Sale Campaign" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.onerror=null;this.src='images/graphic/banner_design_showcase.jpg'">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent pointer-events-none"></div>
+    <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-label-caps font-bold text-white uppercase border border-white/10">Retail Offer</div>
+
+    <div class="absolute bottom-4 left-4 right-4 text-left">
+      <span class="font-headline-sm text-sm font-bold text-white block mb-1">Seasonal Sale Campaign</span>
+      <div class="flex items-center justify-between text-xs text-zinc-300 font-label-numeric">
+        <span>&#10084;&#65039; 68.2K Likes</span>
+        <span class="text-[#FF8A3D] font-bold">890K Reach</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Creative Card 3 -->
+  <div class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-zinc-800 border border-white/10 group shadow-xl hover:border-[#FF6B35]/60 transition-all hover:-translate-y-2 img-zoom-hover shine-sweep" data-aos="fade-up" data-aos-delay="400">
+    <img src="images/graphic/mobile_carousel_showcase.jpg" alt="Multi-Slide Brand Story" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.onerror=null;this.src='images/graphic/brochure_grid_showcase.jpg'">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent pointer-events-none"></div>
+    <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[10px] font-label-caps font-bold text-white uppercase border border-white/10">Carousel</div>
+
+    <div class="absolute bottom-4 left-4 right-4 text-left">
+      <span class="font-headline-sm text-sm font-bold text-white block mb-1">Multi-Slide Brand Story</span>
+      <div class="flex items-center justify-between text-xs text-zinc-300 font-label-numeric">
+        <span>&#10084;&#65039; 51.4K Likes</span>
+        <span class="text-[#FF6B35] font-bold">1.2M Reach</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 4. SECTION 3: CREATIVE CAPABILITIES (DARK / OBSIDIAN - #0f1117)            -->
+<!-- ========================================================================= -->
+<!-- HIDDEN: CAPABILITIES section. Remove the `hidden` attribute and
+     the inline display:none below to bring it back. -->
+<section class="w-full py-24 lg:py-32 bg-[#0f1117] text-white relative border-y border-white/5" id="capabilities" hidden style="display:none">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
+  <!-- Section Header -->
+  <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4" data-aos="fade-up" data-aos-delay="100">
+      <span class="w-2 h-2 rounded-full bg-agency-orange-bright animate-ping"></span>
+      <span class="font-label-caps text-xs text-agency-orange-bright uppercase tracking-widest font-bold">CREATIVE ENGINE 2026 // ZERO TEMPLATES</span>
+    </div>
+    <h2 class="font-headline-lg text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4" data-aos="fade-up" data-aos-delay="200">
+      Visual Creative Engineered to Stop the Scroll
+    </h2>
+    <p class="font-body-md text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+      Thumb-stopping pacing, native Tamil &amp; Pan-India audio hooks, and ruthless behavioral psychology crafted in our in-house Pondicherry studio.
+    </p>
+  </div>
+
+  <!-- 4-Card Creative Matrix -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+    <!-- Card 1: 4K Viral Reels & TikToks -->
+    <div class="p-6 rounded-3xl bg-[#161922] border border-white/10 hover:border-primary-container/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl tilt-card hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="100">
+      <div class="absolute -right-6 -top-6 w-24 h-24 bg-rose-500/10 rounded-full blur-xl pointer-events-none group-hover:bg-primary-container/20 transition-all"></div>
+      <div>
+        <div class="flex items-center justify-between mb-5">
+          <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-500 to-agency-orange-bright flex items-center justify-center text-white shadow-lg shadow-rose-500/20 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">movie</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 font-label-numeric text-[11px] text-primary-container font-bold uppercase tracking-wider">4K 60FPS</span>
+        </div>
+        <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-agency-orange-bright transition-colors">Viral Reels &amp; TikToks</h3>
+        <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-4">Hyper-accelerated 3-second visual hooks with custom motion typography and localized soundsync designed for exponential algorithmic feed share.</p>
+      </div>
+      <div class="pt-4 border-t border-white/10">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">3.2s Hook Rate</span>
+          <span class="font-label-numeric text-sm font-bold text-metric-emerald">92.4%</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-zinc-500">
+          <span>Native Soundscapes</span>
+          <span class="text-white font-medium">Tamil + Global</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: High-Converting Editorial Carousels -->
+    <div class="p-6 rounded-3xl bg-[#161922] border border-white/10 hover:border-blue-500/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl tilt-card hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="200">
+      <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500/10 rounded-full blur-xl pointer-events-none group-hover:bg-blue-500/20 transition-all"></div>
+      <div>
+        <div class="flex items-center justify-between mb-5">
+          <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">view_carousel</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 font-label-numeric text-[11px] text-blue-400 font-bold uppercase tracking-wider">Multi-Slide</span>
+        </div>
+        <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Editorial Carousels</h3>
+        <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-4">High-density knowledge breakdown decks and lookbooks engineered specifically for algorithm-fuelled saves, shares, and repost triggers.</p>
+      </div>
+      <div class="pt-4 border-t border-white/10">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Save Rate</span>
+          <span class="font-label-numeric text-sm font-bold text-blue-400">16.8%</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-zinc-500">
+          <span>Layout Format</span>
+          <span class="text-white font-medium">1080x1350 High-DPI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Precision Meta Ads -->
+    <div class="p-6 rounded-3xl bg-[#161922] border border-white/10 hover:border-metric-emerald/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl tilt-card hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="300">
+      <div class="absolute -right-6 -top-6 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none group-hover:bg-emerald-500/20 transition-all"></div>
+      <div>
+        <div class="flex items-center justify-between mb-5">
+          <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">ads_click</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 font-label-numeric text-[11px] text-metric-emerald font-bold uppercase tracking-wider">High ROAS</span>
+        </div>
+        <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-metric-emerald transition-colors">Precision Meta Ads</h3>
+        <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-4">Dynamic creative testing framework with 20+ hook variations per sprint, paired with laser exclusions to slash acquisition CPA to record lows.</p>
+      </div>
+      <div class="pt-4 border-t border-white/10">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Average CTR</span>
+          <span class="font-label-numeric text-sm font-bold text-metric-emerald">4.8%</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-zinc-500">
+          <span>Testing Matrix</span>
+          <span class="text-white font-medium">12 Hooks / Week</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Viral Audio & Stories -->
+    <div class="p-6 rounded-3xl bg-[#161922] border border-white/10 hover:border-amber-400/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl tilt-card hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="400">
+      <div class="absolute -right-6 -top-6 w-24 h-24 bg-amber-500/10 rounded-full blur-xl pointer-events-none group-hover:bg-amber-500/20 transition-all"></div>
+      <div>
+        <div class="flex items-center justify-between mb-5">
+          <span class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white shadow-lg shadow-amber-500/20 group-hover:scale-110 transition-transform">
+            <span class="material-symbols-outlined text-2xl">graphic_eq</span>
+          </span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 font-label-numeric text-[11px] text-amber-400 font-bold uppercase tracking-wider">Audio + DM</span>
+        </div>
+        <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Sound &amp; DM Triggers</h3>
+        <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-4">Proprietary audio engineering that rides trending curves combined with keyword DM automations that convert story viewers into closed deals.</p>
+      </div>
+      <div class="pt-4 border-t border-white/10">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Sound Uses</span>
+          <span class="font-label-numeric text-sm font-bold text-amber-400">120k+</span>
+        </div>
+        <div class="flex items-center justify-between text-xs text-zinc-500">
+          <span>DM Conversion</span>
+          <span class="text-white font-medium">&lt;30s Latency</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upgraded Cinematic Production & Creative Bullpen Split Banner -->
+  <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-[#11141e] grid grid-cols-1 lg:grid-cols-12 items-stretch hover-lift-card" data-aos="zoom-in" data-aos-duration="1000">
+    <!-- Left Column: High-End Cinema Studio Rig with HUD Viewfinder overlay -->
+    <div class="lg:col-span-6 relative overflow-hidden min-h-[360px] lg:min-h-[460px] group img-zoom-hover shine-sweep">
+      <img alt="Getit Media Cinema Production Gear and Studio" class="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-[1.04]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK8rudlq0Y4OFFuH5qKV9V8e8tdcarN19fV0s71YP5oJ4Bwpy7f7bulgn2aEDtHlyGTEf-naw-DIBTfpjolq8OF5knlviFC01rDHjHJLBhzI70k5RX-st4ro66J8uWLBNJALJxdf9FaQ-ntXf5MiVxQmsr2Q-zteMLL8SzpM_z5aN19q3WV9JcRp4LwNdQ-LcpptkNiMIwJoF97c6eKoPhiixyEljrEsSZQfs8H4tDzlr6viB7JWXv">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#11141e] via-transparent to-black/40 pointer-events-none"></div>
+      
+      <!-- Studio HUD Badges -->
+      <div class="absolute top-5 left-5 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 border border-white/15 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-agency-orange-bright animate-ping"></span>
+        <span class="font-label-caps text-[11px] text-white uppercase tracking-wider font-bold">Cinema Studio Rig // 4K ProRes</span>
+      </div>
+      
+      <!-- HUD Bottom Overlay -->
+      <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between px-4 py-3 rounded-2xl bg-black/60 border border-white/10 backdrop-blur-lg">
+        <div class="flex items-center gap-2 text-xs font-label-numeric text-zinc-300">
+          <span class="material-symbols-outlined text-agency-orange-bright text-base">videocam</span>
+          <span>Sony FX3 + RED Komodo Cinema Optics</span>
+        </div>
+        <span class="font-label-caps text-[10px] text-metric-emerald uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-metric-emerald/20">Calibrated Rec.709</span>
+      </div>
+    </div>
+
+    <!-- Right Column: Bullpen Collaborative Team & Stats -->
+    <div class="lg:col-span-6 p-8 lg:p-12 flex flex-col justify-between relative bg-gradient-to-br from-[#161b26] to-[#10141d]">
+      <div>
+        <div class="flex items-center gap-2 text-agency-orange-bright mb-3">
+          <span class="material-symbols-outlined text-lg">verified</span>
+          <span class="font-label-caps text-xs uppercase tracking-widest font-bold">Dedicated In-House Bullpen</span>
+        </div>
+        <h3 class="font-headline-md text-2xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight leading-snug">
+          No Freelancers. Only Obsessed Creative Directors.
+        </h3>
+        <p class="font-body-md text-sm text-zinc-400 leading-relaxed mb-6">
+          Our Pondicherry studio team directly collaborates on storyboarding, lighting setups, native scriptwriting, and color grading for every client partner.
+        </p>
+
+        <!-- Embedded Collaborative Photo Thumbnail Preview -->
+        <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-lg mb-6 group/team aspect-[16/9] max-h-48 img-zoom-hover shine-sweep">
+          <img alt="Getit Media Creative Strategy Team Reviewing Storyboards" class="w-full h-full object-cover object-center group-hover/team:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1WMxh9K7v0YSgZdm9pP483j3ndnuy4O_faKDksl1t7Cu6JCRT3yZ3xPOkquusrH9ssqhSUezyDOfY4eecF4bxASA-Zc34-2476GZ1FyLuh0Z72Q1ewd5qcyQF6MgfbERDKlVm2lsc38WOs5KoMLcxUh0Z5e3T76TJPdDyMb6EE9IXudiaPdq0qofTCmxsx_sLWejpMbC0I3LabLopSi64csK7H-G0ofAPXz9C2iEfcw4YEMv-V4YbH7cfo">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs">
+            <span class="font-label-caps text-[10px] text-white uppercase font-semibold tracking-wider flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-agency-orange-bright"></span> Pondicherry Storyboard Room
+            </span>
+            <span class="text-zinc-300 font-label-numeric text-[11px]">Daily Script Sprint</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Impact Metrics Row -->
+      <div class="pt-4 border-t border-white/10 grid grid-cols-3 gap-4 text-left">
+        <div>
+          <span class="font-label-numeric text-2xl lg:text-3xl font-bold text-white block">100%</span>
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">In-House Produced</span>
+        </div>
+        <div class="border-l border-white/10 pl-4">
+          <span class="font-label-numeric text-2xl lg:text-3xl font-bold text-primary-container block">24-48h</span>
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Rapid Trend Turn</span>
+        </div>
+        <div class="border-l border-white/10 pl-4">
+          <span class="font-label-numeric text-2xl lg:text-3xl font-bold text-[#FF8A3D] block">0%</span>
+          <span class="font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">Outsourced Work</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 5. SECTION 4: PLATFORM PLAYBOOKS (NEAR-BLACK - #08090d)                  -->
+<!-- ========================================================================= -->
+<section class="w-full py-24 lg:py-32 bg-[#08090d] text-white relative overflow-hidden border-b border-white/5" id="platforms">
+
+  <!-- ambient brand wash + faint dot grid, same language as the hero -->
+  <div class="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:28px_28px] opacity-40 pointer-events-none"></div>
+  <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-[#f26522]/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-14" data-aos="fade-up" data-aos-duration="800">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4" data-aos="fade-up" data-aos-delay="100">
+        <span class="w-2 h-2 rounded-full bg-[#FF6B35] animate-ping"></span>
+        <span class="font-label-caps text-xs text-[#FF6B35] uppercase tracking-widest font-bold">Platform Playbooks</span>
+      </div>
+      <h2 class="font-headline-lg text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4" data-aos="fade-up" data-aos-delay="200">
+        Every Platform Gets Its Own Playbook
+      </h2>
+      <p class="font-body-md text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+        The same post recycled everywhere is why most social stalls. Here is exactly what we run on each channel.
+      </p>
+    </div>
+
+    <!-- Platform Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+
+      <article class="group relative p-7 lg:p-8 rounded-3xl bg-[#12141b] border border-white/10 hover:border-[#f26522]/50 transition-all duration-300 hover-lift-card shine-sweep overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+        <span class="absolute -right-10 -top-10 w-36 h-36 rounded-full blur-3xl pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(24,119,242,0.20)"></span>
+
+        <div class="relative flex items-center gap-3 mb-2">
+          <span class="w-12 h-12 rounded-2xl grid place-items-center border border-white/10 bg-white/[0.06] backdrop-blur-md shrink-0"><svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><path fill="#1877f2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+          <h3 class="font-headline-sm text-lg lg:text-xl font-bold text-white">Facebook Marketing</h3>
+        </div>
+        <p class="relative font-body-sm text-xs text-zinc-500 mb-5">Pages, paid reach and offers built for the Meta auction.</p>
+
+        <ul class="relative flex flex-col gap-3 font-body-md text-sm text-zinc-300">
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Facebook Business Page</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Facebook Advertising</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Facebook Contest</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Facebook Promoted Posts</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Sponsored Stories</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Facebook Exchange</span>
+        </li>
+        </ul>
+      </article>
+
+      <article class="group relative p-7 lg:p-8 rounded-3xl bg-[#12141b] border border-white/10 hover:border-[#f26522]/50 transition-all duration-300 hover-lift-card shine-sweep overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+        <span class="absolute -right-10 -top-10 w-36 h-36 rounded-full blur-3xl pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(225,48,108,0.20)"></span>
+
+        <div class="relative flex items-center gap-3 mb-2">
+          <span class="w-12 h-12 rounded-2xl grid place-items-center border border-white/10 bg-white/[0.06] backdrop-blur-md shrink-0"><svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><defs><linearGradient id="pfIg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdc468"/><stop offset="0.25" stop-color="#f77737"/><stop offset="0.55" stop-color="#e1306c"/><stop offset="0.8" stop-color="#c13584"/><stop offset="1" stop-color="#5851db"/></linearGradient></defs><path fill="url(#pfIg)" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg></span>
+          <h3 class="font-headline-sm text-lg lg:text-xl font-bold text-white">Instagram Marketing</h3>
+        </div>
+        <p class="relative font-body-sm text-xs text-zinc-500 mb-5">Feed, reels and hashtag strategy aimed at measurable growth.</p>
+
+        <ul class="relative flex flex-col gap-3 font-body-md text-sm text-zinc-300">
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Your brand&rsquo;s awareness and exposure are improved</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Increases the rate of conversions</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Increasing leads and sales</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Producing more website traffic</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Hashtag Marketing</span>
+        </li>
+        </ul>
+      </article>
+
+      <article class="group relative p-7 lg:p-8 rounded-3xl bg-[#12141b] border border-white/10 hover:border-[#f26522]/50 transition-all duration-300 hover-lift-card shine-sweep overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+        <span class="absolute -right-10 -top-10 w-36 h-36 rounded-full blur-3xl pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-300" style="background: rgba(255,0,0,0.18)"></span>
+
+        <div class="relative flex items-center gap-3 mb-2">
+          <span class="w-12 h-12 rounded-2xl grid place-items-center border border-white/10 bg-white/[0.06] backdrop-blur-md shrink-0"><svg viewBox="0 0 24 24" class="w-6 h-6" aria-hidden="true"><path fill="#ff0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <h3 class="font-headline-sm text-lg lg:text-xl font-bold text-white">YouTube Marketing</h3>
+        </div>
+        <p class="relative font-body-sm text-xs text-zinc-500 mb-5">The full YouTube ad inventory, matched to intent.</p>
+
+        <ul class="relative flex flex-col gap-3 font-body-md text-sm text-zinc-300">
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Story Ads</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Video Ads</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Photo Ads</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Carousel Ads</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Mapped Guided Ads</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="text-[#FF6B35] font-bold leading-6 shrink-0" aria-hidden="true">+</span>
+          <span>Sponsored Ads</span>
+        </li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 6. SECTION 5: LIVE CONTENT & PORTFOLIO SHOWCASE (LIGHT - #f8fafc)        -->
+<!-- ========================================================================= -->
+<section class="w-full py-24 lg:py-32 bg-canvas-light text-[#111318] relative" id="portfolio">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
+<!-- Section Header -->
+<div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-12" data-aos="fade-up" data-aos-duration="800">
+<div class="max-w-2xl">
+<span class="font-label-caps text-xs text-primary-container uppercase tracking-widest font-bold block mb-2" data-aos="fade-up" data-aos-delay="100">Showcase Library</span>
+<h2 class="font-headline-lg text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111318]" data-aos="fade-up" data-aos-delay="200">
+  Content That Commands Attention.
+</h2>
+<p class="font-body-md text-base text-zinc-600 mt-2" data-aos="fade-up" data-aos-delay="300">
+  See how we transform everyday brands into viral social sensations across Tamil Nadu and Pan-India.
+</p>
+</div>
+
+<!-- Interactive Category Filter Tabs -->
+<div class="flex flex-wrap items-center gap-2" id="portfolioFilters" data-aos="fade-up" data-aos-delay="400">
+<button class="filter-btn active px-4 py-2 rounded-xl bg-[#111318] text-white font-label-caps text-xs uppercase font-bold transition-all btn-magnetic" onclick="filterPortfolio('all', this)">All Campaigns</button>
+<button class="filter-btn px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 border border-zinc-200 text-zinc-700 font-label-caps text-xs uppercase font-medium transition-all btn-magnetic" onclick="filterPortfolio('fashion', this)">Fashion &amp; Lifestyle</button>
+<button class="filter-btn px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 border border-zinc-200 text-zinc-700 font-label-caps text-xs uppercase font-medium transition-all btn-magnetic" onclick="filterPortfolio('food', this)">Food &amp; Hospitality</button>
+<button class="filter-btn px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 border border-zinc-200 text-zinc-700 font-label-caps text-xs uppercase font-medium transition-all btn-magnetic" onclick="filterPortfolio('healthcare', this)">Healthcare</button>
+<button class="filter-btn px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 border border-zinc-200 text-zinc-700 font-label-caps text-xs uppercase font-medium transition-all btn-magnetic" onclick="filterPortfolio('realestate', this)">Real Estate</button>
+</div>
+</div>
+
+<!-- Prominent Creative Grid Showcase Image -->
+<div class="relative rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 bg-white p-4 sm:p-6 mb-12 group cursor-pointer img-zoom-hover shine-sweep hover-lift-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="900" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+<img alt="Editorial Agency Social Media Creative Grid Showcase" class="w-full h-auto rounded-2xl object-cover aspect-[16/9] shadow-inner transition-transform duration-700 group-hover:scale-[1.01]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc8PltPTLDxP4p2j08cRkN18bHv1MZkU3idxmiRiWVTyxCqxmMxJAH0JC_15Q0gcs5QJZFuLGjDIkMM-MUrZ5GNpuCgOVQTspzu7f6gKjt4QkmJFuygTkwp5pUbQ9wJdKl3pktFbTbo9L9MU2NS3tmJEXorix9nWpfcD1kpTCCUm9ctUfgqh1wCLvi_C39GE2FleTHJqGU8xfqMD02VDZeQybFtOTgP4644PwuJM8ew0nCoIbfm6vw">
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+  <div class="px-6 py-3 rounded-full bg-primary-container text-white font-headline-sm text-sm font-bold shadow-2xl flex items-center gap-2 btn-magnetic">
+    <span class="material-symbols-outlined">visibility</span>
+    <span>Click to View Full Campaign Grid</span>
+  </div>
+</div>
+</div>
+
+<!-- Floating Metric Callouts Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-2xl bg-white border border-zinc-200 shadow-lg flex items-center gap-4 hover-lift-card transition-all" data-aos="fade-up" data-aos-delay="100">
+<div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-2xl">visibility</span>
+</div>
+<div>
+<span class="font-headline-sm text-2xl font-bold text-[#111318] block leading-none"><span class="counter" data-target="480">0</span>k+</span>
+<span class="font-body-sm text-xs text-zinc-500 mt-1 block">Organic Views per Campaign</span>
+</div>
+</div>
+
+<div class="p-6 rounded-2xl bg-white border border-zinc-200 shadow-lg flex items-center gap-4 hover-lift-card transition-all" data-aos="fade-up" data-aos-delay="200">
+<div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center text-metric-emerald shrink-0">
+<span class="material-symbols-outlined text-2xl">thumb_up</span>
+</div>
+<div>
+<span class="font-headline-sm text-2xl font-bold text-[#111318] block leading-none"><span class="counter-float" data-target="12.4">0.0</span>%</span>
+<span class="font-body-sm text-xs text-zinc-500 mt-1 block">Average Community Engagement</span>
+</div>
+</div>
+
+<div class="p-6 rounded-2xl bg-white border border-zinc-200 shadow-lg flex items-center gap-4 hover-lift-card transition-all" data-aos="fade-up" data-aos-delay="300">
+<div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+<span class="material-symbols-outlined text-2xl">leaderboard</span>
+</div>
+<div>
+<span class="font-headline-sm text-2xl font-bold text-[#111318] block leading-none">₹<span class="counter-float" data-target="14.20">0.00</span></span>
+<span class="font-body-sm text-xs text-zinc-500 mt-1 block">Verified Cost Per Lead Inquiries</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 6. SECTION 5: DATA, ADS & ROI ENGINE (DARK / OBSIDIAN - #0a0c10)          -->
+<!-- ========================================================================= -->
+<section class="w-full py-24 lg:py-32 bg-[#0a0c10] text-white relative border-b border-white/5" id="performance">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+<span class="font-label-caps text-xs text-agency-orange-bright uppercase tracking-widest font-bold block mb-2" data-aos="fade-up" data-aos-delay="100">Attribution &amp; Telemetry</span>
+<h2 class="font-headline-lg text-4xl lg:text-5xl font-extrabold tracking-tight" data-aos="fade-up" data-aos-delay="200">
+  Creative Captures Attention.<br>Data Multiplies Revenue.
+</h2>
+<p class="font-body-md text-base text-zinc-400 mt-4" data-aos="fade-up" data-aos-delay="300">
+  No guessing games. Live synchronized reporting showing every click, lead conversation, and revenue conversion.
+</p>
+</div>
+
+<!-- Interactive Telemetry Dashboard Component -->
+<div class="relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#12141d]/95 p-6 mb-12 hover-lift-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="900">
+  
+  <!-- Top Telemetry Tab Switcher -->
+  <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div class="flex items-center gap-3">
+      <span class="w-3 h-3 rounded-full bg-[#f26522] animate-ping"></span>
+      <span class="font-headline-sm text-lg font-bold text-white">Live Performance Telemetry</span>
+    </div>
+    
+    <div class="flex items-center gap-2" id="telemetryTabs">
+      <button class="tele-btn active px-4 py-2 rounded-xl bg-[#f26522] text-white font-label-caps text-xs uppercase font-bold transition-all btn-magnetic" onclick="switchTelemetryTab('roas', this)" id="tabRoas">Meta Ads ROAS (4.8X)</button>
+      <button class="tele-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 font-label-caps text-xs uppercase font-medium border border-white/10 transition-all btn-magnetic" onclick="switchTelemetryTab('whatsapp', this)" id="tabWhatsApp">WhatsApp Funnel (18.4%)</button>
+      <button class="tele-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 font-label-caps text-xs uppercase font-medium border border-white/10 transition-all btn-magnetic" onclick="switchTelemetryTab('cpa', this)" id="tabCpa">Cost Per Lead (₹14.20)</button>
+    </div>
+  </div>
+
+  <!-- Animated SVG Chart Screen -->
+  <div class="relative py-8 min-h-[300px] flex flex-col justify-end">
+    <svg class="w-full h-48 overflow-visible" viewBox="0 0 800 200" fill="none">
+      <path id="telemetryPath" d="M0 160 C 150 140, 250 180, 400 80 C 550 -20, 650 60, 800 20" stroke="#f26522" stroke-width="4" stroke-linecap="round" fill="url(#telemetryGlow)" class="transition-all duration-700"/>
+      <defs>
+        <linearGradient id="telemetryGlow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f26522" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#f26522" stop-opacity="0.0"/>
+        </linearGradient>
+      </defs>
+      <!-- Pulsing Data Points -->
+      <circle cx="400" cy="80" r="6" fill="#f26522" class="animate-ping"/>
+      <circle cx="400" cy="80" r="6" fill="#f26522"/>
+      <circle cx="800" cy="20" r="6" fill="#f26522"/>
+    </svg>
+
+    <!-- Chart X-Axis Labels -->
+    <div class="flex items-center justify-between text-xs font-label-caps text-zinc-400 pt-4 border-t border-white/10">
+      <span>Week 1 (Hook Testing)</span>
+      <span>Week 2 (Audience Retargeting)</span>
+      <span>Week 3 (Creative Scale)</span>
+      <span>Week 4 (4.8X ROAS Peak)</span>
+    </div>
+  </div>
+
+  <!-- Real-time Live Conversion Ticker Bar -->
+  <div class="mt-4 px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 flex items-center justify-between text-xs font-label-numeric text-zinc-300">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-[#f26522] animate-pulse"></span>
+      <span class="text-white font-bold">Live Stream:</span>
+      <span id="liveTickerText" class="text-zinc-300 font-medium">New WhatsApp Lead Inquiry from Chennai (Real Estate) • 2s ago</span>
+    </div>
+    <span class="text-[#FF8A3D] font-bold">ROAS 4.8X Live</span>
+  </div>
+</div>
+
+<!-- Quick Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-2xl bg-[#161922] border border-white/10 text-center hover:border-[#f26522]/50 transition-colors hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="100">
+<span class="font-headline-md text-3xl lg:text-4xl font-extrabold text-white block mb-1"><span class="counter-float" data-target="14.2">0.0</span>M+</span>
+<span class="font-label-caps text-xs text-zinc-400 uppercase tracking-wider">Annual Reach Generated</span>
+</div>
+
+<div class="p-6 rounded-2xl bg-[#161922] border border-white/10 text-center hover:border-agency-orange-bright/50 transition-colors hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="200">
+<span class="font-headline-md text-3xl lg:text-4xl font-extrabold text-agency-orange-bright block mb-1"><span class="counter-float" data-target="4.6">0.0</span>X</span>
+<span class="font-label-caps text-xs text-zinc-400 uppercase tracking-wider">Average Client ROAS</span>
+</div>
+
+<div class="p-6 rounded-2xl bg-[#161922] border border-white/10 text-center hover:border-[#FF8A3D]/50 transition-colors hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="300">
+<span class="font-headline-md text-3xl lg:text-4xl font-extrabold text-[#FF8A3D] block mb-1"><span class="counter" data-target="65000">0</span>+</span>
+<span class="font-label-caps text-xs text-zinc-400 uppercase tracking-wider">Direct Verified Leads</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 7. SECTION 6: WHY BRANDS CHOOSE US (LIGHT / WHITE - #ffffff)              -->
+<!-- ========================================================================= -->
+<!-- HIDDEN: WHY US section. Remove the `hidden` attribute and
+     the inline display:none below to bring it back. -->
+<section class="w-full py-24 lg:py-32 bg-canvas-pure text-[#111318] relative" id="why-us" hidden style="display:none">
+<div class="max-w-7xl mx-auto px-6 lg:px-10">
+<!-- Section Header -->
+<div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="800">
+<span class="font-label-caps text-xs text-primary-container uppercase tracking-widest font-bold block mb-2" data-aos="fade-up" data-aos-delay="100">The Unfair Advantage</span>
+<h2 class="font-headline-lg text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111318]" data-aos="fade-up" data-aos-delay="200">
+  Why Leading Brands Trust Getit Media.
+</h2>
+<p class="font-body-md text-base text-zinc-600 mt-4" data-aos="fade-up" data-aos-delay="300">
+  We merge boutique high-fashion creative with quantitative performance engineering.
+</p>
+</div>
+
+<!-- 3-Column Visual Benefit Cards with Bold Orange Accents -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Benefit 1 -->
+<div class="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 hover:border-primary-container transition-all duration-300 shadow-md hover:shadow-xl flex flex-col justify-between group hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="100">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-orange-100 text-primary-container flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">videocam</span>
+</div>
+<h3 class="font-headline-sm text-xl font-bold text-[#111318] mb-3">In-House 4K Production Studio</h3>
+<p class="font-body-md text-sm text-zinc-600 leading-relaxed">
+  No subcontracted freelancers or unpredictable delays. Dedicated directors, cameras, drone gear, and high-spec editing suites based right in Pondicherry.
+</p>
+</div>
+<div class="mt-8 pt-4 border-t border-zinc-200">
+<span class="font-label-caps text-xs text-primary-container uppercase font-bold tracking-wider">Fast Turnarounds</span>
+</div>
+</div>
+
+<!-- Benefit 2 -->
+<div class="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 hover:border-primary-container transition-all duration-300 shadow-md hover:shadow-xl flex flex-col justify-between group hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="200">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-orange-100 text-primary-container flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">map</span>
+</div>
+<h3 class="font-headline-sm text-xl font-bold text-[#111318] mb-3">Pondicherry &amp; South India Mastery</h3>
+<p class="font-body-md text-sm text-zinc-600 leading-relaxed">
+  Hyper-local Tamil and English viral storytelling tailored specifically for consumer psychology in Tamil Nadu, Kerala, Karnataka, and Pan-India markets.
+</p>
+</div>
+<div class="mt-8 pt-4 border-t border-zinc-200">
+<span class="font-label-caps text-xs text-primary-container uppercase font-bold tracking-wider">Regional Resonance</span>
+</div>
+</div>
+
+<!-- Benefit 3 -->
+<div class="p-8 rounded-3xl bg-zinc-50 border border-zinc-200 hover:border-primary-container transition-all duration-300 shadow-md hover:shadow-xl flex flex-col justify-between group hover-lift-card shine-sweep" data-aos="fade-up" data-aos-delay="300">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-orange-100 text-primary-container flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">alt_route</span>
+</div>
+<h3 class="font-headline-sm text-xl font-bold text-[#111318] mb-3">Full-Funnel Sales Integration</h3>
+<p class="font-body-md text-sm text-zinc-600 leading-relaxed">
+  Direct handshakes from social media straight into WhatsApp business chats, CRM software, phone hotlines, and web checkout pipelines.
+</p>
+</div>
+<div class="mt-8 pt-4 border-t border-zinc-200">
+<span class="font-label-caps text-xs text-primary-container uppercase font-bold tracking-wider">Direct Conversions</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- 8. SECTION 7: FINAL HIGH-IMPACT CTA & AUDIT (DARK / BLACK - #090a0f)       -->
+<!-- ========================================================================= -->
+<!-- HIDDEN: AUDIT FORM section. Remove the `hidden` attribute and
+     the inline display:none below to bring it back. -->
+<section class="w-full py-24 lg:py-32 bg-[#090a0f] text-white relative overflow-hidden" id="audit-form" hidden style="display:none">
+<!-- Radiant Orange Ambient Glow -->
+<div class="absolute -bottom-20 right-1/4 w-[600px] h-[500px] bg-primary-container/25 blur-[160px] pointer-events-none rounded-full animate-glow-pulse"></div>
+
+<div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+<div class="p-8 lg:p-14 rounded-3xl bg-[#11141e] border border-white/10 shadow-2xl hover-lift-card" data-aos="zoom-in" data-aos-duration="900">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+<!-- Left Column: Copy & Direct Contact -->
+<div class="lg:col-span-6 flex flex-col" data-aos="fade-right" data-aos-delay="200">
+<div class="inline-flex items-center gap-2 text-agency-orange-bright mb-4">
+<span class="material-symbols-outlined text-lg animate-bounce">bolt</span>
+<span class="font-label-caps text-xs uppercase tracking-widest font-bold">Limited Quarterly Client Slots</span>
+</div>
+<h2 class="font-headline-lg text-3xl lg:text-5xl font-bold tracking-tight text-white mb-4 leading-tight">
+  Ready to Stop Being Ignored on Social Media?
+</h2>
+<p class="font-body-lg text-base lg:text-lg text-zinc-400 mb-8 leading-relaxed">
+  Claim your free 30-minute social media growth teardown and custom content roadmap. No generic templates, just actionable strategies.
+</p>
+
+<!-- Direct Call / WhatsApp Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 text-white font-headline-sm text-sm font-bold transition-all btn-magnetic shine-sweep" href="tel:+919498054722">
+<span class="material-symbols-outlined text-primary-container">call</span>
+<span>+91 94980 54722</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-metric-emerald/20 hover:bg-metric-emerald/30 border border-metric-emerald/30 text-metric-emerald font-headline-sm text-sm font-bold transition-all btn-magnetic shine-sweep" href="https://wa.me/919498054722" target="_blank">
+<span class="material-symbols-outlined">chat</span>
+<span>WhatsApp Directly</span>
+</a>
+</div>
+</div>
+
+<!-- Right Column: Interactive Quick Audit Form -->
+<div class="lg:col-span-6 bg-[#171b26] p-6 lg:p-8 rounded-2xl border border-white/10 shadow-xl hover-lift-card" data-aos="fade-left" data-aos-delay="300">
+<h3 class="font-headline-sm text-xl font-bold text-white mb-1">Claim Free 30-Min Growth Audit</h3>
+<p class="font-body-sm text-xs text-zinc-400 mb-6">Receive your competitive teardown within 24 hours.</p>
+
+<!-- Interactive Growth Calculator Widget -->
+<div class="mb-6 p-4 rounded-2xl bg-black/50 border border-white/10 text-left">
+  <div class="flex items-center justify-between mb-3">
+    <span class="font-label-caps text-[11px] uppercase text-[#FF6B35] font-bold tracking-wider flex items-center gap-1.5">
+      <span class="material-symbols-outlined text-sm">calculate</span> Projected Growth Calculator
+    </span>
+    <span class="text-[10px] text-zinc-400">Drag Sliders</span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+    <div>
+      <div class="flex items-center justify-between text-[11px] font-label-caps mb-1">
+        <span class="text-zinc-400">Ad Budget</span>
+        <span class="text-[#FF6B35] font-bold" id="budgetVal">₹25,000</span>
+      </div>
+      <input type="range" min="10000" max="200000" step="5000" value="25000" class="w-full accent-[#f26522] bg-zinc-800 rounded-lg cursor-pointer" id="budgetRange" oninput="updateCalculator()">
+    </div>
+
+    <div>
+      <div class="flex items-center justify-between text-[11px] font-label-caps mb-1">
+        <span class="text-zinc-400">Target Reach</span>
+        <span class="text-[#FF8A3D] font-bold" id="reachVal">250,000</span>
+      </div>
+      <input type="range" min="50000" max="2000000" step="50000" value="250000" class="w-full accent-[#FF8A3D] bg-zinc-800 rounded-lg cursor-pointer" id="reachRange" oninput="updateCalculator()">
+    </div>
+  </div>
+
+  <div class="grid grid-cols-3 gap-2 text-center p-2.5 rounded-xl bg-white/5 border border-white/10 font-label-numeric">
+    <div>
+      <span class="text-[9px] text-zinc-400 uppercase tracking-wider block">Leads / Mo</span>
+      <span class="text-xs font-bold text-[#FF6B35]" id="calcLeads">142 Inquiries</span>
+    </div>
+    <div class="border-l border-white/10">
+      <span class="text-[9px] text-zinc-400 uppercase tracking-wider block">Est. Views</span>
+      <span class="text-xs font-bold text-[#FF8A3D]" id="calcViral">650.0K Views</span>
+    </div>
+    <div class="border-l border-white/10">
+      <span class="text-[9px] text-zinc-400 uppercase tracking-wider block">Target ROAS</span>
+      <span class="text-xs font-bold text-[#FF6B35]" id="calcRoas">4.8X</span>
+    </div>
+  </div>
+</div>
+
+<form class="flex flex-col gap-4" id="socialAuditForm" onsubmit="handleAuditSubmit(event)">
+<div>
+<label class="block font-label-caps text-[11px] uppercase text-zinc-400 mb-1" for="audit-handle">Instagram Handle or Website *</label>
+<input class="w-full bg-[#0b0d13] border border-white/10 px-4 py-3 rounded-xl text-white font-body-sm text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all placeholder:text-zinc-600" id="audit-handle" placeholder="@yourbrand or brand.com" required type="text">
+</div>
+<div>
+<label class="block font-label-caps text-[11px] uppercase text-zinc-400 mb-1" for="audit-phone">Phone / WhatsApp Number *</label>
+<input class="w-full bg-[#0b0d13] border border-white/10 px-4 py-3 rounded-xl text-white font-body-sm text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all placeholder:text-zinc-600" id="audit-phone" placeholder="+91 98765 43210" required type="tel">
+</div>
+<div>
+<label class="block font-label-caps text-[11px] uppercase text-zinc-400 mb-1" for="audit-goal">Primary Growth Goal</label>
+<select class="w-full bg-[#0b0d13] border border-white/10 px-4 py-3 rounded-xl text-white font-body-sm text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" id="audit-goal">
+<option>Generate Direct Sales Inquiries &amp; WhatsApp Leads</option>
+<option>Viral Reels &amp; Brand Follower Scale</option>
+<option>Meta Paid Ads Optimization &amp; Lower CAC</option>
+<option>Complete Turnkey Social Media Management</option>
+</select>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 font-headline-sm text-sm font-bold py-3.5 rounded-xl bg-primary-container text-white shadow-xl hover:shadow-[0_0_25px_rgba(242,101,34,0.5)] transition-all duration-300 mt-2 btn-magnetic shine-sweep pulse-neon-border" id="auditSubmitBtn" type="submit">
+  <span id="auditBtnText">Send Audit Request</span>
+  <span class="material-symbols-outlined text-base" id="auditBtnIcon">send</span>
+</button>
+<span class="text-center font-label-caps text-[10px] text-zinc-500 uppercase tracking-wider">Zero spam guarantee • 100% Confidential</span>
+</form>
+
+<!-- Interactive Success State -->
+<div class="hidden flex flex-col items-center justify-center text-center py-8" id="auditSuccessState">
+<div class="w-16 h-16 rounded-full bg-metric-emerald/20 text-metric-emerald flex items-center justify-center mb-3 animate-bounce">
+<span class="material-symbols-outlined text-3xl">check_circle</span>
+</div>
+<h4 class="font-headline-sm text-xl text-white font-bold mb-1">Audit Request Confirmed!</h4>
+<p class="font-body-sm text-sm text-zinc-400 max-w-xs">
+  Our growth director is reviewing your profile and will WhatsApp your custom audit within 24 hours.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+
+
+<!-- ========================================================================= -->
+<!-- VIDEO SHOWREEL MODAL                                                      -->
+<!-- ========================================================================= -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300" id="videoModal">
+  <div class="relative w-full max-w-4xl bg-obsidian-surface-1 border border-white/15 rounded-3xl overflow-hidden shadow-2xl">
+    <button aria-label="Close Showreel Modal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-primary-container transition-colors btn-magnetic" onclick="closeVideoModal()">
+      <span class="material-symbols-outlined text-xl">close</span>
+    </button>
+    <div class="aspect-video w-full">
+      <iframe class="w-full h-full" id="showreelIframe" src="" title="Getit Media Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- JAVASCRIPT ANIMATIONS & INTERACTIVE LOGIC                                 -->
+<!-- ========================================================================= -->
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/scroll-anim.js"></script>
+
+<script>
+  // Initialize AOS Scroll Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Reveals are handled by js/scroll-anim.js (GSAP + ScrollTrigger).
+    // AOS is disabled rather than removed so it can be switched back on by
+    // flipping this flag; `disable: true` also makes AOS strip its own
+    // data-aos attributes, which is what releases the opacity:0 it sets.
+    AOS.init({ disable: true });
+
+    // Initialize Animated Counters
+    initCounters();
+  });
+
+
+
+  // Number Counter Animation
+  function initCounters() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (el.classList.contains('counter')) {
+            const target = parseInt(el.getAttribute('data-target'));
+            animateValue(el, 0, target, 1500);
+          } else if (el.classList.contains('counter-float')) {
+            const target = parseFloat(el.getAttribute('data-target'));
+            animateFloatValue(el, 0, target, 1500);
+          }
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter, .counter-float').forEach(el => observer.observe(el));
+  }
+
+  function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  function animateFloatValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const current = (progress * (end - start) + start).toFixed(1);
+      obj.innerHTML = current;
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Portfolio Interactive Filter Tabs
+  function filterPortfolio(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.remove('active', 'bg-[#111318]', 'text-white');
+      b.classList.add('bg-white', 'text-zinc-700');
+    });
+    btn.classList.add('active', 'bg-[#111318]', 'text-white');
+    btn.classList.remove('bg-white', 'text-zinc-700');
+  }
+
+  // Video Showreel Modal Functions
+  function openVideoModal(videoUrl) {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('showreelIframe');
+    iframe.src = videoUrl + "?autoplay=1";
+    modal.classList.add('modal-active');
+  }
+
+  function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('showreelIframe');
+    iframe.src = "";
+    modal.classList.remove('modal-active');
+  }
+
+  // Form Submit Handling
+  function handleAuditSubmit(event) {
+    event.preventDefault();
+    const btnText = document.getElementById('auditBtnText');
+    const btnIcon = document.getElementById('auditBtnIcon');
+    const btn = document.getElementById('auditSubmitBtn');
+
+    btnText.innerText = "Analyzing Account...";
+    btnIcon.innerText = "sync";
+    btnIcon.classList.add('animate-spin');
+    btn.disabled = true;
+
+    setTimeout(() => {
+      document.getElementById('socialAuditForm').classList.add('hidden');
+      document.getElementById('auditSuccessState').classList.remove('hidden');
+    }, 1200);
+  }
+
+  // Interactive Comparison Toggle
+  function switchCompareView(view, btn) {
+    const oldCard = document.getElementById('cardOldWay');
+    const engineCard = document.getElementById('cardGrowthEngine');
+    const btnEngine = document.getElementById('btnEngine');
+    const btnOld = document.getElementById('btnOld');
+
+    if (view === 'old') {
+      oldCard.classList.add('border-red-500', 'ring-2', 'ring-red-500/50');
+      engineCard.classList.remove('ring-2', 'ring-primary-container');
+      btnOld.className = "px-5 py-2.5 rounded-xl font-label-caps text-xs uppercase font-bold transition-all bg-[#111318] text-white shadow-md";
+      btnEngine.className = "px-5 py-2.5 rounded-xl font-label-caps text-xs uppercase font-bold transition-all text-zinc-500 hover:text-zinc-800 bg-transparent";
+    } else {
+      oldCard.classList.remove('border-red-500', 'ring-2', 'ring-red-500/50');
+      engineCard.classList.add('ring-2', 'ring-primary-container');
+      btnEngine.className = "px-5 py-2.5 rounded-xl font-label-caps text-xs uppercase font-bold transition-all bg-[#111318] text-white shadow-md";
+      btnOld.className = "px-5 py-2.5 rounded-xl font-label-caps text-xs uppercase font-bold transition-all text-zinc-500 hover:text-zinc-800 bg-transparent";
+    }
+  }
+
+  // Telemetry Tab Switcher & Chart Animation
+  function switchTelemetryTab(tab, btn) {
+    document.querySelectorAll('.tele-btn').forEach(b => {
+      b.className = "tele-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 font-label-caps text-xs uppercase font-medium border border-white/10 transition-all";
+    });
+    btn.className = "tele-btn active px-4 py-2 rounded-xl bg-[#f26522] text-white font-label-caps text-xs uppercase font-bold transition-all";
+
+    const path = document.getElementById('telemetryPath');
+    const ticker = document.getElementById('liveTickerText');
+
+    if (tab === 'whatsapp') {
+      path.setAttribute('d', 'M0 180 C 150 120, 250 160, 400 40 C 550 -10, 650 20, 800 10');
+      ticker.innerText = "Direct WhatsApp Lead Inquired from Pondicherry (Healthcare) • 1s ago";
+    } else if (tab === 'cpa') {
+      path.setAttribute('d', 'M0 40 C 150 60, 250 30, 400 120 C 550 150, 650 170, 800 180');
+      ticker.innerText = "CPA reduced by 64% for Meta Campaign • 5s ago";
+    } else {
+      path.setAttribute('d', 'M0 160 C 150 140, 250 180, 400 80 C 550 -20, 650 60, 800 20');
+      ticker.innerText = "New WhatsApp Lead Inquiry from Chennai (Real Estate) • 2s ago";
+    }
+  }
+
+  // Interactive Growth Calculator
+  function updateCalculator() {
+    const budget = parseInt(document.getElementById('budgetRange').value);
+    const reach = parseInt(document.getElementById('reachRange').value);
+
+    document.getElementById('budgetVal').innerText = "₹" + budget.toLocaleString('en-IN');
+    document.getElementById('reachVal').innerText = reach.toLocaleString('en-IN');
+
+    const leads = Math.round((budget / 175));
+    const viral = (reach * 2.6 / 1000).toFixed(1);
+    
+    document.getElementById('calcLeads').innerText = leads + " Inquiries";
+    document.getElementById('calcViral').innerText = viral + "K Views";
+  }
+
+  // Interactive 3D Parallax Mouse Movement
+  const heroSection = document.getElementById('heroSection');
+  const hero3DScene = document.getElementById('hero3DScene');
+
+  if (heroSection && hero3DScene) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      const rotateX = (-y / rect.height) * 16;
+      const rotateY = (x / rect.width) * 16;
+      
+      hero3DScene.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      hero3DScene.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+    });
+  }
+</script>
+<script src="js/navbar.js"></script>
+</body>
+</html>

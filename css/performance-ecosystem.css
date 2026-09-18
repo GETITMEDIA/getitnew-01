@@ -1,0 +1,252 @@
+/* ==========================================================================
+   Performance Ecosystem Section — Refined Spacing & Typography
+   ========================================================================== */
+
+.performance-ecosystem {
+  position: relative;
+  width: 100%;
+  background: #08080a;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 70px 20px 90px;
+  z-index: 1;
+  isolation: isolate;
+}
+
+/* Background Horizon Glow */
+.pe-horizon {
+  position: absolute;
+  bottom: -45%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(234, 90, 6, 0.4) 0%, rgba(234, 90, 6, 0) 70%);
+  filter: blur(90px);
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pe-horizon-core {
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 35%;
+  background: radial-gradient(circle, rgba(255, 87, 34, 0.6) 0%, rgba(255, 87, 34, 0) 70%);
+  filter: blur(50px);
+  opacity: 0.55;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pe-container {
+  position: relative;
+  max-width: 1160px;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Text & Eyebrow Badge */
+.pe-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pe-subtitle {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #ff5722;
+  background: rgba(255, 87, 34, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.25);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.15);
+}
+
+.pe-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(38px, 4.8vw, 62px);
+  line-height: 1.12;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.12);
+}
+
+/* Cards Layout & Spacing */
+.pe-cards-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  perspective: 1400px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.pe-card {
+  width: 240px;
+  height: 310px;
+  margin: 0 -8px; /* Clean, subtle fan overlap */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  padding: 34px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 
+    0 18px 40px rgba(0, 0, 0, 0.5),
+    inset 0 -15px 30px rgba(234, 90, 6, 0.12);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25);
+  position: relative;
+  overflow: hidden;
+  transform-origin: center bottom;
+}
+
+/* Card Glow Effect on Hover */
+.pe-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 100%, rgba(255, 87, 34, 0.35), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pe-card:hover::before {
+  opacity: 1;
+}
+
+.pe-card:hover {
+  transform: translateY(-20px) rotateZ(0deg) scale(1.06) !important;
+  border-color: rgba(255, 87, 34, 0.5);
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.75),
+    0 0 30px rgba(255, 87, 34, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -20px 40px rgba(255, 87, 34, 0.25);
+  z-index: 20;
+}
+
+/* Arc Positioning */
+.pe-card:nth-child(1) {
+  transform: rotateZ(-10deg) translateY(16px);
+}
+
+.pe-card:nth-child(2) {
+  transform: rotateZ(-3deg) translateY(4px);
+}
+
+.pe-card:nth-child(3) {
+  transform: rotateZ(3deg) translateY(4px);
+}
+
+.pe-card:nth-child(4) {
+  transform: rotateZ(10deg) translateY(16px);
+}
+
+/* Card Inner Content Spacing */
+.pe-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.pe-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.pe-icon-wrapper i {
+  font-size: 46px;
+  color: #ff5722;
+  filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.5));
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.pe-card:hover .pe-icon-wrapper i {
+  transform: scale(1.12);
+  color: #ff8a3d;
+}
+
+.pe-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  color: #FFFFFF;
+}
+
+.pe-card-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .performance-ecosystem {
+    padding: 60px 16px 80px;
+  }
+  .pe-cards-wrapper {
+    flex-wrap: wrap;
+    gap: 20px;
+    perspective: none;
+    margin-top: 30px;
+  }
+  .pe-card, .pe-card:nth-child(n) {
+    transform: none;
+    margin: 0;
+    width: calc(50% - 15px);
+    height: auto;
+    min-height: 240px;
+  }
+  .pe-card:hover {
+    transform: translateY(-8px) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .pe-title {
+    font-size: 34px;
+  }
+  .pe-card {
+    width: 100%;
+    min-height: auto;
+  }
+}

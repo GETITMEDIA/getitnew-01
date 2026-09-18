@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <title>GetIt Media | Digital Marketing Agency</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+    <link href="css/stats.css" rel="stylesheet">
+    <link href="css/cursor.css" rel="stylesheet">
+    <link href="css/text-reveal.css" rel="stylesheet">
+    <link href="css/lets-talk.css" rel="stylesheet">
+    <link href="css/about-hero.css" rel="stylesheet">
+    <link href="css/terranova-hero.css" rel="stylesheet">
+    <link href="css/services-cards.css" rel="stylesheet">
+    <link href="css/cta-brand.css" rel="stylesheet">
+    <link href="css/about-us.css" rel="stylesheet">
+    <link href="css/gmb-hero.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>.gmbh{animation-play-state:paused}.gmbh *{animation-play-state:paused!important}</style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="preloader-heading">
+            <div class="load-text">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- GetIt Media Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="#home" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="#gmb" class="mega-service" role="menuitem"><span class="mega-service__icon">G</span><span class="mega-service__text"><span class="mega-service__title">Google My Business</span></span></a>
+                    <a href="#ads" class="mega-service" role="menuitem"><span class="mega-service__icon">A</span><span class="mega-service__text"><span class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                    <a href="#smm" class="mega-service" role="menuitem"><span class="mega-service__icon">S</span><span class="mega-service__text"><span class="mega-service__title">Social Media Marketing</span></span></a>
+                    <a href="#seo" class="mega-service" role="menuitem"><span class="mega-service__icon">Q</span><span class="mega-service__text"><span class="mega-service__title">Search Engine Optimization</span></span></a>
+                    <a href="#web" class="mega-service" role="menuitem"><span class="mega-service__icon">W</span><span class="mega-service__text"><span class="mega-service__title">Website Design &amp; Development</span></span></a>
+                    <a href="#graphic" class="mega-service" role="menuitem"><span class="mega-service__icon">D</span><span class="mega-service__text"><span class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="#video" class="mega-service" role="menuitem"><span class="mega-service__icon">V</span><span class="mega-service__text"><span class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span><h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4><p class="mega-promo__text">One call with us changes your digital game.</p></div>
+                    <a href="#contact" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="#pricing" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="#contact" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="#home" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up"><span class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="#home" class="mobile-link">Home</a></li>
+          <li><a href="#about" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger" id="mobileServicesTrigger" aria-expanded="false" aria-controls="mobileServicesPanel"><span>Services</span><span class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="#gmb" class="mobile-service">Google My Business</a><a href="#ads" class="mobile-service">Google &amp; Meta Ads</a><a href="#smm" class="mobile-service">Social Media Marketing</a><a href="#seo" class="mobile-service">Search Engine Optimization</a><a href="#web" class="mobile-service">Website Design &amp; Development</a><a href="#graphic" class="mobile-service">Graphic Design</a><a href="#video" class="mobile-service">Video Editing</a></div></li>
+          <li><a href="#team" class="mobile-link">Team</a></li>
+          <li><a href="#portfolio" class="mobile-link">Portfolio</a></li>
+          <li><a href="#pricing" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="#contact" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+    
+
+
+      <!-- ===================== Google My Business Hero ===================== -->
+      <section class="gmbh theme-dark" id="gmb-hero">
+
+        <!-- Decorative background -->
+        <div class="gmbh__bg" aria-hidden="true">
+          <span class="gmbh__glow"></span>
+          <span class="gmbh__circle"></span>
+          <span class="gmbh__circle gmbh__circle--sm"></span>
+          <span class="gmbh__grid"></span>
+          <span class="gmbh__vignette"></span>
+          <svg class="gmbh__wave" viewBox="0 0 1440 260" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="gmbhBand1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0.035"/>
+              </linearGradient>
+              <linearGradient id="gmbhBand2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0.07"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,170 C 230,112 430,192 700,168 C 970,144 1200,216 1440,162 L1440,260 L0,260 Z" fill="url(#gmbhBand1)"/>
+            <path d="M0,206 C 250,162 470,230 740,204 C 1010,178 1230,240 1440,206 L1440,260 L0,260 Z" fill="url(#gmbhBand2)"/>
+          </svg>
+          <span class="gmbh__corner"></span>
+          <span class="gmbh__dots"></span>
+        </div>
+
+        <div class="gmbh__inner">
+
+          <!-- ---------------- Left content ---------------- -->
+          <div class="gmbh__content">
+
+            <span class="gmbh__badge">
+              <span class="gmbh__badge-icon" aria-hidden="true">&#8599;</span>
+              Digital Growth <span class="gmbh__badge-sep">|</span> Real Results
+            </span>
+
+            <h1 class="gmbh__title" data-aos="fade-up">
+              <span class="gmbh__line"><i>Google My</i></span>
+              <span class="gmbh__line"><i class="gmbh__title-accent">Business</i></span>
+            </h1>
+
+            <p class="gmbh__desc">Get discovered by local customers on Google Search and Maps. Build trust, drive more traffic, and grow your business online.</p>
+
+            <div class="gmbh__cta">
+              <a href="#contact" class="gmbh-btn gmbh-btn--primary">
+                Get Started Now
+                <span class="gmbh-btn__circle" aria-hidden="true">&#8599;</span>
+              </a>
+              <button type="button" class="gmbh-btn gmbh-btn--ghost" id="gmbhVideoBtn">
+                <span class="gmbh-btn__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                Watch Video
+              </button>
+            </div>
+
+            <div class="gmbh__benefits">
+              <div class="gmbh-benefit">
+                <span class="gmbh-benefit__icon" aria-hidden="true"><i class="fa-solid fa-eye"></i></span>
+                <div>
+                  <p class="gmbh-benefit__title">More Visibility</p>
+                  <p class="gmbh-benefit__sub">on Google Search</p>
+                </div>
+              </div>
+              <div class="gmbh-benefit">
+                <span class="gmbh-benefit__icon" aria-hidden="true"><i class="fa-solid fa-star"></i></span>
+                <div>
+                  <p class="gmbh-benefit__title">Build Trust</p>
+                  <p class="gmbh-benefit__sub">with Real Reviews</p>
+                </div>
+              </div>
+              <div class="gmbh-benefit">
+                <span class="gmbh-benefit__icon" aria-hidden="true"><i class="fa-solid fa-user-group"></i></span>
+                <div>
+                  <p class="gmbh-benefit__title">More Customers</p>
+                  <p class="gmbh-benefit__sub">Near You</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ---------------- Right visual ---------------- -->
+          <div class="gmbh__visual" aria-hidden="true">
+            <div class="gmbh-stage">
+
+              <!-- Curved arrow -->
+              <div class="gmbh-arrow">
+                <svg viewBox="0 0 140 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 180 C 8 120, 30 56, 92 34" stroke="#f36523" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <path d="M74 16 L96 33 L74 52" stroke="#f36523" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </div>
+
+              <!-- Plant -->
+              <div class="gmbh-plant">
+                <svg viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M70 132 C 40 120, 16 86, 12 40 C 40 54, 60 88, 70 132Z" fill="#2c8b57"/>
+                  <path d="M70 132 C 100 120, 124 86, 128 40 C 100 54, 80 88, 70 132Z" fill="#37a668"/>
+                  <path d="M70 134 C 50 116, 36 78, 40 30 C 62 52, 74 92, 70 134Z" fill="#25a05e"/>
+                  <path d="M70 134 C 90 116, 104 78, 100 30 C 78 52, 66 92, 70 134Z" fill="#2fb56d"/>
+                  <path d="M70 136 C 60 106, 60 56, 70 14 C 82 56, 82 106, 70 136Z" fill="#1e8b4e"/>
+                  <path d="M70 136 C 62 112, 50 92, 30 76 C 48 84, 64 104, 70 136Z" fill="#3fbf78" opacity="0.9"/>
+                  <path d="M70 136 C 78 112, 90 92, 110 76 C 92 84, 76 104, 70 136Z" fill="#3fbf78" opacity="0.9"/>
+                  <path d="M24 136 H116 L107 190 A8 8 0 0 1 99 197 H41 A8 8 0 0 1 33 190Z" fill="#f4f5f8"/>
+                  <path d="M24 136 H70 L64 197 H41 A8 8 0 0 1 33 190Z" fill="#ffffff"/>
+                  <rect x="18" y="124" width="104" height="20" rx="7" fill="#e6e8ee"/>
+                  <rect x="18" y="124" width="52" height="20" rx="7" fill="#f2f3f7"/>
+                </svg>
+              </div>
+
+              <!-- Laptop -->
+              <img class="gmbh-laptop" src="images/hero/2.png" alt="" loading="eager" decoding="async" data-aos="fade-up">
+
+              <!-- Phone -->
+              <img class="gmbh-phone" src="images/hero/1.png" alt="" loading="eager" decoding="async" data-aos="fade-up">
+
+              <!-- Google Business store icon -->
+              <div class="gmbh-store">
+                <svg viewBox="0 0 130 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="42" width="106" height="78" rx="14" fill="#4285f4"/>
+                  <rect x="12" y="42" width="106" height="78" rx="14" fill="url(#gmbhStoreShade)"/>
+                  <path d="M6 40 L18 12 A8 8 0 0 1 26 7 H104 A8 8 0 0 1 112 12 L124 40Z" fill="#5b9bff"/>
+                  <path d="M6 40 L18 12 A8 8 0 0 1 26 7 H45 L37 40Z" fill="#4285f4"/>
+                  <path d="M65 7 H84 L88 40 H65Z" fill="#4285f4"/>
+                  <path d="M104 7 A8 8 0 0 1 112 12 L124 40 H108Z" fill="#4285f4"/>
+                  <rect x="34" y="56" width="62" height="56" rx="12" fill="#ffffff"/>
+                  <text x="65" y="98" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="46" font-weight="600" fill="#4285f4">G</text>
+                  <defs>
+                    <linearGradient id="gmbhStoreShade" x1="12" y1="42" x2="118" y2="120" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ffffff" stop-opacity="0.14"/>
+                      <stop offset="1" stop-color="#0b57d0" stop-opacity="0.18"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <!-- Floating cards -->
+              <div class="gmbh-card gmbh-card--customers">
+                <div>
+                  <p class="gmbh-card__title">+128</p>
+                  <p class="gmbh-card__sub">New Customers</p>
+                </div>
+                <span class="gmbh-card__icon"><i class="fa-solid fa-user-plus"></i></span>
+              </div>
+
+              <div class="gmbh-card gmbh-card--local">
+                <span class="gmbh-card__icon"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                  <p class="gmbh-card__title">Local Search</p>
+                  <p class="gmbh-card__sub">Be the top choice<br>in your area</p>
+                </div>
+                <span class="gmbh-card__bars"><span></span><span></span><span></span></span>
+              </div>
+
+              <div class="gmbh-card gmbh-card--maps">
+                <span class="gmbh-card__icon">
+                  <svg viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.3 0 11.9 0 20.7 12 32 12 32s12-11.3 12-20.1C24 5.3 18.6 0 12 0z" fill="#34a853"/><path d="M12 0C7.7 0 3.9 2.3 1.9 5.7l9 7.6 10.4-4.6C19.8 3.6 16.3 0 12 0z" fill="#4285f4"/><circle cx="12" cy="11.6" r="4.4" fill="#ffffff"/></svg>
+                </span>
+                <div>
+                  <p class="gmbh-card__title">Google Maps</p>
+                  <p class="gmbh-card__sub">More Calls<br>More Visits</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Watch Video modal -->
+        <div class="gmbh-modal" id="gmbhVideoModal" role="dialog" aria-modal="true" aria-label="Google My Business video">
+          <div class="gmbh-modal__box">
+            <button type="button" class="gmbh-modal__close" id="gmbhVideoClose" aria-label="Close video">&#10005;</button>
+            <iframe id="gmbhVideoFrame" src="" title="Google My Business video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- =================== End Google My Business Hero =================== -->
+
+
+      <!-- Main Footer -->
+      <footer class="lt-footer" id="contact">
+        <div class="lt-dotgrid" aria-hidden="true"></div>
+        <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#e8622c" stroke-width="1.4" fill="none" opacity="0.9"/>
+          <path d="M-20 148 C 60 78, 140 188, 220 108 S 380 48, 460 118" stroke="#e8622c" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <path d="M-20 112 C 60 42, 140 152, 220 72 S 380 12, 460 82" stroke="#e8622c" stroke-width="1" fill="none" opacity="0.4"/>
+        </svg>
+
+        <div class="lt-outer">
+          <div class="lt-grid">
+
+            <!-- Column 1: Let's Talk -->
+            <div class="lt-col">
+              <h2 class="lt-heading" data-aos="fade-up">LET&rsquo;S<span class="lt-heading-accent">TALK
+                <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+                  <path class="lt-heading-arrow-path" d="M8 82 C 4 60, 10 46, 26 40 C 40 35, 46 44, 40 54 C 36 61, 30 55, 34 48 C 42 34, 60 24, 78 12" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </span></h2>
+              <div class="lt-underline"></div>
+              <p class="lt-desc">We&rsquo;re here to listen and help you grow your business online.</p>
+              <a class="lt-btn" href="mailto:hello@getitmediasolutions.com">
+                <span class="lt-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                Get In Touch
+              </a>
+            </div>
+
+            <!-- Column 2: Get In Touch With Us -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Get In Touch With Us</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-social-list">
+                <a class="lt-social-card" href="https://www.instagram.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--ig"><i class="fab fa-instagram"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Instagram</span>
+                    <span class="lt-social-sub">@getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.facebook.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--fb"><i class="fab fa-facebook-f"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Facebook</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.youtube.com/channel/UC6b2HvglRe3kztaasEYVNdQ" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--yt"><i class="fab fa-youtube"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">YouTube</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.google.com/search?q=Getit+Media+Solutions+Pvt+Ltd" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--gg"><i class="fab fa-google"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Google</span>
+                    <span class="lt-social-sub">Getit Media Solutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 3: Brand -->
+            <div class="lt-col">
+              <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png" alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
+              <div class="lt-underline"></div>
+              <p class="lt-brand-desc">When do they work well, and when do they on us and finally, when do we actually need how can we avoid them.</p>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-contact-list">
+                <a class="lt-contact-item" href="mailto:hello@getitmediasolutions.com">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Email Us</p>
+                    <p class="lt-contact-value">hello@getitmediasolutions.com</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="https://www.google.com/maps/search/?api=1&query=4517+Washington+Ave.+Newyork+39495" target="_blank" rel="noopener">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Address</p>
+                    <p class="lt-contact-value">4517 Washington Ave.<br>Newyork 39495</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="tel:+11234567890">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Phone</p>
+                    <p class="lt-contact-value">(123) 456-7890</p>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Trust / service features bar -->
+        <div class="lt-features">
+          <div class="lt-features-inner">
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-shield-check"></i></span>
+              <div>
+                <p class="lt-feature-title">Trusted Solutions</p>
+                <p class="lt-feature-sub">Reliable &amp; Secure</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-regular fa-clock"></i></span>
+              <div>
+                <p class="lt-feature-title">On-Time Delivery</p>
+                <p class="lt-feature-sub">Always On Schedule</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-user-group"></i></span>
+              <div>
+                <p class="lt-feature-title">Client Satisfaction</p>
+                <p class="lt-feature-sub">Our Priority</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-headset"></i></span>
+              <div>
+                <p class="lt-feature-title">24/7 Support</p>
+                <p class="lt-feature-sub">We&rsquo;re Always Here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom footer bar -->
+        <div class="lt-bottom">
+          <div class="lt-bottom-brand">
+            <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+            <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
+          </div>
+          <nav class="lt-bottom-nav" aria-label="Footer">
+            <a href="#home">About Us</a><span>|</span>
+            <a href="#portfolio">Our Portfolio</a><span>|</span>
+            <a href="#contact">Careers</a><span>|</span>
+            <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
+            <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          </nav>
+        </div>
+      </footer>
+      <!--End Main Footer -->
+    </div>
+    <!-- End Page Wrapper -->
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/knob.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitType.js"></script>
+    <script src="js/gsap-scroll-smoother.js"></script>
+    <script src="js/gsap-scroll-to-plugin.js"></script>
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/custom-gsap.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+  <script src="js/terranova-hero.js"></script>
+  <script src="js/services-cards.js"></script>
+  <script src="js/cta-brand.js"></script>
+  <script src="js/gmb-hero.js"></script>
+  
+</body>
+
+</html>

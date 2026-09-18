@@ -1,0 +1,326 @@
+/* =====================================================================
+   Meta Ads infographic
+   Reproduces the reference composition on a fixed 582 x 550 design canvas,
+   scaled proportionally so every proportion is preserved at any width.
+   All rules are namespaced under .meta-* (prefix verified unused).
+   ===================================================================== */
+
+.meta-section {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 24px;
+  display: flex;
+  justify-content: center;
+  background:
+    radial-gradient(120% 85% at 50% -5%, rgba(234, 90, 6, .34) 0%, rgba(234, 90, 6, 0) 58%),
+    radial-gradient(90% 70% at 12% 92%, rgba(234, 90, 6, .20) 0%, rgba(234, 90, 6, 0) 62%),
+    linear-gradient(165deg, #000000 0%, #000000 52%, #000000 100%);
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* proportional scaling stage */
+.meta-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  height: 550px;              /* replaced by JS with the scaled height */
+}
+
+.meta-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 582px;
+  height: 550px;
+  transform-origin: top left;
+  transform: scale(var(--meta-scale, 1));
+}
+
+/* ---------------- background ---------------- */
+
+/* oversized ghost wordmark bleeding off both edges */
+.meta-ghost {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  font-size: 196px;
+  font-weight: 800;
+  letter-spacing: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  color: #FFFFFF;
+  opacity: .03;
+  pointer-events: none;
+  user-select: none;
+}
+
+.meta-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ---------------- title ---------------- */
+
+.meta-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6px;
+  margin: 0;
+  text-align: center;
+  font-size: 85px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #ea5a06;
+}
+
+/* ---------------- Meta brand block ---------------- */
+
+.meta-brand {
+  position: absolute;
+  left: 152px;
+  top: 300px;
+  width: 240px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.meta-mark {
+  display: block;
+  width: 106px;
+  height: 64px;
+  margin: 0 auto;
+  color: #FFFFFF;
+}
+
+.meta-brand-name {
+  margin: 10px 0 0;
+  font-size: 50px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -.6px;
+  color: #FFFFFF;
+}
+
+/* ---------------- the five items ---------------- */
+
+.meta-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 64px;        /* badge height */
+  margin-top: -32px;   /* centres on the given top: value, leaving
+                          `transform` free for the float animation */
+}
+
+.meta-badge {
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-dark, #ea5a06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* white disc the icon sits on */
+.meta-badge::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.meta-badge svg {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  color: var(--accent, #ea5a06);
+}
+
+/* item 4 is inverted in the reference: solid blue disc, white icon */
+.meta-item--solid .meta-badge::before { background: var(--accent, #ea5a06); }
+.meta-item--solid .meta-badge svg { color: #FFFFFF; }
+
+.meta-text {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.32;
+  font-weight: 500;
+  letter-spacing: .1px;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+/* ---------------- responsive ---------------- */
+/* The composition never changes; on small screens the in-canvas type is
+   enlarged so it survives the proportional down-scale. */
+
+@media (max-width: 900px) {
+  .meta-section { padding: 52px 18px; }
+}
+
+@media (max-width: 700px) {
+  .meta-section { padding: 44px 14px; }
+  .meta-text { font-size: 18px; line-height: 1.28; }
+  .meta-title { font-size: 66px; }
+  .meta-brand-name { font-size: 46px; }
+}
+
+@media (max-width: 420px) {
+  .meta-section { padding: 36px 10px; }
+  .meta-text { font-size: 19px; }
+}
+
+/* =====================================================================
+   Animation
+   Entrance uses the independent `translate` / `scale` properties, never
+   `transform`, so it never clobbers the layout transforms already in use
+   (.meta-item is centred with translateY(-50%), .meta-brand with translate).
+   ===================================================================== */
+
+/* --- title and brand --- */
+.meta-title,
+.meta-brand {
+  opacity: 0;
+  animation: meta-rise .8s cubic-bezier(.22, .9, .3, 1) forwards;
+  animation-play-state: paused;
+}
+.meta-brand { animation-delay: .14s; }
+
+.meta-section.is-visible .meta-title,
+.meta-section.is-visible .meta-brand { animation-play-state: running; }
+
+@keyframes meta-rise {
+  from { opacity: 0; translate: 0 22px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* --- the thin arc draws itself --- */
+.meta-arc {
+  stroke-dasharray: 218;
+  stroke-dashoffset: 218;
+}
+.meta-section.is-visible .meta-arc {
+  animation: meta-draw 1.5s cubic-bezier(.4, 0, .2, 1) .2s forwards;
+}
+@keyframes meta-draw { to { stroke-dashoffset: 0; } }
+
+/* --- decorative dots twinkle in, then breathe --- */
+.meta-dot {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.meta-section.is-visible .meta-dot {
+  animation: meta-dot-in .5s ease-out forwards,
+             meta-twinkle 4.5s ease-in-out infinite;
+}
+.meta-section.is-visible .meta-dot {
+  animation-delay: var(--dd, .55s), calc(var(--dd, .55s) + .8s);
+}
+
+@keyframes meta-dot-in {
+  from { opacity: 0; scale: .2; }
+  to   { opacity: .85; scale: 1; }
+}
+@keyframes meta-twinkle {
+  0%, 100% { opacity: .85; }
+  50%      { opacity: .35; }
+}
+
+/* --- the five items slide in from the right, staggered --- */
+.meta-item {
+  opacity: 0;
+  animation: meta-item-in .75s cubic-bezier(.34, 1.25, .5, 1) forwards;
+  animation-play-state: paused;
+  animation-delay: var(--d, 0s);
+}
+.meta-section.is-visible .meta-item {
+  animation-play-state: running;
+  /* entrance (translate) + endless float (transform) - different properties,
+     so they compose instead of fighting */
+  animation: meta-item-in .75s cubic-bezier(.34, 1.25, .5, 1) var(--d, 0s) forwards,
+             meta-float 4.2s ease-in-out calc(var(--d, 0s) + .8s) infinite;
+}
+
+/* gentle up-and-down drift */
+@keyframes meta-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* the Meta mark drifts too, slower and out of phase */
+.meta-section.is-visible .meta-mark {
+  animation: meta-float 6s ease-in-out 1s infinite;
+}
+
+@keyframes meta-item-in {
+  from { opacity: 0; translate: 34px 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* --- hover: badge lifts and glows, copy nudges across --- */
+.meta-badge,
+.meta-text {
+  transition: scale .35s cubic-bezier(.34, 1.4, .5, 1),
+              box-shadow .35s ease,
+              translate .35s cubic-bezier(.34, 1.2, .5, 1);
+}
+.meta-item:hover .meta-badge {
+  scale: 1.09;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .55),
+              0 0 0 6px rgba(234, 90, 6, .22),
+              0 0 34px rgba(234, 90, 6, .35);
+}
+.meta-item:hover .meta-text { translate: 5px 0; }
+.meta-section.is-visible .meta-item:hover { animation-play-state: running, paused; }
+
+/* expanding ring on hover */
+.meta-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+  opacity: 0;
+  pointer-events: none;
+}
+.meta-item:hover .meta-badge::after { animation: meta-ring 1.6s ease-out infinite; }
+
+@keyframes meta-ring {
+  0%   { opacity: .5; scale: 1; }
+  70%  { opacity: 0;  scale: 1.5; }
+  100% { opacity: 0;  scale: 1.5; }
+}
+
+/* --- ghost wordmark drifts very slowly --- */
+.meta-section.is-visible .meta-ghost {
+  animation: meta-drift 34s ease-in-out infinite;
+}
+@keyframes meta-drift {
+  0%, 100% { translate: -14px 0; }
+  50%      { translate: 14px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meta-title, .meta-brand, .meta-item { opacity: 1; animation: none; translate: none; }
+  .meta-section.is-visible .meta-item,
+  .meta-section.is-visible .meta-mark { animation: none; transform: none; }
+  .meta-dot { opacity: .85; animation: none; }
+  .meta-arc { stroke-dashoffset: 0; animation: none; }
+  .meta-section.is-visible .meta-ghost { animation: none; }
+  .meta-item:hover .meta-badge { scale: 1; }
+  .meta-item:hover .meta-badge::after { animation: none; }
+  .meta-item:hover .meta-text { translate: none; }
+}

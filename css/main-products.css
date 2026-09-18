@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Main Products Section (Dark Futuristic)
+   ========================================================================== */
+
+.mp-section {
+  position: relative;
+  background-color: #090e14;
+  background-image: url('../images/mp_bg_texture.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 20px;
+  color: #ffffff;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.mp-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.mp-heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.mp-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Base Card Styling */
+.mp-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 999px;
+  padding: 40px 100px;
+  min-height: 240px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 100%);
+  box-shadow: inset 1px 0 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Reversed Card Styling (Text Left, Image Right) */
+.mp-card--reverse {
+  flex-direction: row-reverse;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 30%, transparent 100%);
+  box-shadow: inset -1px 0 0 rgba(255,255,255,0.05);
+}
+
+/* Card Content */
+.mp-card__content {
+  flex: 1;
+  max-width: 480px;
+}
+
+.mp-card__title {
+  color: #e8622c;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+}
+
+.mp-card__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mp-card__list li {
+  position: relative;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #d1d5db;
+  margin-bottom: 16px;
+  padding-left: 16px;
+}
+
+.mp-card__list li:last-child {
+  margin-bottom: 0;
+}
+
+.mp-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  background-color: #d1d5db;
+  border-radius: 1px;
+}
+
+/* ----------------------------------------------------
+   CSS Recreated 3D Asset
+   ---------------------------------------------------- */
+.mp-card__img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 180px;
+}
+
+.mp-cube {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform-style: preserve-3d;
+  transform: rotateX(60deg) rotateZ(45deg);
+  animation: mpFloat 6s ease-in-out infinite;
+}
+
+@keyframes mpFloat {
+  0% { transform: rotateX(60deg) rotateZ(45deg) translateZ(0px); }
+  50% { transform: rotateX(60deg) rotateZ(45deg) translateZ(20px); }
+  100% { transform: rotateX(60deg) rotateZ(45deg) translateZ(0px); }
+}
+
+/* Glow base */
+.mp-cube::after {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  background: #ff5722;
+  filter: blur(40px);
+  border-radius: 50%;
+  transform: translateZ(-20px);
+  opacity: 0.6;
+  animation: mpGlowPulse 4s ease-in-out infinite;
+}
+
+@keyframes mpGlowPulse {
+  0% { opacity: 0.5; filter: blur(40px); transform: translateZ(-20px) scale(1); }
+  50% { opacity: 0.8; filter: blur(50px); transform: translateZ(-20px) scale(1.2); }
+  100% { opacity: 0.5; filter: blur(40px); transform: translateZ(-20px) scale(1); }
+}
+
+/* Top Face */
+.mp-cube-face-top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(232, 98, 44, 0.9);
+  border: 1px solid rgba(255,255,255,0.4);
+  transform: translateZ(40px);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Left Face */
+.mp-cube-face-left {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to right, rgba(255, 87, 34, 0.9), rgba(200, 60, 15, 0.8));
+  border: 1px solid rgba(255,255,255,0.2);
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+
+/* Right Face */
+.mp-cube-face-right {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 87, 34, 0.7), rgba(150, 40, 5, 0.6));
+  border: 1px solid rgba(255,255,255,0.2);
+  transform-origin: left;
+  transform: rotateY(-90deg);
+}
+
+/* Icon floating above the cube (un-rotated container) */
+.mp-cube-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  width: 70px;
+  height: 70px;
+  z-index: 2;
+  filter: drop-shadow(0 10px 10px rgba(232, 98, 44, 0.4));
+  animation: mpIconFloat 5s ease-in-out infinite reverse;
+}
+
+@keyframes mpIconFloat {
+  0% { transform: translate(-50%, -80%); }
+  50% { transform: translate(-50%, -95%); }
+  100% { transform: translate(-50%, -80%); }
+}
+
+.mp-cube-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ----------------------------------------------------
+   Responsive Layout
+   ---------------------------------------------------- */
+@media (max-width: 991px) {
+  .mp-card, .mp-card--reverse {
+    flex-direction: column;
+    padding: 50px 40px;
+    border-radius: 40px; /* Switch from pill to standard rounded rect on mobile */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  
+  .mp-card__content {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+  
+  .mp-card__img {
+    height: auto;
+    margin-bottom: 10px;
+  }
+}

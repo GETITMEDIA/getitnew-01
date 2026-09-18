@@ -1,0 +1,586 @@
+/* =====================================================================
+   THE WALL — editorial team composition
+   One asymmetric canvas of overlapping portraits, floating labels joined
+   by hairlines, and a reveal panel on hover/focus.
+
+   Layout contract: each <figure> carries three custom properties set
+   inline by the builder —
+     --tp-col  grid-column (placement + span on a 12 column canvas)
+     --tp-y    vertical offset in px (the stagger, and the overlap)
+     --tp-d    parallax depth multiplier, read by js/team-people.js
+   ===================================================================== */
+
+.tp {
+  --tp-ink: #ffffff;
+  --tp-dim: rgba(255, 255, 255, 0.6);
+  --tp-hair: rgba(255, 255, 255, 0.18);
+  --tp-orange: #ea5a06;
+  --tp-orange-lt: #ff8a3d;
+  --tp-orange-rgb: 234, 90, 6;
+  --tp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tp-mx: 0;   /* pointer, -1..1, written by JS */
+  --tp-my: 0;
+
+  position: relative;
+  padding: 110px 0 130px;
+  overflow: hidden;
+  background: #06060c;
+  isolation: isolate;
+}
+
+/* ---------- ambient: two glows and one pale panel for dark/light contrast */
+.tp__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(30px);
+}
+
+.tp__glow--a {
+  top: -180px;
+  left: -140px;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(var(--tp-orange-rgb), 0.2), transparent 66%);
+}
+
+.tp__glow--b {
+  bottom: -220px;
+  right: -180px;
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(circle, rgba(var(--tp-orange-rgb), 0.13), transparent 68%);
+}
+
+/* The light band: a soft off-white slab the composition crosses, so the
+   section reads as dark-and-light rather than uniformly dark. */
+.tp__panel {
+  position: absolute;
+  z-index: 0;
+  top: 30%;
+  right: 0;
+  width: 62%;
+  height: 44%;
+  pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012) 62%, transparent);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 40px 0 0 40px;
+  backdrop-filter: blur(2px);
+}
+
+.tp__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------------------------------------------------------------
+   HEADING
+   --------------------------------------------------------------- */
+.tp__head {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 0 90px;
+}
+
+.tp__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--tp-orange-rgb), 0.34);
+  background: rgba(var(--tp-orange-rgb), 0.09);
+  backdrop-filter: blur(10px);
+  color: var(--tp-orange-lt);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.tp__eyebrow i { font-size: 9px; }
+
+.tp__title {
+  font-family: var(--tm-serif, 'Cinzel', Georgia, serif);
+  font-size: clamp(38px, 7.4vw, 108px);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--tp-ink);
+  margin: 0 0 28px;
+}
+
+.tp__title-line { display: block; }
+
+/* the middle word steps in and switches to an outline — editorial accent */
+.tp__title-line--out {
+  margin-left: clamp(30px, 9vw, 170px);
+  color: transparent;
+  -webkit-text-stroke: 1.4px rgba(var(--tp-orange-rgb), 0.85);
+}
+
+.tp__lead {
+  max-width: 56ch;
+  margin: 0 0 22px clamp(30px, 9vw, 170px);
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  line-height: 1.85;
+  color: var(--tp-dim);
+}
+
+.tp__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: clamp(30px, 9vw, 170px);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.tp__hint i { color: var(--tp-orange-lt); font-size: 11px; }
+
+/* ---------------------------------------------------------------
+   CANVAS
+   --------------------------------------------------------------- */
+.tp__canvas {
+  padding-top: 56px;   /* headroom for the first band's labels */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 22px;
+  row-gap: 76px;
+  align-items: start;
+}
+
+/* ---------------------------------------------------------------
+   FIGURE
+   --------------------------------------------------------------- */
+.tp-fig {
+  position: relative;
+  grid-column: var(--tp-col);
+  margin: 0;
+  outline: none;
+  /* --tp-y staggers the band; the JS parallax adds --tp-px/--tp-py on top */
+  transform: translate3d(var(--tp-px, 0px), calc(var(--tp-y) + var(--tp-py, 0px)), 0);
+  transition: transform 0.7s var(--tp-ease), z-index 0s linear 0.35s;
+  /* NO z-index here on purpose. A stacking context would trap the floating
+     label inside the figure, and neighbouring portraits later in the DOM
+     would paint over it. Left as auto, the labels (z-index 4) float above
+     every frame; only the hovered figure claims a layer. */
+}
+
+.tp-fig:hover,
+.tp-fig:focus-visible {
+  z-index: 9;
+  transition: transform 0.7s var(--tp-ease), z-index 0s;
+}
+
+/* Hairline joining the label to the frame. It runs vertically inside the
+   figure's own column - a horizontal connector would push the label into a
+   neighbouring column, and since every figure is transformed (which creates
+   a stacking context) no z-index can lift that label back on top. */
+.tp-fig__line {
+  position: absolute;
+  bottom: 100%;
+  width: 1px;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(var(--tp-orange-rgb), 0.9), var(--tp-hair));
+  z-index: 3;
+  transform-origin: bottom center;
+  transition: transform 0.55s var(--tp-ease), opacity 0.4s ease;
+}
+
+.tp-fig__line::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--tp-orange);
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(var(--tp-orange-rgb), 0.9);
+}
+
+.tp-fig--l .tp-fig__line { left: 22px; }
+.tp-fig--r .tp-fig__line { right: 22px; }
+
+/* floating label — glass chip hanging off the frame */
+.tp-fig__label {
+  position: absolute;
+  bottom: calc(100% + 18px);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 13px;
+  border-radius: 11px;
+  background: rgba(10, 10, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+  transition: opacity 0.4s ease, transform 0.55s var(--tp-ease);
+}
+
+.tp-fig--l .tp-fig__label { left: 0; }
+.tp-fig--r .tp-fig__label { right: 0; }
+
+.tp-fig__no {
+  font-family: var(--tm-serif, 'Cinzel', Georgia, serif);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--tp-orange-lt);
+  letter-spacing: 0.5px;
+}
+
+.tp-fig__label-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+/* label steps aside once the reveal takes over */
+.tp-fig:hover .tp-fig__label,
+.tp-fig:focus-visible .tp-fig__label { opacity: 0; }
+
+.tp-fig:hover .tp-fig__label { transform: translateY(-8px); }
+
+.tp-fig:hover .tp-fig__line,
+.tp-fig:focus-visible .tp-fig__line { transform: scaleY(0.35); opacity: 0.5; }
+
+/* ---------- the portrait frame ---------- */
+.tp-fig__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(150deg, rgba(var(--tp-orange-rgb), 0.2), rgba(10, 10, 18, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.7s var(--tp-ease), box-shadow 0.6s ease, border-color 0.5s ease;
+}
+
+.tp-fig--xl .tp-fig__frame { aspect-ratio: 3 / 4; }
+.tp-fig--lg .tp-fig__frame { aspect-ratio: 4 / 5; }
+.tp-fig--md .tp-fig__frame { aspect-ratio: 1 / 1; }
+.tp-fig--sm .tp-fig__frame { aspect-ratio: 5 / 6; }
+
+.tp-fig:hover .tp-fig__frame,
+.tp-fig:focus-visible .tp-fig__frame {
+  transform: scale(1.07);
+  border-color: rgba(var(--tp-orange-rgb), 0.5);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(var(--tp-orange-rgb), 0.22);
+}
+
+.tp-fig__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: grayscale(0.55) contrast(1.05) brightness(0.86);
+  transition: transform 0.9s var(--tp-ease), filter 0.6s ease;
+}
+
+.tp-fig:hover .tp-fig__frame img,
+.tp-fig:focus-visible .tp-fig__frame img {
+  transform: scale(1.09);
+  filter: grayscale(0) contrast(1.04) brightness(1);
+}
+
+.tp-fig__ini {
+  font-family: var(--tm-serif, 'Cinzel', Georgia, serif);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(var(--tp-orange-rgb), 0.75);
+}
+
+/* fine grain + top vignette, keeps the frames from looking flat */
+.tp-fig__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    linear-gradient(180deg, rgba(6, 6, 12, 0.5) 0%, transparent 32%),
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.014) 0 1px, transparent 1px 3px);
+  transition: opacity 0.5s ease;
+}
+
+.tp-fig:hover .tp-fig__grain { opacity: 0.2; }
+
+/* ---------- reveal panel ---------- */
+.tp-fig__reveal {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px 20px 20px;
+  background: linear-gradient(180deg, transparent, rgba(5, 5, 11, 0.9) 42%, rgba(5, 5, 11, 0.98));
+  transform: translateY(101%);
+  opacity: 0;
+  transition: transform 0.62s var(--tp-ease), opacity 0.4s ease;
+}
+
+.tp-fig:hover .tp-fig__reveal,
+.tp-fig:focus-visible .tp-fig__reveal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.tp-fig__dept {
+  display: inline-block;
+  padding: 3px 9px;
+  margin-bottom: 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tp-fig__role {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--tp-orange-lt);
+  margin-bottom: 7px;
+}
+
+.tp-fig__name {
+  font-family: var(--tm-serif, 'Cinzel', Georgia, serif);
+  font-size: clamp(17px, 1.5vw, 23px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 9px;
+}
+
+.tp-fig__bio {
+  font-size: 12.5px;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 14px;
+}
+
+/* small tiers have no room for the bio */
+.tp-fig--sm .tp-fig__bio,
+.tp-fig--md .tp-fig__bio { display: none; }
+.tp-fig--sm .tp-fig__reveal,
+.tp-fig--md .tp-fig__reveal { padding: 18px 16px 16px; }
+
+/* ---------- social micro-interactions ---------- */
+.tp-soc { display: flex; gap: 8px; }
+
+.tp-soc__btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  text-decoration: none;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.5s var(--tp-ease),
+              background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.tp-fig:hover .tp-soc__btn,
+.tp-fig:focus-visible .tp-soc__btn { opacity: 1; transform: translateY(0); }
+.tp-fig:hover .tp-soc__btn:nth-child(1) { transition-delay: 0.14s; }
+.tp-fig:hover .tp-soc__btn:nth-child(2) { transition-delay: 0.2s; }
+.tp-fig:hover .tp-soc__btn:nth-child(3) { transition-delay: 0.26s; }
+
+/* the fill wipes up from the bottom on hover */
+.tp-soc__btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(145deg, var(--tp-orange), var(--tp-orange-lt));
+  transform: translateY(101%);
+  transition: transform 0.4s var(--tp-ease);
+}
+
+.tp-soc__btn:hover {
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+}
+
+.tp-soc__btn:hover::before { transform: translateY(0); }
+
+/* ---------------------------------------------------------------
+   ENTRANCE (progressive enhancement — .tp-ready is added by JS)
+   --------------------------------------------------------------- */
+.tp-ready .tp-fig {
+  opacity: 0;
+  transform: translate3d(0, calc(var(--tp-y) + 46px), 0);
+}
+
+.tp-ready .tp-fig.is-in {
+  animation: tp-in 1s var(--tp-ease) both;
+  animation-delay: var(--tp-delay, 0ms);
+}
+
+@keyframes tp-in {
+  from { opacity: 0; transform: translate3d(0, calc(var(--tp-y) + 46px), 0) scale(0.965); }
+  to   { opacity: 1; transform: translate3d(var(--tp-px, 0px), calc(var(--tp-y) + var(--tp-py, 0px)), 0) scale(1); }
+}
+
+.tp-ready .tp__head [class*="tp__"] { }
+
+/* ---------------------------------------------------------------
+   CUSTOM CURSOR (desktop, fine pointer only)
+   --------------------------------------------------------------- */
+.tp__cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 76px;
+  height: 76px;
+  margin: -38px 0 0 -38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.3);
+  background: rgba(var(--tp-orange-rgb), 0.16);
+  border: 1px solid rgba(var(--tp-orange-rgb), 0.6);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease, transform 0.35s var(--tp-ease);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.tp__cursor.is-on { opacity: 1; transform: scale(1); }
+
+/* ---------------------------------------------------------------
+   RESPONSIVE — the composition is preserved, just re-scored
+   --------------------------------------------------------------- */
+@media (max-width: 1180px) {
+  .tp__canvas { column-gap: 18px; row-gap: 60px; }
+  /* halve the stagger so overlaps stay graceful in a narrower frame */
+  .tp-fig { transform: translate3d(var(--tp-px, 0px), calc(var(--tp-y) * 0.55 + var(--tp-py, 0px)), 0); }
+  .tp-ready .tp-fig { transform: translate3d(0, calc(var(--tp-y) * 0.55 + 40px), 0); }
+  @keyframes tp-in {
+    from { opacity: 0; transform: translate3d(0, calc(var(--tp-y) * 0.55 + 40px), 0) scale(0.965); }
+    to   { opacity: 1; transform: translate3d(var(--tp-px, 0px), calc(var(--tp-y) * 0.55 + var(--tp-py, 0px)), 0) scale(1); }
+  }
+}
+
+/* Tablet: rescore to a 6-column canvas, two portraits per band */
+@media (max-width: 900px) {
+  .tp { padding: 84px 0 96px; }
+  .tp__inner { padding: 0 24px; }
+  .tp__head { margin-bottom: 64px; }
+  .tp__panel { width: 78%; height: 36%; }
+
+  .tp__canvas { grid-template-columns: repeat(6, 1fr); row-gap: 46px; }
+  .tp-fig { grid-column: span 3 !important; }
+  .tp-fig:nth-child(even) { --tp-y: 40px; }
+  .tp-fig:nth-child(odd)  { --tp-y: 0px; }
+
+  /* labels move inside the frame — no room to hang off the edge */
+  .tp-fig__line { display: none; }
+  .tp-fig--l .tp-fig__label,
+  .tp-fig--r .tp-fig__label {
+    left: 10px;
+    right: auto;
+    top: 10px;
+    transform: none;
+    padding: 7px 11px;
+  }
+  .tp-fig--l:hover .tp-fig__label,
+  .tp-fig--r:hover .tp-fig__label { transform: none; }
+
+  .tp-fig--md .tp-fig__bio { display: block; }
+}
+
+/* Phone: single column, reveal is always open (no hover to give) */
+@media (max-width: 620px) {
+  .tp { padding: 64px 0 76px; }
+  .tp__inner { padding: 0 16px; }
+  .tp__head { margin-bottom: 44px; }
+  .tp__title-line--out,
+  .tp__lead,
+  .tp__hint { margin-left: 0; }
+  .tp__lead { margin-bottom: 16px; }
+  .tp__hint { display: none; }
+  .tp__panel { display: none; }
+
+  .tp__canvas { grid-template-columns: 1fr; row-gap: 22px; }
+  .tp-fig,
+  .tp-fig:nth-child(even),
+  .tp-fig:nth-child(odd) { grid-column: 1 / -1 !important; --tp-y: 0px; }
+  .tp-fig { transform: none; }
+
+  .tp-fig--xl .tp-fig__frame,
+  .tp-fig--lg .tp-fig__frame,
+  .tp-fig--md .tp-fig__frame,
+  .tp-fig--sm .tp-fig__frame { aspect-ratio: 4 / 5; }
+
+  .tp-fig__frame img { filter: grayscale(0) brightness(0.94); }
+
+  .tp-fig__label { display: none; }
+
+  .tp-fig__reveal {
+    position: static;
+    transform: none;
+    opacity: 1;
+    background: rgba(8, 8, 15, 0.55);
+    backdrop-filter: blur(12px);
+    padding: 16px 16px 18px;
+  }
+  .tp-fig__frame { display: block; }
+  .tp-fig__frame .tp-fig__reveal { position: absolute; inset: auto 0 0 0; }
+  .tp-fig--sm .tp-fig__bio,
+  .tp-fig--md .tp-fig__bio { display: block; }
+  .tp-soc__btn { opacity: 1; transform: none; }
+  .tp-ready .tp-fig { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-fig,
+  .tp-fig__frame,
+  .tp-fig__frame img,
+  .tp-fig__reveal,
+  .tp-fig__label,
+  .tp-fig__line,
+  .tp-soc__btn { transition: none !important; animation: none !important; }
+  .tp-ready .tp-fig { opacity: 1; transform: translate3d(0, var(--tp-y), 0); }
+  .tp__cursor { display: none; }
+}

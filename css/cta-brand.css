@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Brand CTA band - "Take Your Brand To The Next Level!"
+   Orange/red gradient panel with floating social-ad badges either side of a
+   centred heading, paragraph and two buttons. Scoped under .cta13- so it does
+   not collide with any existing section styles.
+   ========================================================================== */
+
+.cta13-section,
+.cta13-section *,
+.cta13-section *::before,
+.cta13-section *::after { box-sizing: border-box; }
+
+.cta13-section {
+  /* GetIt Media palette taken from the logo: brand orange, brand ink, white */
+  --cta13-orange: #f4510b;
+  --cta13-orange-lt: #ff7a2b;
+  --cta13-deep: #d13f04;
+  --cta13-ink: #101216;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: clamp(56px, 6.5vw, 104px) clamp(20px, 3.6vw, 56px);
+  background: linear-gradient(103deg, var(--cta13-deep) 0%, var(--cta13-orange) 48%, var(--cta13-orange-lt) 100%);
+  color: #fff;
+  font-family: var(--body-font-family, "Noto Sans", sans-serif);
+  text-align: center;
+}
+
+/* red field sweeping in from the left behind a single clean curve, as in the
+   reference - an ellipse anchored off-canvas keeps the edge one smooth arc */
+.cta13-section::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(165deg, #1b1f26 0%, var(--cta13-ink) 52%, #0a0c10 100%);
+  -webkit-clip-path: ellipse(46% 116% at 4% 30%);
+  clip-path: ellipse(46% 116% at 4% 30%);
+}
+/* faint diagonal sheen over the whole band */
+.cta13-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.1) 0%, transparent 42%);
+}
+
+.cta13-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.cta13-header {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta13-title {
+  margin: 0;
+  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
+  font-size: clamp(1.6rem, 2.85vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.cta13-title span { display: block; }
+
+.cta13-text {
+  margin: clamp(12px, 1.4vw, 18px) auto 0;
+  max-width: 620px;
+  font-size: clamp(0.86rem, 0.95vw, 1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.cta13-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 1.4vw, 20px);
+  margin-top: clamp(24px, 2.8vw, 40px);
+}
+
+.cta13-section .cta13-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(12px, 1.1vw, 16px) clamp(20px, 2vw, 30px);
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background: #fff;
+  color: var(--cta13-deep);
+  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
+  font-size: clamp(0.85rem, 0.92vw, 0.98rem);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 300ms ease, color 300ms ease, transform 300ms ease;
+}
+.cta13-btn svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform 300ms ease;
+}
+/* the theme's global `a:hover { color: inherit }` would turn the label white
+   on the white button, so every hover/focus state sets its colour explicitly */
+.cta13-section .cta13-btn:hover,
+.cta13-section .cta13-btn:focus,
+.cta13-section .cta13-btn:focus-visible {
+  background: #fa661b;
+  border-color: #fa661b;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.cta13-section .cta13-btn:hover svg,
+.cta13-section .cta13-btn:focus svg { transform: translate(2px, -2px); }
+
+.cta13-section .cta13-btn--ghost {
+  background: transparent;
+  color: #fff;
+}
+.cta13-section .cta13-btn--ghost:hover,
+.cta13-section .cta13-btn--ghost:focus,
+.cta13-section .cta13-btn--ghost:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: var(--cta13-deep);
+}
+
+/* ------------------------------------------------- floating social badges */
+.cta13-badges {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* squircle glass tile. The icon, its brand halo and the caption are stacked
+   as grid areas so the halo always sits dead-centre behind the glyph, with or
+   without the caption row. */
+.cta13-badge {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  align-content: center;
+  width: clamp(80px, 6.9vw, 112px);
+  height: clamp(80px, 6.9vw, 112px);
+  padding: 15px 10px 13px;
+  gap: 11px;
+  /* softer, deeper squircle - larger radius reads closer to an app icon */
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background:
+    /* light catching the top face */
+    radial-gradient(128% 92% at 50% -10%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(168deg, rgba(44, 48, 59, 0.95) 0%, rgba(19, 21, 27, 0.96) 58%, rgba(10, 11, 15, 0.97) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow:
+    /* grounded drop shadow */
+    0 26px 46px -18px rgba(4, 6, 9, 0.78),
+    0 8px 16px -10px rgba(4, 6, 9, 0.6),
+    /* brand-coloured bloom spilling out of the tile edges */
+    0 0 30px -14px var(--cta13-tint, #f4510b),
+    /* crisp glass rim */
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+  animation: cta13-float 6s ease-in-out infinite;
+}
+
+/* brand halo behind the glyph, stacked in the same grid cell as the icon */
+.cta13-badge__glow {
+  grid-area: 1 / 1;
+  place-self: center;
+  width: clamp(40px, 3.6vw, 58px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, var(--cta13-tint, #f4510b) 0%, rgba(255, 255, 255, 0) 68%);
+  opacity: 0.55;
+  filter: blur(9px);
+}
+
+.cta13-badge svg {
+  grid-area: 1 / 1;
+  place-self: center;
+  width: clamp(26px, 2.3vw, 38px);
+  height: clamp(26px, 2.3vw, 38px);
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.55));
+}
+
+.cta13-badge > span:not(.cta13-badge__glow) {
+  grid-area: 2 / 1;
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: break-word;
+  font-size: clamp(0.46rem, 0.48vw, 0.56rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.82);
+  text-transform: uppercase;
+  line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* position, float offset, brand tint and a slight tilt so the five tiles read
+   as a scattered composition rather than a grid */
+.cta13-badge--ig { top: 8%; left: 4%; animation-delay: 0s; --cta13-tint: #e1306c; --cta13-tilt: -6deg; }
+.cta13-badge--yt { top: 40%; left: 12%; animation-delay: 0.9s; --cta13-tint: #ff0000; --cta13-tilt: 4deg; }
+.cta13-badge--go { bottom: 4%; left: 19%; animation-delay: 1.8s; --cta13-tint: #4285f4; --cta13-tilt: -3deg; }
+.cta13-badge--fb { top: 14%; right: 10%; animation-delay: 0.5s; --cta13-tint: #1877f2; --cta13-tilt: 5deg; }
+.cta13-badge--me { bottom: 16%; right: 14%; animation-delay: 1.4s; --cta13-tint: #0081fb; --cta13-tilt: -5deg; }
+
+/* float keeps the badge bobbing; --cta13-drift is the scroll parallax offset
+   fed in by js/cta-brand.js and --cta13-tilt the per-tile rotation, so all
+   three motions share the one transform */
+@keyframes cta13-float {
+  0%, 100% { transform: translateY(var(--cta13-drift, 0px)) rotate(var(--cta13-tilt, 0deg)); }
+  50% { transform: translateY(calc(var(--cta13-drift, 0px) - 12px)) rotate(var(--cta13-tilt, 0deg)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta13-badge {
+    animation: none;
+    transform: rotate(var(--cta13-tilt, 0deg));
+  }
+}
+
+/* ------------------------------------------------------------- responsive */
+@media (max-width: 1200px) {
+  .cta13-badge--yt { left: 5%; }
+  .cta13-badge--go { left: 12%; }
+  .cta13-badge--me { right: 7%; }
+}
+
+@media (max-width: 991px) {
+  .cta13-section { padding: clamp(48px, 8vw, 72px) clamp(18px, 4vw, 32px); }
+  /* the chip is too small for a caption at this size - icon only */
+  .cta13-badge > span:not(.cta13-badge__glow) { display: none; }
+  .cta13-badge { width: clamp(54px, 8vw, 70px); height: clamp(54px, 8vw, 70px); padding: 0; border-radius: 20px; }
+  .cta13-badge svg { width: clamp(24px, 4.2vw, 34px); height: clamp(24px, 4.2vw, 34px); }
+  .cta13-badge__glow { width: clamp(32px, 5.6vw, 46px); filter: blur(6px); }
+  .cta13-badge--ig { top: 6%; left: 3%; }
+  .cta13-badge--yt { top: 46%; left: 3%; }
+  .cta13-badge--go { bottom: 6%; left: 9%; }
+  .cta13-badge--fb { top: 6%; right: 4%; }
+  .cta13-badge--me { bottom: 8%; right: 4%; }
+}
+
+@media (max-width: 575px) {
+  .cta13-badge svg { width: 28px; height: 28px; }
+  .cta13-badge__glow { width: 38px; }
+  .cta13-badge { border-radius: 18px; }
+  .cta13-badge--yt,
+  .cta13-badge--me { display: none; }
+  .cta13-badge--ig { top: 4%; left: 3%; }
+  .cta13-badge--go { bottom: 5%; left: 4%; }
+  .cta13-badge--fb { top: 4%; right: 3%; }
+  .cta13-actions { flex-direction: column; align-items: stretch; }
+  .cta13-btn { justify-content: center; }
+}
+
+/* ---------------------------------------------------------- entrance anim */
+/* elements start hidden and are revealed when the band scrolls into view
+   (js/cta-brand.js adds .is-inview). Without JS everything stays visible. */
+.cta13-section.js-anim .cta13-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 760ms cubic-bezier(0.16, 1, 0.3, 1), transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--cta13-delay, 0ms);
+}
+.cta13-section.js-anim .cta13-title span { display: block; overflow: hidden; }
+
+.cta13-section.js-anim.is-inview .cta13-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* badges fade in on their own stagger, then keep floating */
+.cta13-section.js-anim .cta13-badge {
+  opacity: 0;
+  animation-play-state: paused;
+  transition: opacity 700ms ease;
+  transition-delay: var(--cta13-delay, 0ms);
+}
+.cta13-section.js-anim.is-inview .cta13-badge {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* buttons keep a subtle attention pulse once revealed */
+.cta13-section.js-anim.is-inview .cta13-btn { animation: cta13-pulse 4.5s ease-in-out 1.4s infinite; }
+@keyframes cta13-pulse {
+  0%, 88%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+  94% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.16); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta13-section.js-anim .cta13-reveal,
+  .cta13-section.js-anim .cta13-badge {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .cta13-section.js-anim.is-inview .cta13-btn { animation: none; }
+}

@@ -1,0 +1,605 @@
+/* =====================================================================
+   TEAM HERO — editorial split on a cream ground
+
+   Two units, not one. A single unit could not serve both halves: driving it
+   from viewport height (so the artwork clears the fold) shrank the headline
+   to a fraction of its size and stranded the two halves at opposite edges
+   with dead space between them.
+
+     --ua  artwork unit — height-aware, so the disc and figure fit the fold
+     --uc  copy unit    — width-led, so the headline stays large
+
+   The two halves are then a centred flex pair with a real gap, which fills
+   the width instead of leaving margins at the edges or a hole in the middle.
+
+   The figure is images/about_team/3.png, a genuine transparent cutout, so
+   it needs no blend mode and leaves no panel edge.
+
+   Namespace: .hz
+   ===================================================================== */
+
+.hz {
+  --hz-cream: #f4f2ec;
+  --hz-ink: #1b1b1b;
+  --hz-body: #4a4a4a;
+  --hz-yellow: #f2c14e;
+  --hz-yellow-deep: #efb735;
+  --hz-green: #12352a;
+  --hz-orange: #ea5a06;
+  --hz-note: #efe9db;
+  --hz-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* pointer position, -1..1 on each axis; js/team-hero.js publishes these */
+  --mx: 0;
+  --my: 0;
+
+  /* the fixed navbar is taller (93px) than the 76px .page-wrapper reserves
+     for it, and the hero has to fit in what is left of the window */
+  --hz-nav: 93px;
+  --hz-pad: clamp(20px, 3.5vh, 44px);
+
+  /* artwork: 1u is 1/1440 of the width and 1/858 of the height below the
+     navbar; the smaller wins so the disc and figure always clear the fold */
+  --ua: clamp(0.44px, min(0.0694vw, calc((100vh - var(--hz-nav)) / 858)), 1px);
+
+  /* copy: the headline takes ~44vh (4 lines at 9.5vh, plus the line masks)
+     and the rest of the stack is ~259u, so the height term keeps the whole
+     stack between the padding bands below the navbar */
+  --uc: clamp(0.5px, min(0.0694vw, calc((56vh - var(--hz-nav) - 2 * var(--hz-pad)) / 259)), 1.02px);
+
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3.4vw, 82px);
+  padding-inline: clamp(20px, 3vw, 70px);
+  /* top band also covers the strip of hero the navbar sits over */
+  padding-block: calc(var(--hz-pad) + var(--hz-nav) - 76px) var(--hz-pad);
+  min-height: calc(858 * var(--ua) + var(--hz-nav) - 76px);
+  background:
+    radial-gradient(ellipse 52% 60% at 78% 38%, rgba(242, 193, 78, 0.14), transparent 62%),
+    var(--hz-cream);
+  font-family: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--hz-ink);
+}
+
+/* =====================================================================
+   1. COPY
+   ===================================================================== */
+.hz__copy {
+  position: relative;
+  z-index: 6;
+  flex: 0 1 calc(620 * var(--uc));
+  min-width: 0;              /* lets it shrink rather than overflow */
+  /* the headline is sized from this box's real width below; --uc alone
+     cannot do it, because flex-shrink can narrow the column without --uc
+     changing, and the headline then overflows its own column */
+  container-type: inline-size;
+}
+
+.hz__label {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--uc));
+  margin: 0 0 calc(20 * var(--uc));
+  font-size: calc(14 * var(--uc));
+  font-weight: 600;
+  letter-spacing: calc(2.4 * var(--uc));
+  text-transform: uppercase;
+  color: #3a3a3a;
+}
+
+.hz__label::before {
+  content: '';
+  width: calc(26 * var(--uc));
+  height: calc(2 * var(--uc));
+  background: var(--hz-orange);
+}
+
+.hz__title {
+  margin: 0;
+  font-size: calc(84 * var(--uc));            /* fallback: no container queries */
+  font-size: clamp(28px, min(14cqw, 9.5vh), 92px);
+  font-weight: 800;
+  line-height: 1.119;
+  letter-spacing: calc(-1.2 * var(--uc));
+  color: var(--hz-ink);
+}
+
+.hz__title span { display: block; }
+
+/* each line rides up out of its own mask; the padding/negative-margin pair
+   stops the mask clipping descenders in "People" and "Brighter" */
+.hz__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.hz__mark {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  font-style: normal;
+}
+
+.hz__mark::before {
+  content: '';
+  position: absolute;
+  left: -0.07em;
+  right: -0.12em;
+  bottom: 0.167em;
+  height: 0.52em;
+  z-index: -1;
+  background: var(--hz-yellow);
+  border-radius: calc(4 * var(--uc));
+  transform: rotate(-0.5deg);
+}
+
+.hz__text {
+  margin: calc(26 * var(--uc)) 0 0;
+  width: calc(446 * var(--uc));
+  max-width: 100%;
+  font-size: calc(22 * var(--uc));
+  line-height: calc(35 / 22);
+  color: var(--hz-body);
+}
+
+/* --- action row --- */
+.hz__actions {
+  display: flex;
+  align-items: center;
+  gap: calc(30 * var(--uc));
+  margin-top: calc(30 * var(--uc));
+  /* one row on desktop: a wrapped roster adds a whole line and pushes the
+     hero past the fold; the button gives up width instead */
+  flex-wrap: nowrap;
+}
+
+.hz__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(18 * var(--uc));
+  width: calc(266 * var(--uc));
+  height: calc(58 * var(--uc));
+  padding: 0 calc(9 * var(--uc)) 0 calc(26 * var(--uc));
+  border-radius: 999px;
+  background: var(--hz-green);
+  color: #fff;
+  font-size: calc(16.5 * var(--uc));
+  font-weight: 500;
+  /* the button may give up width in a tight row, but never break its label */
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s var(--hz-ease), box-shadow 0.3s ease;
+}
+
+.hz__cta:hover,
+.hz__cta:focus-visible {
+  color: #fff;
+  background: #0d271f;
+  transform: translateY(calc(-2 * var(--uc)));
+  box-shadow: 0 calc(14 * var(--uc)) calc(30 * var(--uc)) rgba(18, 53, 42, 0.28);
+}
+
+.hz__cta i {
+  display: grid;
+  place-items: center;
+  width: calc(38 * var(--uc));
+  height: calc(38 * var(--uc));
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: calc(14 * var(--uc));
+}
+
+/* --- roster cluster: real portraits, overlapped --- */
+.hz__roster { display: flex; flex: none; align-items: center; gap: calc(13 * var(--uc)); }
+
+.hz__faces { display: flex; }
+
+/* the portraits keep their size; flex would otherwise squash them together */
+.hz__faces > * { flex: none; }
+
+.hz__faces img {
+  width: calc(40 * var(--uc));
+  height: calc(40 * var(--uc));
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: calc(3 * var(--uc)) solid var(--hz-cream);
+  margin-left: calc(-13 * var(--uc));
+  transition: transform 0.4s var(--hz-ease);
+}
+
+.hz__faces img:first-child { margin-left: 0; }
+.hz__faces:hover img { transform: translateY(calc(-3 * var(--uc))); }
+
+.hz__more {
+  display: grid;
+  place-items: center;
+  width: calc(40 * var(--uc));
+  height: calc(40 * var(--uc));
+  margin-left: calc(-13 * var(--uc));
+  border-radius: 50%;
+  border: calc(3 * var(--uc)) solid var(--hz-cream);
+  background: var(--hz-green);
+  color: #fff;
+  font-size: calc(12 * var(--uc));
+  font-weight: 600;
+}
+
+.hz__rosterText {
+  font-size: calc(12 * var(--uc));
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: calc(0.6 * var(--uc));
+  text-transform: uppercase;
+  color: #5a5a5a;
+  white-space: nowrap;
+}
+
+.hz__rosterText b { display: block; color: var(--hz-ink); font-size: calc(14 * var(--uc)); }
+
+/* =====================================================================
+   2. ARTWORK
+      A flex item of fixed unit width, stretched to the section height so
+      its absolutely-placed children measure from the section's own edges.
+      Every child is offset from this box's left edge in --ua, so the disc,
+      ring, figure, cards and marginalia stay locked to one another.
+   ===================================================================== */
+.hz__art {
+  position: relative;
+  flex: 0 0 calc(1010 * var(--ua));
+  align-self: stretch;
+  /* reach through the padding bands, so the figure still stands on the
+     section's bottom edge and the disc keeps its place below the navbar */
+  margin-block: calc(-1 * var(--hz-pad));
+  z-index: 1;
+}
+
+.hz__disc,
+.hz__ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.hz__disc {
+  left: calc(552 * var(--ua));
+  top: calc(64 * var(--ua));
+  width: calc(580 * var(--ua));
+  height: calc(580 * var(--ua));
+  margin-left: calc(-290 * var(--ua));
+  background: var(--hz-yellow-deep);
+}
+
+.hz__ring {
+  left: calc(552 * var(--ua));
+  top: calc(28 * var(--ua));
+  width: calc(652 * var(--ua));
+  height: calc(652 * var(--ua));
+  margin-left: calc(-326 * var(--ua));
+  border: calc(1.5 * var(--ua)) dashed rgba(27, 27, 27, 0.18);
+}
+
+.hz__shot {
+  position: absolute;
+  /* the same anchor as the disc and ring — anything percentage-based here
+     drifts away from them as soon as the unit changes */
+  left: calc(552 * var(--ua));
+  bottom: 0;
+  z-index: 3;
+  width: calc(620 * var(--ua));
+  margin-left: calc(-310 * var(--ua));
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 calc(26 * var(--ua)) calc(40 * var(--ua)) rgba(0, 0, 0, 0.22));
+}
+
+/* --- floating figure cards --- */
+.hz-card {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--ua));
+  padding: calc(14 * var(--ua)) calc(20 * var(--ua));
+  border-radius: calc(14 * var(--ua));
+  background: #fff;
+  box-shadow: 0 calc(14 * var(--ua)) calc(34 * var(--ua)) rgba(27, 27, 27, 0.14);
+}
+
+.hz-card b {
+  font-size: calc(24 * var(--ua));
+  font-weight: 800;
+  line-height: 1;
+  color: var(--hz-green);
+  font-variant-numeric: tabular-nums;
+}
+
+.hz-card span {
+  font-size: calc(11 * var(--ua));
+  font-weight: 600;
+  letter-spacing: calc(1.1 * var(--ua));
+  text-transform: uppercase;
+  color: #6a6a6a;
+  white-space: nowrap;
+}
+
+.hz-card--a { left: calc(40 * var(--ua)); top: calc(300 * var(--ua)); }
+.hz-card--b { left: calc(760 * var(--ua)); top: calc(628 * var(--ua)); }
+
+/* =====================================================================
+   3. MARGINALIA — inside the artwork, so they track the disc
+   ===================================================================== */
+.hz-note {
+  position: absolute;
+  z-index: 7;
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-size: calc(23 * var(--ua));
+  font-weight: 600;
+  line-height: 1.16;
+  color: #2b2b2b;
+}
+
+.hz-note--a { left: calc(120 * var(--ua)); top: calc(104 * var(--ua)); }
+.hz-note--b { left: calc(770 * var(--ua)); top: calc(89 * var(--ua)); }
+
+.hz-note svg {
+  position: absolute;
+  width: calc(58 * var(--ua));
+  height: calc(58 * var(--ua));
+  overflow: visible;
+  fill: none;
+  stroke: #2b2b2b;
+  stroke-width: calc(2 * var(--ua));
+  stroke-linecap: round;
+}
+
+.hz-note--a svg { right: calc(-52 * var(--ua)); top: calc(30 * var(--ua)); }
+.hz-note--b svg { left: calc(-52 * var(--ua)); top: calc(34 * var(--ua)); transform: scaleX(-1); }
+
+.hz__sticky {
+  position: absolute;
+  left: calc(812 * var(--ua));
+  top: calc(229 * var(--ua));
+  z-index: 7;
+  width: calc(151 * var(--ua));
+  min-height: calc(130 * var(--ua));
+  padding: calc(24 * var(--ua)) calc(16 * var(--ua)) calc(18 * var(--ua));
+  background: var(--hz-note);
+  border-radius: calc(3 * var(--ua));
+  transform: rotate(2deg);
+  box-shadow: calc(3 * var(--ua)) calc(5 * var(--ua)) calc(14 * var(--ua)) rgba(0, 0, 0, 0.16);
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-size: calc(22 * var(--ua));
+  font-weight: 600;
+  line-height: 1.2;
+  color: #2b2b2b;
+}
+
+.hz__sticky::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(-9 * var(--ua));
+  width: calc(34 * var(--ua));
+  height: calc(16 * var(--ua));
+  margin-left: calc(-17 * var(--ua));
+  border-radius: calc(2 * var(--ua));
+  background: #1f1f1f;
+  transform: rotate(-3deg);
+}
+
+/* =====================================================================
+   4. RESPONSIVE — the pair stacks; the artwork keeps its composition
+   ===================================================================== */
+@media (max-width: 900px) {
+  .hz {
+    --ua: 0.86px;
+    --uc: 0.9px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: calc(26 * var(--uc));
+    padding-block: calc(64 * var(--uc)) 0;
+    min-height: 0;
+  }
+
+  .hz__copy { flex: 0 0 auto; }
+  .hz__text { width: calc(470 * var(--uc)); }
+  .hz__actions { flex-wrap: wrap; }
+
+  .hz__art { flex: 0 0 calc(600 * var(--ua)); align-self: stretch; margin-block: 0; }
+
+  .hz__disc,
+  .hz__ring,
+  .hz__shot { left: 50%; }
+
+  .hz__disc {
+    top: calc(40 * var(--ua));
+    width: calc(440 * var(--ua));
+    height: calc(440 * var(--ua));
+    margin-left: calc(-220 * var(--ua));
+  }
+
+  .hz__ring {
+    top: calc(12 * var(--ua));
+    width: calc(496 * var(--ua));
+    height: calc(496 * var(--ua));
+    margin-left: calc(-248 * var(--ua));
+  }
+
+  .hz__shot { width: calc(470 * var(--ua)); margin-left: calc(-235 * var(--ua)); }
+
+  .hz-card--a { left: calc(16 * var(--ua)); top: calc(190 * var(--ua)); }
+  .hz-card--b { left: auto; right: calc(16 * var(--ua)); top: calc(430 * var(--ua)); }
+
+  .hz-note--a { left: calc(14 * var(--ua)); top: calc(10 * var(--ua)); }
+  .hz-note--b { left: auto; right: calc(14 * var(--ua)); top: calc(10 * var(--ua)); }
+  .hz__sticky { display: none; }
+}
+
+@media (max-width: 560px) {
+  .hz { --ua: 0.62px; --uc: 0.68px; }
+  .hz__title { font-size: clamp(26px, 13cqw, 62px); }
+  .hz__text { width: 100%; }
+  .hz-note { display: none; }
+  .hz-card--a { top: calc(150 * var(--ua)); }
+  .hz-card--b { top: calc(400 * var(--ua)); }
+}
+
+/* =====================================================================
+   5. MOTION
+      One entrance, staggered by role. Nothing here animates a property that
+      another animation on the same element also owns — that was the bug in
+      the ring, where the entrance and the spin both drove transform and the
+      spin never took effect.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* --- headline: each line out of its mask --- */
+  .hz__title { animation: none; }
+
+  .hz__line > span { animation: hz-line 0.66s var(--hz-ease) both; }
+  .hz__line:nth-child(1) > span { animation-delay: 0.02s; }
+  .hz__line:nth-child(2) > span { animation-delay: 0.09s; }
+  .hz__line:nth-child(3) > span { animation-delay: 0.16s; }
+  .hz__line:nth-child(4) > span { animation-delay: 0.23s; }
+
+  /* the marker is drawn on once the last line has landed */
+  .hz__mark::before {
+    transform-origin: left center;
+    animation: hz-mark 0.45s var(--hz-ease) 0.62s both;
+  }
+
+  /* --- the rest of the copy --- */
+  .hz__label { animation: hz-rise 0.55s var(--hz-ease) both; }
+  .hz__text { animation: hz-rise 0.6s var(--hz-ease) 0.34s both; }
+  .hz__actions { animation: hz-rise 0.6s var(--hz-ease) 0.44s both; }
+
+  /* --- artwork --- */
+  .hz__disc {
+    transform-origin: center;
+    animation: hz-pop 0.7s var(--hz-ease) both;
+  }
+
+  /* opacity only, so the spin below owns transform outright */
+  .hz__ring { animation: hz-fade 0.8s ease both, hz-spin 90s linear infinite; }
+
+  .hz__shot { animation: hz-lift 0.8s var(--hz-ease) 0.14s both; }
+
+  .hz-card { animation: hz-pop 0.5s var(--hz-ease) both; }
+  .hz-card--a { animation-delay: 0.52s; }
+  .hz-card--b { animation-delay: 0.6s; }
+
+  .hz-note { animation: hz-rise 0.55s var(--hz-ease) 0.46s both; }
+  .hz__sticky { animation: hz-rise-sticky 0.55s var(--hz-ease) 0.52s both; }
+}
+
+@keyframes hz-line {
+  from { transform: translateY(108%); }
+  to   { transform: none; }
+}
+
+@keyframes hz-mark {
+  from { transform: rotate(-0.5deg) scaleX(0); }
+  to   { transform: rotate(-0.5deg) scaleX(1); }
+}
+
+@keyframes hz-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hz-lift {
+  from { opacity: 0; transform: translateY(30px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hz-pop {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hz-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* the pinned card has to keep its tilt through the rise */
+@keyframes hz-rise-sticky {
+  from { opacity: 0; transform: translateY(14px) rotate(2deg); }
+  to   { opacity: 1; transform: rotate(2deg); }
+}
+
+@keyframes hz-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =====================================================================
+   6. INTERACTION
+      Depth on the pointer, plus hover states.
+
+      The parallax uses the `translate` property rather than `transform`.
+      Two reasons: the entrance keyframes animate transform with fill:both,
+      so a transform here would be ignored; and the ring's spin owns
+      transform outright. `translate` is an independent property that
+      composes with both.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
+
+  .hz__ring,
+  .hz__disc,
+  .hz__shot,
+  .hz-card,
+  .hz-note,
+  .hz__sticky {
+    transition: translate 0.65s var(--hz-ease);
+  }
+
+  /* each layer moves by its own depth — furthest back moves least */
+  .hz__ring    { translate: calc(var(--mx) *  8px) calc(var(--my) *  6px); }
+  .hz__disc    { translate: calc(var(--mx) * 14px) calc(var(--my) * 10px); }
+  .hz__shot    { translate: calc(var(--mx) * 24px) calc(var(--my) * 14px); }
+  .hz-card--b  { translate: calc(var(--mx) * 30px) calc(var(--my) * 19px); }
+  .hz-card--a  { translate: calc(var(--mx) * 34px) calc(var(--my) * 22px); }
+  .hz-note     { translate: calc(var(--mx) * 38px) calc(var(--my) * 25px); }
+  .hz__sticky  { translate: calc(var(--mx) * 42px) calc(var(--my) * 28px); }
+
+  /* --- hover, once the entrance has released transform --- */
+  .hz.is-settled .hz-card,
+  .hz.is-settled .hz-note,
+  .hz.is-settled .hz__sticky {
+    transition: translate 0.65s var(--hz-ease), transform 0.4s var(--hz-ease), box-shadow 0.4s ease;
+  }
+
+  .hz.is-settled .hz-card:hover {
+    transform: translateY(-6px) scale(1.035);
+    box-shadow: 0 calc(24 * var(--ua)) calc(48 * var(--ua)) rgba(27, 27, 27, 0.22);
+  }
+
+  .hz.is-settled .hz-card:hover b { color: var(--hz-orange); }
+  .hz.is-settled .hz-card b { transition: color 0.35s ease; }
+
+  /* the pinned card straightens slightly when you point at it */
+  .hz.is-settled .hz__sticky:hover { transform: rotate(-0.5deg) scale(1.035); }
+
+  .hz.is-settled .hz-note:hover { transform: scale(1.05); }
+}
+
+/* Releasing the entrance animations is what makes the hover states above
+   possible: while they are live, fill:both pins transform and :hover is
+   overridden. The ring keeps its spin — only the entrance is cleared. */
+.hz.is-settled .hz__copy > *,
+.hz.is-settled .hz__line > span,
+.hz.is-settled .hz__mark::before,
+.hz.is-settled .hz__disc,
+.hz.is-settled .hz__shot,
+.hz.is-settled .hz-card,
+.hz.is-settled .hz-note,
+.hz.is-settled .hz__sticky { animation: none; }
+
+.hz.is-settled .hz__ring { animation: hz-spin 90s linear infinite; }

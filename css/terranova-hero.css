@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Terranova — cinematic About hero section (scoped, embedded in abouts.html)
+   ========================================================================== */
+
+.tn-hero {
+  position: relative;
+  isolation: isolate;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 24px;
+  font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #111111;
+}
+.tn-hero * { box-sizing: border-box; }
+
+.tn-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.tn-bg-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse 55% 60% at 50% 45%, transparent 0%, transparent 30%, #111111 78%);
+  pointer-events: none;
+}
+
+.tn-glass-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---- Decorative vertical rules ---- */
+.tn-rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.tn-rule--left { left: 1.25rem; }
+.tn-rule--right { right: 1.25rem; }
+.tn-rule__seg { width: 1px; background: rgba(255, 255, 255, 0.2); }
+.tn-rule__seg--end { height: 15%; }
+.tn-rule__seg--mid { flex: 1; }
+.tn-rule__plus { font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); line-height: 1; padding: 6px 0; }
+
+/* ---- Main composition (centered stack) ---- */
+.tn-composition {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  min-height: 0;
+  text-align: center;
+}
+
+.tn-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f5f5f5;
+  animation: tn-copy-float 7s ease-in-out infinite;
+}
+.tn-eyebrow, .tn-heading, .tn-desc {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes tn-copy-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tn-copy { animation: none; }
+}
+
+.tn-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 22px;
+  padding: 7px 16px;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+}
+.tn-eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9be564;
+  box-shadow: 0 0 8px rgba(155, 229, 100, 0.8);
+  animation: tn-dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes tn-dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(155, 229, 100, 0.8); }
+  50%      { opacity: 0.5; box-shadow: 0 0 14px rgba(155, 229, 100, 1); }
+}
+
+.tn-heading {
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 9vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+.tn-heading .tn-heading-accent {
+  background: linear-gradient(100deg, #9be564 0%, #d8f3c2 60%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tn-desc { margin: 0 auto 30px; max-width: 34ch; font-size: 0.98rem; line-height: 1.6; color: #f5f5f5; opacity: 0.85; }
+
+.tn-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 26px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #101410;
+  text-decoration: none;
+  border-radius: 999px;
+  background: #ffffff;
+  transition: transform 300ms ease, box-shadow 300ms ease, background 300ms ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.tn-cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #101410;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.tn-cta-arrow svg { width: 15px; height: 15px; }
+.tn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  background: #9be564;
+}
+
+/* ---- Scroll cue ---- */
+.tn-scroll-cue {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 18px auto 0;
+  color: rgba(245, 245, 245, 0.55);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.tn-scroll-cue svg {
+  width: 14px;
+  height: 14px;
+  animation: tn-scroll-bounce 1.8s ease-in-out infinite;
+}
+@keyframes tn-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(5px); opacity: 1; }
+}
+
+/* ==========================================================================
+   Responsive — sm 640 / md 768 / lg 1024
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .tn-heading { font-size: clamp(2.6rem, 6vw, 3.4rem); }
+}
+
+@media (min-width: 768px) {
+  .tn-rule { display: flex; }
+  .tn-hero { padding: 28px 64px 40px; }
+}
+
+@media (min-width: 1024px) {
+  .tn-hero { padding: 34px 88px 48px; }
+  .tn-heading { font-size: clamp(3.2rem, 5vw, 4.4rem); }
+  .tn-desc { font-size: 1rem; max-width: 36ch; }
+  .tn-composition { gap: 34px; }
+}

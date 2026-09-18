@@ -1,0 +1,318 @@
+/* =====================================================================
+   New Ultra-Luxury SEO Landing Page Design Styles
+   ===================================================================== */
+
+/* Hero Section with Parallax Background Image */
+.seo-hero-new {
+  position: relative;
+  min-height: 100vh;
+  padding: 160px 20px 100px;
+  background-color: #060609;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(6, 6, 9, 0.45) 0%, rgba(6, 6, 9, 0.92) 100%),
+    url('../images/seo_hero_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.seo-hero-new::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 20% 40%, rgba(0, 229, 255, 0.12) 0%, transparent 60%),
+              radial-gradient(circle at 80% 60%, rgba(234, 90, 6, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.seo-hero-inner {
+  position: relative;
+  z-index: 10;
+  max-width: 1320px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.seo-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1.5px solid rgba(0, 229, 255, 0.35);
+  border-radius: 99px;
+  color: #00e5ff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.2);
+}
+
+.seo-hero-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00e5ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00e5ff;
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.seo-hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.12;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+}
+
+.seo-hero-title .accent-cyan {
+  color: #00e5ff;
+  background: linear-gradient(135deg, #00e5ff 0%, #00b0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.seo-hero-title .accent-orange {
+  color: #ff5722;
+  background: linear-gradient(135deg, #ff7043 0%, #ff5722 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.seo-hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 36px;
+  max-width: 580px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.seo-hero-actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.seo-btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 34px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #ff5722 0%, #ea5a06 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 12px 35px rgba(255, 87, 34, 0.45);
+  transition: all 0.35s ease;
+}
+
+.seo-btn-main:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(255, 87, 34, 0.65);
+  color: #FFFFFF;
+}
+
+.seo-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 34px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: all 0.35s ease;
+}
+
+.seo-btn-ghost:hover {
+  border-color: #00e5ff;
+  color: #00e5ff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
+}
+
+/* Right Side SERP Visual */
+.seo-serp-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(20, 20, 30, 0.92) 0%, rgba(10, 10, 16, 0.96) 100%);
+  border: 1.5px solid rgba(0, 229, 255, 0.3);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 229, 255, 0.15);
+  backdrop-filter: blur(20px);
+  animation: floatSerp 6s ease-in-out infinite;
+}
+
+@keyframes floatSerp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.serp-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+  padding: 12px 20px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #00e5ff;
+}
+
+.serp-result-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.serp-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #34A853;
+  background: rgba(52, 168, 83, 0.15);
+  border: 1px solid rgba(52, 168, 83, 0.3);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+}
+
+.serp-item-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #8ab4f8;
+  margin: 0 0 6px;
+}
+
+.serp-item-url {
+  font-size: 12px;
+  color: #34A853;
+  margin-bottom: 8px;
+}
+
+.serp-item-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Floating Glass Cards */
+.seo-float-card {
+  position: absolute;
+  background: rgba(14, 14, 22, 0.9);
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  border-radius: 18px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  z-index: 15;
+}
+
+.seo-float-card--top {
+  top: -20px;
+  right: -20px;
+}
+
+.seo-float-card--bot {
+  bottom: -20px;
+  left: -20px;
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.seo-float-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 87, 34, 0.15);
+  color: #ff5722;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.seo-float-card--bot .seo-float-icon {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00e5ff;
+}
+
+.seo-float-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.seo-float-sub {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .seo-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .seo-hero-title {
+    font-size: 44px;
+  }
+  .seo-serp-card {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .seo-hero-new {
+    padding: 130px 16px 60px;
+    background-attachment: scroll;
+  }
+  .seo-hero-title {
+    font-size: 32px;
+  }
+  .seo-hero-desc {
+    font-size: 15px;
+  }
+  .seo-float-card {
+    position: relative;
+    top: auto; right: auto; bottom: auto; left: auto;
+    margin-top: 15px;
+  }
+}

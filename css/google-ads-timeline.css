@@ -1,0 +1,457 @@
+/* =====================================================================
+   Google Ads Service
+   Left : curved infographic with a travelling progress arc
+   Right: five stage cards that spotlight one at a time
+   Palette: Google blue / red / yellow / green
+   ===================================================================== */
+
+.gads-info {
+  position: relative;
+  isolation: isolate;
+  padding: 90px 24px 96px;
+  background:
+    radial-gradient(900px 520px at 18% 30%, rgba(56, 110, 220, .16) 0%, rgba(56,110,220,0) 70%),
+    radial-gradient(760px 460px at 88% 78%, rgba(90, 70, 200, .12) 0%, rgba(90,70,200,0) 72%),
+    #080605;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #e8eaed;
+}
+
+.gads-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+  align-items: center;
+  gap: 56px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ---------------- Google palette, one colour per stage ----------------
+   --c solid fill | --c-ink text-safe shade | --c-soft halo | --c-ghost wash */
+[data-step="01"], [data-step="05"] {
+  --c: #4285F4; --c-ink: #8ab4f8;
+  --c-soft: rgba(66, 133, 244, .22); --c-ghost: rgba(122, 170, 255, .14);
+}
+[data-step="02"] {
+  --c: #EA4335; --c-ink: #f28b82;
+  --c-soft: rgba(234, 67, 53, .22);  --c-ghost: rgba(242, 139, 130, .14);
+}
+[data-step="03"] {
+  --c: #FBBC04; --c-ink: #fdd663;
+  --c-soft: rgba(251, 188, 4, .28);  --c-ghost: rgba(253, 214, 99, .16);
+}
+[data-step="04"] {
+  --c: #34A853; --c-ink: #81c995;
+  --c-soft: rgba(52, 168, 83, .22);  --c-ghost: rgba(129, 201, 149, .14);
+}
+
+/* ---------------- Left: the curved infographic ---------------- */
+
+.gads-stage {
+  --gads-design-w: 560px;
+  --gads-design-h: 790px;
+  --gads-max-h: 700px;
+  position: relative;
+  width: 100%;
+  height: 790px;            /* replaced by JS with the scaled height */
+}
+
+.gads-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--gads-design-w, 560px);
+  height: var(--gads-design-h, 790px);
+  transform-origin: top left;
+  transform: translateX(var(--gads-offset, 0px)) scale(var(--gads-scale, 1));
+}
+
+.gads-art {
+  position: absolute;
+  inset: 0;
+  width: var(--gads-design-w, 560px);
+  height: var(--gads-design-h, 790px);
+  pointer-events: none;
+}
+
+/* curve above the badge circles; the numbers sit above the curve */
+.gads-art--front { z-index: 2; }
+
+/* travelling progress arc, length driven by JS */
+.gads-progress {
+  stroke-dasharray: 1008;
+  stroke-dashoffset: 1008;
+  transition: stroke-dashoffset .85s cubic-bezier(.4, 0, .2, 1),
+              stroke .45s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .12));
+}
+
+.gads-center {
+  position: absolute;
+  left: 288px;
+  top: 389px;
+  width: 420px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.gads-logo-mark {
+  display: block;
+  margin: 0 auto 18px;
+  width: 66px;
+  height: 60px;
+}
+
+.gads-wordmark {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -.6px;
+}
+/* authentic Google logotype colours */
+.gads-wordmark .g-b { color: #4285F4; }   /* G, g */
+.gads-wordmark .g-r { color: #EA4335; }   /* o, e */
+.gads-wordmark .g-y { color: #FBBC04; }   /* o     */
+.gads-wordmark .g-g { color: #34A853; }   /* l     */
+.gads-wordmark .g-dark { color: #e8eaed; }
+
+.gads-service {
+  margin: 12px 0 0;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #8ab4f8;
+}
+
+.gads-tagline {
+  margin: 22px 0 0;
+  font-size: 19px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #98a2b3;
+}
+
+/* ---------------- Badges on the curve ---------------- */
+
+.gads-badge {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #1b2130 0%, #12161f 100%);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .55),
+              0 0 0 1px rgba(255, 255, 255, .07),
+              inset 0 1px 0 rgba(255, 255, 255, .09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 700;
+  color: #8ab4f8;
+  letter-spacing: -.3px;
+  cursor: pointer;
+  /* entrance uses translate/scale, interaction uses transform, so no clash */
+  transition: transform .45s cubic-bezier(.34, 1.4, .5, 1),
+              box-shadow .4s ease;
+}
+
+.gads-num {
+  position: relative;
+  z-index: 3;
+  transition: color .35s ease;
+}
+
+.gads-badge.is-active {
+  transform: scale(1.16);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .6),
+              0 0 0 10px var(--c-soft, rgba(66, 133, 244, .22)),
+              0 0 34px var(--c-soft, rgba(66, 133, 244, .22)),
+              inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+.gads-badge.is-active .gads-num { color: var(--c-ink, #1a73e8); }
+
+/* expanding ring pulse on the active badge */
+.gads-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--c, #4285F4);
+  opacity: 0;
+  pointer-events: none;
+}
+.gads-badge.is-active::after { animation: gads-pulse 1.9s ease-out infinite; }
+
+@keyframes gads-pulse {
+  0%   { opacity: .55; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.75); }
+  100% { opacity: 0;   transform: scale(1.75); }
+}
+
+/* ---------------- Right: the stage cards ---------------- */
+
+.gads-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gads-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 13px 30px 13px 22px;
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .028);
+  cursor: pointer;
+  transition: transform .42s cubic-bezier(.34, 1.2, .5, 1),
+              box-shadow .42s ease,
+              border-color .42s ease,
+              background .42s ease,
+              padding .42s cubic-bezier(.4, 0, .2, 1),
+              gap .42s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* the description only exists when the stage is the active one */
+.gads-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .45s cubic-bezier(.4, 0, .2, 1),
+              opacity .35s ease;
+  opacity: 0;
+}
+.gads-reveal > * { overflow: hidden; min-height: 0; }
+.gads-card.is-active .gads-reveal { grid-template-rows: 1fr; opacity: 1; }
+
+/* quiet at rest, lifted and coloured when active */
+.gads-card.is-active {
+  transform: translateX(10px);
+  padding: 22px 30px 22px 26px;
+  gap: 22px;
+  background: rgba(255, 255, 255, .062);
+  border-color: var(--c-soft, #cfe0fb);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4),
+              0 22px 52px var(--c-soft, rgba(26, 115, 232, .18));
+}
+
+.gads-card:focus-visible {
+  outline: 2px solid var(--c, #1a73e8);
+  outline-offset: 3px;
+}
+
+/* colour rail on the leading edge */
+.gads-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--c, #1a73e8);
+  transform: scaleY(.28);
+  opacity: .35;
+  transition: transform .4s cubic-bezier(.34, 1.2, .5, 1), opacity .4s ease;
+}
+.gads-card.is-active::before { transform: scaleY(1); opacity: 1; }
+
+/* auto-advance timer that fills across the bottom of the active card */
+.gads-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--c, #1a73e8);
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: .6;
+}
+.gads-card.is-timing::after {
+  animation: gads-timer var(--gads-dwell, 3600ms) linear forwards;
+}
+@keyframes gads-timer { to { transform: scaleX(1); } }
+
+.gads-ghost {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 78px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -3px;
+  color: var(--c-ghost, #eff4fd);
+  pointer-events: none;
+  user-select: none;
+  opacity: .35;
+  transition: color .38s ease, opacity .4s ease,
+              scale .5s cubic-bezier(.34, 1.2, .5, 1);
+}
+.gads-card.is-active .gads-ghost { scale: 1.1; opacity: 1; }
+
+.gads-chip {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .38s ease, border-color .38s ease, box-shadow .38s ease,
+              width .42s cubic-bezier(.4,0,.2,1), height .42s cubic-bezier(.4,0,.2,1),
+              border-radius .42s ease, transform .45s cubic-bezier(.34, 1.4, .5, 1);
+}
+.gads-card.is-active .gads-chip {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--c, #1a73e8);
+  border-color: var(--c, #1a73e8);
+  transform: rotate(-6deg) scale(1.06);
+  box-shadow: 0 10px 22px var(--c-soft, rgba(26, 115, 232, .3));
+}
+
+.gads-icon {
+  width: 23px;
+  height: 23px;
+  color: #7d8899;
+  transition: color .38s ease, width .42s ease, height .42s ease;
+}
+.gads-card.is-active .gads-icon { width: 27px; height: 27px; }
+.gads-card.is-active .gads-icon { color: #ffffff; }
+
+.gads-cbody {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.gads-step {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: var(--c-ink, #1a73e8);
+  margin-bottom: 5px;
+}
+.gads-step::after {
+  content: "";
+  width: 18px;
+  height: 1.5px;
+  margin-left: 9px;
+  background: var(--c, #b9d3f8);
+  opacity: .45;
+  transition: width .4s cubic-bezier(.34, 1.2, .5, 1), opacity .4s ease;
+}
+.gads-card.is-active .gads-step::after { width: 34px; opacity: 1; }
+
+.gads-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #8b95a6;
+  letter-spacing: -.2px;
+  transition: color .38s ease;
+}
+.gads-card.is-active .gads-title { color: #ffffff; }
+
+.gads-desc {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #6d7686;
+  transition: color .38s ease;
+}
+.gads-card.is-active .gads-desc { color: #a4adbb; }
+
+/* ---------------- Entrance (translate/scale so interaction stays free) ---- */
+
+.gads-badge,
+.gads-card {
+  opacity: 0;
+  animation: gads-in .6s cubic-bezier(.4, 0, .2, 1) forwards;
+  animation-play-state: paused;
+}
+.gads-info.is-visible .gads-badge,
+.gads-info.is-visible .gads-card { animation-play-state: running; }
+
+@keyframes gads-in {
+  from { opacity: 0; translate: 26px 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+.gads-badge { animation-name: gads-badge-in; }
+@keyframes gads-badge-in {
+  from { opacity: 0; scale: .8; }
+  to   { opacity: 1; scale: 1; }
+}
+
+.gads-arc-anim {
+  stroke-dasharray: 1010;
+  stroke-dashoffset: 1010;
+}
+.gads-info.is-visible .gads-arc-anim {
+  animation: gads-draw 1.7s cubic-bezier(.4, 0, .2, 1) forwards;
+}
+@keyframes gads-draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .gads-badge, .gads-card { opacity: 1; animation: none; translate: none; scale: none; }
+  .gads-card.is-active { transform: none; }
+  .gads-badge.is-active { transform: none; }
+  .gads-badge.is-active::after { animation: none; }
+  .gads-card.is-timing::after { animation: none; }
+  .gads-arc-anim { stroke-dashoffset: 0; animation: none; }
+  .gads-progress { transition: none; }
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 1150px) {
+  .gads-wrap { grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 40px; }
+  .gads-card { padding: 18px 26px 18px 22px; gap: 18px; }
+  .gads-chip { width: 50px; height: 50px; border-radius: 14px; }
+  .gads-icon { width: 24px; height: 24px; }
+  .gads-ghost { font-size: 62px; right: 18px; }
+  .gads-title { font-size: 18px; }
+  .gads-desc { font-size: 15px; }
+}
+
+@media (max-width: 900px) {
+  .gads-info { padding: 70px 20px 76px; }
+  .gads-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .gads-stage { --gads-max-h: 560px; max-width: 460px; margin: 0 auto; }
+  .gads-cards { max-width: 620px; margin: 0 auto; width: 100%; }
+  .gads-card.is-active { transform: translateX(0) translateY(-3px); }
+}
+
+@media (max-width: 560px) {
+  .gads-info { padding: 54px 16px 60px; }
+  .gads-stage { --gads-max-h: 460px; }
+  .gads-card { padding: 16px 18px; gap: 14px; border-radius: 14px; }
+  .gads-chip { width: 44px; height: 44px; border-radius: 12px; }
+  .gads-icon { width: 21px; height: 21px; }
+  .gads-ghost { display: none; }
+  .gads-step { font-size: 11px; letter-spacing: 1.2px; }
+  .gads-title { font-size: 17px; }
+  .gads-desc { font-size: 15px; }
+}

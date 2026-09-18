@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Spotlight text reveal — a mouse-following yellow "light" painted over
+   any element marked [data-reveal-text]. Base text stays its normal color;
+   a cloned yellow duplicate layer is masked to a soft circle that tracks
+   the (eased) cursor position, only inside the element's own box.
+
+   Tuning:
+     --reveal-color     -> the yellow reveal color
+     --reveal-radius     -> size of the spotlight circle
+     --reveal-softness   -> feather/blur of the spotlight edge
+   Glow intensity -> the drop-shadow on .reveal-text__layer below.
+   ========================================================================== */
+
+:root {
+  --reveal-color: #fcdb66;    /* <- CHANGE YELLOW COLOR HERE */
+  --reveal-radius: 180px;     /* <- CHANGE REVEAL RADIUS HERE */
+  --reveal-softness: 100px;   /* <- CHANGE REVEAL EDGE SOFTNESS HERE */
+}
+
+[data-reveal-text] {
+  position: relative;
+  display: inline-block;
+}
+
+.reveal-text__layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  color: var(--reveal-color);
+
+  -webkit-mask-image: radial-gradient(
+    circle var(--reveal-radius) at var(--mx, -999px) var(--my, -999px),
+    #000 0%,
+    #000 calc(100% - var(--reveal-softness)),
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--reveal-radius) at var(--mx, -999px) var(--my, -999px),
+    #000 0%,
+    #000 calc(100% - var(--reveal-softness)),
+    transparent 100%
+  );
+
+  filter: drop-shadow(0 0 24px rgba(252, 219, 102, 0.55)); /* <- CHANGE GLOW INTENSITY HERE */
+
+  transition: opacity 0.35s ease;
+  opacity: 0;
+}
+
+[data-reveal-text].is-reveal-active .reveal-text__layer {
+  opacity: 1;
+}
+
+/* Portions already permanently colored (e.g. the yellow "ideas into
+   reality" span) don't need the spotlight glow duplicated on top of them —
+   mark them [data-reveal-skip] to exclude them from the reveal layer. */
+.reveal-text__layer [data-reveal-skip] {
+  opacity: 0;
+}
+
+@media (hover: none), (pointer: coarse) {
+  /* No hover on touch devices — keep base text only, skip the effect */
+  .reveal-text__layer { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-text__layer { transition: none; }
+}

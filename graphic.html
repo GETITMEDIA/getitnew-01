@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Graphic Design & Video Services | GetIt Media</title>
+
+  <!-- Stylesheets -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/navbar.css" rel="stylesheet">
+  <link href="css/fontawesome.css" rel="stylesheet">
+  <link href="css/graphic-services.css" rel="stylesheet">
+
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+
+  <!-- Responsive -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Explore GetIt Media's premier graphic design and video editing services, including logo design, festival posters, brochure design, product showcases, and retail campaign posters.">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+<body class="graphic-page">
+
+  <!-- Background Ambient Glow -->
+  <div class="graphic-page__bg-glow"></div>
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+      </svg>
+      <div class="preloader-heading">
+        <div class="load-text">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- Single Main Project Navbar (Spans Full Page Width) -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="index.html" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited"
+            class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media">
+                Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true"
+                aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">G</span><span class="mega-service__text"><span
+                          class="mega-service__title">Google My Business</span></span></a>
+                    <a href="google-ads.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">A</span><span class="mega-service__text"><span
+                          class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                    <a href="socialmedia.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">S</span><span class="mega-service__text"><span
+                          class="mega-service__title">Social Media Marketing</span></span></a>
+                    <a href="searchengine.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">Q</span><span class="mega-service__text"><span
+                          class="mega-service__title">Search Engine Optimization</span></span></a>
+                    <a href="website.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">W</span><span class="mega-service__text"><span
+                          class="mega-service__title">Website Design &amp; Development</span></span></a>
+                    <a href="graphic.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">D</span><span class="mega-service__text"><span
+                          class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="video-editor.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">V</span><span class="mega-service__text"><span
+                          class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span>
+                      <h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4>
+                      <p class="mega-promo__text">One call with us changes your digital game.</p>
+                    </div>
+                    <a href="contact.html" class="mega-promo__btn">Contact Us <span
+                        aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="contact.html" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+            aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="index.html" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png"
+            alt="GetIt Media" class="logo__img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up"><span
+            class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span class="logo__text">Get<span
+                class="logo__accent">It</span><span class="logo__media"> Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger"
+              id="mobileServicesTrigger" aria-expanded="false"
+              aria-controls="mobileServicesPanel"><span>Services</span><span
+                class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span></button>
+            <div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html"
+                class="mobile-service">Google My Business</a><a href="google-ads.html" class="mobile-service">Google
+                &amp; Meta Ads</a><a href="socialmedia.html" class="mobile-service">Social Media Marketing</a><a
+                href="searchengine.html" class="mobile-service">Search Engine Optimization</a><a
+                href="website.html" class="mobile-service">Website Design &amp; Development</a><a
+                href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html"
+                class="mobile-service">Video Editing</a></div>
+          </li>
+          <li><a href="team.html" class="mobile-link">Team</a></li>
+          <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+          <li><a href="price.html" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ===== CINEMATIC HERO ===== -->
+    <section class="gd-hero">
+      <div class="gd-hero__bg">
+        <img src="images/graphic/lightbulb_graphic.jpg" alt="Creative Graphic Design">
+      </div>
+
+      <!-- Drifting warm light + rising embers (decorative) -->
+      <div class="gd-hero__aura" aria-hidden="true"></div>
+      <div class="gd-hero__embers" aria-hidden="true">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span>
+      </div>
+      <div class="gd-hero__sweep" aria-hidden="true"></div>
+
+      <!-- Entrance is driven by CSS (see .gd-hero animations), not AOS:
+           AOS would apply its own transform and fight the staggered reveal. -->
+      <div class="gd-hero__content">
+        <div class="gd-hero__badge">Design Studio</div>
+        <h1 class="gd-hero__title">
+          <span class="gd-hero__line"><span>Graphic</span></span>
+          <span class="gd-hero__line"><span>Design</span></span>
+        </h1>
+        <p class="gd-hero__subtitle">
+          Elevate your brand identity with visual excellence. We craft compelling digital assets tailored to stand out in a noisy marketplace.
+        </p>
+        <div class="gd-hero__scroll">
+          <span>Scroll</span>
+          <div class="gd-hero__scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <main class="graphic-container">
+      <!-- Section backdrop: soft grid + warm glows so the showcase rows sit on
+           a lit surface instead of flat black (decorative only) -->
+      <div class="gd-backdrop" aria-hidden="true"></div>
+
+
+
+      <!-- ===== SECTION: TOP 3 SPLIT SHOWCASES ===== -->
+
+      <div class="gd-section-header">
+        <span class="gd-section-header__num">Our Services</span>
+        <h2 class="gd-section-header__title">What We Create</h2>
+        <div class="gd-section-header__line"></div>
+        <p class="gd-section-header__desc">From brand identity to marketing collateral — every pixel is crafted with purpose and precision.</p>
+      </div>
+
+
+      <!-- 01 — Logo Design (Image Left) -->
+      <div class="gd-split">
+        <div class="gd-split__media">
+          <img src="images/graphic/g_logo_showcase.jpg" alt="3D Logo Design Showcase" loading="lazy">
+        </div>
+        <div class="gd-split__text">
+          <div class="gd-split__num">01</div>
+          <h2 class="gd-split__title">Logo Design</h2>
+          <p class="gd-split__desc">
+            Custom iconic brand logos designed to capture your corporate essence and leave a lasting impression across all media.
+          </p>
+          <ul class="gd-split__features">
+            <li>Scalable Vector Assets</li>
+            <li>Timeless Brand Marks</li>
+            <li>Complete Brand Guidelines</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gd-divider"></div>
+
+      <!-- 02 — Brochure Design (Image Right) -->
+      <div class="gd-split gd-split--reverse">
+        <div class="gd-split__media">
+          <img src="images/graphic/brochure_grid_showcase.jpg" alt="Brochure Design Showcase Grid" loading="lazy">
+        </div>
+        <div class="gd-split__text">
+          <div class="gd-split__num">02</div>
+          <h2 class="gd-split__title">Brochure Design</h2>
+          <p class="gd-split__desc">
+            Multi-page corporate brochures and marketing collateral crafted with elegant editorial typography and print-ready precision.
+          </p>
+          <ul class="gd-split__features">
+            <li>Print-ready CMYK Formatting</li>
+            <li>Custom Grid Systems</li>
+            <li>Bi-fold & Tri-fold Layouts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gd-divider"></div>
+
+      <!-- 03 — Product Packaging (Image Left) -->
+      <div class="gd-split">
+        <div class="gd-split__media">
+          <img src="images/graphic/perfume_bottle_showcase.jpg" alt="Luxury Perfume Product Showcase" loading="lazy">
+        </div>
+        <div class="gd-split__text">
+          <div class="gd-split__num">03</div>
+          <h2 class="gd-split__title">Product Packaging</h2>
+          <p class="gd-split__desc">
+            Premium 3D product packaging concepts designed to highlight luxury details, shelf appeal, and influence purchasing decisions.
+          </p>
+          <ul class="gd-split__features">
+            <li>Photorealistic 3D Mockups</li>
+            <li>Elegant Label Layouts</li>
+            <li>Retail-ready Designs</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- ===== BENTO GRID: More Services ===== -->
+
+      <div class="gd-section-header">
+        <span class="gd-section-header__num">Portfolio</span>
+        <h2 class="gd-section-header__title">More We Deliver</h2>
+        <div class="gd-section-header__line"></div>
+        <p class="gd-section-header__desc">Explore the full range of our creative output — every piece is built to convert and captivate.</p>
+      </div>
+
+      <div class="gd-bento">
+        <!-- ID Card (wide) -->
+        <div class="gd-bento__card gd-bento__card--wide" data-aos="fade-up">
+          <img src="images/graphic/id_card_showcase.jpg" alt="3D ID Card Design Showcase" loading="lazy">
+          <div class="gd-bento__overlay">
+            <h3 class="gd-bento__overlay-title">ID Card Design</h3>
+            <p class="gd-bento__overlay-desc">Sleek, professional corporate identification with modern security aesthetics and branded lanyard integration.</p>
+          </div>
+        </div>
+
+        <!-- Festival Poster (tall) -->
+        <div class="gd-bento__card gd-bento__card--tall" data-aos="fade-up" data-aos-delay="100">
+          <img src="images/graphic/festival_poster_showcase.jpg" alt="Festival Poster Showcase" loading="lazy">
+          <div class="gd-bento__overlay">
+            <h3 class="gd-bento__overlay-title">Festival Poster</h3>
+            <p class="gd-bento__overlay-desc">Vibrant, culturally rich festival graphics designed for high social media engagement and seasonal campaigns.</p>
+          </div>
+        </div>
+
+        <!-- Retail Poster -->
+        <div class="gd-bento__card" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/graphic/retail_poster_sale.jpg" alt="Retail Poster Sale Showcase" loading="lazy">
+          <div class="gd-bento__overlay">
+            <h3 class="gd-bento__overlay-title">Retail Poster</h3>
+            <p class="gd-bento__overlay-desc">High-contrast, attention-grabbing retail posters engineered to maximize foot traffic and drive conversions.</p>
+          </div>
+        </div>
+
+        <!-- Newspaper Ad -->
+        <div class="gd-bento__card" data-aos="fade-up" data-aos-delay="300">
+          <img src="images/graphic/newspaper_ad_mockup.jpg" alt="Newspaper Ad Mockup" loading="lazy">
+          <div class="gd-bento__overlay">
+            <h3 class="gd-bento__overlay-title">Newspaper Ad</h3>
+            <p class="gd-bento__overlay-desc">High-impact print advertising layouts tailored for classic publications with CMYK optimization.</p>
+          </div>
+        </div>
+
+        <!-- Banner Design (wide) -->
+        <div class="gd-bento__card gd-bento__card--wide" data-aos="fade-up" data-aos-delay="100">
+          <img src="images/graphic/banner_design_showcase.jpg" alt="Banner Design Showcase" loading="lazy">
+          <div class="gd-bento__overlay">
+            <h3 class="gd-bento__overlay-title">Banner Design</h3>
+            <p class="gd-bento__overlay-desc">Eye-catching digital and print banners for events, promotions, and storefront displays.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ===== PHONE MOCKUP: Social Media Kit (Super Animated) ===== -->
+
+      <div class="gd-divider"></div>
+
+      <section class="gd-phone-section">
+        <div class="gd-phone-particles" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="gd-phone-mockup" id="phoneMockup3D">
+          <div class="gd-phone-mockup__frame">
+            <div class="gd-phone-mockup__glow-line"></div>
+            <div class="gd-phone-mockup__notch"></div>
+            <img src="images/graphic/mobile_carousel_showcase.jpg" alt="Social Media Mobile Carousel Showcase" loading="lazy">
+          </div>
+        </div>
+        <div class="gd-phone-text">
+          <div class="gd-split__num">
+            <span>04</span>
+            <div class="gd-num-pulse"></div>
+          </div>
+          <h2 class="gd-phone-text__title">Social Media Kit</h2>
+          <p class="gd-phone-text__desc">
+            Cohesive social media assets optimized for mobile viewing and cross-platform consistency. Build professional credibility and boost digital engagement across every platform.
+          </p>
+          <div class="gd-phone-text__tags">
+            <span class="gd-phone-text__tag"><i class="fab fa-instagram"></i> Instagram</span>
+            <span class="gd-phone-text__tag"><i class="fab fa-facebook-f"></i> Facebook</span>
+            <span class="gd-phone-text__tag"><i class="fas fa-bolt"></i> Stories</span>
+            <span class="gd-phone-text__tag"><i class="fas fa-film"></i> Reels</span>
+            <span class="gd-phone-text__tag"><i class="fas fa-th-large"></i> Feed Grids</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===== CTA: Let's Talk ===== -->
+
+      <section class="gd-cta">
+        <img src="images/graphic/lets_talk_wave_bg.jpg" alt="" class="gd-cta__bg" aria-hidden="true">
+        <span class="gd-cta__scrim" aria-hidden="true"></span>
+        <div class="gd-cta__content">
+          <h2 class="gd-cta__title">Let's Talk</h2>
+          <p class="gd-cta__subtitle">Ready to elevate your brand? Let's create something extraordinary together.</p>
+          <a href="page-contact.html" class="gd-cta__btn">
+            Get a Free Quote
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <div class="gd-socials">
+            <a href="#" class="gd-social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="gd-social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="gd-social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="gd-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="gd-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="gd-social-btn" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+  <!-- Page Wrapper End -->
+
+  <!-- Scripts -->
+  <script src="js/jquery.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/navbar.js"></script>
+
+  <script>
+    (function () {
+      function hidePreloader() {
+        var preloader = document.querySelector('.preloader');
+        if (preloader) {
+          preloader.classList.add('loaded');
+          setTimeout(function () {
+            preloader.style.display = 'none';
+          }, 400);
+        }
+      }
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(hidePreloader, 200);
+      } else {
+        window.addEventListener('DOMContentLoaded', function () {
+          setTimeout(hidePreloader, 200);
+        });
+      }
+      setTimeout(hidePreloader, 1000);
+    })();
+  </script>
+
+
+    <script>AOS.init({duration: 800, once: true});</script>
+    <script>
+      (function() {
+        var mockup = document.getElementById('phoneMockup3D');
+        if (!mockup) return;
+        var frame = mockup.querySelector('.gd-phone-mockup__frame');
+        var ticking = false;
+
+        mockup.addEventListener('mousemove', function(e) {
+          if (!ticking) {
+            window.requestAnimationFrame(function() {
+              var rect = mockup.getBoundingClientRect();
+              var x = e.clientX - rect.left - rect.width / 2;
+              var y = e.clientY - rect.top - rect.height / 2;
+              var rotateX = (-y / (rect.height / 2)) * 12;
+              var rotateY = (x / (rect.width / 2)) * 12;
+              frame.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) scale3d(1.02, 1.02, 1.02)';
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+        mockup.addEventListener('mouseleave', function() {
+          frame.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+      })();
+    </script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/scroll-anim.js"></script>
+  <script src="js/graphic-hero.js"></script>
+  <script src="js/graphic-text-anim.js"></script>
+</body>
+
+</html>

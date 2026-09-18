@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="bgGmb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dfe7d4"/>
+      <stop offset="1" stop-color="#f5f1e4"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bgGmb)"/>
+  <circle cx="150" cy="90" r="70" fill="#ffffff" opacity="0.35"/>
+  <circle cx="540" cy="400" r="110" fill="#ffffff" opacity="0.3"/>
+
+  <!-- map pin -->
+  <path d="M320 110c-66 0-120 52-120 128 0 96 120 220 120 220s120-124 120-220c0-76-54-128-120-128z" fill="#e8622c"/>
+  <circle cx="320" cy="238" r="56" fill="#fee17c"/>
+  <!-- storefront glyph inside pin -->
+  <g transform="translate(320 238)">
+    <rect x="-34" y="-6" width="68" height="42" rx="4" fill="#0A0A0A"/>
+    <path d="M-40 -6 L-30 -30 L30 -30 L40 -6 Z" fill="#0A0A0A"/>
+    <rect x="-10" y="10" width="20" height="26" fill="#fee17c"/>
+    <rect x="-34" y="-30" width="10" height="10" fill="#fee17c"/>
+    <rect x="-12" y="-30" width="10" height="10" fill="#f5f1e4"/>
+    <rect x="10" y="-30" width="10" height="10" fill="#fee17c"/>
+  </g>
+
+  <!-- rating stars -->
+  <g fill="#0A0A0A">
+    <path d="M198 380l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
+    <path d="M320 400l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
+    <path d="M442 380l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/>
+  </g>
+</svg>

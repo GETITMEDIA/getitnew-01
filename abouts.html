@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <title>GetIt Media | Digital Marketing Agency</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+    <link href="css/stats.css" rel="stylesheet">
+    <link href="css/cursor.css" rel="stylesheet">
+    <link href="css/text-reveal.css" rel="stylesheet">
+    <link href="css/lets-talk.css" rel="stylesheet">
+    <link href="css/about-hero.css" rel="stylesheet">
+    <link href="css/terranova-hero.css" rel="stylesheet">
+    <link href="css/services-cards.css" rel="stylesheet">
+    <link href="css/cta-brand.css" rel="stylesheet">
+    <link href="css/about-us.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="preloader-heading">
+            <div class="load-text">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- GetIt Media Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="#home" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span class="mega-service__icon">G</span><span class="mega-service__text"><span class="mega-service__title">Google My Business</span></span></a>
+                    <a href="google-ads.html" class="mega-service" role="menuitem"><span class="mega-service__icon">A</span><span class="mega-service__text"><span class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                    <a href="socialmedia.html" class="mega-service" role="menuitem"><span class="mega-service__icon">S</span><span class="mega-service__text"><span class="mega-service__title">Social Media Marketing</span></span></a>
+                    <a href="searchengine.html" class="mega-service" role="menuitem"><span class="mega-service__icon">Q</span><span class="mega-service__text"><span class="mega-service__title">Search Engine Optimization</span></span></a>
+                    <a href="website.html" class="mega-service" role="menuitem"><span class="mega-service__icon">W</span><span class="mega-service__text"><span class="mega-service__title">Website Design &amp; Development</span></span></a>
+                    <a href="graphic.html" class="mega-service" role="menuitem"><span class="mega-service__icon">D</span><span class="mega-service__text"><span class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="video-editor.html" class="mega-service" role="menuitem"><span class="mega-service__icon">V</span><span class="mega-service__text"><span class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span><h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4><p class="mega-promo__text">One call with us changes your digital game.</p></div>
+                    <a href="contact.html" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="contact.html" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="#home" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up"><span class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger" id="mobileServicesTrigger" aria-expanded="false" aria-controls="mobileServicesPanel"><span>Services</span><span class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html" class="mobile-service">Google My Business</a><a href="google-ads.html" class="mobile-service">Google &amp; Meta Ads</a><a href="socialmedia.html" class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html" class="mobile-service">Video Editing</a></div></li>
+          <li><a href="team.html" class="mobile-link">Team</a></li>
+          <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+          <li><a href="price.html" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- About Hero Section -->
+    <section class="about-hero theme-dark" id="about" style="display:none">
+      <div class="about-hero__particles" aria-hidden="true"></div>
+      <div class="about-hero__dots about-hero__dots--top" aria-hidden="true"></div>
+      <div class="about-hero__dots about-hero__dots--bottom" aria-hidden="true"></div>
+      <div class="about-hero__arc" aria-hidden="true"></div>
+
+      <div class="about-hero__inner">
+        <nav class="about-hero__breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">&#8250;</span>
+          <span class="current">About Us</span>
+        </nav>
+
+        <div class="about-hero__socials">
+          <a href="https://www.facebook.com/getitmediasolutions" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank" rel="noopener" class="is-active" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/getitmediasolutions" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <div class="about-hero__grid">
+          <div class="about-hero__content">
+            <div class="about-hero__label">Who We Are</div>
+            <h1 class="about-hero__title" data-aos="fade-up">Building Digital<br>Solutions That<br><span class="is-accent">Make An Impact</span></h1>
+            <p class="about-hero__desc">At Getit Media Solutions, we combine creativity, technology, and strategy to deliver digital experiences that help businesses grow, engage, and stand out in the digital world.</p>
+            <a href="#contact" class="about-hero__cta">
+              Let&rsquo;s Work Together
+              <span class="about-hero__cta-icon"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+          </div>
+
+          <div class="about-hero__visual">
+            <span class="about-hero__outline-text" aria-hidden="true">ABOUT US</span>
+            <div class="about-hero__object-wrap" aria-hidden="true">
+              <div class="about-hero__object-glow"></div>
+              <div class="about-hero__object"></div>
+              <div class="about-hero__object-rim"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-hero__stats">
+          <div class="about-hero__stat">
+            <span class="about-hero__stat-icon"><i class="fa-solid fa-bullseye"></i></span>
+            <span>
+              <span class="about-hero__stat-value">150+</span>
+              <span class="about-hero__stat-label">Projects Completed</span>
+            </span>
+          </div>
+          <div class="about-hero__stat">
+            <span class="about-hero__stat-icon"><i class="fa-solid fa-users"></i></span>
+            <span>
+              <span class="about-hero__stat-value">98%</span>
+              <span class="about-hero__stat-label">Client Satisfaction</span>
+            </span>
+          </div>
+          <div class="about-hero__stat">
+            <span class="about-hero__stat-icon"><i class="fa-solid fa-trophy"></i></span>
+            <span>
+              <span class="about-hero__stat-value">10+</span>
+              <span class="about-hero__stat-label">Awards Achieved</span>
+            </span>
+          </div>
+          <div class="about-hero__stat">
+            <span class="about-hero__stat-icon"><i class="fa-solid fa-rocket"></i></span>
+            <span>
+              <span class="about-hero__stat-value">5+</span>
+              <span class="about-hero__stat-label">Years of Experience</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terranova Hero Section -->
+    <section class="tn-hero theme-light" id="tnHero">
+      <video
+        id="tnBgVideo"
+        class="tn-bg-video"
+        aria-hidden="true"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        src="images/video/1.mp4">
+      </video>
+      <div class="tn-bg-tint" aria-hidden="true"></div>
+
+      <svg class="tn-glass-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+          <filter
+            id="liquid-glass-refraction"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%"
+            color-interpolation-filters="sRGB">
+
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.015" numOctaves="3" result="noise" />
+
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              result="boosted_alpha"
+              values="
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 100 0" />
+
+            <feGaussianBlur in="boosted_alpha" stdDeviation="45" result="blurred_alpha" />
+
+            <feComponentTransfer in="blurred_alpha" result="edge_mask">
+              <feFuncA type="linear" slope="-1.3" intercept="1" />
+            </feComponentTransfer>
+
+            <feComposite
+              in="noise"
+              in2="edge_mask"
+              operator="arithmetic"
+              k1="1" k2="0" k3="0" k4="0"
+              result="masked_noise" />
+
+            <feDisplacementMap in="SourceGraphic" in2="masked_noise" scale="65" xChannelSelector="R" yChannelSelector="G" result="red_displaced" />
+            <feColorMatrix in="red_displaced" type="matrix" result="red" values="
+              1 0 0 0 0
+              0 0 0 0 0
+              0 0 0 0 0
+              0 0 0 1 0" />
+
+            <feDisplacementMap in="SourceGraphic" in2="masked_noise" scale="56" xChannelSelector="R" yChannelSelector="G" result="green_displaced" />
+            <feColorMatrix in="green_displaced" type="matrix" result="green" values="
+              0 0 0 0 0
+              0 1 0 0 0
+              0 0 0 0 0
+              0 0 0 1 0" />
+
+            <feDisplacementMap in="SourceGraphic" in2="masked_noise" scale="47" xChannelSelector="R" yChannelSelector="G" result="blue_displaced" />
+            <feColorMatrix in="blue_displaced" type="matrix" result="blue" values="
+              0 0 0 0 0
+              0 0 0 0 0
+              0 0 1 0 0
+              0 0 0 1 0" />
+
+            <feBlend in="red" in2="green" mode="screen" result="rg" />
+            <feBlend in="rg" in2="blue" mode="screen" result="chromatic_dispersion" />
+          </filter>
+        </defs>
+      </svg>
+
+      <div class="tn-rule tn-rule--left" aria-hidden="true">
+        <span class="tn-rule__seg tn-rule__seg--end"></span>
+        <span class="tn-rule__plus">+</span>
+        <span class="tn-rule__seg tn-rule__seg--mid"></span>
+        <span class="tn-rule__plus">+</span>
+        <span class="tn-rule__seg tn-rule__seg--end"></span>
+      </div>
+      <div class="tn-rule tn-rule--right" aria-hidden="true">
+        <span class="tn-rule__seg tn-rule__seg--end"></span>
+        <span class="tn-rule__plus">+</span>
+        <span class="tn-rule__seg tn-rule__seg--mid"></span>
+        <span class="tn-rule__plus">+</span>
+        <span class="tn-rule__seg tn-rule__seg--end"></span>
+      </div>
+
+      <main class="tn-composition">
+        <div class="tn-copy">
+          <p class="tn-eyebrow">About Terranova</p>
+          <h1 class="tn-heading" data-aos="fade-up">Signals from<br><span class="tn-heading-accent">the Deep Green</span></h1>
+          <p class="tn-desc">We investigate the hidden signals connecting forests, water, soil, and atmosphere — revealing the ecological networks that quietly shape our planet.</p>
+          <a href="#research" class="tn-cta">
+            <span>Explore our research</span>
+            <span class="tn-cta-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </a>
+          <div class="tn-scroll-cue" aria-hidden="true">
+            <span>Scroll</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- Services Cards Section -->
+    <section class="sc-section theme-dark" id="scServices">
+      <div class="sc-spotlight" aria-hidden="true">
+        <span class="sc-spotlight__haze"></span>
+        <span class="sc-spotlight__beam"></span>
+        <span class="sc-spotlight__source"></span>
+      </div>
+      <div class="sc-bgtype" aria-hidden="true">
+        <span class="sc-bgtype__l1">LET'S</span>
+        <!-- <span class="sc-bgtype__l2">IMPROVE</span>
+        <span class="sc-bgtype__l3">YOUR BUSINESS</span>
+        <span class="sc-bgtype__l4">WHAT'S MAKES US<br>SPECIAL</span> -->
+      </div>
+      <div class="sc-vignette" aria-hidden="true"></div>
+
+
+      <div class="sc-stage">
+        <article class="sc-card sc-card--1" tabindex="0">
+          <span class="sc-pin" aria-hidden="true"><span class="sc-pin__needle"></span><span class="sc-pin__head"></span></span>
+          <div class="sc-card__body">
+            <p class="sc-card__desc">We create clear, tailored strategies that align with your business goals. Every step is planned to build a strong foundation for growth. Our approach keeps your brand focused, competitive, and future-ready.</p>
+            <span class="sc-card__index" aria-hidden="true">[ 01 ]</span>
+            <h3 class="sc-card__title" data-aos="fade-up">Strategic Approach</h3>
+          </div>
+        </article>
+
+        <article class="sc-card sc-card--2" tabindex="0">
+          <span class="sc-pin" aria-hidden="true"><span class="sc-pin__needle"></span><span class="sc-pin__head"></span></span>
+          <div class="sc-card__body">
+            <p class="sc-card__desc">We focus on strategies that deliver measurable business results. From visibility to conversions, every effort has a clear purpose. Your growth and success remain at the center of everything we do.</p>
+            <span class="sc-card__index" aria-hidden="true">[ 02 ]</span>
+            <h3 class="sc-card__title" data-aos="fade-up">Result Oriented</h3>
+          </div>
+        </article>
+
+        <article class="sc-card sc-card--3" tabindex="0">
+          <span class="sc-pin" aria-hidden="true"><span class="sc-pin__needle"></span><span class="sc-pin__head"></span></span>
+          <div class="sc-card__body">
+            <p class="sc-card__desc">We simplify repetitive tasks with smart digital solutions and automation. Save valuable time while improving efficiency and productivity. Our systems help your business operate smarter and faster.</p>
+            <span class="sc-card__index" aria-hidden="true">[ 03 ]</span>
+            <h3 class="sc-card__title" data-aos="fade-up">Business Automation</h3>
+          </div>
+        </article>
+
+        <article class="sc-card sc-card--4" tabindex="0">
+          <span class="sc-pin" aria-hidden="true"><span class="sc-pin__needle"></span><span class="sc-pin__head"></span></span>
+          <div class="sc-card__body">
+            <p class="sc-card__desc">Our experience helps us understand different business needs and challenges. We provide flexible, practical, and cost-effective solutions. Every solution is adapted to fit your goals, budget, and business growth.</p>
+            <span class="sc-card__index" aria-hidden="true">[ 04 ]</span>
+            <h3 class="sc-card__title" data-aos="fade-up">Experience & Flexibility</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="au-section theme-light" id="aboutUs">
+      <div class="au-inner">
+        <!-- left column -->
+        <div class="au-content">
+          <span class="au-eyebrow">About Us</span>
+          <span class="au-rule au-rule--top"></span>
+
+          <h2 class="au-title" data-aos="fade-up">
+            <span>We&rsquo;re More</span>
+            <span>Than Marketers.</span>
+            <span class="au-title__accent">We&rsquo;re Growth Architects.</span>
+          </h2>
+
+          <span class="au-rule au-rule--mid"></span>
+
+          <h3 class="au-subtitle" data-aos="fade-up">getit media <span>solution</span></h3>
+
+          <p class="au-text">Getit Media Solution Pvt Ltd Is a Digital Marketing And Web Development Company That Has Been In Business Since 2005. We Offer Innovative, Strategic Digital Marketing And Web Development Services To Help Your Potential Clients Understand Your Products And Services. Our Reputation For Website Design, SEO, Youtube Promotions, And Mobile App Development Has Been Built Over Time</p>
+
+          <p class="au-text">We Are A Team Of Enthusiastic Individuals Who Have Been Working Together For Years. Our Experience With Various Types Of Projects Has Made Us One Of The Leading Digital Marketing And Development Companies In Pondicherry.</p>
+
+          <p class="au-text">Getit Media Solutions Private Limited, the leading digital marketing agency in Pondicherry. Our team of experts is dedicated to providing you with the best digital marketing solutions to help your business grow. We offer a wide range of services, including social media management, Google SEO, SEM, Google ranking, website designing and development, website SEO, Google Ads, social media video editing, logo designing, and graphic designs. add website and app development and Google My Business</p>
+
+        </div>
+
+        <!-- right visual composition -->
+        <div class="au-visual">
+          <span class="au-dots" aria-hidden="true"></span>
+
+          <!-- dark office panel behind the irregular curved mask -->
+          <div class="au-panel">
+            <img src="images/home-4/about-image2.jpg" alt="GetIt Media team working in the studio" class="au-photo" data-aos="fade-up">
+            <span class="au-panel__tint" aria-hidden="true"></span>
+            <span class="au-panel__glow" aria-hidden="true"></span>
+          </div>
+
+          <!-- orange boundary stroke + sweep + orbital dots -->
+          <svg class="au-stroke" viewBox="0 0 800 1024" preserveAspectRatio="none" aria-hidden="true">
+            <path class="au-stroke__edge" d="M232 0 C 92 150, 44 322, 132 468 C 226 624, 292 706, 246 828 C 208 930, 190 982, 216 1024"></path>
+            <path class="au-stroke__sweep" d="M470 -6 C 560 40, 690 66, 800 60"></path>
+            <path class="au-stroke__hair" d="M262 6 C 128 158, 84 324, 168 464 C 258 616, 320 704, 276 826"></path>
+            <path class="au-stroke__orbit" d="M470 1010 C 610 986, 726 918, 792 806"></path>
+          </svg>
+
+
+
+          <!-- floating mission / vision cards -->
+          <div class="au-cards">
+            <article class="au-card au-card--mission">
+              <span class="au-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 12.5a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5Zm-6.2.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2Zm12.4 0a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2ZM12 13.75c-2.9 0-5.25 1.55-5.25 3.45V19h10.5v-1.8c0-1.9-2.35-3.45-5.25-3.45Zm-6.2.55c-2.3 0-4.05 1.2-4.05 2.7V19h4.15v-1.8c0-1.05.42-1.99 1.13-2.73a7.7 7.7 0 0 0-1.23-.17Zm12.4 0c-.42 0-.83.06-1.23.17.71.74 1.13 1.68 1.13 2.73V19h4.15v-2c0-1.5-1.75-2.7-4.05-2.7Z"/></svg>
+              </span>
+              <h4 class="au-card__title">Our Mission</h4>
+              <p class="au-card__text">To empower businesses with result-driven digital marketing solutions.</p>
+              <span class="au-card__accent" aria-hidden="true"></span>
+            </article>
+
+            <article class="au-card au-card--vision">
+              <span class="au-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20.9 3.1c-3.3-.45-6.4.7-8.6 2.9l-1.5 1.5-3.2-.6a1.6 1.6 0 0 0-1.45.44L3.6 10.4c-.5.5-.3 1.35.38 1.57l2.86.95 4.24 4.24.95 2.86c.22.68 1.07.88 1.57.38l3.06-3.05c.38-.38.55-.93.44-1.45l-.6-3.2 1.5-1.5c2.2-2.2 3.35-5.3 2.9-8.6a1.1 1.1 0 0 0-.9-.9ZM15.5 9.7a1.75 1.75 0 1 1 2.47-2.47A1.75 1.75 0 0 1 15.5 9.7ZM4.2 17.1c-.9.9-1.2 4-1.2 4s3.1-.3 4-1.2c.6-.6.62-1.5.05-2.07l-.78-.78c-.57-.57-1.47-.55-2.07.05Z"/></svg>
+              </span>
+              <h4 class="au-card__title">Our Vision</h4>
+              <p class="au-card__text">To be a global leader in digital marketing and brand growth.</p>
+              <span class="au-card__accent" aria-hidden="true"></span>
+            </article>
+          </div>
+
+          <span class="au-spark au-spark--1" aria-hidden="true"></span>
+          <span class="au-spark au-spark--2" aria-hidden="true"></span>
+          <span class="au-spark au-spark--3" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Brand CTA Section -->
+    <section class="cta13-section theme-dark" aria-labelledby="cta13Title" data-sa-skip>
+      <div class="cta13-badges" aria-hidden="true">
+        <span class="cta13-badge cta13-badge--ig">
+          <span class="cta13-badge__glow" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><defs><linearGradient id="cta13Ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdc468"/><stop offset="0.25" stop-color="#f77737"/><stop offset="0.55" stop-color="#e1306c"/><stop offset="0.8" stop-color="#c13584"/><stop offset="1" stop-color="#5851db"/></linearGradient></defs><path fill="url(#cta13Ig)" d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/></svg>
+          <span>Instagram Ads</span>
+        </span>
+        <span class="cta13-badge cta13-badge--yt">
+          <span class="cta13-badge__glow" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="#ff0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path fill="#fff" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <span>Advertising</span>
+        </span>
+        <span class="cta13-badge cta13-badge--go">
+          <span class="cta13-badge__glow" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="#4285F4" d="M23.52 12.273c0-.851-.076-1.67-.218-2.455H12v4.642h6.458a5.52 5.52 0 0 1-2.394 3.622v3.01h3.878c2.269-2.088 3.578-5.164 3.578-8.819z"/><path fill="#34A853" d="M12 24c3.24 0 5.956-1.075 7.942-2.908l-3.878-3.01c-1.075.72-2.45 1.145-4.064 1.145-3.125 0-5.77-2.11-6.714-4.947H1.276v3.107A11.995 11.995 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.286 14.28a7.212 7.212 0 0 1-.376-2.28c0-.791.136-1.56.376-2.28V6.613H1.276A11.995 11.995 0 0 0 0 12c0 1.937.464 3.77 1.276 5.387l4.01-3.107z"/><path fill="#EA4335" d="M12 4.773c1.762 0 3.344.606 4.588 1.795l3.442-3.442C17.951 1.19 15.235 0 12 0 7.31 0 3.255 2.689 1.276 6.613l4.01 3.107C6.23 6.883 8.875 4.773 12 4.773z"/></svg>
+          <span>Google Ads</span>
+        </span>
+        <span class="cta13-badge cta13-badge--fb">
+          <span class="cta13-badge__glow" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="#1877f2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>Facebook Ads</span>
+        </span>
+        <span class="cta13-badge cta13-badge--me">
+          <span class="cta13-badge__glow" aria-hidden="true"></span>
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path fill="#0081fb" d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>
+          <span>Meta Ads</span>
+        </span>
+      </div>
+
+      <div class="cta13-inner">
+        <div class="cta13-header">
+          <h2 class="cta13-title" id="cta13Title" data-aos="fade-up">
+            <span>Take Your Brand To The Next Level!</span>
+            <span>To Begin Your Success Story.</span>
+          </h2>
+          <p class="cta13-text">Ready to elevate your brand and achieve exceptional results? Our team of creative experts is here to turn your vision into reality.</p>
+          <div class="cta13-actions">
+            <a href="page-contact.html" class="cta13-btn">Get Started Today
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <a href="page-contact.html" class="cta13-btn cta13-btn--ghost">Request a Consultation
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Back-to-top start -->
+      <div class="back-to-top-wrapper">
+          <button id="back_to_top" type="button" class="back-to-top-btn">
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+          </button>
+      </div>
+      <!-- Back-to-top start -->
+    
+
+
+      <!-- Main Footer -->
+      <footer class="lt-footer" id="contact">
+        <div class="lt-dotgrid" aria-hidden="true"></div>
+        <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#e8622c" stroke-width="1.4" fill="none" opacity="0.9"/>
+          <path d="M-20 148 C 60 78, 140 188, 220 108 S 380 48, 460 118" stroke="#e8622c" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <path d="M-20 112 C 60 42, 140 152, 220 72 S 380 12, 460 82" stroke="#e8622c" stroke-width="1" fill="none" opacity="0.4"/>
+        </svg>
+
+        <div class="lt-outer">
+          <div class="lt-grid">
+
+            <!-- Column 1: Let's Talk -->
+            <div class="lt-col">
+              <h2 class="lt-heading" data-aos="fade-up">LET&rsquo;S<span class="lt-heading-accent">TALK
+                <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+                  <path class="lt-heading-arrow-path" d="M8 82 C 4 60, 10 46, 26 40 C 40 35, 46 44, 40 54 C 36 61, 30 55, 34 48 C 42 34, 60 24, 78 12" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </span></h2>
+              <div class="lt-underline"></div>
+              <p class="lt-desc">We&rsquo;re here to listen and help you grow your business online.</p>
+              <a class="lt-btn" href="mailto:hello@getitmediasolutions.com">
+                <span class="lt-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                Get In Touch
+              </a>
+            </div>
+
+            <!-- Column 2: Get In Touch With Us -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Get In Touch With Us</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-social-list">
+                <a class="lt-social-card" href="https://www.instagram.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--ig"><i class="fab fa-instagram"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Instagram</span>
+                    <span class="lt-social-sub">@getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.facebook.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--fb"><i class="fab fa-facebook-f"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Facebook</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.youtube.com/channel/UC6b2HvglRe3kztaasEYVNdQ" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--yt"><i class="fab fa-youtube"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">YouTube</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.google.com/search?q=Getit+Media+Solutions+Pvt+Ltd" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--gg"><i class="fab fa-google"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Google</span>
+                    <span class="lt-social-sub">Getit Media Solutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 3: Brand -->
+            <div class="lt-col">
+              <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png" alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
+              <div class="lt-underline"></div>
+              <p class="lt-brand-desc">When do they work well, and when do they on us and finally, when do we actually need how can we avoid them.</p>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-contact-list">
+                <a class="lt-contact-item" href="mailto:hello@getitmediasolutions.com">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Email Us</p>
+                    <p class="lt-contact-value">hello@getitmediasolutions.com</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="https://www.google.com/maps/search/?api=1&query=4517+Washington+Ave.+Newyork+39495" target="_blank" rel="noopener">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Address</p>
+                    <p class="lt-contact-value">4517 Washington Ave.<br>Newyork 39495</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="tel:+11234567890">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Phone</p>
+                    <p class="lt-contact-value">(123) 456-7890</p>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Trust / service features bar -->
+        <div class="lt-features">
+          <div class="lt-features-inner">
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-shield-check"></i></span>
+              <div>
+                <p class="lt-feature-title">Trusted Solutions</p>
+                <p class="lt-feature-sub">Reliable &amp; Secure</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-regular fa-clock"></i></span>
+              <div>
+                <p class="lt-feature-title">On-Time Delivery</p>
+                <p class="lt-feature-sub">Always On Schedule</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-user-group"></i></span>
+              <div>
+                <p class="lt-feature-title">Client Satisfaction</p>
+                <p class="lt-feature-sub">Our Priority</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-headset"></i></span>
+              <div>
+                <p class="lt-feature-title">24/7 Support</p>
+                <p class="lt-feature-sub">We&rsquo;re Always Here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom footer bar -->
+        <div class="lt-bottom">
+          <div class="lt-bottom-brand">
+            <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+            <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
+          </div>
+          <nav class="lt-bottom-nav" aria-label="Footer">
+            <a href="#home">About Us</a><span>|</span>
+            <a href="#portfolio">Our Portfolio</a><span>|</span>
+            <a href="#contact">Careers</a><span>|</span>
+            <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
+            <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          </nav>
+        </div>
+      </footer>
+      <!--End Main Footer -->
+    </div>
+    <!-- End Page Wrapper -->
+
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/knob.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/aos.js"></script>
+        <script src="js/gsap.min.js"></script>
+        <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitType.js"></script>
+    <script src="js/gsap-scroll-smoother.js"></script>
+    <script src="js/gsap-scroll-to-plugin.js"></script>
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/custom-gsap.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+  <script src="js/terranova-hero.js"></script>
+  <script src="js/services-cards.js"></script>
+  <script src="js/cta-brand.js"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"88f4fa328f314d4c95a104b4a60b2313","r":1}' crossorigin="anonymous"></script>
+<script src="js/scroll-anim.js"></script>
+</body>
+
+</html>

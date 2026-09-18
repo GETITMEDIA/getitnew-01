@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>3D Digital Marketing Command Center | Getit Media Solutions</title>
+<meta name="description" content="Immersive 3D Digital Marketing Command Center. Next-gen SEO, Google & Meta Ads, Social Media Wall, 3D Data Visualization, and Brand Growth Engine.">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- Material Symbols & FontAwesome -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Navbar CSS -->
+<link href="css/navbar.css" rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#f26522",
+            "agency-orange-bright": "#FF6B35",
+            "agency-orange-glow": "rgba(242, 101, 34, 0.22)",
+            "obsidian-base": "#050508",
+            "obsidian-surface-1": "#0a0b12",
+            "obsidian-surface-2": "#121422",
+            "metric-emerald": "#00ff66",
+            "cyber-cyan": "#38bdf8",
+            "cyber-purple": "#a855f7"
+          },
+          fontFamily: {
+            "display-xl": ["Syne", "sans-serif"],
+            "headline-lg": ["Syne", "sans-serif"],
+            "headline-md": ["Syne", "sans-serif"],
+            "headline-sm": ["Syne", "sans-serif"],
+            "label-caps": ["Space Grotesk", "sans-serif"],
+            "label-numeric": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+<!-- GSAP + ScrollTrigger + Three.js CDNs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+  @layer base {
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background-color: #050508; color: #ffffff; overflow-x: hidden; }
+  }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #050508; }
+  ::-webkit-scrollbar-thumb { background: #f26522; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #FF6B35; }
+
+  /* 3D WebGL Canvas Background System */
+  #webgl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Center Reading Corridor Vignette */
+  .center-vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle at center, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.85) 75%, rgba(5, 5, 8, 0.98) 100%);
+  }
+
+  /* Glassmorphism 3D Panel Surface */
+  .glass-panel-3d {
+    background: rgba(18, 20, 34, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+  }
+
+  .glass-panel-3d:hover {
+    border-color: rgba(242, 101, 34, 0.4);
+    box-shadow: 0 30px 60px rgba(242, 101, 34, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Perspective Stage */
+  .perspective-stage {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  /* 3D Tilt Base */
+  .tilt-card-3d {
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out;
+  }
+
+  /* Text Gradients */
+  .text-gradient-orange {
+    background: linear-gradient(135deg, #ffffff 0%, #ff8c52 50%, #f26522 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #00ff66 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, #ffffff 0%, #00ff66 60%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Filter Active */
+  .filter-pill.active {
+    background: #f26522;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(242, 101, 34, 0.5);
+    border-color: #f26522;
+  }
+
+  /* Modal Active */
+  .modal-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Shine Sweep Animation */
+  .shine-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-sweep::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(30deg);
+    transition: left 0.75s ease;
+  }
+  .shine-sweep:hover::after {
+    left: 130%;
+  }
+
+  /* Magnetic Button Hover */
+  .btn-magnetic {
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .btn-magnetic:hover {
+    transform: translateY(-4px) scale(1.04);
+  }
+</style>
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+<body class="bg-obsidian-base text-white antialiased relative">
+
+<!-- 3D WebGL Background Canvas Layer -->
+<canvas id="webgl-canvas"></canvas>
+
+<!-- Center Reading Corridor Vignette -->
+<div class="center-vignette"></div>
+
+<!-- Fixed Header Navigation & Active Section Tracker -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-obsidian-base/70 border-b border-white/10 px-6 py-4 flex items-center justify-between">
+  <a href="index.html" class="flex items-center gap-3 group">
+    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f26522] to-amber-500 flex items-center justify-center text-white font-bold font-display-xl text-lg shadow-lg group-hover:scale-105 transition-transform">
+      G
+    </div>
+    <span class="font-headline-sm text-lg font-bold tracking-tight text-white group-hover:text-[#f26522] transition-colors">
+      GETIT<span class="text-[#f26522]">MEDIA</span>
+    </span>
+  </a>
+
+  <!-- Active 3D Section Indicator -->
+  <div class="hidden md:flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-label-caps tracking-wider">
+    <span class="w-2 h-2 rounded-full bg-[#00ff66] animate-pulse"></span>
+    <span id="section-indicator-text" class="text-zinc-300">01 / 3D COMMAND CENTER</span>
+  </div>
+
+  <!-- Actions -->
+  <div class="flex items-center gap-4">
+    <a href="#contact-section" class="btn-magnetic hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#f26522] to-orange-600 text-white font-label-caps text-xs font-bold tracking-wider hover:shadow-lg hover:shadow-orange-500/30 transition-all">
+      <span>START A PROJECT</span>
+      <span class="material-symbols-outlined text-sm">arrow_forward</span>
+    </a>
+  </div>
+</header>
+
+<!-- Main Scroll Content Wrapper -->
+<main class="relative z-10">
+
+  <!-- ================= 1. 3D HERO COMMAND CENTER ================= -->
+  <section id="hero-section" class="min-h-screen relative flex items-center justify-center px-6 pt-32 pb-20 perspective-stage overflow-hidden">
+    
+    <div class="max-w-5xl mx-auto text-center relative z-20" id="hero-content">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/15 backdrop-blur-md mb-8 shadow-xl">
+        <span class="w-2 h-2 rounded-full bg-[#f26522] animate-ping"></span>
+        <span class="font-label-caps text-xs tracking-widest text-zinc-300 font-bold uppercase">3D DIGITAL MARKETING COMMAND CENTER</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 id="hero-title" class="font-display-xl text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-gradient-orange">
+        GROW YOUR BRAND IN THE<br>
+        <span class="text-white">DIGITAL WORLD.</span>
+      </h1>
+
+      <!-- Supporting Text -->
+      <p id="hero-subtitle" class="font-body-lg text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
+        Powerful digital marketing strategies, creative campaigns and data-driven growth that turn attention into results.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div id="hero-ctas" class="flex flex-wrap items-center justify-center gap-5">
+        <a href="#services-section" class="btn-magnetic px-8 py-4 rounded-2xl bg-gradient-to-r from-[#f26522] via-orange-500 to-amber-500 text-white font-label-caps text-sm font-bold tracking-widest shadow-2xl shadow-orange-500/40 flex items-center gap-3">
+          <span>EXPLORE SERVICES</span>
+          <span class="material-symbols-outlined text-lg">grid_view</span>
+        </a>
+        <a href="#contact-section" class="btn-magnetic px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-lg text-white font-label-caps text-sm font-bold tracking-widest transition-all flex items-center gap-3">
+          <span>START A PROJECT</span>
+          <span class="material-symbols-outlined text-lg">rocket_launch</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Floating 3D Digital Marketing Environment Cards -->
+    <div class="absolute inset-0 pointer-events-none z-10 hidden lg:block" id="hero-floating-cards">
+      <!-- Card Top Left: Analytics -->
+      <div class="absolute top-1/4 left-[6%] w-64 p-4 rounded-2xl glass-panel-3d opacity-90" style="transform: translateZ(90px) rotateY(16deg) rotateX(-8deg);">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-label-caps font-bold text-cyan-400">REAL-TIME ANALYTICS</span>
+          <span class="material-symbols-outlined text-cyan-400 text-base">trending_up</span>
+        </div>
+        <div class="font-headline-sm text-2xl font-bold text-white mb-1">+185.4%</div>
+        <p class="font-body-sm text-[11px] text-zinc-400">Organic Growth Traffic Engine</p>
+      </div>
+
+      <!-- Card Top Right: Ads ROAS -->
+      <div class="absolute top-1/3 right-[6%] w-64 p-4 rounded-2xl glass-panel-3d opacity-90" style="transform: translateZ(100px) rotateY(-18deg) rotateX(10deg);">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-label-caps font-bold text-[#00ff66]">META & GOOGLE ADS</span>
+          <span class="material-symbols-outlined text-[#00ff66] text-base">ads_click</span>
+        </div>
+        <div class="font-headline-sm text-2xl font-bold text-white mb-1">3.8x ROAS</div>
+        <p class="font-body-sm text-[11px] text-zinc-400">Return on Ad Spend Metric</p>
+      </div>
+
+      <!-- Card Bottom Left: SEO Rank #1 -->
+      <div class="absolute bottom-1/4 left-[10%] w-60 p-4 rounded-2xl glass-panel-3d opacity-85" style="transform: translateZ(-30px) rotateY(12deg);">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-label-caps font-bold text-amber-400">SEO SEARCH MATRIX</span>
+          <span class="material-symbols-outlined text-amber-400 text-base">military_tech</span>
+        </div>
+        <div class="font-headline-sm text-xl font-bold text-white mb-1">#1 Google Rank</div>
+        <p class="font-body-sm text-[11px] text-zinc-400">High-Intent Organic Keywords</p>
+      </div>
+
+      <!-- Card Bottom Right: Social Leads -->
+      <div class="absolute bottom-1/4 right-[10%] w-60 p-4 rounded-2xl glass-panel-3d opacity-85" style="transform: translateZ(60px) rotateY(-14deg);">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-label-caps font-bold text-purple-400">SOCIAL REELS FUNNEL</span>
+          <span class="material-symbols-outlined text-purple-400 text-base">campaign</span>
+        </div>
+        <div class="font-headline-sm text-xl font-bold text-white mb-1">+240% Leads</div>
+        <p class="font-body-sm text-[11px] text-zinc-400">High-Hook Viral Content</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 2. 3D DIGITAL MARKETING SERVICES GALLERY ================= -->
+  <section id="services-section" class="py-32 px-6 relative z-20 perspective-stage bg-obsidian-surface-1/60 backdrop-blur-sm border-t border-b border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-20" id="services-header">
+        <span class="font-label-caps text-xs font-bold text-[#f26522] tracking-widest uppercase mb-3 block">3D SERVICES MATRIX</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          DIGITAL MARKETING THAT MOVES YOUR BUSINESS FORWARD.
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          Scroll through our 10 specialized digital growth disciplines. Cards enter from depth and focus smoothly on scroll.
+        </p>
+      </div>
+
+      <!-- 10 Floating 3D Service Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+        
+        <!-- Service 1: SEO -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(60px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <span class="material-symbols-outlined text-3xl">search</span>
+            </div>
+            <span class="font-label-numeric text-xs text-[#00ff66] font-bold block mb-1">01 / ORGANIC SEARCH</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-[#00ff66] transition-colors">Search Engine Optimization</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">Data-driven technical SEO audits, high-authority backlink scaling, and keyword dominance to secure top Google rankings.</p>
+          </div>
+          <a href="searchengine.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-[#00ff66] transition-colors">
+            <span>EXPLORE SEO SERVICES</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 2: Google Ads -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(-40px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <span class="material-symbols-outlined text-3xl">ads_click</span>
+            </div>
+            <span class="font-label-numeric text-xs text-blue-400 font-bold block mb-1">02 / PPC PERFORMANCE</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">Google Ads & Search PPC</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">High-intent search ads, Performance Max campaigns, and YouTube pre-roll placements built for immediate ROAS.</p>
+          </div>
+          <a href="google-ads.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-blue-400 transition-colors">
+            <span>EXPLORE GOOGLE ADS</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 3: Meta Ads -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(80px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <i class="fa-brands fa-meta text-2xl"></i>
+            </div>
+            <span class="font-label-numeric text-xs text-rose-400 font-bold block mb-1">03 / PAID SOCIAL</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-rose-400 transition-colors">Meta Ads (Facebook & IG)</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">Direct-to-consumer Meta ad funnels, high-converting video creatives, and AI audience targeting scales.</p>
+          </div>
+          <a href="socialmedia.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-rose-400 transition-colors">
+            <span>EXPLORE META ADS</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 4: Social Media Marketing -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(-80px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <i class="fa-brands fa-instagram text-2xl"></i>
+            </div>
+            <span class="font-label-numeric text-xs text-purple-400 font-bold block mb-1">04 / ORGANIC GROWTH</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">Social Media Management</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">Editorial content calendars, viral short-form video reels, community engagement, and brand storytelling.</p>
+          </div>
+          <a href="socialmedia.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-purple-400 transition-colors">
+            <span>EXPLORE SOCIAL MARKETING</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 5: Google Business Profile -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(40px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <span class="material-symbols-outlined text-3xl">storefront</span>
+            </div>
+            <span class="font-label-numeric text-xs text-amber-400 font-bold block mb-1">05 / LOCAL SEARCH</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-amber-400 transition-colors">Google Business Profile</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">Local Map Pack 3-rank optimization, review management engines, and geotargeted local search capture.</p>
+          </div>
+          <a href="googlemybusiness.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-amber-400 transition-colors">
+            <span>EXPLORE LOCAL SEARCH</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 6: Content Marketing -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(-60px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-400 to-cyan-500 flex items-center justify-center text-black text-3xl shadow-lg font-bold mb-6">
+              <span class="material-symbols-outlined text-3xl">article</span>
+            </div>
+            <span class="font-label-numeric text-xs text-[#00ff66] font-bold block mb-1">06 / CONTENT FUNNEL</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-[#00ff66] transition-colors">Content Marketing</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">Authority whitepapers, SEO pillar articles, email marketing automation, and lead magnet collateral.</p>
+          </div>
+          <a href="page-services.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-[#00ff66] transition-colors">
+            <span>EXPLORE CONTENT FUNNELS</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 7: Web Design & Dev -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(100px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <span class="material-symbols-outlined text-3xl">code</span>
+            </div>
+            <span class="font-label-numeric text-xs text-cyan-400 font-bold block mb-1">07 / DIGITAL EXPERIENCE</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Website Design & Dev</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">Next.js & Tailwind web applications, high-converting landing pages, and interactive 3D WebGL interfaces.</p>
+          </div>
+          <a href="portfolio.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-cyan-400 transition-colors">
+            <span>EXPLORE WEB DEV</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 8: Branding & Graphic Design -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(-100px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-rose-500 to-purple-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <span class="material-symbols-outlined text-3xl">palette</span>
+            </div>
+            <span class="font-label-numeric text-xs text-pink-400 font-bold block mb-1">08 / BRAND IDENTITY</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors">Branding & Graphic Design</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">3D brand identity books, packaging design renders, key visual guidelines, and advertising asset suites.</p>
+          </div>
+          <a href="graphic.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-pink-400 transition-colors">
+            <span>EXPLORE BRANDING</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 9: Video Marketing -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(50px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 to-red-600 flex items-center justify-center text-white text-3xl shadow-lg mb-6">
+              <span class="material-symbols-outlined text-3xl">movie</span>
+            </div>
+            <span class="font-label-numeric text-xs text-orange-400 font-bold block mb-1">09 / VIDEO PRODUCTION</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">Video Marketing & Motion</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">4K cinematic commercial edits, 3D kinetic typography, motion graphic titles, and sound design layer assembly.</p>
+          </div>
+          <a href="video-editor.html" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-orange-400 transition-colors">
+            <span>EXPLORE VIDEO MARKETING</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- Service 10: Marketing Analytics -->
+        <div class="service-card-3d p-8 rounded-3xl glass-panel-3d tilt-card-3d shine-sweep flex flex-col justify-between group border border-white/10" style="transform: translateZ(-20px);">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-teal-400 to-emerald-500 flex items-center justify-center text-black text-3xl shadow-lg font-bold mb-6">
+              <span class="material-symbols-outlined text-3xl">bar_chart</span>
+            </div>
+            <span class="font-label-numeric text-xs text-teal-400 font-bold block mb-1">10 / DATA INTELLIGENCE</span>
+            <h3 class="font-headline-sm text-2xl font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">Marketing Analytics & Attribution</h3>
+            <p class="font-body-sm text-xs text-zinc-400 leading-relaxed mb-6">GA4 multi-touch attribution setup, custom real-time client dashboards, and conversion rate optimization (CRO).</p>
+          </div>
+          <a href="#analytics-section" class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-300 font-label-caps font-bold group-hover:text-teal-400 transition-colors">
+            <span>EXPLORE DATA ANALYTICS</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 3. DEDICATED 3D SEO SECTION ================= -->
+  <section id="seo-section" class="py-36 px-6 relative z-20 perspective-stage bg-obsidian-surface-2/70 border-b border-white/5">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <span class="font-label-caps text-xs font-bold text-[#00ff66] tracking-widest uppercase mb-3 block">GOOGLE ORGANIC DOMINANCE</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          BE FOUND. BE SEEN. BE REMEMBERED.
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-xl mx-auto">
+          Watch your keyword rankings transform from page 10 obscurity straight into the #1 Google search position.
+        </p>
+      </div>
+
+      <!-- 3D Search Engine Environment Box -->
+      <div class="p-8 sm:p-12 rounded-3xl glass-panel-3d border border-white/15 shadow-2xl relative overflow-hidden" id="seo-stage-box">
+        
+        <!-- Futuristic Search Bar Mockup -->
+        <div class="max-w-2xl mx-auto p-4 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-between mb-12 shadow-inner backdrop-blur-md">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-400 text-xl">search</span>
+            <span class="font-body-sm text-sm text-white font-medium">"best digital marketing agency for e-commerce growth"</span>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-[#00ff66]/20 text-[#00ff66] font-label-caps text-[10px] font-bold">LIVE AUDIT</span>
+        </div>
+
+        <!-- Dynamic Rank Counter Stage -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
+          
+          <!-- Rank Counter Card -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+            <span class="font-label-caps text-xs text-zinc-400 block mb-2">GOOGLE RANKING POSITION</span>
+            <div id="seo-rank-counter" class="font-display-xl text-6xl font-extrabold text-gradient-emerald mb-2">#10</div>
+            <span class="text-xs font-label-caps text-[#00ff66] font-bold" id="seo-rank-status">CLIMBING ORGANIC MATRIX...</span>
+          </div>
+
+          <!-- Organic Traffic Graph Bar -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+            <span class="font-label-caps text-xs text-zinc-400 block mb-2">MONTHLY ORGANIC TRAFFIC</span>
+            <div class="font-display-xl text-4xl font-extrabold text-white mb-2" id="seo-traffic-text">14,200/mo</div>
+            <div class="w-full bg-white/10 rounded-full h-3 overflow-hidden">
+              <div id="seo-traffic-bar" class="bg-gradient-to-r from-emerald-500 to-[#00ff66] h-full w-[25%] transition-all duration-1000"></div>
+            </div>
+          </div>
+
+          <!-- Keyword Bubbles Grid -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 flex flex-wrap gap-2 justify-center">
+            <span class="px-3 py-1.5 rounded-full bg-emerald-500/20 text-[#00ff66] border border-[#00ff66]/30 text-xs font-label-caps font-bold">#1 SEO Matrix</span>
+            <span class="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-400/30 text-xs font-label-caps font-bold">Backlink Scale</span>
+            <span class="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-400/30 text-xs font-label-caps font-bold">Technical Audit</span>
+            <span class="px-3 py-1.5 rounded-full bg-purple-500/20 text-purple-400 border border-purple-400/30 text-xs font-label-caps font-bold">Schema Markup</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 4. GOOGLE & META ADS — 3D ADVERTISING WORLD ================= -->
+  <section id="ads-section" class="py-36 px-6 relative z-20 perspective-stage border-b border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center mb-20">
+        <span class="font-label-caps text-xs font-bold text-cyan-400 tracking-widest uppercase mb-3 block">HIGH-CONVERTING PAID MEDIA</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          TURN EVERY CLICK INTO AN OPPORTUNITY.
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-xl mx-auto">
+          Scale your Google Search, Shopping, Meta Reels, and TikTok ad accounts with automated funnel optimization.
+        </p>
+      </div>
+
+      <!-- Funnel Stage Flow Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="ads-funnel-grid">
+        
+        <!-- Step 1: Impressions -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 hover:border-cyan-400/40 transition-colors" style="transform: translateZ(40px);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-lg">01</span>
+            <span class="material-symbols-outlined text-cyan-400">visibility</span>
+          </div>
+          <span class="font-label-caps text-xs text-zinc-400 block mb-1">STAGE 1</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">IMPRESSIONS</h3>
+          <div class="font-display-xl text-3xl font-extrabold text-cyan-400 mb-2">2.4M+</div>
+          <p class="font-body-sm text-xs text-zinc-400">High-hook video creatives stopping the scroll across Meta & Google.</p>
+        </div>
+
+        <!-- Step 2: Clicks -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 hover:border-blue-400/40 transition-colors" style="transform: translateZ(10px);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg">02</span>
+            <span class="material-symbols-outlined text-blue-400">ads_click</span>
+          </div>
+          <span class="font-label-caps text-xs text-zinc-400 block mb-1">STAGE 2</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">HIGH CTR CLICKS</h3>
+          <div class="font-display-xl text-3xl font-extrabold text-blue-400 mb-2">148.2K</div>
+          <p class="font-body-sm text-xs text-zinc-400">Laser-targeted audience clicks routed to high-converting landing pages.</p>
+        </div>
+
+        <!-- Step 3: Leads -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 hover:border-[#f26522]/40 transition-colors" style="transform: translateZ(-20px);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-xl bg-orange-500/20 text-[#f26522] flex items-center justify-center font-bold text-lg">03</span>
+            <span class="material-symbols-outlined text-[#f26522]">group_add</span>
+          </div>
+          <span class="font-label-caps text-xs text-zinc-400 block mb-1">STAGE 3</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">QUALIFIED LEADS</h3>
+          <div class="font-display-xl text-3xl font-extrabold text-gradient-orange mb-2">18,450</div>
+          <p class="font-body-sm text-xs text-zinc-400">Automated lead capture & CRM synchronization for instant follow-up.</p>
+        </div>
+
+        <!-- Step 4: Conversions -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 hover:border-[#00ff66]/40 transition-colors" style="transform: translateZ(-50px);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="w-10 h-10 rounded-xl bg-emerald-500/20 text-[#00ff66] flex items-center justify-center font-bold text-lg">04</span>
+            <span class="material-symbols-outlined text-[#00ff66]">monetization_on</span>
+          </div>
+          <span class="font-label-caps text-xs text-zinc-400 block mb-1">STAGE 4</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">CONVERSIONS</h3>
+          <div class="font-display-xl text-3xl font-extrabold text-gradient-emerald mb-2">3.8x ROAS</div>
+          <p class="font-body-sm text-xs text-zinc-400">Direct sales revenue and proven return on ad spend scalability.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 5. SOCIAL MEDIA MARKETING — 3D SOCIAL WALL ================= -->
+  <section id="social-wall-section" class="py-36 px-6 relative z-20 perspective-stage bg-obsidian-surface-1/80 border-b border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center mb-20">
+        <span class="font-label-caps text-xs font-bold text-pink-400 tracking-widest uppercase mb-3 block">VIRAL ENGAGEMENT ENGINE</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          3D SOCIAL MEDIA WALL
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-xl mx-auto">
+          Explore short-form 3D video reels, editorial carousel posts, and viral community engagements.
+        </p>
+      </div>
+
+      <!-- 3D Floating Social Cards Matrix -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="social-wall-matrix">
+        
+        <!-- Post 1: Instagram Reel -->
+        <div class="p-6 rounded-3xl glass-panel-3d tilt-card-3d overflow-hidden border border-white/10" style="transform: translateZ(50px) rotateY(4deg);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center text-white font-bold"><i class="fa-brands fa-instagram"></i></div>
+            <div>
+              <h4 class="font-headline-sm text-sm font-bold text-white">@getitmedia_official</h4>
+              <span class="font-body-sm text-[11px] text-zinc-400">Viral 3D Motion Reel • 1.2M Views</span>
+            </div>
+          </div>
+          <div class="h-64 rounded-2xl overflow-hidden mb-4 relative">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Instagram Reel" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <span class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-2xl shadow-xl"><i class="fa-solid fa-play"></i></span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-xs font-label-numeric text-zinc-300">
+            <span>❤️ 142K Likes</span>
+            <span>💬 3.4K Comments</span>
+            <span class="text-[#00ff66] font-bold">+240% Reach</span>
+          </div>
+        </div>
+
+        <!-- Post 2: LinkedIn Thought Leadership -->
+        <div class="p-6 rounded-3xl glass-panel-3d tilt-card-3d overflow-hidden border border-white/10" style="transform: translateZ(-30px) rotateY(-3deg);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div>
+              <h4 class="font-headline-sm text-sm font-bold text-white">Getit Media Solutions</h4>
+              <span class="font-body-sm text-[11px] text-zinc-400">B2B Growth Case Study</span>
+            </div>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 h-64 flex flex-col justify-between mb-4">
+            <p class="font-body-sm text-xs text-zinc-300 leading-relaxed">
+              "How we scaled an e-commerce brand from \$20k to \$150k MRR in 90 days using high-intent Google Ads + Meta UGC Video Creatives..."
+            </p>
+            <div class="p-3 rounded-xl bg-obsidian-surface-2 border border-white/10 text-[11px] font-label-caps text-cyan-400 font-bold">
+              📈 Read Full 90-Day Growth Breakdown →
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-xs font-label-numeric text-zinc-300">
+            <span>👍 840 Reposts</span>
+            <span>💼 B2B Funnel</span>
+          </div>
+        </div>
+
+        <!-- Post 3: YouTube Shorts / Commercial -->
+        <div class="p-6 rounded-3xl glass-panel-3d tilt-card-3d overflow-hidden border border-white/10" style="transform: translateZ(60px) rotateY(6deg);">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold"><i class="fa-brands fa-youtube"></i></div>
+            <div>
+              <h4 class="font-headline-sm text-sm font-bold text-white">Getit Media Studios</h4>
+              <span class="font-body-sm text-[11px] text-zinc-400">4K Commercial Showcase</span>
+            </div>
+          </div>
+          <div class="h-64 rounded-2xl overflow-hidden mb-4 relative">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="YouTube Short" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <span class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-2xl shadow-xl"><i class="fa-solid fa-play"></i></span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between text-xs font-label-numeric text-zinc-300">
+            <span>▶ 890K Views</span>
+            <span class="text-amber-400 font-bold">4K 60FPS</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 6. BRAND GROWTH SECTION ================= -->
+  <section id="growth-section" class="py-36 px-6 relative z-20 perspective-stage border-b border-white/5">
+    <div class="max-w-5xl mx-auto">
+      
+      <div class="text-center mb-20">
+        <span class="font-label-caps text-xs font-bold text-[#00ff66] tracking-widest uppercase mb-3 block">SCALE PIPELINE</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          FROM BRAND AWARENESS TO BUSINESS GROWTH.
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-lg mx-auto">
+          Our 5-stage growth architecture builds continuous momentum from initial view to lifetime brand advocate.
+        </p>
+      </div>
+
+      <!-- Growth Stages Stack -->
+      <div class="space-y-6" id="growth-stages-container">
+        
+        <!-- Stage 1: Awareness -->
+        <div class="p-6 rounded-3xl glass-panel-3d flex items-center justify-between border border-white/10 hover:border-cyan-400/40 transition-colors" style="transform: translateZ(40px);">
+          <div class="flex items-center gap-6">
+            <span class="font-display-xl text-3xl font-extrabold text-cyan-400">01</span>
+            <div>
+              <h3 class="font-headline-sm text-xl font-bold text-white mb-1">AWARENESS</h3>
+              <p class="font-body-sm text-xs text-zinc-400">Multi-channel impression reach via Meta, Google Search & SEO.</p>
+            </div>
+          </div>
+          <span class="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-400 font-label-caps text-xs font-bold">REACH</span>
+        </div>
+
+        <!-- Stage 2: Engagement -->
+        <div class="p-6 rounded-3xl glass-panel-3d flex items-center justify-between border border-white/10 hover:border-purple-400/40 transition-colors" style="transform: translateZ(20px);">
+          <div class="flex items-center gap-6">
+            <span class="font-display-xl text-3xl font-extrabold text-purple-400">02</span>
+            <div>
+              <h3 class="font-headline-sm text-xl font-bold text-white mb-1">ENGAGEMENT</h3>
+              <p class="font-body-sm text-xs text-zinc-400">High-hook short-form Reels, interactive media & landing page story.</p>
+            </div>
+          </div>
+          <span class="px-4 py-2 rounded-full bg-purple-500/20 text-purple-400 font-label-caps text-xs font-bold">INTERACT</span>
+        </div>
+
+        <!-- Stage 3: Leads -->
+        <div class="p-6 rounded-3xl glass-panel-3d flex items-center justify-between border border-white/10 hover:border-amber-400/40 transition-colors" style="transform: translateZ(0px);">
+          <div class="flex items-center gap-6">
+            <span class="font-display-xl text-3xl font-extrabold text-amber-400">03</span>
+            <div>
+              <h3 class="font-headline-sm text-xl font-bold text-white mb-1">LEADS</h3>
+              <p class="font-body-sm text-xs text-zinc-400">Opt-in lead capture magnet forms & automated email CRM nurturing.</p>
+            </div>
+          </div>
+          <span class="px-4 py-2 rounded-full bg-amber-500/20 text-amber-400 font-label-caps text-xs font-bold">CAPTURE</span>
+        </div>
+
+        <!-- Stage 4: Conversions -->
+        <div class="p-6 rounded-3xl glass-panel-3d flex items-center justify-between border border-white/10 hover:border-[#f26522]/40 transition-colors" style="transform: translateZ(-20px);">
+          <div class="flex items-center gap-6">
+            <span class="font-display-xl text-3xl font-extrabold text-gradient-orange">04</span>
+            <div>
+              <h3 class="font-headline-sm text-xl font-bold text-white mb-1">CONVERSIONS</h3>
+              <p class="font-body-sm text-xs text-zinc-400">Optimized checkout paths, retargeting ad campaigns & high ROAS.</p>
+            </div>
+          </div>
+          <span class="px-4 py-2 rounded-full bg-orange-500/20 text-[#f26522] font-label-caps text-xs font-bold">CONVERT</span>
+        </div>
+
+        <!-- Stage 5: Exponential Growth -->
+        <div class="p-6 rounded-3xl glass-panel-3d flex items-center justify-between border border-white/10 hover:border-[#00ff66]/40 transition-colors" style="transform: translateZ(-40px);">
+          <div class="flex items-center gap-6">
+            <span class="font-display-xl text-3xl font-extrabold text-gradient-emerald">05</span>
+            <div>
+              <h3 class="font-headline-sm text-xl font-bold text-white mb-1">EXPONENTIAL GROWTH</h3>
+              <p class="font-body-sm text-xs text-zinc-400">Repeat customer lifetime value (LTV) and viral referral flywheels.</p>
+            </div>
+          </div>
+          <span class="px-4 py-2 rounded-full bg-emerald-500/20 text-[#00ff66] font-label-caps text-xs font-bold">SCALE</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 7. MARKETING PROCESS — 3D JOURNEY ================= -->
+  <section id="process-section" class="py-36 px-6 relative z-20 perspective-stage bg-obsidian-surface-2/70 border-b border-white/5">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center mb-20">
+        <span class="font-label-caps text-xs font-bold text-cyan-400 tracking-widest uppercase mb-3 block">EXECUTION FRAMEWORK</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          OUR DIGITAL GROWTH PROCESS
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-lg mx-auto">
+          6 structured steps traveling along a 3D growth path to guarantee consistent performance.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="process-path-grid">
+        
+        <!-- Step 01 -->
+        <div class="p-8 rounded-3xl glass-panel-3d tilt-card-3d border border-white/10 hover:border-cyan-400/40 transition-colors" style="transform: translateZ(40px);">
+          <span class="font-display-xl text-4xl font-extrabold text-cyan-400 block mb-4">01</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">DISCOVER & AUDIT</h3>
+          <p class="font-body-sm text-xs text-zinc-400 leading-relaxed">Deep-dive technical SEO audit, ad account health check, competitor benchmarking & funnel mapping.</p>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="p-8 rounded-3xl glass-panel-3d tilt-card-3d border border-white/10 hover:border-blue-400/40 transition-colors" style="transform: translateZ(20px);">
+          <span class="font-display-xl text-4xl font-extrabold text-blue-400 block mb-4">02</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">STRATEGY & ARCHITECTURE</h3>
+          <p class="font-body-sm text-xs text-zinc-400 leading-relaxed">Target audience profiling, keyword roadmap, budget allocation modeling, and campaign storyboards.</p>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="p-8 rounded-3xl glass-panel-3d tilt-card-3d border border-white/10 hover:border-purple-400/40 transition-colors" style="transform: translateZ(0px);">
+          <span class="font-display-xl text-4xl font-extrabold text-purple-400 block mb-4">03</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">CREATE & DESIGN</h3>
+          <p class="font-body-sm text-xs text-zinc-400 leading-relaxed">3D video ad production, high-converting copywriting, landing page development, and banner design.</p>
+        </div>
+
+        <!-- Step 04 -->
+        <div class="p-8 rounded-3xl glass-panel-3d tilt-card-3d border border-white/10 hover:border-amber-400/40 transition-colors" style="transform: translateZ(-20px);">
+          <span class="font-display-xl text-4xl font-extrabold text-amber-400 block mb-4">04</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">LAUNCH & DEPLOY</h3>
+          <p class="font-body-sm text-xs text-zinc-400 leading-relaxed">Pixel tracking setup, GA4 attribution verification, Google & Meta campaign deployment.</p>
+        </div>
+
+        <!-- Step 05 -->
+        <div class="p-8 rounded-3xl glass-panel-3d tilt-card-3d border border-white/10 hover:border-[#f26522]/40 transition-colors" style="transform: translateZ(-40px);">
+          <span class="font-display-xl text-4xl font-extrabold text-gradient-orange block mb-4">05</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">OPTIMIZE & RETARGET</h3>
+          <p class="font-body-sm text-xs text-zinc-400 leading-relaxed">A/B creative testing, bid adjustments, placement exclusions, and audience retargeting funnels.</p>
+        </div>
+
+        <!-- Step 06 -->
+        <div class="p-8 rounded-3xl glass-panel-3d tilt-card-3d border border-white/10 hover:border-[#00ff66]/40 transition-colors" style="transform: translateZ(-60px);">
+          <span class="font-display-xl text-4xl font-extrabold text-gradient-emerald block mb-4">06</span>
+          <h3 class="font-headline-sm text-xl font-bold text-white mb-2">SCALE & MULTIPLY</h3>
+          <p class="font-body-sm text-xs text-zinc-400 leading-relaxed">Expanding successful campaign budgets, entering new search verticals, and maximizing client LTV.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 8. CASE STUDIES — 3D PROJECT SHOWCASE ================= -->
+  <section id="case-studies-section" class="py-36 px-6 relative z-20 perspective-stage border-b border-white/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center mb-12">
+        <span class="font-label-caps text-xs font-bold text-[#f26522] tracking-widest uppercase mb-3 block">PROVEN PROOF POINTS</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          CLIENT CASE STUDIES
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-xl mx-auto">
+          Filter by service category to explore real client campaign results and strategy breakdowns.
+        </p>
+      </div>
+
+      <!-- 3D Category Filter Bar -->
+      <div class="flex items-center justify-center flex-wrap gap-2.5 mb-16" id="case-filter-bar">
+        <button class="filter-pill active px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="all" onclick="filterCases('all')">ALL PROJECTS</button>
+        <button class="filter-pill px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="seo" onclick="filterCases('seo')">SEO</button>
+        <button class="filter-pill px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="google" onclick="filterCases('google')">GOOGLE ADS</button>
+        <button class="filter-pill px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="meta" onclick="filterCases('meta')">META ADS</button>
+        <button class="filter-pill px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="social" onclick="filterCases('social')">SOCIAL MEDIA</button>
+        <button class="filter-pill px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="branding" onclick="filterCases('branding')">BRANDING</button>
+        <button class="filter-pill px-5 py-2 rounded-full border border-white/10 bg-white/5 text-xs font-label-caps font-bold transition-all hover:bg-white/10" data-cat="web" onclick="filterCases('web')">WEB DEV</button>
+      </div>
+
+      <!-- Case Study Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="case-studies-grid">
+
+        <!-- Case 1: E-Commerce Meta & Google Ads -->
+        <div class="case-study-item rounded-3xl glass-panel-3d tilt-card-3d overflow-hidden flex flex-col justify-between group border border-white/10" data-category="meta google" style="transform: translateZ(40px);">
+          <div class="relative h-60 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Case" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-surface-1 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-orange-500/80 backdrop-blur-md text-[10px] font-label-caps text-white font-bold">META & GOOGLE ADS</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-[#f26522] transition-colors">Aura Luxury Apparel Growth</h3>
+            <p class="font-body-sm text-xs text-zinc-400 mb-4">Scaled monthly e-commerce sales from \$25k to \$140k using high-hook Reels and Search Ads.</p>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 mb-6 flex items-center justify-between text-xs font-label-numeric">
+              <span class="text-zinc-400">CAMPAIGN RETURN</span>
+              <span class="text-[#00ff66] font-bold">3.8x ROAS</span>
+            </div>
+            <button onclick="openCaseModal('case1')" class="w-full py-3 rounded-2xl bg-white/5 hover:bg-[#f26522] border border-white/15 hover:border-[#f26522] text-white font-label-caps text-xs font-bold transition-all flex items-center justify-center gap-2">
+              <span>VIEW CASE STUDY</span>
+              <span class="material-symbols-outlined text-sm">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Case 2: B2B SaaS SEO & Content -->
+        <div class="case-study-item rounded-3xl glass-panel-3d tilt-card-3d overflow-hidden flex flex-col justify-between group border border-white/10" data-category="seo web" style="transform: translateZ(-60px);">
+          <div class="relative h-60 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="SaaS Case" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-surface-1 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-emerald-500/80 backdrop-blur-md text-[10px] font-label-caps text-white font-bold">SEO & CONTENT</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-[#00ff66] transition-colors">FlowMetrics SaaS SEO Scale</h3>
+            <p class="font-body-sm text-xs text-zinc-400 mb-4">Ranked 42 high-intent B2B keywords on Page 1 of Google, driving organic demo signups.</p>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 mb-6 flex items-center justify-between text-xs font-label-numeric">
+              <span class="text-zinc-400">TRAFFIC INCREASE</span>
+              <span class="text-[#00ff66] font-bold">+280% Organic</span>
+            </div>
+            <button onclick="openCaseModal('case2')" class="w-full py-3 rounded-2xl bg-white/5 hover:bg-[#f26522] border border-white/15 hover:border-[#f26522] text-white font-label-caps text-xs font-bold transition-all flex items-center justify-center gap-2">
+              <span>VIEW CASE STUDY</span>
+              <span class="material-symbols-outlined text-sm">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Case 3: Viral Social Media Campaign -->
+        <div class="case-study-item rounded-3xl glass-panel-3d tilt-card-3d overflow-hidden flex flex-col justify-between group border border-white/10" data-category="social branding" style="transform: translateZ(80px);">
+          <div class="relative h-60 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Social Case" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-surface-1 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-purple-500/80 backdrop-blur-md text-[10px] font-label-caps text-white font-bold">SOCIAL & BRANDING</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-headline-sm text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">NeoBite Energy Drink Launch</h3>
+            <p class="font-body-sm text-xs text-zinc-400 mb-4">Produced viral 3D motion reels and influencer campaign generating 2.4M TikTok impressions.</p>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 mb-6 flex items-center justify-between text-xs font-label-numeric">
+              <span class="text-zinc-400">FOLLOWER GROWTH</span>
+              <span class="text-purple-400 font-bold">+48,000 Fans</span>
+            </div>
+            <button onclick="openCaseModal('case3')" class="w-full py-3 rounded-2xl bg-white/5 hover:bg-[#f26522] border border-white/15 hover:border-[#f26522] text-white font-label-caps text-xs font-bold transition-all flex items-center justify-center gap-2">
+              <span>VIEW CASE STUDY</span>
+              <span class="material-symbols-outlined text-sm">visibility</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 9. MARKETING RESULTS — 3D DATA VISUALIZATION ================= -->
+  <section id="analytics-section" class="py-36 px-6 relative z-20 perspective-stage bg-obsidian-surface-1/90 border-b border-white/5">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center mb-20">
+        <span class="font-label-caps text-xs font-bold text-cyan-400 tracking-widest uppercase mb-3 block">HARD NUMBERS</span>
+        <h2 class="font-headline-lg text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          RESULTS THAT SPEAK FOR THEMSELVES.
+        </h2>
+        <p class="font-body-md text-base text-zinc-400 max-w-lg mx-auto">
+          Aggregated client performance metrics across 120+ active search, ads, and social media campaigns.
+        </p>
+      </div>
+
+      <!-- 3D Stat Counters Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="stats-grid">
+        
+        <!-- Stat 1 -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 text-center" style="transform: translateZ(40px);">
+          <div class="font-display-xl text-3xl sm:text-4xl font-extrabold text-gradient-emerald mb-2">+185%</div>
+          <span class="font-label-caps text-[11px] text-zinc-400 font-bold block">WEBSITE TRAFFIC</span>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 text-center" style="transform: translateZ(10px);">
+          <div class="font-display-xl text-3xl sm:text-4xl font-extrabold text-gradient-orange mb-2">+240%</div>
+          <span class="font-label-caps text-[11px] text-zinc-400 font-bold block">QUALIFIED LEADS</span>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 text-center" style="transform: translateZ(-20px);">
+          <div class="font-display-xl text-3xl sm:text-4xl font-extrabold text-gradient-cyan mb-2">+165%</div>
+          <span class="font-label-caps text-[11px] text-zinc-400 font-bold block">SOCIAL ENGAGEMENT</span>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 text-center" style="transform: translateZ(30px);">
+          <div class="font-display-xl text-3xl sm:text-4xl font-extrabold text-purple-400 mb-2">3.8X</div>
+          <span class="font-label-caps text-[11px] text-zinc-400 font-bold block">AVERAGE ROAS</span>
+        </div>
+
+        <!-- Stat 5 -->
+        <div class="p-6 rounded-3xl glass-panel-3d border border-white/10 text-center col-span-2 sm:col-span-1" style="transform: translateZ(-40px);">
+          <div class="font-display-xl text-3xl sm:text-4xl font-extrabold text-amber-400 mb-2">+120%</div>
+          <span class="font-label-caps text-[11px] text-zinc-400 font-bold block">ORGANIC VISIBILITY</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 10. FINAL CTA — 3D DIGITAL FUTURE ================= -->
+  <section id="contact-section" class="py-40 px-6 relative z-20 text-center perspective-stage overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-20" id="final-cta-container">
+      
+      <span class="font-label-caps text-xs font-bold text-[#f26522] tracking-widest uppercase mb-4 block">TAKE THE NEXT DIGITAL STEP</span>
+      
+      <h2 class="font-display-xl text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-8 leading-[1.08] text-gradient-orange">
+        READY TO GROW YOUR DIGITAL PRESENCE?
+      </h2>
+      
+      <p class="font-body-lg text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-12">
+        Let’s build a digital marketing strategy designed to attract, engage and convert.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-6">
+        <a href="index.html#contact" class="btn-magnetic px-12 py-5 rounded-2xl bg-gradient-to-r from-[#f26522] via-orange-500 to-amber-500 text-white font-label-caps text-sm font-bold tracking-widest shadow-2xl shadow-orange-500/50 flex items-center gap-3">
+          <span>START YOUR PROJECT</span>
+          <span class="material-symbols-outlined text-xl">rocket_launch</span>
+        </a>
+        <a href="tel:+919876543210" class="btn-magnetic px-10 py-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 backdrop-blur-lg text-white font-label-caps text-sm font-bold tracking-widest flex items-center gap-3">
+          <span>SCHEDULE AUDIT CALL</span>
+          <span class="material-symbols-outlined text-xl">call</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ================= CASE STUDY DETAIL MODAL ================= -->
+<div id="caseDetailModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/80 backdrop-blur-xl">
+  <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl glass-panel-3d border border-white/20 p-6 sm:p-10 shadow-2xl transition-transform duration-300 scale-95" id="caseModalContainer">
+    
+    <!-- Close Button -->
+    <button onclick="closeCaseModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-[#f26522] text-white flex items-center justify-center transition-colors">
+      <span class="material-symbols-outlined text-xl">close</span>
+    </button>
+
+    <!-- Modal Content Grid -->
+    <div class="space-y-8">
+      
+      <!-- Hero Banner -->
+      <div class="relative h-64 sm:h-96 rounded-2xl overflow-hidden">
+        <img id="caseHeroImage" src="" alt="Case Hero" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-surface-1 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <span id="caseCategoryBadge" class="px-3 py-1 rounded-full bg-[#f26522] text-white text-xs font-label-caps font-bold mb-2 inline-block">CATEGORY</span>
+          <h2 id="caseTitle" class="font-headline-lg text-2xl sm:text-4xl font-bold text-white tracking-tight">Case Title</h2>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 text-center font-label-caps">
+        <div>
+          <span class="text-[10px] text-zinc-400 block mb-1">CLIENT INDUSTRY</span>
+          <span id="caseIndustry" class="text-xs font-bold text-white">E-Commerce</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-zinc-400 block mb-1">TIMELINE</span>
+          <span id="caseTimeline" class="text-xs font-bold text-cyan-400">90 Days</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-zinc-400 block mb-1">PRIMARY CHANNELS</span>
+          <span id="caseChannels" class="text-xs font-bold text-purple-400">Meta / Google Ads</span>
+        </div>
+        <div>
+          <span class="text-[10px] text-zinc-400 block mb-1">CAMPAIGN ROI</span>
+          <span id="caseRoi" class="text-xs font-bold text-[#00ff66]">3.8x ROAS</span>
+        </div>
+      </div>
+
+      <!-- Strategy Story -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+        <div>
+          <h3 class="font-headline-sm text-lg font-bold text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#f26522]">warning</span>
+            The Challenge
+          </h3>
+          <p id="caseChallenge" class="font-body-sm text-xs text-zinc-300 leading-relaxed">Challenge description goes here...</p>
+        </div>
+        <div>
+          <h3 class="font-headline-sm text-lg font-bold text-white mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-cyan-400">psychology</span>
+            The Growth Strategy
+          </h3>
+          <p id="caseStrategy" class="font-body-sm text-xs text-zinc-300 leading-relaxed">Strategy description goes here...</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-headline-sm text-lg font-bold text-white mb-2 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#00ff66]">trending_up</span>
+          Final Campaign Impact
+        </h3>
+        <p id="caseImpact" class="font-body-sm text-xs text-zinc-300 leading-relaxed">Impact description goes here...</p>
+      </div>
+
+      <!-- Close Button -->
+      <div class="pt-4 border-t border-white/10 flex justify-end">
+        <button onclick="closeCaseModal()" class="px-6 py-3 rounded-xl bg-[#f26522] text-white font-label-caps text-xs font-bold hover:bg-orange-600 transition-colors">
+          CLOSE PRESENTATION
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="relative z-20 border-t border-white/10 py-12 px-6 text-center text-xs text-zinc-500 font-label-caps bg-obsidian-base">
+  <p>© 2026 GETIT MEDIA SOLUTIONS. 3D DIGITAL MARKETING COMMAND CENTER ENVIRONMENT.</p>
+</footer>
+
+
+<!-- ================= ADVANCED 3D COMMAND CENTER ENGINE ================= -->
+<script>
+  // Register GSAP ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // -------------------------------------------------------------
+  // 1. THREE.JS MULTI-LAYER 3D COMMAND CENTER ENVIRONMENT
+  // -------------------------------------------------------------
+  const canvas = document.getElementById('webgl-canvas');
+  const scene = new THREE.Scene();
+  
+  // Fog for atmospheric depth
+  scene.fog = new THREE.FogExp2(0x050508, 0.012);
+
+  // Camera
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 35;
+
+  // Renderer
+  const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // Lighting System
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
+  scene.add(ambientLight);
+
+  // Directional Neon Lights
+  const orangeLight = new THREE.DirectionalLight(0xf26522, 1.4);
+  orangeLight.position.set(30, 30, 20);
+  scene.add(orangeLight);
+
+  const cyanLight = new THREE.DirectionalLight(0x38bdf8, 1.2);
+  cyanLight.position.set(-30, -25, 15);
+  scene.add(cyanLight);
+
+  // Cursor-Tracking Volumetric PointLight
+  const mouseSpotLight = new THREE.PointLight(0x00ff66, 1.5, 60);
+  mouseSpotLight.position.set(0, 0, 20);
+  scene.add(mouseSpotLight);
+
+
+  // -------------------------------------------------------------
+  // BACKGROUND LAYER (Z: -60 to -120)
+  // -------------------------------------------------------------
+  // Digital Grid Plane
+  const gridHelper = new THREE.GridHelper(200, 40, 0xf26522, 0x1a1d2e);
+  gridHelper.position.y = -35;
+  gridHelper.position.z = -50;
+  gridHelper.rotation.x = Math.PI * 0.08;
+  scene.add(gridHelper);
+
+  // Dynamic 3D Particle Cloud
+  const particleCount = 600;
+  const particleGeo = new THREE.BufferGeometry();
+  const particlePositions = new Float32Array(particleCount * 3);
+
+  for(let i = 0; i < particleCount * 3; i++) {
+    particlePositions[i] = (Math.random() - 0.5) * 160;
+  }
+  particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+
+  const particleMat = new THREE.PointsMaterial({
+    size: 0.75,
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.65
+  });
+  const particleSystem = new THREE.Points(particleGeo, particleMat);
+  scene.add(particleSystem);
+
+
+  // -------------------------------------------------------------
+  // MIDDLE GROUND LAYER (Z: -20 to 5)
+  // -------------------------------------------------------------
+  // Analytics Torus Knot (Glass Matrix)
+  const torusGeo = new THREE.TorusKnotGeometry(7.5, 2.2, 120, 16);
+  const torusMat = new THREE.MeshPhysicalMaterial({
+    color: 0xf26522,
+    metalness: 0.15,
+    roughness: 0.15,
+    transmission: 0.7,
+    thickness: 1.8
+  });
+  const torusKnot = new THREE.Mesh(torusGeo, torusMat);
+  torusKnot.position.set(0, 0, -15);
+  scene.add(torusKnot);
+
+  // Wireframe Search Engine Matrix Sphere
+  const icoGeo = new THREE.IcosahedronGeometry(14, 1);
+  const icoMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.22 });
+  const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+  icoMesh.position.set(0, 0, -30);
+  scene.add(icoMesh);
+
+  // Live Metric 3D Bar Graph Pillars
+  const barGroup = new THREE.Group();
+  for(let i = 0; i < 7; i++) {
+    const height = 4 + Math.random() * 10;
+    const barGeo = new THREE.BoxGeometry(1.2, height, 1.2);
+    const barMat = new THREE.MeshStandardMaterial({
+      color: i % 2 === 0 ? 0x00ff66 : 0x38bdf8,
+      metalness: 0.4,
+      roughness: 0.2,
+      emissive: i % 2 === 0 ? 0x004411 : 0x002244
+    });
+    const barMesh = new THREE.Mesh(barGeo, barMat);
+    barMesh.position.set((i - 3) * 3.5, height / 2 - 15, -10);
+    barGroup.add(barMesh);
+  }
+  scene.add(barGroup);
+
+
+  // -------------------------------------------------------------
+  // FOREGROUND LAYER (Z: 10 to 30)
+  // -------------------------------------------------------------
+  // Floating Metallic Cubes (Ad Nodes)
+  const cubeGeo = new THREE.BoxGeometry(3, 3, 3);
+  const cubeMat = new THREE.MeshStandardMaterial({ color: 0x121422, metalness: 0.8, roughness: 0.2 });
+  const cube1 = new THREE.Mesh(cubeGeo, cubeMat);
+  cube1.position.set(-22, 12, 10);
+  scene.add(cube1);
+
+  const cube2 = new THREE.Mesh(cubeGeo, cubeMat);
+  cube2.position.set(22, -10, 15);
+  scene.add(cube2);
+
+
+  // -------------------------------------------------------------
+  // MOUSE & SCROLL PARALLAX TRACKING
+  // -------------------------------------------------------------
+  let mouseX = 0, mouseY = 0;
+  let targetX = 0, targetY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX - window.innerWidth / 2) * 0.001;
+    mouseY = (e.clientY - window.innerHeight / 2) * 0.001;
+
+    // Move Cursor Volumetric Point Light
+    mouseSpotLight.position.x = mouseX * 45;
+    mouseSpotLight.position.y = -mouseY * 45;
+  });
+
+  // Main WebGL Render Loop
+  function animate3D() {
+    requestAnimationFrame(animate3D);
+
+    targetX += (mouseX - targetX) * 0.05;
+    targetY += (mouseY - targetY) * 0.05;
+
+    // Rotations
+    torusKnot.rotation.x += 0.004;
+    torusKnot.rotation.y += 0.007;
+
+    icoMesh.rotation.x -= 0.002;
+    icoMesh.rotation.y += 0.003;
+
+    cube1.rotation.x += 0.01;
+    cube1.rotation.y += 0.01;
+
+    cube2.rotation.x -= 0.008;
+    cube2.rotation.y += 0.012;
+
+    particleSystem.rotation.y += 0.0006;
+    gridHelper.rotation.z = Math.sin(Date.now() * 0.0005) * 0.05;
+
+    // Camera Rotation Lerp
+    camera.rotation.y = -targetX * 0.45;
+    camera.rotation.x = -targetY * 0.45;
+
+    renderer.render(scene, camera);
+  }
+  animate3D();
+
+  // Window Resize
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+
+  // -------------------------------------------------------------
+  // 2. GSAP SCROLLTRIGGER 3D CAMERA DOLLY & PARALLAX
+  // -------------------------------------------------------------
+  // Camera Dolly on Scroll
+  gsap.to(camera.position, {
+    z: 4,
+    scrollTrigger: {
+      trigger: "#hero-section",
+      start: "top top",
+      end: "bottom top",
+      scrub: 1
+    }
+  });
+
+  gsap.to("#hero-title", {
+    scale: 1.15,
+    opacity: 0.15,
+    z: 220,
+    scrollTrigger: {
+      trigger: "#hero-section",
+      start: "top top",
+      end: "bottom top",
+      scrub: 1
+    }
+  });
+
+  // Services Cards Entry Animation
+  gsap.from(".service-card-3d", {
+    y: 90,
+    opacity: 0,
+    scale: 0.85,
+    stagger: 0.08,
+    duration: 0.8,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "#services-section",
+      start: "top 75%"
+    }
+  });
+
+  // SEO Rank Counter Animation (#10 -> #1)
+  ScrollTrigger.create({
+    trigger: "#seo-stage-box",
+    start: "top 70%",
+    onEnter: () => {
+      const counter = document.getElementById('seo-rank-counter');
+      const bar = document.getElementById('seo-traffic-bar');
+      const text = document.getElementById('seo-traffic-text');
+      const status = document.getElementById('seo-rank-status');
+
+      let currentRank = 10;
+      const interval = setInterval(() => {
+        currentRank--;
+        if (counter) counter.innerText = `#${currentRank}`;
+        if (currentRank <= 1) {
+          clearInterval(interval);
+          if (counter) counter.innerText = `#1 Position`;
+          if (bar) bar.style.width = "95%";
+          if (text) text.innerText = "86,400/mo";
+          if (status) status.innerText = "ORGANIC DOMINANCE ACHIEVED ✓";
+        }
+      }, 250);
+    }
+  });
+
+  // Active Section Tracker Updates
+  const sections = [
+    { id: 'hero-section', label: '01 / 3D COMMAND CENTER' },
+    { id: 'services-section', label: '02 / SERVICES MATRIX' },
+    { id: 'seo-section', label: '03 / ORGANIC SEO MATRIX' },
+    { id: 'ads-section', label: '04 / PAID ADS FUNNEL' },
+    { id: 'social-wall-section', label: '05 / 3D SOCIAL WALL' },
+    { id: 'growth-section', label: '06 / SCALE PIPELINE' },
+    { id: 'process-section', label: '07 / GROWTH PROCESS' },
+    { id: 'case-studies-section', label: '08 / CASE STUDIES' },
+    { id: 'analytics-section', label: '09 / DATA VISUALIZATION' },
+    { id: 'contact-section', label: '10 / START YOUR PROJECT' }
+  ];
+
+  sections.forEach(sec => {
+    ScrollTrigger.create({
+      trigger: `#${sec.id}`,
+      start: 'top 50%',
+      end: 'bottom 50%',
+      onEnter: () => updateIndicator(sec.label),
+      onEnterBack: () => updateIndicator(sec.label)
+    });
+  });
+
+  function updateIndicator(label) {
+    const el = document.getElementById('section-indicator-text');
+    if (el) el.innerText = label;
+  }
+
+
+  // -------------------------------------------------------------
+  // 3. MOUSE 3D CARD TILT EFFECT
+  // -------------------------------------------------------------
+  document.querySelectorAll('.tilt-card-3d').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const tiltX = (y / rect.height) * -18;
+      const tiltY = (x / rect.width) * 18;
+
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.03, 1.03, 1.03)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+  });
+
+
+  // -------------------------------------------------------------
+  // 4. CASE STUDY FILTER LOGIC
+  // -------------------------------------------------------------
+  function filterCases(category) {
+    document.querySelectorAll('#case-filter-bar .filter-pill').forEach(btn => {
+      if (btn.getAttribute('data-cat') === category) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    const items = document.querySelectorAll('.case-study-item');
+    items.forEach(item => {
+      const cats = item.getAttribute('data-category');
+      if (category === 'all' || cats.includes(category)) {
+        gsap.to(item, {
+          display: 'flex',
+          scale: 1,
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      } else {
+        gsap.to(item, {
+          scale: 0.8,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => { item.style.display = 'none'; }
+        });
+      }
+    });
+  }
+
+
+  // -------------------------------------------------------------
+  // 5. CASE STUDY MODAL HANDLERS
+  // -------------------------------------------------------------
+  const casesData = {
+    case1: {
+      title: "Aura Luxury Apparel Growth",
+      category: "META & GOOGLE ADS",
+      heroImg: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+      industry: "E-Commerce Apparel",
+      timeline: "90 Days",
+      channels: "Meta Ads / Google Shopping",
+      roi: "3.8x ROAS",
+      challenge: "High cost-per-acquisition (CPA) and fatigued ad creatives stalling monthly revenue at \$25,000.",
+      strategy: "Deployed UGC video ad creatives, implemented high-intent Google Search campaigns, and built automated retargeting flows.",
+      impact: "Scaled monthly revenue from \$25k to \$140k with a aggregate 3.8x ROAS while cutting CPA by 34%."
+    },
+    case2: {
+      title: "FlowMetrics SaaS SEO Scale",
+      category: "SEO & CONTENT",
+      heroImg: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+      industry: "B2B Software",
+      timeline: "6 Months",
+      channels: "Technical SEO / Content",
+      roi: "+280% Organic",
+      challenge: "Low search domain authority and poor keyword visibility against legacy enterprise SaaS competitors.",
+      strategy: "Executed technical site architecture cleanup, built 42 SEO pillar pages, and conducted targeted digital PR backlink scaling.",
+      impact: "Secured #1 to #3 rankings for 42 target enterprise keywords, increasing organic demo signups by 280%."
+    },
+    case3: {
+      title: "NeoBite Energy Drink Launch",
+      category: "SOCIAL & BRANDING",
+      heroImg: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+      industry: "Consumer Goods (FMCG)",
+      timeline: "30 Days",
+      channels: "TikTok / IG Reels / 3D Motion",
+      roi: "2.4M Impressions",
+      challenge: "Launching a new energy drink brand in a crowded market with zero existing social media presence.",
+      strategy: "Produced 15 3D kinetic video reels, partnered with micro-creators, and ran a viral social media contest.",
+      impact: "Generated 2.4M organic & paid views within 30 days, acquiring 48,000 followers and selling out the initial production run."
+    }
+  };
+
+  function openCaseModal(id) {
+    const data = casesData[id] || casesData['case1'];
+
+    document.getElementById('caseHeroImage').src = data.heroImg;
+    document.getElementById('caseCategoryBadge').innerText = data.category;
+    document.getElementById('caseTitle').innerText = data.title;
+    document.getElementById('caseIndustry').innerText = data.industry;
+    document.getElementById('caseTimeline').innerText = data.timeline;
+    document.getElementById('caseChannels').innerText = data.channels;
+    document.getElementById('caseRoi').innerText = data.roi;
+    document.getElementById('caseChallenge').innerText = data.challenge;
+    document.getElementById('caseStrategy').innerText = data.strategy;
+    document.getElementById('caseImpact').innerText = data.impact;
+
+    const modal = document.getElementById('caseDetailModal');
+    const container = document.getElementById('caseModalContainer');
+
+    modal.classList.add('modal-active');
+    setTimeout(() => {
+      container.classList.remove('scale-95');
+      container.classList.add('scale-100');
+    }, 50);
+  }
+
+  function closeCaseModal() {
+    const modal = document.getElementById('caseDetailModal');
+    const container = document.getElementById('caseModalContainer');
+
+    container.classList.remove('scale-100');
+    container.classList.add('scale-95');
+    setTimeout(() => {
+      modal.classList.remove('modal-active');
+    }, 200);
+  }
+</script>
+
+<!-- Navbar JS -->
+<script src="js/navbar.js"></script>
+
+<script src="js/scroll-anim.js"></script>
+</body>
+</html>

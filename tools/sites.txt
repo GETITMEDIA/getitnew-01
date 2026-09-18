@@ -1,0 +1,31 @@
+# Client sites to capture, one URL per line.
+#
+# Order matters: line 1 becomes 01-desktop.jpg / 01-mobile.jpg, line 2
+# becomes 02-*, and so on. The IN MOTION rails on website.html show the
+# first five, so keep known-good sites at the top.
+#
+# Verified by DNS lookup on capture. Blank lines and # comments ignored.
+
+https://bonnechanceheritage.com
+https://hotelfrenchcity.com
+https://prbmgroups.com
+https://kotharividyamandirschool.in
+https://theposhhospital.in
+https://oxygenfitnesscentre.com
+https://familytreeguesthouse.com
+https://jaigurufurniture.com
+https://rubanconstruction.com
+https://hotelsriaryaas.com
+https://annaimathaprinters.com
+https://jcrprinters.com
+https://deepatravelspondy.com
+https://drvijayganapathy.org
+https://muthusilkhouse.com
+https://kathirvelassociates.com
+https://getitmediasolutions.com
+
+# These three did not resolve — my reading of them from the screenshot
+# was wrong. Correct the spelling, move them up, and re-run the capture.
+# https://sunpharmacys.com
+# https://holisticwellnesscarecentre.com
+# https://pinkfashionjewellers.com

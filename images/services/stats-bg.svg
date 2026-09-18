@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900">
+  <defs>
+    <radialGradient id="blobOrange2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8622c" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#e8622c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobGold2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fee17c" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#fee17c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="waveStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8622c" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#e8622c" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#e8622c" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dotGrid2" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#171f32" opacity="0.10"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="900" fill="#ffffff"/>
+
+  <!-- soft brand-color glows in the corners -->
+  <circle cx="140" cy="80" r="360" fill="url(#blobOrange2)"/>
+  <circle cx="1820" cy="840" r="420" fill="url(#blobOrange2)"/>
+  <circle cx="1780" cy="90" r="230" fill="url(#blobGold2)"/>
+  <circle cx="90" cy="820" r="220" fill="url(#blobGold2)"/>
+
+  <!-- dot-grid accents, tucked into two corners only -->
+  <rect x="0" y="0" width="360" height="360" fill="url(#dotGrid2)"/>
+  <rect x="1560" y="540" width="360" height="360" fill="url(#dotGrid2)"/>
+
+  <!-- flowing signature line motif, unique to this section -->
+  <path d="M-100 620 C 300 480, 550 760, 960 600 S 1650 420, 2020 560"
+        fill="none" stroke="url(#waveStroke)" stroke-width="2.5"/>
+  <path d="M-100 660 C 320 540, 560 800, 960 650 S 1660 470, 2020 610"
+        fill="none" stroke="url(#waveStroke)" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- large faint outline rings, off to the side -->
+  <circle cx="1870" cy="460" r="140" fill="none" stroke="#e8622c" stroke-opacity="0.15" stroke-width="1.5"/>
+  <circle cx="60" cy="460" r="90" fill="none" stroke="#fee17c" stroke-opacity="0.5" stroke-width="1.5"/>
+
+  <!-- small scattered plus/asterisk marks for texture, on brand with the section eyebrow icon -->
+  <g stroke="#e8622c" stroke-opacity="0.28" stroke-width="2" stroke-linecap="round">
+    <path d="M960 90 L960 118 M946 104 L974 104"/>
+    <path d="M1400 760 L1400 782 M1389 771 L1411 771"/>
+    <path d="M480 800 L480 822 M469 811 L491 811"/>
+  </g>
+</svg>

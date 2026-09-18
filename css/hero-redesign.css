@@ -1,0 +1,656 @@
+/* ==========================================================================
+   GetIt Media — Premium Cinematic Hero Section
+   Pure CSS — No frameworks, no Tailwind, no Bootstrap
+   Brand: #F37021 (orange), #000 (black), #fff (white)
+   ========================================================================== */
+
+/* ── Google Font ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ── CSS Custom Properties ── */
+:root {
+  --gm-orange: #F37021;
+  --gm-orange-rgb: 243, 112, 33;
+  --gm-black: #000000;
+  --gm-dark: #0a0a0a;
+  --gm-white: #ffffff;
+  --gm-white-rgb: 255, 255, 255;
+  --gm-gray: rgba(255, 255, 255, 0.7);
+  --gm-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ── Hero Container ── */
+.gm-hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--gm-black);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* top band clears the fixed navbar; bottom band is reserved for the
+     scroll indicator so it can never sit on top of the buttons */
+  padding-block: clamp(40px, 7vh, 80px) clamp(112px, 15vh, 150px);
+  font-family: var(--gm-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  z-index: 1;
+}
+
+/* ── Background Video ── */
+.gm-hero__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+/* Fallback dark gradient (visible while video loads) */
+.gm-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(243, 112, 33, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(243, 112, 33, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(30, 30, 30, 0.5) 0%, transparent 70%),
+    linear-gradient(160deg, #000000 0%, #0a0a0a 30%, #111111 50%, #0a0a0a 70%, #000000 100%);
+}
+
+/* ── Animated Glowing Orb 1 ── */
+.gm-hero::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 112, 33, 0.10) 0%, rgba(243, 112, 33, 0.03) 40%, transparent 70%);
+  top: -10%;
+  right: -10%;
+  z-index: 0;
+  filter: blur(80px);
+  animation: gmOrbDrift1 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Cinematic Overlays ── */
+.gm-hero__overlay-dark {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Strong darkening for text readability + vignette */
+  background:
+    /* Overall darkening layer */
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0.45) 70%, rgba(0, 0, 0, 0.65) 100%),
+    /* Vignette */
+    radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.5) 100%);
+  pointer-events: none;
+}
+
+.gm-hero__overlay-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Animated glowing orb 2 — via overlay glow pseudo */
+.gm-hero__overlay-glow::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 112, 33, 0.08) 0%, transparent 60%);
+  bottom: -15%;
+  left: -5%;
+  filter: blur(60px);
+  animation: gmOrbDrift2 18s ease-in-out 3s infinite;
+  pointer-events: none;
+}
+
+/* Animated glowing orb 3 — small accent */
+.gm-hero__overlay-glow::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+  top: 30%;
+  left: 40%;
+  filter: blur(50px);
+  animation: gmOrbDrift3 12s ease-in-out 6s infinite;
+  pointer-events: none;
+}
+
+/* Subtle grid/mesh pattern overlay */
+.gm-hero__particles::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ── Orb Drift Animations ── */
+@keyframes gmOrbDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  33% { transform: translate(-30px, 20px) scale(1.1); opacity: 1; }
+  66% { transform: translate(20px, -10px) scale(0.95); opacity: 0.8; }
+}
+
+@keyframes gmOrbDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(40px, -30px) scale(1.15); opacity: 1; }
+}
+
+@keyframes gmOrbDrift3 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+  50% { transform: translate(-20px, 15px); opacity: 0.8; }
+}
+
+/* ── Subtle Particle / Grid Decorations ── */
+.gm-hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Thin horizontal lines */
+.gm-hero__line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--gm-orange-rgb), 0.15), transparent);
+}
+
+.gm-hero__line--1 {
+  top: 20%;
+  left: 5%;
+  width: 30%;
+  animation: gmLinePulse 6s ease-in-out infinite;
+}
+
+.gm-hero__line--2 {
+  top: 75%;
+  right: 0;
+  width: 25%;
+  animation: gmLinePulse 8s ease-in-out 2s infinite;
+}
+
+.gm-hero__line--3 {
+  top: 45%;
+  left: 60%;
+  width: 15%;
+  animation: gmLinePulse 7s ease-in-out 4s infinite;
+}
+
+@keyframes gmLinePulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Soft glowing circles */
+.gm-hero__circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--gm-orange-rgb), 0.1);
+}
+
+.gm-hero__circle--1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: -5%;
+  animation: gmCircleDrift 12s ease-in-out infinite;
+}
+
+.gm-hero__circle--2 {
+  width: 200px;
+  height: 200px;
+  bottom: 15%;
+  right: 5%;
+  animation: gmCircleDrift 10s ease-in-out 3s infinite;
+}
+
+@keyframes gmCircleDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate(10px, -10px) scale(1.05); opacity: 0.6; }
+}
+
+/* ── Liquid Glass System ── */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Hero Content ── */
+.gm-hero__content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+}
+
+/* ── Main Heading ── */
+.gm-hero__heading {
+  /* height-aware too: on a short laptop screen three lines at 7vw pushed the
+     buttons down into the scroll indicator */
+  font-size: clamp(2.8rem, min(7vw, 10.5vh), 6.5rem);
+  font-weight: 800;
+  color: var(--gm-white);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0 0 28px 0;
+  max-width: 900px;
+}
+
+.gm-hero__heading-accent {
+  color: var(--gm-orange);
+  position: relative;
+  display: inline-block;
+}
+
+.gm-hero__heading-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gm-orange);
+  border-radius: 2px;
+  filter: blur(3px);
+  opacity: 0.6;
+}
+
+/* ── Subtitle ── */
+.gm-hero__subtitle {
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 400;
+  color: var(--gm-gray);
+  line-height: 1.65;
+  max-width: 620px;
+  margin: 0 0 44px 0;
+}
+
+/* ── CTA Group ── */
+.gm-hero__cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Primary CTA */
+.gm-hero__cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 34px;
+  background: var(--gm-orange);
+  color: var(--gm-black);
+  font-family: var(--gm-font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 30px rgba(var(--gm-orange-rgb), 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.gm-hero__cta-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(var(--gm-orange-rgb), 0.5);
+  background: #ff8533;
+}
+
+.gm-hero__cta-primary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.gm-hero__cta-primary:hover svg {
+  transform: translateX(4px);
+}
+
+/* Secondary CTA */
+.gm-hero__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 34px;
+  color: var(--gm-white);
+  font-family: var(--gm-font);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gm-hero__cta-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(var(--gm-orange-rgb), 0.2);
+  color: var(--gm-orange);
+}
+
+/* ── Floating Service Glass Cards ── */
+.gm-hero__float-cards {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.gm-hero__card {
+  position: absolute;
+  border-radius: 16px;
+  padding: 18px 22px;
+  min-width: 180px;
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gm-hero__card:hover {
+  transform: scale(1.04) !important;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    0 0 20px rgba(var(--gm-orange-rgb), 0.15);
+}
+
+.gm-hero__card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gm-orange);
+  margin: 0 0 6px 0;
+  font-family: var(--gm-font);
+}
+
+.gm-hero__card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gm-white);
+  margin: 0 0 2px 0;
+  font-family: var(--gm-font);
+  line-height: 1.2;
+}
+
+.gm-hero__card-sub {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  font-family: var(--gm-font);
+}
+
+/* Card Positions */
+.gm-hero__card--seo {
+  top: 32%;
+  left: 6%;
+  animation: gmFloat 6s ease-in-out infinite;
+}
+
+.gm-hero__card--ads {
+  top: 26%;
+  right: 6%;
+  animation: gmFloat 5s ease-in-out 1.5s infinite;
+}
+
+.gm-hero__card--web {
+  bottom: 22%;
+  right: 10%;
+  animation: gmFloat 7s ease-in-out 3s infinite;
+}
+
+@keyframes gmFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ── Scroll Indicator ── */
+.gm-hero__scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.gm-hero__scroll-text {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--gm-font);
+}
+
+.gm-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gm-hero__scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--gm-orange), transparent);
+  animation: gmScrollLine 2s ease-in-out infinite;
+}
+
+@keyframes gmScrollLine {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ── Entrance Animation Classes (JS-driven) ── */
+.gm-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gm-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+
+/* Tablet */
+@media (max-width: 1199px) {
+  /* the centred headline is wide enough here to run under the cards */
+  .gm-hero__float-cards {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .gm-hero {
+    min-height: 100vh;
+  }
+
+  .gm-hero {
+    padding-block: 48px 104px;
+  }
+
+  .gm-hero__content {
+    padding: 0 20px;
+  }
+
+  .gm-hero__heading {
+    font-size: clamp(2rem, 9vw, 3.2rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .gm-hero__subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+    max-width: 90%;
+  }
+
+  .gm-hero__cta-group {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .gm-hero__cta-primary,
+  .gm-hero__cta-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 28px;
+  }
+
+  .gm-hero__scroll {
+    bottom: 24px;
+  }
+}
+
+/* Compact mobile */
+@media (max-width: 480px) {
+  .gm-hero__heading {
+    font-size: clamp(1.8rem, 10vw, 2.6rem);
+  }
+
+  .gm-hero__subtitle {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .gm-hero__card--seo,
+  .gm-hero__card--ads,
+  .gm-hero__card--web {
+    animation: none !important;
+  }
+
+  .gm-hero__line--1,
+  .gm-hero__line--2,
+  .gm-hero__line--3 {
+    animation: none !important;
+    opacity: 0.4;
+  }
+
+  .gm-hero__circle--1,
+  .gm-hero__circle--2 {
+    animation: none !important;
+    opacity: 0.3;
+  }
+
+  .gm-hero__scroll-line::after {
+    animation: none !important;
+    top: 0;
+    opacity: 0.5;
+  }
+
+  .gm-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Stop orb drift animations */
+  .gm-hero::after,
+  .gm-hero__overlay-glow::before,
+  .gm-hero__overlay-glow::after {
+    animation: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   ANTIGRAVITY PARTICLE FIELD
+   Sits where the background video used to. z-index 2 puts it ABOVE the
+   two dark overlays and below the content at 5 — the overlays exist to
+   darken a video for legibility, and leaving the particles underneath
+   them would simply mute the effect. The hero's own black ground still
+   shows through, since the field draws nothing outside its ring.
+   Behaviour: js/hero-antigravity.js
+   --------------------------------------------------------------------- */
+.gm-hero__field {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gm-hero__field canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

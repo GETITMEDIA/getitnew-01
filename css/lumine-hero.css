@@ -1,0 +1,392 @@
+/* =====================================================================
+   Lumine Insights — dark hero
+   Self-contained: every rule is namespaced under .lum-hero so it cannot
+   affect the rest of the page.
+   Colours come from the GetIt Media logo palette already defined on :root
+   in navbar.css (--accent #e8622c / --accent-light #f2864f / --accent-dark
+   #c14a1a); fallbacks are inlined so this file also stands alone.
+   ===================================================================== */
+
+.lum-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 35vh 24px 10vh;
+  background: #080605;
+  color: #ffffff;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+
+/* faint vertical light streaks across the upper background */
+.lum-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 62%;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(242, 134, 79, 0) 0px,
+    rgba(242, 134, 79, 0) 34px,
+    rgba(242, 134, 79, .03) 35px,
+    rgba(242, 134, 79, 0) 44px
+  );
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(180deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+/* wide ambient wash so the glow melts into the background */
+.lum-hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -18%;
+  width: 120vw;
+  height: 90vh;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(50% 50% at 50% 50%,
+              rgba(232, 98, 44, .20) 0%,
+              rgba(193, 74, 26, .08) 45%,
+              rgba(8, 6, 5, 0) 72%);
+}
+
+/* ---------------- the glowing horizon ---------------- */
+/* The circle is r=500 inside a 1200 viewBox, so its apex sits 8.33% down
+   the square wrapper. Offsetting the wrapper by that amount puts the apex
+   exactly 8% down the hero, matching the reference. */
+.lum-arc {
+  position: absolute;
+  left: 50%;
+  top: calc(8% - 7.083vw);
+  width: 85vw;
+  min-width: 620px;
+  aspect-ratio: 1 / 1;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.lum-arc svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+/* ---------------- content ---------------- */
+
+.lum-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* badge */
+.lum-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px 6px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 134, 79, .26);
+  background: linear-gradient(180deg, rgba(232, 98, 44, .20) 0%, rgba(193, 74, 26, .14) 100%);
+  box-shadow: 0 0 24px rgba(232, 98, 44, .24),
+              inset 0 1px 0 rgba(255, 255, 255, .07);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1px;
+  color: #f6ddd0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.lum-badge svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  color: var(--accent-light, #f2864f);
+}
+
+/* heading */
+.lum-title {
+  margin: 30px 0 0;
+  font-size: clamp(31px, 4.15vw, 54px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -1.4px;
+  color: #ffffff;
+}
+
+.lum-accent {
+  background: linear-gradient(100deg,
+              var(--accent-light, #f2864f) 0%,
+              var(--accent, #e8622c) 48%,
+              #ffa970 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--accent-light, #f2864f);  /* fallback where background-clip is unsupported */
+}
+
+/* paragraph */
+.lum-copy {
+  margin: 30px auto 0;
+  max-width: 410px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  font-weight: 400;
+  color: #9b918b;
+}
+
+/* buttons */
+.lum-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+
+.lum-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .1px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease,
+              background .25s ease, border-color .25s ease;
+}
+
+.lum-btn--primary {
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: var(--gradient-brand,
+              linear-gradient(120deg, #f2864f 0%, #e8622c 55%, #c14a1a 100%));
+  color: #ffffff;
+  box-shadow: 0 6px 22px rgba(232, 98, 44, .38),
+              inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+.lum-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(232, 98, 44, .52),
+              inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+
+.lum-btn--ghost {
+  border: 1px solid rgba(242, 134, 79, .30);
+  background: rgba(232, 98, 44, .06);
+  color: #f2e7e1;
+}
+.lum-btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(242, 134, 79, .55);
+  background: rgba(232, 98, 44, .12);
+}
+
+.lum-btn:focus-visible {
+  outline: 2px solid var(--accent-light, #f2864f);
+  outline-offset: 3px;
+}
+
+/* ---------------- very slow, subtle glow breathing ---------------- */
+
+.lum-glow-soft { animation: lum-breathe 9s ease-in-out infinite; }
+
+@keyframes lum-breathe {
+  0%, 100% { opacity: .5; }
+  50%      { opacity: .72; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lum-glow-soft { animation: none; opacity: .58; }
+  .lum-btn:hover { transform: none; }
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 1100px) {
+  .lum-hero { padding-top: 32vh; }
+  .lum-copy { max-width: 400px; }
+}
+
+@media (max-width: 780px) {
+  .lum-hero { padding: 28vh 20px 12vh; min-height: 92vh; }
+  .lum-arc { width: 128vw; min-width: 0; top: calc(7% - 10.6vw); }
+  .lum-title { letter-spacing: -.8px; margin-top: 26px; }
+  .lum-copy { margin-top: 24px; font-size: 14.5px; max-width: 380px; }
+  .lum-actions { margin-top: 30px; }
+}
+
+@media (max-width: 460px) {
+  .lum-hero { padding: 26vh 18px 12vh; }
+  .lum-arc { width: 150vw; top: calc(6% - 12.5vw); }
+  .lum-badge { font-size: 11.5px; padding: 6px 13px 6px 10px; }
+  .lum-copy { font-size: 14px; max-width: 320px; }
+  .lum-btn { height: 42px; padding: 0 20px; font-size: 13.5px; }
+}
+
+@media (max-width: 340px) {
+  .lum-actions { flex-direction: column; align-items: stretch; }
+  .lum-btn { width: 100%; }
+}
+
+/* =====================================================================
+   Motion
+   The hero is above the fold, so the entrance plays on load.
+   Anything that moves uses the independent `translate` property, never
+   `transform` - .lum-arc is centred with transform: translateX(-50%).
+   ===================================================================== */
+
+/* --- content rises in, staggered --- */
+.lum-badge,
+.lum-title,
+.lum-copy,
+.lum-actions {
+  opacity: 0;
+  animation: lum-rise .95s cubic-bezier(.22, .9, .3, 1) forwards;
+}
+.lum-badge   { animation-delay: .55s; }
+.lum-title   { animation-delay: .70s; }
+.lum-copy    { animation-delay: .90s; }
+.lum-actions { animation-delay: 1.06s; }
+
+@keyframes lum-rise {
+  from { opacity: 0; translate: 0 28px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* --- the horizon draws itself, then breathes up and down --- */
+.lum-draw {
+  stroke-dasharray: 1571;          /* pi * r, r = 500 */
+  stroke-dashoffset: 1571;
+  animation: lum-draw-in 2.4s cubic-bezier(.3, 0, .2, 1) .15s forwards;
+}
+@keyframes lum-draw-in { to { stroke-dashoffset: 0; } }
+
+.lum-arc { animation: lum-hover 14s ease-in-out 2s infinite; }
+@keyframes lum-hover {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -16px; }
+}
+
+/* --- a light travelling along the rim --- */
+.lum-sweep {
+  stroke-dasharray: 150 1421;      /* 150-long dash, rest of the arc as gap */
+  stroke-dashoffset: 1571;
+  opacity: 0;
+  animation: lum-sweep-run 9s cubic-bezier(.45, 0, .55, 1) 2.2s infinite,
+             lum-sweep-on .8s ease-out 2.2s forwards;
+}
+@keyframes lum-sweep-run { to { stroke-dashoffset: 0; } }
+@keyframes lum-sweep-on  { to { opacity: .85; } }
+
+/* --- the light streaks drift sideways --- */
+.lum-hero::before { animation: lum-streaks 26s ease-in-out infinite; }
+@keyframes lum-streaks {
+  0%, 100% { translate: -18px 0; }
+  50%      { translate: 18px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lum-badge, .lum-title, .lum-copy, .lum-actions {
+    opacity: 1; animation: none; translate: none;
+  }
+  .lum-draw  { stroke-dashoffset: 0; animation: none; }
+  .lum-sweep { display: none; }
+  .lum-arc   { animation: none; }
+  .lum-hero::before { animation: none; }
+}
+
+/* =====================================================================
+   Platform chips - the two ad platforms this page covers
+   ===================================================================== */
+
+.lum-platforms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 44px;
+  flex-wrap: wrap;
+}
+
+.lum-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .045);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: .1px;
+  color: #e6ded9;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: border-color .3s ease, background .3s ease, box-shadow .3s ease;
+}
+
+.lum-chip:hover {
+  border-color: rgba(242, 134, 79, .45);
+  background: rgba(232, 98, 44, .10);
+  box-shadow: 0 0 26px rgba(232, 98, 44, .22),
+              inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+.lum-chip-mark {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 20px;
+}
+.lum-chip-mark--meta {
+  width: 26px;
+  height: 15px;
+  color: #ffffff;
+}
+
+/* entrance, after the buttons */
+.lum-platforms {
+  opacity: 0;
+  animation: lum-rise .95s cubic-bezier(.22, .9, .3, 1) 1.22s forwards;
+}
+
+/* each chip drifts gently, out of phase with the other */
+.lum-chip { animation: lum-chip-float 5.2s ease-in-out infinite; }
+.lum-chip:nth-child(2) { animation-delay: -2.6s; }
+
+@keyframes lum-chip-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -6px; }
+}
+
+@media (max-width: 780px) {
+  .lum-platforms { margin-top: 34px; gap: 10px; }
+  .lum-chip { font-size: 12.5px; padding: 8px 15px 8px 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lum-platforms { opacity: 1; animation: none; translate: none; }
+  .lum-chip { animation: none; }
+}

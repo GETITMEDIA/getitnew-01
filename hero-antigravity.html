@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>GetIt Media Solutions | Digital Marketing, Design &amp; Web Development</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description"
+    content="GetIt Media Solutions builds digital experiences that grow brands - digital marketing, creative design and high-performance web development in Pondicherry.">
+
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="css/hero-antigravity.css" rel="stylesheet">
+
+  <style>
+    /* the host page only needs this much: no horizontal scroll, ever */
+    html, body { margin: 0; padding: 0; background: #080706; }
+    body { overflow-x: hidden; }
+  </style>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- =================================================================
+       HERO — layer order is fixed:
+         hero content 10 · metric cards 8 · particles 3 · background 1
+       Styles: css/hero-antigravity.css   Behaviour: js/hero-antigravity.js
+       ================================================================= -->
+  <section class="ag-hero" id="home">
+
+    <!-- ---------- background stack ---------- -->
+    <div class="ag-bg" aria-hidden="true"></div>
+
+    <!-- the Three.js canvas is appended here -->
+    <div id="antigravity-container" class="ag-field" aria-hidden="true"></div>
+
+    <div class="ag-grid" aria-hidden="true"></div>
+    <div class="ag-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="ag-haze" aria-hidden="true"></div>
+
+    <!-- ---------- content ---------- -->
+    <div class="ag-content">
+
+      <p class="ag-eyebrow">GetIt Media Solutions</p>
+
+      <h1 class="ag-title">
+        <span class="ag-line"><span>We Build Digital</span></span>
+        <span class="ag-line"><span>Experiences That</span></span>
+        <span class="ag-line"><span class="ag-grow">Grow.</span></span>
+      </h1>
+
+      <p class="ag-description">
+        Digital marketing, creative design, and high-performance web
+        experiences built to move your brand forward.
+      </p>
+
+      <div class="ag-actions">
+        <a href="#contact" class="ag-btn">
+          Start Your Project
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="#portfolio" class="ag-btn ag-btn--ghost">
+          Explore Our Work
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ---------- floating metrics ---------- -->
+    <div class="ag-card ag-card--seo">
+      <p class="ag-card__label">SEO</p>
+      <p class="ag-card__value">+124%</p>
+      <p class="ag-card__sub">Organic Growth</p>
+    </div>
+
+    <div class="ag-card ag-card--ads">
+      <p class="ag-card__label">Meta Ads</p>
+      <p class="ag-card__value">3.8x</p>
+      <p class="ag-card__sub">ROAS</p>
+    </div>
+
+    <div class="ag-card ag-card--web">
+      <p class="ag-card__label">Web Design</p>
+      <p class="ag-card__value">98%</p>
+      <p class="ag-card__sub">Performance</p>
+    </div>
+
+    <div class="ag-card ag-card--social">
+      <p class="ag-card__label">Social Media</p>
+      <p class="ag-card__value">+86%</p>
+      <p class="ag-card__sub">Engagement</p>
+    </div>
+
+    <!-- ---------- skyline ----------
+         Towers, stacks, turbines and antennas, kept almost black so the
+         band merges into the ground rather than reading as an image. -->
+    <div class="ag-city" aria-hidden="true">
+      <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <g fill="#050404">
+          <!-- left cluster -->
+          <rect x="0" y="150" width="86" height="70" />
+          <rect x="60" y="120" width="54" height="100" />
+          <rect x="104" y="162" width="70" height="58" />
+          <!-- comms tower -->
+          <path d="M196 220 L206 96 L216 220 Z" />
+          <rect x="203" y="70" width="6" height="30" />
+          <rect x="190" y="128" width="32" height="5" />
+          <!-- mid-left blocks -->
+          <rect x="232" y="158" width="64" height="62" />
+          <rect x="286" y="132" width="44" height="88" />
+          <rect x="322" y="170" width="78" height="50" />
+          <rect x="392" y="146" width="50" height="74" />
+          <!-- smokestacks -->
+          <rect x="452" y="104" width="17" height="116" />
+          <rect x="474" y="118" width="15" height="102" />
+          <rect x="446" y="100" width="29" height="6" />
+          <!-- centre low band, kept short so the type breathes -->
+          <rect x="498" y="176" width="92" height="44" />
+          <rect x="580" y="164" width="66" height="56" />
+          <rect x="640" y="182" width="104" height="38" />
+          <rect x="738" y="168" width="72" height="52" />
+          <rect x="804" y="180" width="96" height="40" />
+          <!-- right industrial -->
+          <rect x="894" y="150" width="58" height="70" />
+          <rect x="944" y="126" width="46" height="94" />
+          <rect x="984" y="164" width="80" height="56" />
+          <rect x="1056" y="140" width="40" height="80" />
+          <!-- second tower -->
+          <path d="M1112 220 L1121 110 L1130 220 Z" />
+          <rect x="1118" y="86" width="5" height="26" />
+          <!-- right cluster -->
+          <rect x="1146" y="158" width="74" height="62" />
+          <rect x="1210" y="134" width="52" height="86" />
+          <rect x="1254" y="168" width="88" height="52" />
+          <rect x="1330" y="146" width="56" height="74" />
+          <rect x="1378" y="172" width="62" height="48" />
+        </g>
+
+        <!-- wind turbines, a touch lighter so they read against the stacks -->
+        <g stroke="#090707" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M1020 220 L1020 122" />
+          <path d="M1020 122 L1020 92 M1020 122 L1046 137 M1020 122 L994 137" />
+          <path d="M370 220 L370 138" />
+          <path d="M370 138 L370 114 M370 138 L391 150 M370 138 L349 150" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ---------- scroll cue ---------- -->
+    <a href="#next" class="ag-scroll">
+      Scroll To Explore
+      <span class="ag-scroll__line" aria-hidden="true"></span>
+    </a>
+
+  </section>
+
+  <!-- Three.js is used only for the particle field; the hero is complete
+       without it, so it loads normally and the module guards for it -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <script src="js/hero-antigravity.js"></script>
+</body>
+
+</html>

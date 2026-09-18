@@ -1,0 +1,1899 @@
+/* =====================================================================
+   GETIT MEDIA — WEB DEVELOPMENT SHOWCASE
+   "We design and develop different types of modern digital experiences."
+
+     00  Tokens, base, sticky repair
+     01  Furniture — buttons, headings, reveal system, cursor, progress
+     02  HERO            full-bleed client site + rail of six live builds
+     03  WHAT WE BUILD   five expanding slats, one open at a time
+     04  MOCKUP LIBRARY  browser + phone shells and the UI atoms inside
+     05  IN MOTION       counter-scrolling 3D rails
+     06  CTA + outro
+     07  Responsive
+     08  Reduced motion
+
+   Every mockup on this page is drawn in HTML and CSS rather than shipped
+   as a screenshot: it stays sharp at any size, costs no image weight, and
+   recolours with the brand tokens.
+
+   Namespace: .wx        Behaviour: js/web-showcase.js
+   ===================================================================== */
+
+/* =====================================================================
+   00 — TOKENS & BASE
+   The accent also sits on :root because the cursor and progress bar are
+   fixed children of <body>, outside the .wx subtree.
+   ===================================================================== */
+:root {
+  --wx-orange: #ea5a06;
+  --wx-orange-lt: #ff8a3d;
+  --wx-orange-rgb: 234, 90, 6;
+  --wx-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wx {
+  --wx-black: #050508;
+  --wx-bg: #07070c;
+  --wx-bg-2: #0a0a11;
+  --wx-chrome: #12121c;
+  --wx-screen: #0d0d15;
+
+  --wx-line: rgba(255, 255, 255, 0.09);
+  --wx-line-2: rgba(255, 255, 255, 0.16);
+  --wx-glass: rgba(255, 255, 255, 0.04);
+  --wx-glass-2: rgba(255, 255, 255, 0.07);
+
+  --wx-ink: #ffffff;
+  --wx-muted: rgba(255, 255, 255, 0.58);
+  --wx-dim: rgba(255, 255, 255, 0.34);
+  --wx-faint: rgba(255, 255, 255, 0.14);
+
+  --wx-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --wx-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --wx-r: 20px;
+
+  position: relative;
+  background: var(--wx-bg);
+  color: var(--wx-ink);
+  font-family: var(--wx-sans);
+}
+
+.wx *,
+.wx *::before,
+.wx *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+/* ---------------------------------------------------------------------
+   STICKY REPAIR — required by sections 03 and 05.
+
+   css/style.css gives .page-wrapper `overflow: hidden`. An ancestor that
+   clips overflow becomes the scroll container for a `position: sticky`
+   descendant, and since .page-wrapper is not itself scrollable, anything
+   sticky inside it can never stick.
+
+   But that `hidden` was also doing real work: .mobile-menu is a fixed,
+   full-height panel parked off-canvas at translateX(100%), min(380px,88vw)
+   wide, and page-wrapper was containing it. Replacing the rule with plain
+   `overflow: visible` released that panel and made the whole document
+   ~380px wider than the viewport — the page then rendered squeezed to the
+   left with a dead band down the right-hand side.
+
+   `overflow-x: clip` is the tool that does both jobs: it clips the
+   horizontal overflow exactly as `hidden` did, but unlike `hidden` it
+   explicitly does NOT establish a scroll container, so sticky descendants
+   still stick to the viewport. Pairing it with `overflow-y: visible` is
+   permitted — that combination is the reason `clip` exists.
+
+   For the same reason, nothing on the sticky ancestor chain (.wx,
+   .wx-build, .wx-motion) may use overflow: hidden — only `clip`.
+   --------------------------------------------------------------------- */
+body.website-page .page-wrapper {
+  overflow: visible;
+  overflow-x: clip;
+}
+
+body.website-page .lt-footer { overflow: hidden; }
+
+.wx__wrap {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 64px);
+}
+
+/* =====================================================================
+   01 — FURNITURE
+   ===================================================================== */
+.wx-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  padding: 8px 18px 8px 14px;
+  border: 1px solid var(--wx-line);
+  border-radius: 999px;
+  background: var(--wx-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: var(--wx-muted);
+}
+
+.wx-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--wx-orange);
+  box-shadow: 0 0 0 4px rgba(var(--wx-orange-rgb), 0.16);
+  animation: wx-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes wx-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(var(--wx-orange-rgb), 0.16); }
+  50%      { box-shadow: 0 0 0 9px rgba(var(--wx-orange-rgb), 0.03); }
+}
+
+.wx-h2 {
+  font-family: var(--wx-display);
+  font-size: clamp(30px, 4.4vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.wx-h2 em {
+  font-style: normal;
+  color: transparent;
+  background: linear-gradient(115deg, var(--wx-orange-lt), var(--wx-orange) 64%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.wx-lead {
+  margin: 0;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.8;
+  color: var(--wx-muted);
+  max-width: 54ch;
+}
+
+/* ---- buttons ---------------------------------------------------- */
+.wx-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px 16px 30px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--wx-orange-lt), var(--wx-orange));
+  color: #fff;
+  font-family: var(--wx-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 16px 44px -14px rgba(var(--wx-orange-rgb), 0.75);
+  transition: box-shadow 0.5s var(--wx-ease);
+}
+
+.wx-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.26), transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.85s var(--wx-ease);
+}
+
+.wx-btn:hover,
+.wx-btn:focus-visible {
+  color: #fff;
+  box-shadow: 0 22px 60px -14px rgba(var(--wx-orange-rgb), 0.9);
+}
+
+.wx-btn:hover::before,
+.wx-btn:focus-visible::before { transform: translateX(120%); }
+
+.wx-btn__ico {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  font-size: 12px;
+  transition: transform 0.5s var(--wx-ease);
+}
+
+.wx-btn:hover .wx-btn__ico { transform: translateX(4px); }
+
+.wx-btn--ghost {
+  background: var(--wx-glass);
+  border: 1px solid var(--wx-line-2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: none;
+}
+
+.wx-btn--ghost:hover,
+.wx-btn--ghost:focus-visible {
+  background: var(--wx-glass-2);
+  box-shadow: none;
+}
+
+/* ---- reveal ------------------------------------------------------ */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.9s var(--wx-ease) var(--d, 0s),
+              transform 0.9s var(--wx-ease) var(--d, 0s);
+}
+
+[data-reveal="fade"]  { transform: none; }
+[data-reveal="left"]  { transform: translate3d(-34px, 0, 0); }
+[data-reveal="right"] { transform: translate3d(34px, 0, 0); }
+[data-reveal="scale"] { transform: scale(0.95); }
+
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* headings split line-by-line in JS */
+.wx-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.wx-line > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1.05s var(--wx-ease) var(--d, 0s);
+}
+
+.is-in .wx-line > span { transform: none; }
+
+.wx-w { display: inline; }
+
+/* ---- cursor + progress ------------------------------------------- */
+.wx-cursor,
+.wx-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.wx-cursor {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--wx-orange-lt);
+  box-shadow: 0 0 12px rgba(var(--wx-orange-rgb), 0.9);
+}
+
+.wx-cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  transition: width 0.35s var(--wx-ease), height 0.35s var(--wx-ease),
+              margin 0.35s var(--wx-ease), border-color 0.35s ease, background 0.35s ease;
+}
+
+.wx-cursor-ring.is-wide {
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border-color: rgba(var(--wx-orange-rgb), 0.85);
+  background: rgba(var(--wx-orange-rgb), 0.07);
+}
+
+.wx-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--wx-orange), var(--wx-orange-lt));
+  box-shadow: 0 0 14px rgba(var(--wx-orange-rgb), 0.7);
+  pointer-events: none;
+}
+
+/* =====================================================================
+   02 — HERO  ·  "Now Showing"
+   The client's own site is the hero, full bleed.
+
+   Why this and not the previous one. That hero put type on the left and
+   a device mockup on the right — the most common agency hero in
+   existence, and it showed the real work at postage-stamp size inside a
+   browser frame. This one inverts it: the captured site fills the entire
+   viewport, the type sits over it, and a rail along the bottom lets you
+   walk through six of them. The work is the hero rather than a prop
+   beside it.
+
+   Legibility is the whole engineering problem here, and it is solved by
+   the scrim in three layers — a left-weighted wash for the type column,
+   a bottom wash for the rail, and an overall tint to hold the brand
+   temperature over screenshots of wildly different colours.
+   ===================================================================== */
+.wx-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 130px 0 clamp(60px, 8vh, 110px);
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--wx-black);
+}
+
+/* ---- ambient backdrop ---------------------------------------------
+   The client capture used to sit full-bleed behind the headline, which
+   meant the type was always fighting whatever that site's own hero was
+   doing. It now lives in the frame on the right, so all that is left
+   back here is a warm pool of light under the type column. */
+.wx-hero__aura {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 90% at 16% 38%,
+      rgba(var(--wx-orange-rgb), 0.16) 0%,
+      rgba(var(--wx-orange-rgb), 0.05) 38%,
+      transparent 70%),
+    radial-gradient(60% 70% at 88% 14%,
+      rgba(90, 130, 255, 0.07) 0%,
+      transparent 64%),
+    linear-gradient(180deg, transparent 58%, rgba(5, 5, 8, 0.9) 100%);
+}
+
+.wx-hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 78% 70% at 26% 44%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 78% 70% at 26% 44%, #000, transparent 78%);
+}
+
+.wx-hero__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---- the split ----------------------------------------------------- */
+.wx-hero__inner {
+  position: relative;
+  z-index: 5;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.wx-hero__split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  width: 100%;
+}
+
+/* ---- left: the message --------------------------------------------- */
+.wx-hero__copy {
+  min-width: 0;
+}
+
+.wx-hero__title {
+  max-width: 12ch;
+  margin: 0 0 24px;
+  font-family: var(--wx-display);
+  font-size: clamp(40px, 5.2vw, 86px);
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+}
+
+.wx-hero__title i {
+  font-style: normal;
+  color: transparent;
+  background: linear-gradient(105deg, var(--wx-orange-lt) 8%, var(--wx-orange) 72%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.wx-hero__sub {
+  max-width: 40ch;
+  margin: 0 0 34px;
+  padding-left: 20px;
+  border-left: 1px solid var(--wx-line-2);
+  font-size: clamp(15px, 1.15vw, 17.5px);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.wx-hero__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-bottom: 34px;
+}
+
+.wx-hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 34px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wx-hero__stats li {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--wx-dim);
+}
+
+.wx-hero__stats b {
+  font-family: var(--wx-display);
+  font-size: clamp(19px, 1.9vw, 26px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--wx-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.wx-hero__stats b span { color: var(--wx-orange); }
+
+/* =====================================================================
+   THE FRAME — the client site as a deliberate object
+   A browser shell tilted a few degrees off-axis. The tilt is what keeps
+   it from reading as a flat screenshot pasted into the layout.
+   ===================================================================== */
+.wx-hero__show {
+  position: relative;
+  min-width: 0;
+  perspective: 1600px;
+}
+
+/* the glow the frame appears to cast onto the page behind it */
+.wx-hero__show::before {
+  content: '';
+  position: absolute;
+  inset: 6% -4% -10% 2%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+    rgba(var(--wx-orange-rgb), 0.3), transparent 72%);
+  filter: blur(58px);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.wx-frame {
+  position: relative;
+  border: 1px solid var(--wx-line-2);
+  border-radius: 14px;
+  background: var(--wx-chrome);
+  overflow: hidden;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.05) inset,
+    0 40px 90px -30px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(0, 0, 0, 0.5);
+  transform: rotateY(-7deg) rotateX(2deg) translateZ(0);
+  transform-origin: left center;
+  transition: transform 0.9s var(--wx-ease), box-shadow 0.9s var(--wx-ease);
+}
+
+.wx-hero__show:hover .wx-frame {
+  transform: rotateY(-2.5deg) rotateX(0.5deg) translateZ(0);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.07) inset,
+    0 48px 110px -30px rgba(0, 0, 0, 0.95),
+    0 0 0 1px rgba(var(--wx-orange-rgb), 0.16);
+}
+
+/* ---- chrome -------------------------------------------------------- */
+.wx-frame__bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--wx-line);
+  background: linear-gradient(180deg, #16161f, #101018);
+}
+
+.wx-frame__dots {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+}
+
+.wx-frame__dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.wx-frame__dots i:first-child { background: rgba(255, 96, 92, 0.85); }
+.wx-frame__dots i:nth-child(2) { background: rgba(255, 189, 68, 0.85); }
+.wx-frame__dots i:nth-child(3) { background: rgba(40, 200, 64, 0.85); }
+
+/* the address bar doubles as the "now showing" readout: #wxNow lives in
+   here, so the domain changes itself as the rail advances */
+.wx-frame__url {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 auto;
+  padding: 6px 12px;
+  border: 1px solid var(--wx-line);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.36);
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  color: var(--wx-muted);
+}
+
+.wx-frame__url i {
+  flex: 0 0 auto;
+  font-size: 9px;
+  color: rgba(40, 200, 64, 0.8);
+}
+
+.wx-frame__url b {
+  overflow: hidden;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.86);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wx-frame__live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--wx-dim);
+}
+
+.wx-frame__live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--wx-orange);
+  box-shadow: 0 0 0 4px rgba(var(--wx-orange-rgb), 0.16);
+  animation: wx-pulse 2.6s ease-in-out infinite;
+}
+
+/* ---- the screen ----------------------------------------------------- */
+.wx-frame__screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--wx-screen);
+  overflow: hidden;
+}
+
+.wx-hero__stage {
+  position: absolute;
+  inset: 0;
+}
+
+/* every capture stacked, one visible — unchanged behaviour, new home */
+.wx-hero__shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.2s var(--wx-ease), transform 7s linear;
+}
+
+.wx-hero__shot.is-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* a soft inner vignette so the capture sits inside the shell rather than
+   butting against its edges */
+.wx-frame__screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: inset 0 0 44px rgba(0, 0, 0, 0.34);
+}
+
+/* =====================================================================
+   HERO RESPONSIVE
+   ===================================================================== */
+@media (max-width: 1100px) {
+  /* the tilt costs width the frame no longer has to spare */
+  .wx-frame { transform: none; }
+  .wx-hero__split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; }
+  .wx-hero__title { font-size: clamp(38px, 6vw, 64px); }
+}
+
+@media (max-width: 980px) {
+  /* one column: message first, frame under it, aura recentred over both */
+  .wx-hero__split { grid-template-columns: 1fr; gap: 44px; }
+  .wx-hero__title { max-width: 16ch; }
+  .wx-hero__sub { max-width: 52ch; }
+  .wx-hero__show { max-width: 620px; }
+  .wx-hero__grid {
+    -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 34%, #000, transparent 80%);
+    mask-image: radial-gradient(ellipse 90% 60% at 50% 34%, #000, transparent 80%);
+  }
+  .wx-hero__aura {
+    background:
+      radial-gradient(80% 50% at 50% 26%, rgba(var(--wx-orange-rgb), 0.16) 0%, transparent 70%),
+      linear-gradient(180deg, transparent 58%, rgba(5, 5, 8, 0.9) 100%);
+  }
+}
+
+@media (max-width: 620px) {
+  .wx-hero { padding-top: 112px; }
+  .wx-hero__title { letter-spacing: -1px; }
+  .wx-frame__bar { gap: 9px; padding: 9px 10px; }
+  .wx-frame__live { display: none; }
+  .wx-frame__url { font-size: 10px; padding: 5px 10px; }
+  .wx-hero__sub { padding-left: 14px; margin-bottom: 26px; }
+  .wx-hero__btns .wx-btn { width: 100%; justify-content: space-between; }
+  .wx-hero__stats { gap: 12px 22px; }
+}
+
+/* =====================================================================
+   03 — WHAT WE BUILD  ·  "The Slats"
+   Five vertical panels sharing one band. The one you point at opens to
+   take most of the width and shows its full preview; the other four stay
+   as narrow spines carrying a number and a vertical title.
+
+   Why this shape. Two earlier attempts here failed for the same reason:
+   a card grid and then a stacked column both gave each preview a box of
+   a different size, so the mockups rendered at different scales, none
+   was large enough to read, and the short ones left dead space beneath.
+   Here exactly one preview is open at a time and it always gets the same
+   generous width — so there is one scale, no dead space, and the preview
+   is the subject rather than a thumbnail.
+
+   The squash problem. Animating a panel's width normally reflows the
+   content inside it into a smear. The body here is absolutely positioned
+   with a min-width, so it keeps its full layout at every stage of the
+   animation and is simply clipped by the slat. Nothing reflows.
+
+   NOTE: .wx-build must never use `overflow: hidden` — see the sticky
+   repair at the top of this file. `clip` is safe.
+   ===================================================================== */
+.wx-build {
+  position: relative;
+  padding: clamp(90px, 12vh, 150px) 0 clamp(80px, 10vh, 130px);
+  background: var(--wx-bg);
+  overflow-x: clip;
+  isolation: isolate;
+}
+
+.wx-build__bg {
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 54px 54px;
+  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 44%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 72% 62% at 50% 44%, #000, transparent 78%);
+  animation: wx-pan 36s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes wx-pan {
+  from { background-position: 0 0; }
+  to   { background-position: 54px 54px; }
+}
+
+.wx-build__inner { position: relative; z-index: 1; }
+
+.wx-build__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: clamp(44px, 6vh, 72px);
+}
+
+/* ---- the band ---------------------------------------------------- */
+.wx-slats {
+  display: flex;
+  gap: 14px;
+  height: clamp(440px, 64vh, 700px);
+}
+
+.wx-slat {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border: 1px solid var(--wx-line);
+  border-radius: var(--wx-r);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  transition: flex-grow 0.85s var(--wx-ease),
+              border-color 0.6s ease,
+              background 0.6s ease,
+              box-shadow 0.6s ease;
+}
+
+/* the open slat takes the lion's share */
+.wx-slat.is-open {
+  flex-grow: 5.4;
+  cursor: default;
+  border-color: rgba(var(--wx-orange-rgb), 0.45);
+  box-shadow: 0 46px 90px -40px rgba(0, 0, 0, 0.95);
+}
+
+.wx-slat:not(.is-open):hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border-color: var(--wx-line-2);
+}
+
+/* the light that only falls on the open slat */
+.wx-slat::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 62% 46% at 50% 0%, rgba(var(--wx-orange-rgb), 0.24), transparent 74%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.wx-slat.is-open::after { opacity: 1; }
+
+/* ---- the closed spine -------------------------------------------- */
+.wx-spine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  padding: 26px 8px;
+  border: 0;
+  background: none;
+  color: var(--wx-muted);
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.45s ease;
+}
+
+.wx-slat.is-open .wx-spine {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wx-spine__n {
+  font-family: var(--wx-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: var(--wx-orange);
+}
+
+/* the vertical title: reading bottom-to-top, the way a spine does */
+.wx-spine__t {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--wx-display);
+  font-size: clamp(15px, 1.3vw, 19px);
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--wx-ink);
+}
+
+.wx-spine__plus {
+  margin-top: auto;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--wx-line-2);
+  border-radius: 50%;
+  font-size: 11px;
+  transition: background 0.45s ease, border-color 0.45s ease, color 0.45s ease;
+}
+
+.wx-slat:hover .wx-spine__plus {
+  background: var(--wx-orange);
+  border-color: var(--wx-orange);
+  color: #fff;
+}
+
+/* ---- the open body ------------------------------------------------
+   Absolute + min-width is what stops the content reflowing while the
+   slat animates: it keeps its full layout throughout and the slat
+   simply clips it.
+   ------------------------------------------------------------------ */
+.wx-slat__body {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 540px;
+  padding: clamp(22px, 2vw, 34px);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.12s;
+}
+
+.wx-slat.is-open .wx-slat__body { opacity: 1; }
+
+.wx-slat__top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.wx-slat__n {
+  font-family: var(--wx-display);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 700;
+  line-height: 0.9;
+  color: rgba(var(--wx-orange-rgb), 0.9);
+}
+
+.wx-slat__title {
+  margin: 0;
+  font-family: var(--wx-display);
+  font-size: clamp(20px, 2.1vw, 30px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.3px;
+}
+
+.wx-slat__tag {
+  margin-left: auto;
+  padding: 6px 13px;
+  border: 1px solid var(--wx-line);
+  border-radius: 999px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--wx-dim);
+  white-space: nowrap;
+}
+
+.wx-slat__text {
+  margin: 0 0 20px;
+  max-width: 62ch;
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--wx-muted);
+}
+
+/* the preview fills whatever height is left */
+.wx-slat__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0 0 18px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--wx-line);
+  background: linear-gradient(160deg, #0f0f18, #08080e);
+}
+
+.wx-slat__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+
+.wx-slat__list {
+  display: flex;
+  flex: 1 1 320px;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wx-slat__list li {
+  padding: 5px 12px;
+  border: 1px solid var(--wx-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--wx-muted);
+}
+
+.wx-slat__go {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--wx-ink);
+  text-decoration: none;
+}
+
+.wx-slat__go i {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--wx-line-2);
+  border-radius: 50%;
+  font-size: 11px;
+  transition: background 0.45s ease, border-color 0.45s ease, transform 0.55s var(--wx-ease);
+}
+
+.wx-slat__go:hover i {
+  background: var(--wx-orange);
+  border-color: var(--wx-orange);
+  color: #fff;
+  transform: translate(3px, -3px);
+}
+
+/* a hairline tally under the band, showing which of the five is open */
+.wx-slats__tally {
+  display: flex;
+  gap: 6px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wx-slats__tally li {
+  flex: 1 1 0;
+  height: 2px;
+  background: var(--wx-line);
+  transition: background 0.5s ease;
+}
+
+.wx-slats__tally li.is-on { background: var(--wx-orange); }
+
+/* =====================================================================
+   04 — MOCKUP LIBRARY
+   Browser and phone shells, plus the UI atoms the five previews are
+   assembled from. Sizes are in em so a shell scales by font-size alone.
+   ===================================================================== */
+/* font-size is the single scale dial for a whole mockup: every dimension
+   inside is in em. The card stage is a container, so each preview scales
+   to the card holding it — card 01 is twice the width of card 02, and a
+   fixed scale would leave one cramped and the other sparse. The px value
+   is the fallback wherever container queries are unavailable. */
+.wx-mock {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.wx-slat__stage,
+.wx-rail__item {
+  container-type: inline-size;
+}
+
+@supports (container-type: inline-size) {
+  .wx-mock { font-size: clamp(5.5px, 2.4cqw, 12px); }
+
+}
+
+/* --- browser shell --- */
+.wx-browser {
+  border-radius: 1em 1em 0 0;
+  overflow: hidden;
+  background: var(--wx-chrome);
+}
+
+.wx-browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  padding: 0.9em 1.2em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wx-browser__dots { display: flex; gap: 0.5em; }
+
+.wx-browser__dots i {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.wx-browser__dots i:first-child { background: rgba(var(--wx-orange-rgb), 0.85); }
+
+.wx-browser__url {
+  flex: 1 1 auto;
+  padding: 0.5em 1em;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 0.95em;
+  letter-spacing: 0.04em;
+  color: var(--wx-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wx-view {
+  position: relative;
+  padding: 1.4em;
+  background: var(--wx-screen);
+  overflow: hidden;
+}
+
+/* --- UI atoms ------------------------------------------------------
+   Deliberately generic: a bar, a block, a pill. Five very different
+   previews are composed from these three primitives plus a couple of
+   specialised parts (product card, phone, chart).
+   ------------------------------------------------------------------ */
+.wx-bar {
+  height: 0.7em;
+  border-radius: 0.35em;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.wx-bar--lg { height: 1.5em; border-radius: 0.4em; background: rgba(255, 255, 255, 0.3); }
+.wx-bar--xl { height: 2.2em; border-radius: 0.4em; background: rgba(255, 255, 255, 0.42); }
+.wx-bar--accent { background: linear-gradient(90deg, var(--wx-orange), rgba(var(--wx-orange-rgb), 0.35)); }
+.wx-bar--dim { background: rgba(255, 255, 255, 0.08); }
+
+.wx-block {
+  border-radius: 0.6em;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wx-block--warm {
+  background: linear-gradient(145deg, rgba(var(--wx-orange-rgb), 0.45), rgba(var(--wx-orange-rgb), 0.1));
+  border-color: rgba(var(--wx-orange-rgb), 0.3);
+}
+
+.wx-pill {
+  display: inline-block;
+  padding: 0.55em 1.2em;
+  border-radius: 999px;
+  background: var(--wx-orange);
+  font-size: 0.95em;
+  color: #fff;
+}
+
+.wx-pill--ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.wx-row { display: flex; align-items: center; gap: 0.8em; }
+.wx-col { display: flex; flex-direction: column; gap: 0.8em; }
+.wx-grow { flex: 1 1 auto; }
+
+/* --- 01 landing preview --- */
+.wx-mock--landing .wx-view { padding: 0; }
+
+.wx-landing__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+  padding: 1.2em 1.6em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wx-landing__hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.6em;
+  align-items: center;
+  padding: 2.2em 1.6em;
+  background: radial-gradient(ellipse 70% 100% at 10% 0%, rgba(var(--wx-orange-rgb), 0.16), transparent 66%);
+}
+
+.wx-landing__art {
+  aspect-ratio: 4 / 3;
+  border-radius: 0.8em;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(var(--wx-orange-rgb), 0.55), transparent 62%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- 02 static preview --- */
+.wx-static__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  padding-bottom: 1.2em;
+  margin-bottom: 1.2em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wx-static__cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9em;
+  margin-top: 1.2em;
+}
+
+.wx-static__cols > div { display: flex; flex-direction: column; gap: 0.6em; }
+.wx-static__thumb { aspect-ratio: 3 / 2; }
+
+.wx-static__foot {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 1.4em;
+  padding-top: 1.1em;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- 03 e-commerce preview --- */
+.wx-shop__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 1.1em;
+}
+
+.wx-shop__cart {
+  position: relative;
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 0.5em;
+  background: rgba(var(--wx-orange-rgb), 0.16);
+  border: 1px solid rgba(var(--wx-orange-rgb), 0.4);
+}
+
+.wx-shop__cart::after {
+  content: '3';
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  display: grid;
+  place-items: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: var(--wx-orange);
+  font-size: 0.85em;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wx-shop__body { display: grid; grid-template-columns: 0.32fr 1fr; gap: 1em; }
+
+.wx-shop__filters { display: flex; flex-direction: column; gap: 0.7em; }
+
+.wx-shop__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8em;
+}
+
+.wx-prod {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0.6em;
+  border-radius: 0.6em;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.wx-prod__img {
+  aspect-ratio: 1;
+  border-radius: 0.4em;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.03));
+}
+
+.wx-prod:nth-child(2) .wx-prod__img {
+  background: linear-gradient(150deg, rgba(var(--wx-orange-rgb), 0.5), rgba(var(--wx-orange-rgb), 0.08));
+}
+
+.wx-prod__price {
+  font-size: 0.95em;
+  font-weight: 700;
+  color: var(--wx-orange-lt);
+}
+
+/* --- 04 portfolio preview --- */
+.wx-folio__head { display: flex; align-items: baseline; gap: 1em; margin-bottom: 1.2em; }
+
+.wx-folio__type {
+  font-family: var(--wx-display);
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wx-folio__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 3.4em;
+  gap: 0.7em;
+}
+
+.wx-folio__grid > span { border-radius: 0.5em; }
+.wx-folio__grid > span:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.wx-folio__grid > span:nth-child(4) { grid-row: span 2; }
+
+/* --- 05 app preview --- */
+.wx-app {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1em;
+  padding: 1.6em 1.4em 0;
+}
+
+.wx-phone {
+  flex: 0 0 auto;
+  width: 9.5em;
+  padding: 0.7em 0.5em;
+  border-radius: 1.6em 1.6em 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 0;
+  background: #15151f;
+  box-shadow: 0 1.6em 3.2em -1.2em rgba(0, 0, 0, 0.9);
+}
+
+.wx-phone--back { width: 8.2em; opacity: 0.6; transform: translateY(1.6em); }
+
+.wx-phone__screen {
+  position: relative;      /* anchors the .wx-shot overlay */
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  padding: 1.1em 0.8em;
+  border-radius: 1.1em 1.1em 0 0;
+  background: var(--wx-screen);
+  min-height: 12em;
+}
+
+.wx-phone__notch {
+  width: 3em;
+  height: 0.35em;
+  margin: 0 auto 0.6em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.wx-phone__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5em; }
+
+.wx-phone__stat {
+  padding: 0.6em;
+  border-radius: 0.45em;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.wx-phone__stat b {
+  display: block;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--wx-orange-lt);
+  margin-bottom: 0.35em;
+}
+
+/* the little chart at the bottom of the front phone */
+.wx-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35em;
+  height: 3.4em;
+  margin-top: auto;
+}
+
+.wx-chart i {
+  flex: 1 1 auto;
+  border-radius: 0.2em 0.2em 0 0;
+  background: linear-gradient(180deg, var(--wx-orange-lt), rgba(var(--wx-orange-rgb), 0.25));
+}
+
+.wx-chart i:nth-child(1) { height: 45%; }
+.wx-chart i:nth-child(2) { height: 68%; }
+.wx-chart i:nth-child(3) { height: 38%; }
+.wx-chart i:nth-child(4) { height: 88%; }
+.wx-chart i:nth-child(5) { height: 60%; }
+.wx-chart i:nth-child(6) { height: 100%; }
+
+/* =====================================================================
+   05 — IN MOTION
+   Two rails that pass each other: browsers travelling right, phones
+   travelling left, both driven by scroll position while the band is
+   pinned. Each rail sits on its own 3D plane.
+   ===================================================================== */
+/* NOTE: this element must never use `overflow: hidden`.
+   It is the direct parent of the sticky .wx-motion__pin, and any ancestor
+   that clips overflow becomes that pin's scroll container. Since this
+   element is not itself scrollable, `hidden` here stops the pin sticking
+   entirely: the band then scrolls past as one tall section with the rails
+   clipped off the top and the remaining height left empty below.
+
+   `clip` is the tool that is safe here — unlike `hidden` it explicitly
+   does not establish a scroll container, and pairing overflow-x: clip
+   with overflow-y: visible is permitted. The rails are clipped by the pin
+   when pinned, and by .wx-rails below when not. */
+.wx-motion {
+  position: relative;
+  padding: clamp(80px, 11vh, 130px) 0;
+  background: var(--wx-bg-2);
+  overflow-x: clip;
+}
+
+.wx-motion__pin { position: relative; }
+
+.wx-motion.is-pinned {
+  padding: 0;
+  min-height: 100svh;
+}
+
+.wx-motion.is-pinned .wx-motion__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.wx-motion__bg {
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 62px 62px;
+  -webkit-mask-image: radial-gradient(ellipse 66% 60% at 50% 50%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 66% 60% at 50% 50%, #000, transparent 78%);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.wx-motion__head {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 64px) clamp(26px, 4vh, 44px);
+  text-align: center;
+}
+
+.wx-motion__head .wx-eyebrow { margin-bottom: 16px; }
+
+.wx-rails {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vh, 36px);
+  perspective: 1500px;
+  /* a flex item will not shrink below its content without this, which is
+     what let the column overflow the pin and clip the top rail */
+  min-height: 0;
+  /* clips the rails when the band is NOT pinned (no JS, reduced motion),
+     where the pin's own overflow rule does not apply. Safe to clip here:
+     this is a descendant of the sticky element, not an ancestor. */
+  overflow-x: clip;
+}
+
+/* a short window gets a tighter heading block so the rails keep their room */
+@media (max-height: 800px) {
+  .wx-motion__head { padding-bottom: 16px; }
+  .wx-motion__head .wx-h2 { font-size: clamp(22px, 2.8vw, 32px); }
+  .wx-motion__head .wx-eyebrow { margin-bottom: 10px; padding: 6px 14px 6px 11px; }
+  .wx-motion__note { margin-top: 16px; }
+}
+
+.wx-rail {
+  display: flex;
+  gap: clamp(18px, 2vw, 32px);
+  padding: 0 4vw;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.wx-rail__item {
+  display: block;
+  flex: 0 0 auto;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--wx-line);
+  background: #0c0c14;
+  box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.95);
+  transition: border-color 0.5s ease;
+}
+
+/* The rails are sized from viewport HEIGHT, and the width follows from it.
+   This is what keeps the pinned column honest at both extremes: on a short
+   window the old width-driven sizing made the column taller than 100svh and
+   the top rail was clipped away, while on a tall window the content filled
+   only the middle and left large dead bands above and below. Height-driven
+   sizing fills the pin proportionally at any window shape.
+
+   Width is derived with calc() rather than aspect-ratio because these items
+   are also inline-size containers, and an inline size resolved from the
+   block size through aspect-ratio is exactly the kind of dependency that
+   containment is entitled to refuse. calc() is unambiguous. */
+
+/* browsers: the upper rail, leaning one way */
+.wx-rail--a .wx-rail__item {
+  --h: clamp(190px, 33vh, 400px);
+  height: var(--h);
+  width: calc(var(--h) * 4 / 3);
+  transform: rotateY(-8deg) rotateX(3deg);
+}
+
+/* phones: the lower rail, leaning the other. Its resting position is set
+   by the transform in js/web-showcase.js, not by justify-content. */
+.wx-rail--b .wx-rail__item {
+  --h: clamp(170px, 28vh, 340px);
+  height: var(--h);
+  width: calc(var(--h) * 9 / 16);
+  transform: rotateY(8deg) rotateX(-3deg);
+}
+
+/* the mockup inside fills the item, so every card in a rail is the same
+   height and the preview is cropped like a real screenshot rather than
+   leaving a gap under short content */
+.wx-rail__item .wx-mock,
+.wx-rail__item .wx-browser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.wx-rail__item .wx-view {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.wx-rail__item:hover {
+  border-color: rgba(var(--wx-orange-rgb), 0.55);
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.95),
+              0 0 0 1px rgba(var(--wx-orange-rgb), 0.35);
+}
+
+/* the domain lights up on the tile you are about to open */
+.wx-rail__item:hover .wx-browser__url {
+  color: var(--wx-orange-lt);
+  background: rgba(var(--wx-orange-rgb), 0.12);
+}
+
+/* the phone rail's items carry a compact app screen */
+/* A real site screenshot laid over the drawn mockup. The mockup stays
+   underneath as the fallback: if the file is missing the <img> removes
+   itself on error and the drawn UI shows through, so the section never
+   renders as an empty box while the captures are still being made.
+   .wx-view is already position: relative, so both anchor correctly. */
+.wx-shot {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--wx-screen);
+}
+
+.wx-rail__screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  padding: 1.2em 1em;
+  height: 100%;
+  font-size: 10px;
+  background: var(--wx-screen);
+  overflow: hidden;
+}
+
+/* a phone item is far narrower than a browser item, so it needs its own
+   share of its container rather than the mockup default */
+@supports (container-type: inline-size) {
+  .wx-rail__screen { font-size: clamp(7px, 6cqw, 12px); }
+}
+
+.wx-motion__note {
+  position: relative;
+  z-index: 3;
+  margin: clamp(24px, 4vh, 44px) auto 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--wx-dim);
+}
+
+/* =====================================================================
+   06 — CTA + OUTRO
+   ===================================================================== */
+.wx-cta {
+  position: relative;
+  padding: clamp(100px, 16vh, 190px) 0 clamp(90px, 13vh, 160px);
+  background: var(--wx-black);
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+}
+
+.wx-cta__sweep {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 150vmax;
+  height: 150vmax;
+  margin: -75vmax 0 0 -75vmax;
+  background: conic-gradient(from 0deg,
+              transparent 0deg,
+              rgba(var(--wx-orange-rgb), 0.11) 58deg,
+              transparent 130deg,
+              transparent 242deg,
+              rgba(120, 90, 255, 0.06) 300deg,
+              transparent 360deg);
+  animation: wx-sweep 36s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes wx-sweep { to { transform: rotate(360deg); } }
+
+.wx-cta__rings {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: min(76vw, 780px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.wx-cta__rings i {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  animation: wx-spin 46s linear infinite;
+}
+
+.wx-cta__rings i:nth-child(1) { inset: 0;   border-top-color: rgba(var(--wx-orange-rgb), 0.5); }
+.wx-cta__rings i:nth-child(2) { inset: 13%; border-left-color: rgba(var(--wx-orange-rgb), 0.32);
+                                animation-duration: 33s; animation-direction: reverse; }
+.wx-cta__rings i:nth-child(3) { inset: 27%; border-bottom-color: rgba(255, 255, 255, 0.26);
+                                animation-duration: 25s; }
+
+@keyframes wx-spin { to { transform: rotate(360deg); } }
+
+.wx-cta__orb {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: min(40vw, 400px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 30%,
+              rgba(255, 255, 255, 0.28),
+              rgba(var(--wx-orange-rgb), 0.46) 26%,
+              rgba(var(--wx-orange-rgb), 0.1) 54%,
+              transparent 72%);
+  filter: blur(16px);
+  animation: wx-breathe 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wx-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+  50%      { transform: translate(-50%, -52%) scale(1.09); opacity: 1; }
+}
+
+.wx-cta__inner { position: relative; z-index: 2; }
+
+.wx-cta__title {
+  max-width: 15ch;
+  margin: 0 auto 22px;
+  font-family: var(--wx-display);
+  font-size: clamp(32px, 7vw, 108px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+.wx-cta__title em {
+  font-style: normal;
+  color: transparent;
+  background: linear-gradient(100deg, var(--wx-orange-lt), var(--wx-orange) 68%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.wx-cta__lead {
+  margin: 0 auto 40px;
+  max-width: 46ch;
+  font-size: clamp(14.5px, 1.1vw, 16.5px);
+  line-height: 1.85;
+  color: var(--wx-muted);
+}
+
+.wx-cta__btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+.wx-cta__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 40px;
+  justify-content: center;
+  margin: clamp(50px, 7vh, 80px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wx-cta__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--wx-muted);
+  text-decoration: none;
+  transition: color 0.35s ease;
+}
+
+.wx-cta__contact a:hover { color: var(--wx-orange-lt); }
+.wx-cta__contact i { color: var(--wx-orange); font-size: 12px; }
+
+/* hand-off into the footer, which is #0a0a0a */
+.wx-outro {
+  position: relative;
+  height: 120px;
+  background: linear-gradient(180deg, var(--wx-black), #0a0a0a);
+  overflow: hidden;
+}
+
+.wx-outro::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 62px;
+  background: linear-gradient(180deg, rgba(var(--wx-orange-rgb), 0.9), transparent);
+  transform: translateX(-50%);
+}
+
+.wx-outro::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 56px;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50%;
+  background: var(--wx-orange);
+  box-shadow: 0 0 22px 4px rgba(var(--wx-orange-rgb), 0.55);
+  animation: wx-outro 3.2s ease-in-out infinite;
+}
+
+@keyframes wx-outro {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%      { transform: scale(1.5); opacity: 0.45; }
+}
+
+/* =====================================================================
+   07 — RESPONSIVE
+   ===================================================================== */
+
+/* --- laptop --- */
+@media (max-width: 1280px) {
+}
+
+/* --- tablet --- */
+@media (max-width: 980px) {
+  .wx-build__head { grid-template-columns: 1fr; gap: 24px; align-items: start; }
+  .wx-slats { height: clamp(420px, 58vh, 560px); }
+  .wx-slat__body { min-width: 420px; }
+  .wx-slat.is-open { flex-grow: 6.5; }
+  .wx-hero__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wx-hero__split { grid-template-columns: 1fr; gap: 48px; }
+  .wx-stage { max-width: 620px; padding: 2% 0 8%; }
+  .wx-mock { font-size: 9px; }
+  .wx-rail--a .wx-rail__item,
+  .wx-rail--b .wx-rail__item { transform: none; }
+  .wx-rails { perspective: none; }
+}
+
+/* --- mobile --- */
+@media (max-width: 760px) {
+  .wx-hero { min-height: auto; padding: 126px 0 76px; }
+  .wx-hero__title { font-size: clamp(38px, 12vw, 62px); letter-spacing: -1px; }
+  .wx-hero__sub { padding-left: 16px; margin-bottom: 32px; }
+  .wx-hero__btns .wx-btn { width: 100%; justify-content: space-between; }
+
+  .wx-hero__split { gap: 36px; }
+  .wx-stage { padding: 0 0 12%; }
+  /* static here, with room to clear the phone that overhangs the
+     cluster's bottom edge by -7% */
+  .wx-phases { position: static; margin-top: 54px; gap: 16px; flex-wrap: wrap; }
+  .wx-phases li::after { width: 16px; }
+
+  /* the band unstacks: every slat opens, spines retire, heights go auto */
+  .wx-slats { flex-direction: column; height: auto; gap: 16px; }
+
+  .wx-slat,
+  .wx-slat.is-open {
+    flex: 0 0 auto;
+    cursor: default;
+    border-color: var(--wx-line);
+    box-shadow: none;
+  }
+
+  .wx-slat.is-open { border-color: rgba(var(--wx-orange-rgb), 0.4); }
+  .wx-spine { display: none; }
+
+  .wx-slat__body {
+    position: static;
+    min-width: 0;
+    opacity: 1;
+    padding: 20px 18px;
+  }
+
+  .wx-slat__stage { flex: 0 0 auto; height: 46vw; max-height: 300px; }
+  .wx-slat__foot { gap: 12px; }
+  .wx-slats__tally { display: none; }
+
+  /* the rails stop being scroll-driven and simply swipe */
+  .wx-motion { padding: 64px 0; }
+  .wx-motion.is-pinned { padding: 64px 0; min-height: 0; }
+  .wx-motion.is-pinned .wx-motion__pin {
+    position: static;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .wx-rail {
+    transform: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 20px 16px;
+    gap: 14px;
+    scrollbar-width: none;
+  }
+
+  .wx-rail::-webkit-scrollbar { display: none; }
+  .wx-rail--b { justify-content: flex-start; }
+  /* on a phone the rails swipe, so width leads again */
+  .wx-rail__item { scroll-snap-align: center; }
+  .wx-rail--a .wx-rail__item { --h: 54vw; width: 74vw; max-width: 340px; height: var(--h); max-height: 250px; }
+  .wx-rail--b .wx-rail__item { --h: 68vw; width: 40vw; max-width: 170px; height: var(--h); max-height: 300px; }
+
+  .wx-cta__btns .wx-btn { width: 100%; justify-content: space-between; }
+  .wx-cta__contact { gap: 12px 24px; }
+}
+
+@media (max-width: 420px) {
+  .wx-hero__stats { grid-template-columns: 1fr; }
+  .wx-mock { font-size: 8px; }
+  .wx-shop__body { grid-template-columns: 1fr; }
+  .wx-shop__filters { flex-direction: row; }
+}
+
+/* =====================================================================
+   08 — REDUCED MOTION
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .wx *,
+  .wx *::before,
+  .wx *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal],
+  [data-reveal].is-in { opacity: 1; transform: none; }
+
+  .wx-line > span { transform: none; }
+
+  .wx-motion.is-pinned { padding: 64px 0; min-height: 0; }
+  .wx-motion.is-pinned .wx-motion__pin {
+    position: static;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .wx-rail { transform: none !important; overflow-x: auto; padding-bottom: 16px; }
+
+  .wx-slats { flex-direction: column; height: auto; }
+  .wx-slat { flex: 0 0 auto; }
+  .wx-spine { display: none; }
+  .wx-slat__body { position: static; min-width: 0; opacity: 1; }
+  .wx-slat__stage { flex: 0 0 auto; height: 300px; }
+  .wx-cursor,
+  .wx-cursor-ring { display: none; }
+}

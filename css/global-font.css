@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Global font family override
+   --------------------------------------------------------------------------
+   Applies "Josefin Sans", serif to every text element site-wide.
+   Nothing else is changed: no sizes, weights, colors, spacing or layout.
+   Icon fonts (Font Awesome, Linearicons, Swiper, Material Symbols) are
+   re-asserted below so all icons keep rendering as icons.
+   Load this file LAST in the <head> of every page.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+/* --- Re-point every font-family custom property used across the site --- */
+:root {
+  --body-font-family: "Josefin Sans", serif;
+  --heading-font-family: "Josefin Sans", serif;
+  --sec-title-font-family: "Josefin Sans", serif;
+  --sec-title-subtitle-font-family: "Josefin Sans", serif;
+
+  --font-sans: "Josefin Sans", serif;
+  --font-serif: "Josefin Sans", serif;
+
+  --tm-sans: "Josefin Sans", serif;
+  --tm-serif: "Josefin Sans", serif;
+
+  --pf-display: "Josefin Sans", serif;
+  --pf-body: "Josefin Sans", serif;
+  --pf-label: "Josefin Sans", serif;
+
+  --dp-serif: "Josefin Sans", serif;
+  --dp-mono: "Josefin Sans", serif;
+
+  --gd-font-serif: "Josefin Sans", serif;
+  --gd-font-sans: "Josefin Sans", serif;
+
+  --wx-display: "Josefin Sans", serif;
+  --wx-sans: "Josefin Sans", serif;
+
+  --seo-font-heading: "Josefin Sans", serif;
+  --seo-font-body: "Josefin Sans", serif;
+
+  --gm-font: "Josefin Sans", serif;
+  --jbs-font: "Josefin Sans", serif;
+  --ag-sans: "Josefin Sans", serif;
+
+  --bs-font-sans-serif: "Josefin Sans", serif;
+  --bs-font-monospace: "Josefin Sans", serif;
+}
+
+/* --- Every element gets the new family ---------------------------------
+   Deliberately no ::before / ::after in this selector: generated content
+   inherits the family from its element, while icon pseudo-elements that
+   declare their own icon font keep it untouched.                         */
+* {
+  font-family: "Josefin Sans", serif !important;
+}
+
+/* --- Keep icon fonts as icon fonts -------------------------------------- */
+
+/* Font Awesome 6 (solid / regular / light / thin / classic / sharp).
+   "Pro" is the locally hosted kit; "Free" is the CDN kit used by
+   getit-3d.html, so both are listed and whichever is loaded wins. */
+.fa,
+.fas,
+.far,
+.fal,
+.fat,
+.fa-solid,
+.fa-regular,
+.fa-light,
+.fa-thin,
+.fa-classic,
+.fa-sharp,
+[class^="fa-"],
+[class*=" fa-"] {
+  font-family: var(--fa-style-family, "Font Awesome 6 Pro"), "Font Awesome 6 Free" !important;
+}
+
+/* Font Awesome 6 Brands */
+.fab,
+.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+}
+
+/* Font Awesome 6 Duotone */
+.fad,
+.fa-duotone {
+  font-family: "Font Awesome 6 Duotone" !important;
+}
+
+/* Linearicons */
+.lnr,
+[class^="lnr-"],
+[class*=" lnr-"] {
+  font-family: "linearicons-free" !important;
+}
+
+/* Swiper navigation glyphs live on ::after with their own family, so they
+   need no rule here. */
+
+/* Google Material Symbols */
+.material-symbols-outlined,
+.material-icons {
+  font-family: "Material Symbols Outlined" !important;
+}

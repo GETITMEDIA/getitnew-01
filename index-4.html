@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from html.kodesolution.com/2025/nexella-html/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Aug 2026 04:02:41 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Nexella | IT Solutions & Technology HTML Template | Home Page 01</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/cursor.css" rel="stylesheet">
+    <link href="css/text-reveal.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="page-wrapper">
+
+      <!-- Preloader start -->
+    <div class="preloader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="preloader-heading">
+            <div class="load-text">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- Back-to-top start -->
+      <div class="back-to-top-wrapper">
+          <button id="back_to_top" type="button" class="back-to-top-btn">
+              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+          </button>
+      </div>
+      <!-- Back-to-top start -->
+     
+      <!-- Main Header-->
+      <header class="main-header header-4">
+        <!-- Header Lower -->
+        <div class="header-lower">
+          <!-- Main box -->
+          <div class="main-box">
+            <div class="logo-box">
+              <div class="logo">
+                <a href="index.html"><img src="images/logo/white-logo.png" alt="" title="nexella" data-aos="fade-up"></a>
+              </div>
+            </div>
+            <!--Nav Box-->
+            <div class="nav-outer">
+              <nav class="nav main-menu">
+                <ul class="navigation">
+                  <li class="current dropdown">
+                    <a href="index.html">Home</a>
+                    <ul>
+                      <li><a href="index.html">Home Layout 1</a></li>
+                      <li><a href="index-2.html">Home Layout 2</a></li>
+                      <li><a href="index-3.html">Home Layout 3</a></li>
+                      <li><a href="index-4.html">Home Layout 4</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#">Pages</a>
+                    <ul>
+                  <li><a href="page-about.html">About</a></li>
+                      <li class="dropdown">
+                          <a href="#">Team</a>
+                          <ul>
+                            <li><a href="page-team.html">Team List</a></li>
+                            <li><a href="page-team-details.html">Team Details</a></li>
+                          </ul>
+                        <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#">Shop</a>
+                        <ul>
+                          <li><a href="shop-products.html">Products</a></li>
+                          <li><a href="shop-products-sidebar.html">Products with Sidebar</a></li>
+                          <li><a href="shop-product-details.html">Product Details</a></li>
+                          <li><a href="shop-cart.html">Cart</a></li>
+                          <li><a href="shop-checkout.html">Checkout</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="page-testimonial.html">Testimonial</a></li>
+                      <li><a href="page-pricing.html">Pricing</a></li>
+                      <li><a href="page-faq.html">FAQ</a></li>
+                      <li><a href="page-404.html">Page 404</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#">Projects</a>
+                    <ul>
+                      <li><a href="page-projects.html">Projects</a></li>
+                      <li><a href="page-project-details.html">Projects Details</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#">Services</a>
+                    <ul>
+                      <li><a href="page-services.html">Services List</a></li>
+                      <li><a href="page-service-details.html">Service Details</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#">News</a>
+                    <ul>
+                      <li><a href="news-grid.html">News Grid</a></li>
+                      <li><a href="news-details.html">News Details</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="page-contact.html">Contact</a></li>
+                </ul>
+              </nav>
+              <!-- Main Menu End-->
+            </div>
+            <div class="outer-box">
+              <div class="ui-btn-outer">
+                <button class="ui-btn ui-btn search-btn">
+                  <span class="icon lnr lnr-icon-search"> Search...</span>
+                </button>
+              </div>             
+              <div class="header-btn d-none d-xxl-block">
+                <a class="header-btn-main" href="page-contact.html">
+                  <span class="header-theme-btn">Get a quote</span>
+                  <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+                </a>
+              </div>
+              <!-- Mobile Nav toggler -->
+              <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+            </div>
+          </div>
+        </div>
+        <!-- End Header Lower -->
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+          <div class="menu-backdrop"></div>
+          <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+          <nav class="menu-box">
+            <div class="upper-box">
+              <div class="nav-logo">
+                <a href="index.html"><img src="images/logo/white-logo.png" alt="" data-aos="fade-up"></a>
+              </div>
+              <div class="close-btn"><i class="icon fa fa-times"></i></div>
+            </div>
+
+            <ul class="navigation clearfix">
+              <!--Keep This Empty / Menu will come through Javascript-->
+            </ul>
+            <ul class="contact-list-one">
+              <li>
+                <!-- Contact Info Box -->
+                <div class="contact-info-box">
+                  <i class="icon lnr-icon-phone-handset"></i>
+                  <span class="title">Call Now</span>
+                  <a href="tel:+92880098670">+92 (8800) - 98670</a>
+                </div>
+              </li>
+              <li>
+                <!-- Contact Info Box -->
+                <div class="contact-info-box">
+                  <span class="icon lnr-icon-envelope1"></span>
+                  <span class="title">Send Email</span>
+                  <a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#056d60697545666a6875646b7c2b666a68"><span class="__cf_email__" data-cfemail="0e666b627e4e6d61637e6f6077206d6163">[email&#160;protected]</span></a>
+                </div>
+              </li>
+              <li>
+                <!-- Contact Info Box -->
+                <div class="contact-info-box">
+                  <span class="icon lnr-icon-clock"></span>
+                  <span class="title">Send Email</span>
+                  Mon - Sat 8:00 - 6:30, Sunday - CLOSED
+                </div>
+              </li>
+            </ul>
+            <ul class="social-links">
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- End Mobile Menu -->
+
+        <!-- Header Search -->
+        <div class="search-popup">
+          <span class="search-back-drop"></span>
+          <button class="close-search"><span class="fa fa-times"></span></button>
+          <div class="search-inner">
+            <form method="post" action="#">
+              <div class="form-group">
+                <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- End Header Search -->
+
+        <!-- Sticky Header  -->
+        <div class="sticky-header">
+          <div class="auto-container">
+            <div class="inner-container">
+              <!--Logo-->
+              <div class="logo">
+                <a href="index.html"><img src="images/logo/white-logo.png" alt="" data-aos="fade-up"></a>
+              </div>
+
+              <!--Right Col-->
+              <div class="nav-outer">
+                <!-- Main Menu -->
+                <nav class="main-menu">
+                  <div class="navbar-collapse show collapse clearfix">
+                    <ul class="navigation clearfix">
+                      <!--Keep This Empty / Menu will come through Javascript-->
+                    </ul>
+                  </div>
+                </nav>
+                <!-- Main Menu End-->
+
+                <!--Mobile Navigation Toggler-->
+                <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Sticky Menu -->
+      </header>
+      <!--End Main Header -->
+
+      <!--Hero Section Start -->
+      <section class="hero-section-4 hero-4 bg-cover theme-dark" style="background-image: url('images/home-4/hero/hero-bg.jpg');">
+        <div class="circle-shape">
+          <img src="images/home-4/hero/circle-shape.png" alt="img" class="rotate" data-aos="fade-up">
+          </div>
+          <div class="social-icon-list1">
+            <span>FOLLOW US -</span>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+             <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+          <a href="#" class="get-text">GET IN TOUSH</a>
+        <div class="auto-container">
+          <div class="row g-4">
+            <div class="col-lg-8" data-aos="fade-up">
+              <div class="hero-content">
+                <h1 class="hero-title wow fadeInUp" data-wow-delay=".3s" data-reveal-text>
+                  Design, tech &  magic
+                  <img src="images/home-4/hero/small-img.png" alt="" data-aos="fade-up"> Transform your 
+                  <span data-reveal-skip>ideas into reality</span>
+                </h1>
+                <h4 class="sub-title wow fadeInUp" data-wow-delay=".5s">Your Best Marketing Partner</h4>
+                <div class="video-items wow fadeInUp" data-wow-delay=".7s">
+                  <a class="video-btn playbtnanim" href="https://www.youtube.com/watch?v=Lplq8RjQ0zU" data-fancybox="gallery" data-caption=""><i class="fa-sharp fa-solid fa-play"></i></a>
+                  <p>
+                      Today’s market demands more than just creativity — it requires relevance
+                      We blend design thinking with data-driven marketing to  purposeful
+                      innovative strategies
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay=".3s">
+              <div class="hero-image">
+                <img src="images/home-4/hero/hero-image.jpg" alt="img" data-aos="fade-up">
+                <div class="circle-box">
+                  <div class="text-circle">
+                    <img src="images/home-4/text-circle.svg" alt="img" class="rotate" data-aos="fade-up">
+                  </div>
+                  <a href="#" class="icon">
+                    <i class="fa-regular fa-arrow-down"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Start Marquee Section h3 -->
+      <div class="marquee-section-h3">
+        <div class="marquee-h3">
+          <div class="marquee-group">
+            <div class="text">Digital Marketing</div>
+            <div class="text">Email Marketing</div>
+            <div class="text">Social Media Marketing</div>
+            <div class="text">Rate Optimization</div>
+            <div class="text">Digital Marketing</div>
+          </div>
+
+          <div class="marquee-group">
+            <div class="text">Social Media Marketing</div>
+            <div class="text">Email Marketing</div>
+            <div class="text">Social Media Marketing</div>
+            <div class="text">Rate Optimization</div>
+            <div class="text">Digital Marketing</div>
+          </div>
+        </div>
+      </div>
+      <!--End Marquee Section Two -->
+
+      <!-- Service Section -->
+      <section class="service-section-4 fix section-padding bg-shape bg-cover theme-light" style="background-image: url('images/home-4/service-bg-bg.jpg');">
+        <div class="vec-bg d-none d-xl-block"></div>
+        <div class="vec-bg-2 d-none d-xl-block"></div>
+        <div class="vec-circle d-none d-xl-block">
+          <img src="images/home-4/vec-circle.png" alt="img" class="rotate" data-aos="fade-up">
+        </div>
+        <div class="vec-shape d-none d-xl-block">
+          <img src="images/home-4/vec-shape.png" alt="img" class="rotate" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="sec-title">
+             <div class="row g-4 align-items-center justify-content-between">
+              <div class="col-lg-5 col-md-7" data-aos="fade-up">
+               <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Nexella  Services</span>
+                  <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                    The Tech Solution for <br>Your Success
+                  </h2>
+              </div>
+              <div class="col-lg-5 col-md-5 wow fadeInUp" data-wow-delay=".3s">
+                Nexella is a dynamic best digital marketing agency dedicated to empowering businesses through innovative online presence modern technology we have used
+              </div>
+            </div>
+          </div>
+          <div class="swiper service-slider-2">
+              <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="service-card-style-3 style-2">
+                    <div class="service-image bg-cover" style="background-image: url('images/home-4/service/service1.jpg');">
+
+                    </div>
+                      <div class="icon">
+                          <img src="images/main-home/service-icon1.png" alt="" data-aos="fade-up">
+                      </div>
+                      <div class="content">
+                          <h4 class="title"> 
+                            <a href="page-service-details.html">
+                             IT Infrastructure & Networking
+                            </a>
+                          </h4>
+                          <p>
+                            Nexella adopts client-centric approach
+                            business's unique 
+                          </p>
+                          <div class="service-btn">
+                            <a href="page-service-details.html">Explore More<i class="fa-solid fa-arrow-right"></i></a>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="service-card-style-3 style-2">
+                    <div class="service-image bg-cover" style="background-image: url('images/home-4/service/service1.jpg');">
+
+                    </div>
+                      <div class="icon">
+                          <img src="images/main-home/service-icon2.png" alt="" data-aos="fade-up">
+                      </div>
+                      <div class="content">
+                          <h4 class="title"> 
+                            <a href="page-service-details.html">
+                              Specialized Enterprise Solutions
+                            </a>
+                          </h4>
+                          <p>
+                            Nexella adopts client-centric approach
+                            business's unique 
+                          </p>
+                          <div class="service-btn">
+                            <a href="page-service-details.html">Explore More<i class="fa-solid fa-arrow-right"></i></a>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="service-card-style-3 style-2">
+                    <div class="service-image bg-cover" style="background-image: url('images/home-4/service/service1.jpg');">
+
+                    </div>
+                      <div class="icon">
+                          <img src="images/main-home/service-icon3.png" alt="" data-aos="fade-up">
+                      </div>
+                      <div class="content">
+                          <h4 class="title"> 
+                            <a href="page-service-details.html">
+                              IT Consulting & Strategy
+                            </a>
+                          </h4>
+                          <p>
+                            Nexella adopts client-centric approach
+                            business's unique 
+                          </p>
+                          <div class="service-btn">
+                            <a href="page-service-details.html">Explore More<i class="fa-solid fa-arrow-right"></i></a>
+                          </div>
+                      </div>
+                    </div>
+              </div>
+              </div>
+              <div class="swiper-dot-2 text-center pt-5">
+                <div class="dot"></div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section Three -->
+    <section class="about-section-four fix section-padding bg-cover theme-dark" style="background-image: url('images/home-4/about-bg.jpg');">
+      <div class="anim-icons">
+        <div class="image-1 "><img src="images/home-4/about-shape.png" alt="" data-aos="fade-up"></div>
+      </div>
+      <div class="bg-left-shape">
+        <img src="images/home-4/left-shape.png" alt="img" data-aos="fade-up">
+      </div>
+      <div class="auto-container">
+        <div class="row">
+          <div class="image-column col-lg-6 wow fadeInUp"  data-wow-delay=".3s">
+            <div class="inner-column">
+              <figure class="image-one">
+                <img src="images/home-4/about-image2.jpg" alt="image" data-aos="fade-up">
+              </figure>
+            </div>
+          </div>
+          <div class="content-column col-lg-6" data-aos="fade-up">
+            <div class="inner-column">
+              <div class="sec-title">
+                <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Our strategy</span>
+                <h2 class="title text-reveal-anim" data-aos="fade-up">Driving Growth Through <br>Freelance Excellence</h2>
+                <p class="text wow fadeInUp" data-wow-delay=".3s">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                </p>							
+              </div>
+              <div class="row">
+                <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                  <div class="info-box">
+                    <div class="inner">
+                      <div class="icon-box">
+                        <img src="images/home-4/about-icon-1.svg" alt="img" data-aos="fade-up">
+                      </div>											
+                      <h4 class="info-title">Company Mission</h4>
+                      <div class="text">Our mission is to empower busi with cutting-edge digital solu</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                  <div class="info-box">
+                    <div class="inner">
+                      <div class="icon-box">
+                        <img src="images/home-4/about-icon-2.svg" alt="img" data-aos="fade-up">
+                      </div>											
+                      <h4 class="info-title">Company Vision & Goals</h4>
+                      <div class="text">We are dedicated to crafting digi experiences that seamlessly</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-box wow fadeInUp" data-wow-delay=".7s">
+                <a class="theme-btn-main" href="page-about.html">
+                    <span class="theme-btn-arrow-left theme-bg theme-color-white"><i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="theme-btn theme-bg theme-color-white">Read More </span>
+                    <span class="theme-btn-arrow-right theme-bg theme-color-white"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About Section Three -->
+     
+      <!-- Project Section Start -->
+      <section class="project-section-4 section-padding theme-light">
+        <div class="arrow-shape d-none d-xl-block">
+          <img src="images/home-4/circle.png" alt="img" class="rotate" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="sec-title text-center wow fadeInUp">
+            <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Nexella  Projects</span>
+            <h2 class="hero_title" data-aos="fade-up">Recent Projects</h2>
+          </div>
+          <div class="row g-4">
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
+                <div class="project-box-style-4">
+                  <div class="images-box">
+                    <div class="thumb">
+                      <a href="page-project-details.html"><img src="images/home-4/project/project-01.jpg" alt="img" data-aos="fade-up"></a>
+                    </div>
+                    <div class="icon"><a href="page-project-details.html"><img src="images/home-4/project/arrow-project-1.svg" alt="" data-aos="fade-up"></a></div>
+                  </div>
+                  <div class="content">
+                    <h4 class="title">
+                      <a href="page-project-details.html">Build a Custom Plugin</a>
+                    </h4>
+                    <a href="page-project-details.html" class="post-box">DEVELOPMENT</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                <div class="project-box-style-4">
+                  <div class="images-box">
+                    <div class="thumb">
+                      <a href="page-project-details.html"><img src="images/home-4/project/project-02.jpg" alt="img" data-aos="fade-up"></a>
+                    </div>
+                    <div class="icon"><a href="page-project-details.html"><img src="images/home-4/project/arrow-project-1.svg" alt="" data-aos="fade-up"></a></div>
+                  </div>
+                  <div class="content">
+                    <h4 class="title">
+                      <a href="page-project-details.html">Nexa - Branding Design</a>
+                    </h4>
+                    <a href="page-project-details.html" class="post-box">DEVELOPMENT</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
+                <div class="project-box-style-4">
+                  <div class="images-box">
+                    <div class="thumb">
+                      <a href="page-project-details.html"><img src="images/home-4/project/project-03.jpg" alt="img" data-aos="fade-up"></a>
+                    </div>
+                    <div class="icon"><a href="page-project-details.html"><img src="images/home-4/project/arrow-project-1.svg" alt="" data-aos="fade-up"></a></div>
+                  </div>
+                  <div class="content">
+                    <h4 class="title">
+                      <a href="page-project-details.html">Technology Process</a>
+                    </h4>
+                    <a href="page-project-details.html" class="post-box">DEVELOPMENT</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".8s">
+                <div class="project-box-style-4">
+                  <div class="images-box">
+                    <div class="thumb">
+                      <a href="page-project-details.html"><img src="images/home-4/project/project-04.jpg" alt="img" data-aos="fade-up"></a>
+                    </div>
+                    <div class="icon"><a href="page-project-details.html"><img src="images/home-4/project/arrow-project-1.svg" alt="" data-aos="fade-up"></a></div>
+                  </div>
+                  <div class="content">
+                    <h4 class="title">
+                      <a href="page-project-details.html">Nexa - Web application</a>
+                    </h4>
+                    <a href="page-project-details.html" class="post-box">DEVELOPMENT</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cta Video Section Start -->
+      <section class="cta-video-section bg-black theme-dark">
+        <div class="vec-cup-shape d-none d-xl-block">
+          <img src="images/home-4/vec-cup.png" alt="img" class="rotate" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="cta-video-thumb wow fadeInUp" data-wow-delay=".3s">
+            <div class="vec-left-shape d-none d-xl-block">
+              <img src="images/home-4/vec-left-shape.png" alt="img" data-aos="fade-up">
+            </div>
+             <div class="vec-right-shape d-none d-xl-block">
+              <img src="images/home-4/vec-right-shape.png" alt="img" data-aos="fade-up">
+            </div>
+            <img src="images/home-4/cta-video.jpg" alt="img" data-aos="fade-up">
+            <a class="video-btn playbtnanim" href="https://www.youtube.com/watch?v=Lplq8RjQ0zU" data-fancybox="gallery" data-caption=""><i class="fa-sharp fa-solid fa-play"></i></a>
+            <h2 class="title" data-aos="fade-up">
+              Most trusted  IT Company in your town
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonial Section Start -->
+      <section class="testimonial-section-4 fix section-padding bg-cover theme-light" style="background-image: url('images/home-4/testimonial-bg.jpg');">
+        <div class="vec-bg d-none d-xl-block"></div>
+        <div class="vec-bg-2 d-none d-xl-block"></div>
+        <div class="vec-video-shape d-none d-xl-block">
+          <img src="images/home-4/vec-video-shape.png" alt="img" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="sec-title">
+            <div class="row g-4 align-items-center justify-content-between">
+              <div class="col-lg-6 col-md-12" data-aos="fade-up">
+                <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Client Feedback</span>
+                  <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                    Results-Driven Marketing <br>Client Feedback
+                  </h2>
+              </div>
+              <div class="col-lg-5 col-md-12 wow fadeInUp" data-wow-delay=".3s">
+                Nexella is a dynamic best digital marketing agency dedicated to empowering businesses through innovative online presence modern technology we have used
+              </div>
+            </div>
+          </div>
+           
+            <div class="swiper testimonial-box-slider-4">
+               <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-box-style-4">
+                  <div class="quote-icon">
+                      <img src="images/home-4/quote-icon.svg" alt="img" data-aos="fade-up">
+                      <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                  </div>
+                  <p>
+                    At Nexella, we don't just run campaigns—we build our no
+                    digital relationships that grow brands and delivered creative
+                    measurable success lies in making our profession
+                    clients unforgettable online design.
+                  </p>
+                  <div class="info-item">
+                    <div class="info-thumb">
+                      <img src="images/home-4/client-1.png" alt="img" data-aos="fade-up">
+                    </div>
+                    <h4 class="title">
+                      N. Dowson
+                      <span>— HR Manager</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-box-style-4">
+                  <div class="quote-icon">
+                      <img src="images/home-4/quote-icon.svg" alt="img" data-aos="fade-up">
+                      <div class="star">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                      </div>
+                  </div>
+                  <p>
+                    At Nexella, we don't just run campaigns—we build our no
+                    digital relationships that grow brands and delivered creative
+                    measurable success lies in making our profession
+                    clients unforgettable online design.
+                  </p>
+                  <div class="info-item">
+                    <div class="info-thumb">
+                      <img src="images/home-4/client-2.png" alt="img" data-aos="fade-up">
+                    </div>
+                    <h4 class="title">
+                      Devid Mellar
+                      <span>— HR Manager</span>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+      </section>
+
+      <!-- Faq Section Start -->
+      <section class="faq-section fix pb-0 section-padding bg-cover theme-dark" style="background-image: url('images/home-4/faq-bg.jpg');"> 
+        <div class="auto-container">
+          <div class="sec-title">
+            <div class="row g-4 align-items-center justify-content-between">
+              <div class="col-lg-6 col-md-12" data-aos="fade-up">
+                 <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Nexella  Faq’s</span>
+                  <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                    Helping You Understand <br> Tech Solution
+                  </h2>
+              </div>
+              <div class="col-lg-5 col-md-12" data-aos="fade-up">
+                Nexella is a dynamic best digital marketing agency dedicated 
+                to empowering businesses through innovative online presence
+                modern technology we have used
+              </div>
+          </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+              <div class="faq-image-style-1">
+                <img src="images/home-4/faq-image.jpg" alt="img" data-aos="fade-up">
+                <div class="counter-box-items">
+                  <div class="count-box"><span class="count-text" data-speed="3000" data-stop="18">3</span><span class="plus">+</span></div>
+                  <p>
+                    YEARS OF
+                    EXPERIENCE
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+              <!-- Accordion Box -->
+                <ul class="accordion-box">
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                          Do you provide support after the project launch?
+                            <i class="icon fa fa-plus"></i>
+                        </div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">
+                                  We strive to provide solutions that offer the best value for your investment. We are happy to discuss your budget constraints upfront and propose
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                          Do you provide training or documentation?
+                            <i class="icon fa fa-plus"></i>
+                        </div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">
+                                  We strive to provide solutions that offer the best value for your investment. We are happy to discuss your budget constraints upfront and propose
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                          What is your response time for support issues?
+                            <i class="icon fa fa-plus"></i>
+                        </div>
+                        <div class="acc-content">
+                            <div class="content">
+                               <div class="text">
+                                  We strive to provide solutions that offer the best value for your investment. We are happy to discuss your budget constraints upfront and propose
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                          What is your development process?
+                            <i class="icon fa fa-plus"></i>
+                        </div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <div class="text">
+                                  We strive to provide solutions that offer the best value for your investment. We are happy to discuss your budget constraints upfront and propose
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--Block-->
+                    <li class="accordion block active-block mb-0">
+                        <div class="acc-btn active">
+                          Can you work within our budget?
+                            <i class="icon fa fa-plus"></i>
+                        </div>
+                        <div class="acc-content current">
+                            <div class="content">
+                                <div class="text">
+                                  We strive to provide solutions that offer the best value for your investment. We are happy to discuss your budget constraints upfront and propose
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section Start -->
+      <section class="pricing-section-4 fix section-padding bg-cover theme-light" style="background-image: url('images/home-4/pricing-bg.jpg');">
+        <div class="pricing-shape">
+          <img src="images/home-4/pricing-shape.png" alt="img" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="sec-title text-center mb-0">
+             <div class="row justify-content-center">
+            <div class="col-lg-7" data-aos="fade-up">
+             <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Pricing Plans</span>
+                <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                  Start Small or Go Big – We’ve <br>Got You Covered
+                </h2>
+            </div>
+           </div>
+          </div>
+          <div class="d-flex justify-content-center mt-3 mt-md-0">
+				<div class="pricing-two__tab wow fadeInUp" data-wow-delay=".4s">
+					<nav>
+						<div class="nav nav-tabs" id="nav-tab" role="tablist">
+							<button class="nav-link active" id="pt-1-tab" data-bs-toggle="tab"
+								data-bs-target="#pt-1" type="button" role="tab" aria-controls="pt-1"
+								aria-selected="true">Monthly</button>
+							<button class="nav-link" id="pt-2-tab" data-bs-toggle="tab" data-bs-target="#pt-2"
+								type="button" role="tab" aria-controls="pt-2"
+								aria-selected="false">Yearly</button>
+
+						</div>
+					</nav>
+				</div>
+			    </div>
+          <div class="pricing__tab-content">
+              <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="pt-1" role="tabpanel" aria-labelledby="pt-1-tab">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp">
+                          <div class="pricing-main-bx">
+                            <div class="pricing-single-bx">
+                              <div class="inner-box">
+                                <h3 class="popular" data-aos="fade-up">Popular</h3>
+                                <h4 class="title">Basic Plan</h4>
+                                <div class="price-box">
+                                  <h4 class="price">$49</h4>
+                                  <span class="validaty"> Per Month</span>
+                                </div>
+                                <p class="pricing-text">Growing your business select our Basic plans what you need</p>
+                                <div class="feature">
+                                  <h4 class="feature-title">Features</h4>
+                                  <ul>
+                                    <li><i class="fas fa-check-circle"></i>24/7 system monitoring & alerting</li>
+                                    <li><i class="fas fa-check-circle"></i>Email & Ticket support</li>
+                                    <li><i class="fas fa-check-circle"></i>Managed Antivirus & Anti-Malware</li>
+                                    <li><i class="fas fa-check-circle"></i>Automated updates for OS</li>
+                                    <li><i class="fas fa-check-circle"></i>Basic file-level backup & recovery</li>
+                                  </ul>
+                                </div>
+                                <div class="pricing-btn mt-40">
+                                  <a href="page-pricing.html">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                          <div class="pricing-main-bx">
+                            <div class="pricing-single-bx">
+                              <div class="inner-box">
+                                <h3 class="popular" data-aos="fade-up">Popular</h3>
+                                <h4 class="title">Premium Plan</h4>
+                                <div class="price-box">
+                                  <h4 class="price">$99</h4>
+                                  <span class="validaty"> Per Month</span>
+                                </div>
+                                <p class="pricing-text">Growing your business select our Basic plans what you need</p>
+                                <div class="feature">
+                                  <h4 class="feature-title">Features</h4>
+                                  <ul>
+                                    <li><i class="fas fa-check-circle"></i>24/7/365 Dedicated Phone Support</li>
+                                    <li><i class="fas fa-check-circle"></i>Information & Event Management</li>
+                                    <li><i class="fas fa-check-circle"></i>Full management of servers</li>
+                                    <li><i class="fas fa-check-circle"></i>Bi-annual deep planning sessions</li>
+                                    <li><i class="fas fa-check-circle"></i>Custom Monthly Retainer</li>
+                                  </ul>
+                                </div>
+                                <div class="pricing-btn mt-40">
+                                  <a href="page-pricing.html">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="500ms">
+                          <div class="pricing-main-bx">
+                            <div class="pricing-single-bx">
+                              <div class="inner-box">
+                                <h3 class="popular" data-aos="fade-up">Standard Plan</h3>
+                                <h4 class="title">Premium Plan</h4>
+                                <div class="price-box">
+                                  <h4 class="price">$69</h4>
+                                  <span class="validaty"> Per Month</span>
+                                </div>
+                                <p class="pricing-text">Growing your business select our Basic plans what you need</p>
+                                <div class="feature">
+                                  <h4 class="feature-title">Features</h4>
+                                  <ul>
+                                    <li><i class="fas fa-check-circle"></i>Chat & Email support</li>
+                                    <li><i class="fas fa-check-circle"></i>Endpoint Detection & Response</li>
+                                    <li><i class="fas fa-check-circle"></i>Disaster Recovery Orchestration</li>
+                                    <li><i class="fas fa-check-circle"></i>Basic SEO Optimization</li>
+                                    <li><i class="fas fa-check-circle"></i>Assistance for standards</li>
+                                  </ul>
+                                </div>
+                                <div class="pricing-btn mt-40">
+                                  <a href="page-pricing.html">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                  </div>
+                  <div class="tab-pane fade" id="pt-2" role="tabpanel" aria-labelledby="pt-2-tab">
+                     <div class="row">
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                          <div class="pricing-main-bx">
+                            <div class="pricing-single-bx">
+                              <div class="inner-box">
+                                <h3 class="popular" data-aos="fade-up">Popular</h3>
+                                <h4 class="title">Basic Plan</h4>
+                                <div class="price-box">
+                                  <h4 class="price">$49</h4>
+                                  <span class="validaty"> Per Month</span>
+                                </div>
+                                <p class="pricing-text">Growing your business select our Basic plans what you need</p>
+                                <div class="feature">
+                                  <h4 class="feature-title">Features</h4>
+                                  <ul>
+                                    <li><i class="fas fa-check-circle"></i>Installation Free Software</li>
+                                    <li><i class="fas fa-check-circle"></i>Essential Free Supports</li>
+                                    <li><i class="fas fa-check-circle"></i>Solving Troubleshooting</li>
+                                    <li><i class="fas fa-check-circle"></i>100 GB Free Hosting</li>
+                                  </ul>
+                                </div>
+                                <div class="pricing-btn mt-40">
+                                  <a href="page-pricing.html">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                          <div class="pricing-main-bx">
+                            <div class="pricing-single-bx">
+                              <div class="inner-box">
+                                <h3 class="popular" data-aos="fade-up">Popular</h3>
+                                <h4 class="title">Premium Plan</h4>
+                                <div class="price-box">
+                                  <h4 class="price">$99</h4>
+                                  <span class="validaty"> Per Month</span>
+                                </div>
+                                <p class="pricing-text">Growing your business select our Basic plans what you need</p>
+                                <div class="feature">
+                                  <h4 class="feature-title">Features</h4>
+                                  <ul>
+                                    <li><i class="fas fa-check-circle"></i>Installation Free Software</li>
+                                    <li><i class="fas fa-check-circle"></i>Essential Free Supports</li>
+                                    <li><i class="fas fa-check-circle"></i>Solving Troubleshooting</li>
+                                    <li><i class="fas fa-check-circle"></i>100 GB Free Hosting</li>
+                                  </ul>
+                                </div>
+                                <div class="pricing-btn mt-40">
+                                  <a href="page-pricing.html">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                          <div class="pricing-main-bx">
+                            <div class="pricing-single-bx">
+                              <div class="inner-box">
+                                <h3 class="popular" data-aos="fade-up">Standard Plan</h3>
+                                <h4 class="title">Premium Plan</h4>
+                                <div class="price-box">
+                                  <h4 class="price">$69</h4>
+                                  <span class="validaty"> Per Month</span>
+                                </div>
+                                <p class="pricing-text">Growing your business select our Basic plans what you need</p>
+                                <div class="feature">
+                                  <h4 class="feature-title">Features</h4>
+                                  <ul>
+                                    <li><i class="fas fa-check-circle"></i>Installation Free Software</li>
+                                    <li><i class="fas fa-check-circle"></i>Essential Free Supports</li>
+                                    <li><i class="fas fa-check-circle"></i>Solving Troubleshooting</li>
+                                    <li><i class="fas fa-check-circle"></i>100 GB Free Hosting</li>
+                                  </ul>
+                                </div>
+                                <div class="pricing-btn mt-40">
+                                  <a href="page-pricing.html">Get Started Now <i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- News Section Start -->
+      <section class="news-section-4 section-padding bg-cover theme-dark" style="background-image: url(images/home-4/news/news-bg.png);">
+        <div class="vec-left d-none d-xl-block">
+          <img src="images/home-4/news/vec-left.png" alt="img" data-aos="fade-up">
+        </div>
+        <div class="vec-arrow d-none d-xl-block">
+          <img src="images/home-4/news/arrow-vec.png" alt="img" data-aos="fade-up">
+        </div>
+        <div class="auto-container">
+          <div class="row justify-content-center">
+            <div class="col-lg-12" data-aos="fade-up">
+              <div class="sec-title text-center wow fadeInUp">
+                <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Latest Blog</span>
+                <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                   Read Our Recent Blog Post <br>Form Update news
+                </h2>
+              </div>
+            </div>
+           </div>
+           <div class="row g-4">
+              <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                <div class="news-card-style-4">
+                  <div class="thumb">
+                    <img src="images/home-4/news/news-01.jpg" alt="img" data-aos="fade-up">
+                  </div>
+                  <div class="content">
+                    <div class="post-date">
+                      <div class="post-box">
+                        <h6 class="date-title">27</h6>
+                        <p class="mb-0">July</p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li>
+                          Nexella
+                      </li>
+                      <li>
+                        0 Comments
+                      </li>
+                    </ul>
+                    <h4 class="title">
+                        <a href="news-details.html">Why We Use React Native for Cross-Platform Apps
+                        </a>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
+                <div class="news-card-style-4">
+                  <div class="thumb">
+                    <img src="images/home-4/news/news-02.jpg" alt="img" data-aos="fade-up">
+                  </div>
+                  <div class="content">
+                    <div class="post-date">
+                      <div class="post-box">
+                        <h6 class="date-title">15</h6>
+                        <p class="mb-0">Aug</p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li>
+                          Nexella
+                      </li>
+                      <li>
+                        0 Comments
+                      </li>
+                    </ul>
+                    <h4 class="title">
+                        <a href="news-details.html">
+                          5 Cybersecurity Trends to Watch in 2025
+                        </a>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+                <div class="news-card-style-4">
+                  <div class="thumb">
+                    <img src="images/home-4/news/news-03.jpg" alt="img" data-aos="fade-up">
+                  </div>
+                  <div class="content">
+                    <div class="post-date">
+                      <div class="post-box">
+                        <h6 class="date-title">08</h6>
+                        <p class="mb-0">July</p>
+                      </div>
+                    </div>
+                    <ul>
+                      <li>
+                          Nexella
+                      </li>
+                      <li>
+                        0 Comments
+                      </li>
+                    </ul>
+                    <h4 class="title">
+                        <a href="news-details.html">
+                          The True ROI of Investing in Custom Software
+                        </a>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+           </div>
+        </div>
+      </section>
+
+      <!-- Contact Section two-->
+      <section class="contact-section-two style-h4 section-padding bg-cover theme-light" style="background-image: url('images/home-4/contact-bg.jpg');">
+        <div class="auto-container">
+          <div class="row g-4 align-items-center">
+            <!-- Form Column -->
+            <div class="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up">
+              <!-- Contact Form -->
+              <div class="contact-forms-two mt-0 wow fadeInRight">
+                <h2 class="service-info__badge hero_title tv_hero_title hero_title_1" data-aos="fade-up">Free Consultation Available</h2>
+                <p class="contact-des">We've been doing this for a while now and great news for
+                  deliver results that matter</p>
+                <!--Contact Form-->
+                <form method="post" action="#" id="contact-form">
+                  <div class="row">
+                    <div class="form-group col-lg-12" data-aos="fade-up">
+                      <input type="text" name="full_name" placeholder="Name" required>
+                    </div>
+
+                    <div class="form-group col-lg-12" data-aos="fade-up">
+                      <input type="email" name="Email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="form-group col-lg-12" data-aos="fade-up">
+                      <input type="text" name="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12" data-aos="fade-up">
+                      <textarea name="message" placeholder="Message" required></textarea>
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12" data-aos="fade-up">
+                      <button class="theme-btn" type="submit" name="submit-form"><span class="btn-title">Submit Message</span></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--End Contact Form -->
+
+            <!-- Info Column -->
+            <div class="col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+              <div class="contact-right-warp">
+                <div class="sec-title">
+                  <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Contact Us</span>
+                  <h2 class="font-weight-400 text-reveal-anim" data-aos="fade-up">
+                    Let’s Make Your Website <br>Work Smarter — Contact for <br>SEO Help
+                  </h2>
+                </div>
+                <div class="contact-info">
+                  <a class="email-link" href="https://html.kodesolution.com/cdn-cgi/l/email-protection#2d4348554841414c6d4a404c4441034e4240"><span class="__cf_email__" data-cfemail="ddb3b8a5b8b1b1bc9dbab0bcb4b1f3beb2b0">[email&#160;protected]</span></a>
+                  <p>Email Address Urgently</p>
+                </div>
+                <div class="contact-btn">
+                  <button type="submit" class="theme-btn-main wow fadeInUp" data-wow-delay=".3s">
+                    <span class="theme-btn-arrow-left theme-bg theme-color-white"><i class="fa-solid fa-arrow-left"></i></span>
+                    <span class="theme-btn theme-bg theme-color-white">Contact Nexellar</span>
+                    <span class="theme-btn-arrow-right theme-bg theme-color-white"><i class="fa-solid fa-arrow-right"></i></span>
+                </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--End Contact Section  -->
+
+     <!-- Main Footer -->
+      <footer class="footer-section-3 theme-color-bg">
+        <div class="footer-main-wrapper-4">
+          <div class="left-shape">
+            <img src="images/home-4/footer-left-shape1.png" alt="img" data-aos="fade-up">
+          </div>
+          <div class="right-shape">
+            <img src="images/home-4/footer-right-shape.png" alt="img" data-aos="fade-up">
+          </div>
+          <div class="auto-container">
+            <div class="row">
+                  <!-- Footer Column -->
+                  <div class="footer-column col-lg-6" data-aos="fade-up">
+                    <div class="footer-widget about-widget wow fadeInLeft">
+                      <h2 class="title" data-aos="fade-up">Let’s Talk</h2>
+                      <div class="footer-widget subscribe-widget wow fadeInLeft animated" data-wow-delay="200ms">
+                        <h5 class="text">Get the latest inspiration &amp; insights</h5>
+                        <div class="subscribe-form-one">
+                          <form method="post" action="#">
+                            <div class="form-group">
+                              <input type="email" name="email" class="email" placeholder="Enter your email" required="">
+                              <button type="button" class="circle-btn">
+                              <i class="fa-light fa-paper-plane"></i>
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="widget-content">
+                        <div class="text">
+                          Lorem ipsum dolor sit amet, consectetuer adipiscing <br class="d-none d-lg-block">
+                          elit sed diam nonummy.
+                        </div>
+                        <div class="social-widget">
+                          <ul class="social-icon-list1">
+                            <li>
+                              <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                            </li>
+                            <li>
+                              <a href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 offset-xl-1" data-aos="fade-up">
+                    <div class="footer-right-clomun">
+                      <div class="row g-4">
+                        <div class="col-xl-12">
+                          <div class="contacts-widget mt-0 wow fadeInLeft animated" data-wow-delay="100ms">
+                            <div class="text">
+                              <a class="mail" href="https://html.kodesolution.com/cdn-cgi/l/email-protection#f39d9696979b969f83b3909c9e83929d8add909c9e"><span class="__cf_email__" data-cfemail="92fcf7f7f6faf7fee2d2f1fdffe2f3fcebbcf1fdff">[email&#160;protected]</span></a><br>
+                              <a class="phone" href="tel:(+123)-456789-00">(+123) 456789 00</a>
+                            </div>
+                            <a href="page-contact.html" class="contact-us wow fadeInUp animated animated">
+                              <span class="title">Contact <br>
+                                with us</span>
+                              <br>
+                              <i class="icon 
+                              
+                              fa-regular fa-arrow-up-right"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- footer column -->
+                        <div class="footer-column3 col-xl-6 col-lg-6 col-md-6" data-aos="fade-up">
+                          <div class="footer-widget3 links-widget wow fadeInLeft animated" data-wow-delay="200ms">
+                            <h4 class="widget-title">Quick Link</h4>
+                            <div class="widget-content">
+                              <ul class="user-links3">
+                                <li><a href="page-about.html">About Us</a></li>
+                                <li><a href="page-team.html">Our Team</a></li>
+                                <li><a href="index-4.html">Our Portfolio</a></li>
+                                <li><a href="index-4.html">Careers</a></li>
+                                <li><a href="page-contact.html">Contact Us</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- footer column -->
+                        <div class="footer-column3 col-xl-6 col-lg-6 col-md-6" data-aos="fade-up">
+                          <div class="footer-widget3 links-widget wow fadeInLeft animated" data-wow-delay="200ms">
+                            <h4 class="widget-title">Our Solutions</h4>
+                            <div class="widget-content">
+                              <ul class="user-links3">
+                                <li><a href="index-4.html">Web Development</a></li>
+                                <li><a href="index-4.html">UI/UX Design</a></li>
+                                <li><a href="index-4.html">Mobile Application</a></li>
+                                <li><a href="index-4.html">Cloud Service</a></li>
+                                <li><a href="index-4.html">Cyber Security</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+        </div>
+        <p class="footer-bottom-text mb-0">
+          © Copyright Reserved by Nexella.com
+        </p>
+      </footer>
+      <!--End Main Footer -->
+    </div>
+    <!-- End Page Wrapper -->
+
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/knob.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/aos.js"></script>
+        <script src="js/gsap.min.js"></script>
+        <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitType.js"></script>
+    <script src="js/gsap-scroll-smoother.js"></script>
+    <script src="js/gsap-scroll-to-plugin.js"></script>
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/custom-gsap.js"></script>
+    <script src="js/script.js"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"88f4fa328f314d4c95a104b4a60b2313","r":1}' crossorigin="anonymous"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+<script src="js/scroll-anim.js"></script>
+</body>
+
+<!-- Mirrored from html.kodesolution.com/2025/nexella-html/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Aug 2026 04:03:37 GMT -->
+</html>

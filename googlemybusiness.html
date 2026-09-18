@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <title>GetIt Media | Digital Marketing Agency</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+    <link href="css/stats.css" rel="stylesheet">
+    <link href="css/cursor.css" rel="stylesheet">
+    <link href="css/text-reveal.css" rel="stylesheet">
+    <link href="css/lets-talk.css" rel="stylesheet">
+    <link href="css/about-hero.css" rel="stylesheet">
+    <link href="css/terranova-hero.css" rel="stylesheet">
+    <link href="css/services-cards.css" rel="stylesheet">
+    <link href="css/cta-brand.css" rel="stylesheet">
+    <link href="css/about-us.css" rel="stylesheet">
+    <link href="css/gmb-hero.css" rel="stylesheet">
+    <link href="css/one-tool.css" rel="stylesheet">
+    <link href="css/main-products.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="preloader-heading">
+            <div class="load-text">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- GetIt Media Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="#home" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span class="mega-service__icon">G</span><span class="mega-service__text"><span class="mega-service__title">Google My Business</span></span></a>
+                    <a href="google-ads.html" class="mega-service" role="menuitem"><span class="mega-service__icon">A</span><span class="mega-service__text"><span class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                    <a href="socialmedia.html" class="mega-service" role="menuitem"><span class="mega-service__icon">S</span><span class="mega-service__text"><span class="mega-service__title">Social Media Marketing</span></span></a>
+                    <a href="searchengine.html" class="mega-service" role="menuitem"><span class="mega-service__icon">Q</span><span class="mega-service__text"><span class="mega-service__title">Search Engine Optimization</span></span></a>
+                    <a href="website.html" class="mega-service" role="menuitem"><span class="mega-service__icon">W</span><span class="mega-service__text"><span class="mega-service__title">Website Design &amp; Development</span></span></a>
+                    <a href="graphic.html" class="mega-service" role="menuitem"><span class="mega-service__icon">D</span><span class="mega-service__text"><span class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="video-editor.html" class="mega-service" role="menuitem"><span class="mega-service__icon">V</span><span class="mega-service__text"><span class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span><h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4><p class="mega-promo__text">One call with us changes your digital game.</p></div>
+                    <a href="contact.html" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="contact.html" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="#home" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up"><span class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger" id="mobileServicesTrigger" aria-expanded="false" aria-controls="mobileServicesPanel"><span>Services</span><span class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html" class="mobile-service">Google My Business</a><a href="google-ads.html" class="mobile-service">Google &amp; Meta Ads</a><a href="socialmedia.html" class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html" class="mobile-service">Video Editing</a></div></li>
+          <li><a href="team.html" class="mobile-link">Team</a></li>
+          <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+          <li><a href="price.html" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+    
+
+
+      <!-- ===================== Google My Business Hero ===================== -->
+      <section class="gmbh theme-dark" id="gmb-hero" data-sa-skip>
+
+        <!-- Decorative background -->
+        <div class="gmbh__bg" aria-hidden="true">
+          <span class="gmbh__glow"></span>
+          <span class="gmbh__circle"></span>
+          <span class="gmbh__circle gmbh__circle--sm"></span>
+          <span class="gmbh__grid"></span>
+          <span class="gmbh__vignette"></span>
+          <svg class="gmbh__wave" viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 220H1440V140.5C1242 80 1021 68 812 108C570 154.5 350 140 0 80V220Z" fill="#ff7c30" opacity="0.1"/>
+            <path d="M0 220H1440V180.5C1242 120 1021 108 812 148C570 194.5 350 180 0 120V220Z" fill="#ff6414" opacity="0.8"/>
+            <path d="M0 220H1440V220.5C1242 160 1021 148 812 188C570 234.5 350 220 0 160V220Z" fill="#e54a00"/>
+          </svg>
+          <span class="gmbh__corner"></span>
+          <span class="gmbh__dots"></span>
+        </div>
+
+        <div class="gmbh__inner">
+
+          <!-- ---------------- Left content ---------------- -->
+          <div class="gmbh__content">
+
+            <span class="gmbh__badge">
+              <span class="gmbh__badge-icon" aria-hidden="true">&#8599;</span>
+              Digital Growth <span class="gmbh__badge-sep">|</span> Real Results
+            </span>
+
+            <h1 class="gmbh__title" data-aos="fade-up">
+              <span class="gmbh__line"><i>Google My</i></span>
+              <span class="gmbh__line"><i class="gmbh__title-accent">Business</i></span>
+            </h1>
+
+            <p class="gmbh__desc">Get discovered by local customers on Google Search and Maps. Build trust, drive more traffic, and grow your business online.</p>
+
+            <div class="gmbh__cta">
+              <a href="#contact" class="gmbh-btn gmbh-btn--primary">
+                Get Started Now
+                <span class="gmbh-btn__circle" aria-hidden="true">&#8599;</span>
+              </a>
+              <button type="button" class="gmbh-btn gmbh-btn--ghost" id="gmbhVideoBtn">
+                <span class="gmbh-btn__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+                Watch Video
+              </button>
+            </div>
+
+              <div class="gmbh__benefits">
+                <div class="gmbh-benefit">
+                  <span class="gmbh-benefit__icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
+                  <div>
+                    <p class="gmbh-benefit__title">More Visibility</p>
+                    <p class="gmbh-benefit__sub">on Google Search</p>
+                  </div>
+                </div>
+                <div class="gmbh-benefit">
+                  <span class="gmbh-benefit__icon" aria-hidden="true"><i class="fa-solid fa-shield-alt"></i></span>
+                  <div>
+                    <p class="gmbh-benefit__title">Build Trust</p>
+                    <p class="gmbh-benefit__sub">with Real Reviews</p>
+                  </div>
+                </div>
+                <div class="gmbh-benefit">
+                  <span class="gmbh-benefit__icon" aria-hidden="true"><i class="fa-solid fa-user-group"></i></span>
+                  <div>
+                    <p class="gmbh-benefit__title">More Customers</p>
+                    <p class="gmbh-benefit__sub">Near You</p>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+
+          <!-- ---------------- Right visual ---------------- -->
+          <div class="gmbh__visual" aria-hidden="true">
+            <div class="gmbh-stage">
+
+              <!-- Curved arrow -->
+              <div class="gmbh-arrow">
+                <svg viewBox="0 0 140 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 180 C 8 120, 30 56, 92 34" stroke="#f36523" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <path d="M74 16 L96 33 L74 52" stroke="#f36523" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </div>
+              
+              <!-- Unique Yellow Orb -->
+              <div class="gmbh-orb" aria-hidden="true"><span></span></div>
+
+              <!-- Plant -->
+              <div class="gmbh-plant">
+                <svg viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M70 132 C 40 120, 16 86, 12 40 C 40 54, 60 88, 70 132Z" fill="#2c8b57"/>
+                  <path d="M70 132 C 100 120, 124 86, 128 40 C 100 54, 80 88, 70 132Z" fill="#37a668"/>
+                  <path d="M70 134 C 50 116, 36 78, 40 30 C 62 52, 74 92, 70 134Z" fill="#25a05e"/>
+                  <path d="M70 134 C 90 116, 104 78, 100 30 C 78 52, 66 92, 70 134Z" fill="#2fb56d"/>
+                  <path d="M70 136 C 60 106, 60 56, 70 14 C 82 56, 82 106, 70 136Z" fill="#1e8b4e"/>
+                  <path d="M70 136 C 62 112, 50 92, 30 76 C 48 84, 64 104, 70 136Z" fill="#3fbf78" opacity="0.9"/>
+                  <path d="M70 136 C 78 112, 90 92, 110 76 C 92 84, 76 104, 70 136Z" fill="#3fbf78" opacity="0.9"/>
+                  <path d="M24 136 H116 L107 190 A8 8 0 0 1 99 197 H41 A8 8 0 0 1 33 190Z" fill="#f4f5f8"/>
+                  <path d="M24 136 H70 L64 197 H41 A8 8 0 0 1 33 190Z" fill="#ffffff"/>
+                  <rect x="18" y="124" width="104" height="20" rx="7" fill="#e6e8ee"/>
+                  <rect x="18" y="124" width="52" height="20" rx="7" fill="#f2f3f7"/>
+                </svg>
+              </div>
+
+              <!-- Laptop -->
+              <img class="gmbh-laptop" src="images/hero/2.png" alt="" loading="eager" decoding="async" data-aos="fade-up">
+
+              <!-- Phone -->
+              <img class="gmbh-phone" src="images/hero/1.png" alt="" loading="eager" decoding="async" data-aos="fade-up">
+
+              <!-- Google Business store icon -->
+              <div class="gmbh-store">
+                <svg viewBox="0 0 130 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="42" width="106" height="78" rx="14" fill="#4285f4"/>
+                  <rect x="12" y="42" width="106" height="78" rx="14" fill="url(#gmbhStoreShade)"/>
+                  <path d="M6 40 L18 12 A8 8 0 0 1 26 7 H104 A8 8 0 0 1 112 12 L124 40Z" fill="#5b9bff"/>
+                  <path d="M6 40 L18 12 A8 8 0 0 1 26 7 H45 L37 40Z" fill="#4285f4"/>
+                  <path d="M65 7 H84 L88 40 H65Z" fill="#4285f4"/>
+                  <path d="M104 7 A8 8 0 0 1 112 12 L124 40 H108Z" fill="#4285f4"/>
+                  <rect x="34" y="56" width="62" height="56" rx="12" fill="#ffffff"/>
+                  <text x="65" y="98" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="46" font-weight="600" fill="#4285f4">G</text>
+                  <defs>
+                    <linearGradient id="gmbhStoreShade" x1="12" y1="42" x2="118" y2="120" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ffffff" stop-opacity="0.14"/>
+                      <stop offset="1" stop-color="#0b57d0" stop-opacity="0.18"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <!-- Floating cards -->
+              <div class="gmbh-card gmbh-card--customers">
+                <div>
+                  <p class="gmbh-card__title">+128</p>
+                  <p class="gmbh-card__sub">New Customers</p>
+                </div>
+                <span class="gmbh-card__icon"><i class="fa-solid fa-user-plus"></i></span>
+              </div>
+
+              <div class="gmbh-card gmbh-card--local">
+                <span class="gmbh-card__icon"><i class="fa-solid fa-location-dot"></i></span>
+                <div>
+                  <p class="gmbh-card__title">Local Search</p>
+                  <p class="gmbh-card__sub">Be the top choice<br>in your area</p>
+                </div>
+                <span class="gmbh-card__bars"><span></span><span></span><span></span></span>
+              </div>
+
+              <div class="gmbh-card gmbh-card--maps">
+                <span class="gmbh-card__icon">
+                  <svg viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.3 0 11.9 0 20.7 12 32 12 32s12-11.3 12-20.1C24 5.3 18.6 0 12 0z" fill="#34a853"/><path d="M12 0C7.7 0 3.9 2.3 1.9 5.7l9 7.6 10.4-4.6C19.8 3.6 16.3 0 12 0z" fill="#4285f4"/><circle cx="12" cy="11.6" r="4.4" fill="#ffffff"/></svg>
+                </span>
+                <div>
+                  <p class="gmbh-card__title">Google Maps</p>
+                  <p class="gmbh-card__sub">More Calls<br>More Visits</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Watch Video modal -->
+        <div class="gmbh-modal" id="gmbhVideoModal" role="dialog" aria-modal="true" aria-label="Google My Business video">
+          <div class="gmbh-modal__box">
+            <button type="button" class="gmbh-modal__close" id="gmbhVideoClose" aria-label="Close video">&#10005;</button>
+            <iframe id="gmbhVideoFrame" src="" title="Google My Business video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+      <!-- =================== End Google My Business Hero =================== -->
+
+
+
+      <!-- ===================== One Tool / 5 Solutions ===================== -->
+      <section class="ot theme-light" id="one-tool">
+        <span class="ot__grid" aria-hidden="true"></span>
+        <span class="ot__vignette" aria-hidden="true"></span>
+
+        <div class="ot__stage">
+
+          <svg class="ot__art" viewBox="0 0 577 611" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <filter id="otGlow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="2.5" result="far"/>
+                <feMerge>
+                  <feMergeNode in="far"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <filter id="otGlowBig" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="7" result="far"/>
+                <feGaussianBlur stdDeviation="2" result="near"/>
+                <feMerge>
+                  <feMergeNode in="far"/>
+                  <feMergeNode in="near"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <radialGradient id="otBulbCore" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffc46b" stop-opacity="0.95"/>
+                <stop offset="34%" stop-color="#ff9a45" stop-opacity="0.72"/>
+                <stop offset="70%" stop-color="#f36523" stop-opacity="0.30"/>
+                <stop offset="100%" stop-color="#f36523" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="otHalo" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff8a3d" stop-opacity="0.26"/>
+                <stop offset="55%" stop-color="#f36523" stop-opacity="0.10"/>
+                <stop offset="100%" stop-color="#f36523" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="otPlatFill" x1="288" y1="486" x2="288" y2="576" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fff1e6"/>
+                <stop offset="1" stop-color="#ffe0cb"/>
+              </linearGradient>
+              <radialGradient id="otReflect" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ff8a3d" stop-opacity="0.38"/>
+                <stop offset="55%" stop-color="#f36523" stop-opacity="0.14"/>
+                <stop offset="100%" stop-color="#f36523" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="otBlurSoft" x="-40%" y="-200%" width="180%" height="500%">
+                <feGaussianBlur stdDeviation="10"/>
+              </filter>
+              <radialGradient id="otPlatGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffc46b" stop-opacity="0.92"/>
+                <stop offset="26%" stop-color="#ff9a45" stop-opacity="0.6"/>
+                <stop offset="64%" stop-color="#f36523" stop-opacity="0.26"/>
+                <stop offset="100%" stop-color="#f36523" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <!-- ambient halo behind the bulb -->
+            <circle class="ot-halo" cx="290" cy="366" r="218" fill="url(#otHalo)"/>
+
+            <!-- ---------- connectors: one group per solution ---------- -->
+            <g class="ot-wires" stroke="#f9a97e" stroke-width="1.6" fill="none"
+               stroke-linecap="round" stroke-linejoin="round">
+
+              <g class="ot-line ot-line--1">
+                <path class="ot-wire" pathLength="1" d="M185 314 L208 325"/>
+                <circle class="ot-dot" cx="208" cy="325" r="5" fill="#ffffff" stroke="#f36523" stroke-width="2"/>
+              </g>
+
+              <g class="ot-line ot-line--2">
+                <path class="ot-wire" pathLength="1" d="M288 221 L289 274"/>
+                <circle class="ot-dot" cx="289" cy="274" r="5" fill="#ffffff" stroke="#f36523" stroke-width="2"/>
+              </g>
+
+              <g class="ot-line ot-line--3">
+                <path class="ot-wire" pathLength="1" d="M392 314 L372 325"/>
+                <circle class="ot-dot" cx="372" cy="325" r="5" fill="#ffffff" stroke="#f36523" stroke-width="2"/>
+              </g>
+
+              <g class="ot-line ot-line--4">
+                <path class="ot-wire" pathLength="1" d="M185 445 L216 421"/>
+                <circle class="ot-dot" cx="216" cy="421" r="5" fill="#ffffff" stroke="#f36523" stroke-width="2"/>
+              </g>
+
+              <g class="ot-line ot-line--5">
+                <path class="ot-wire" pathLength="1" d="M392 445 L364 421"/>
+                <circle class="ot-dot" cx="364" cy="421" r="5" fill="#ffffff" stroke="#f36523" stroke-width="2"/>
+              </g>
+            </g>
+
+            <!-- energy pulses feeding the bulb -->
+            <g class="ot-sparks" stroke="#f36523" stroke-width="2.6" fill="none"
+               stroke-linecap="round">
+              <path class="ot-spark ot-spark--1" pathLength="1" style="--d:0.0s" d="M185 314 L208 325"/>
+              <path class="ot-spark ot-spark--2" pathLength="1" style="--d:0.55s" d="M288 221 L289 274"/>
+              <path class="ot-spark ot-spark--3" pathLength="1" style="--d:1.1s" d="M392 314 L372 325"/>
+              <path class="ot-spark ot-spark--4" pathLength="1" style="--d:1.65s" d="M185 445 L216 421"/>
+              <path class="ot-spark ot-spark--5" pathLength="1" style="--d:2.2s" d="M392 445 L364 421"/>
+            </g>
+
+            <!-- platform + its light pool (hidden via .ot-platform in CSS) -->
+            <g class="ot-platform">
+            <ellipse class="ot-reflect" cx="288" cy="584" rx="215" ry="15"
+                     fill="url(#otReflect)" filter="url(#otBlurSoft)" opacity="0.45"/>
+            <!-- ---------- platform ---------- -->
+            <g>
+              <path d="M138 486 L438 486 C454 486 464 494 472 504 L520 554 C530 564 523 574 511 574
+                       L65 574 C53 574 46 564 56 554 L104 504 C112 494 122 486 138 486 Z"
+                    fill="url(#otPlatFill)" stroke="#f36523" stroke-width="2"/>
+              <g stroke="#f9a97e" stroke-width="1.1" opacity="1">
+                <path d="M184 487 L132 573"/>
+                <path d="M238 487 L212 573"/>
+                <path d="M288 487 L288 573"/>
+                <path d="M338 487 L364 573"/>
+                <path d="M392 487 L444 573"/>
+                <path d="M122 512 L454 512"/>
+                <path d="M94 542 L482 542"/>
+              </g>
+            </g>
+            <!-- platform light pool -->
+            <ellipse class="ot-pool" cx="288" cy="530" rx="86" ry="26" fill="url(#otPlatGlow)"/>
+            <ellipse cx="288" cy="530" rx="44" ry="13" fill="none" stroke="#ff8a3d"
+                     stroke-width="1.8" opacity="0.9"/>
+            <ellipse cx="288" cy="530" rx="13" ry="4" fill="#ffb066" opacity="0.8"/>
+            </g>
+
+            <!-- ---------- light bulb ---------- -->
+            <g class="ot-bulb" filter="url(#otGlowBig)">
+              <!-- inner illumination -->
+              <circle class="ot-core" cx="290" cy="360" r="69" fill="url(#otBulbCore)"/>
+              <!-- glass -->
+              <path d="M248 438 C220 421 206 396 206 366 C206 319 243 282 290 282
+                       C337 282 374 319 374 366 C374 396 360 421 332 438 L332 460 L248 460 Z"
+                    fill="none" stroke="#ffffff" stroke-width="3.6"/>
+              <!-- filament: two support wires rising into a coil of tall loops -->
+              <g class="ot-filament" stroke="#ffffff" stroke-width="2.5" fill="none"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path d="M277 432 L277 402"/>
+                <path d="M304 432 L304 402"/>
+                <path d="M277 402 A 4.5 16.5 0 0 1 286 402
+                         A 4.5 16.5 0 0 1 295 402
+                         A 4.5 16.5 0 0 1 304 402"/>
+              </g>
+              <!-- screw base -->
+              <g stroke="#ffffff" stroke-width="3.1" fill="none" stroke-linejoin="round">
+                <path d="M248 462 L332 462 L332 475 L248 475 Z"/>
+                <path d="M252 480 L328 480 L328 493 L252 493 Z"/>
+                <path d="M254 498 L326 498 L326 510 L254 510 Z"/>
+                <path d="M266 515 L314 515 L308 527 L272 527 Z"/>
+              </g>
+            </g>
+          </svg>
+
+          <h2 class="ot__title" data-aos="fade-up">
+            <span class="ot__title-main">One Tool</span>
+            <span class="ot__title-accent"><i>5 Solutions</i></span>
+          </h2>
+
+          <p class="ot__hint">Tap a solution to light it up</p>
+
+          <button class="ot-node ot-node--1" type="button"
+                  data-ot-node="1" aria-expanded="false" aria-controls="ot-desc-1">
+            <span class="ot-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.2"/><path d="M15.2 15.2 L20 20"/><path d="M8 10.5h5M10.5 8v5"/></svg>
+            </span>
+            <span class="ot-num">01</span>
+            <span class="ot-lab">Technical SEO</span>
+            <span class="ot-desc" id="ot-desc-1">Crawling, indexing and schema issues fixed at the source.</span>
+          </button>
+
+          <button class="ot-node ot-node--2" type="button"
+                  data-ot-node="2" aria-expanded="false" aria-controls="ot-desc-2">
+            <span class="ot-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.4"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+            </span>
+            <span class="ot-num">02</span>
+            <span class="ot-lab">Page Optimization</span>
+            <span class="ot-desc" id="ot-desc-2">Titles, copy and internal links tuned to real search intent.</span>
+          </button>
+
+          <button class="ot-node ot-node--3" type="button"
+                  data-ot-node="3" aria-expanded="false" aria-controls="ot-desc-3">
+            <span class="ot-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 20V13M12 20V8M17 20V4"/></svg>
+            </span>
+            <span class="ot-num">03</span>
+            <span class="ot-lab">Performance Improvements</span>
+            <span class="ot-desc" id="ot-desc-3">Faster loads and healthy Core Web Vitals on every device.</span>
+          </button>
+
+          <button class="ot-node ot-node--4" type="button"
+                  data-ot-node="4" aria-expanded="false" aria-controls="ot-desc-4">
+            <span class="ot-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2.4"/><path d="M7 9h6M7 13h10M7 17h7"/></svg>
+            </span>
+            <span class="ot-num">04</span>
+            <span class="ot-lab">Keyword Structure</span>
+            <span class="ot-desc" id="ot-desc-4">A keyword map built around buyers, not vanity traffic.</span>
+          </button>
+
+          <button class="ot-node ot-node--5" type="button"
+                  data-ot-node="5" aria-expanded="false" aria-controls="ot-desc-5">
+            <span class="ot-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                   stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M3 9h18M8.5 21h7M12 17v4"/></svg>
+            </span>
+            <span class="ot-num">05</span>
+            <span class="ot-lab">Lead Generation Website</span>
+            <span class="ot-desc" id="ot-desc-5">Pages designed to turn the traffic you earn into enquiries.</span>
+          </button>
+
+        </div>
+      </section>
+      <!-- =================== End One Tool / 5 Solutions =================== -->
+
+      <!-- ===================== Main Products Section ===================== -->
+      <section id="main-products" class="mp-section theme-dark">
+        <div class="mp-container">
+          <h2 class="mp-heading" data-aos="fade-up">Main Products</h2>
+          
+          <div class="mp-cards">
+            <!-- Card 1: Improve Local Rankings -->
+            <div class="mp-card">
+              <div class="mp-card__img">
+                <div class="mp-cube">
+                  <div class="mp-cube-face-top"></div>
+                  <div class="mp-cube-face-left"></div>
+                  <div class="mp-cube-face-right"></div>
+                </div>
+                <div class="mp-cube-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+              </div>
+              <div class="mp-card__content">
+                <h3 class="mp-card__title" data-aos="fade-up">IMPROVE LOCAL RANKINGS</h3>
+                <ul class="mp-card__list">
+                  <li>"Improve Local Ranking" refers to optimizing a business's or website's visibility in search engine results specifically for local queries.</li>
+                  <li>Business Listings (Citations)</li>
+                  <li>Local Keywords List</li>
+                  <li>Review Management List</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 2: Product Brand Reputation -->
+            <div class="mp-card mp-card--reverse">
+              <div class="mp-card__img">
+                <div class="mp-cube">
+                  <div class="mp-cube-face-top"></div>
+                  <div class="mp-cube-face-left"></div>
+                  <div class="mp-cube-face-right"></div>
+                </div>
+                <div class="mp-cube-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="8" r="7"></circle>
+                      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                    </svg>
+                  </div>
+              </div>
+              <div class="mp-card__content">
+                <h3 class="mp-card__title" data-aos="fade-up">PRODUCT BRAND REPUTATION</h3>
+                <ul class="mp-card__list">
+                  <li>Product Brand Reputation refers to how a company's product is perceived by customers and the general public, based on factors like quality, reliability.</li>
+                  <li>Customer Review List</li>
+                  <li>Media Coverage List</li>
+                  <li>Social Media Mentions List</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 3: Engage & Captivate -->
+            <div class="mp-card">
+              <div class="mp-card__img">
+                <div class="mp-cube">
+                  <div class="mp-cube-face-top"></div>
+                  <div class="mp-cube-face-left"></div>
+                  <div class="mp-cube-face-right"></div>
+                </div>
+                <div class="mp-cube-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+              </div>
+              <div class="mp-card__content">
+                <h3 class="mp-card__title" data-aos="fade-up">ENGAGE & CAPTIVATE</h3>
+                <ul class="mp-card__list">
+                  <li>Engage & Captivate refers to capturing the audience's attention and keeping them interested through compelling content, interaction, and communication.</li>
+                  <li>Interactive Content List</li>
+                  <li>Storytelling Elements List</li>
+                  <li>Call-to-Action (CTA) List</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 4: Expert Optimization -->
+            <div class="mp-card mp-card--reverse">
+              <div class="mp-card__img">
+                <div class="mp-cube">
+                  <div class="mp-cube-face-top"></div>
+                  <div class="mp-cube-face-left"></div>
+                  <div class="mp-cube-face-right"></div>
+                </div>
+                <div class="mp-cube-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                  </div>
+              </div>
+              <div class="mp-card__content">
+                <h3 class="mp-card__title" data-aos="fade-up">EXPERT OPTIMIZATION</h3>
+                <ul class="mp-card__list">
+                  <li>Expert Optimization refers to leveraging expert knowledge and strategies to maximize performance, efficiency, or results in a specific area like SEO, marketing, or content creation.</li>
+                  <li>SEO Best Practices List</li>
+                  <li>Conversion Rate Optimization (CRO) List</li>
+                  <li>Performance Analytics List</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 5: Product Services -->
+            <div class="mp-card">
+              <div class="mp-card__img">
+                <div class="mp-cube">
+                  <div class="mp-cube-face-top"></div>
+                  <div class="mp-cube-face-left"></div>
+                  <div class="mp-cube-face-right"></div>
+                </div>
+                <div class="mp-cube-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                  </div>
+              </div>
+              <div class="mp-card__content">
+                <h3 class="mp-card__title" data-aos="fade-up">PRODUCT SERVICES</h3>
+                <ul class="mp-card__list">
+                  <li>Product Services in Google My Business refer to the specific offerings or support a business provides, which are displayed to help customers understand what they can expect from the company.</li>
+                  <li>Service Categories</li>
+                  <li>Advertisement</li>
+                  <li>Promotion</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 6: Performance Reporting -->
+            <div class="mp-card mp-card--reverse">
+              <div class="mp-card__img">
+                <div class="mp-cube">
+                  <div class="mp-cube-face-top"></div>
+                  <div class="mp-cube-face-left"></div>
+                  <div class="mp-cube-face-right"></div>
+                </div>
+                <div class="mp-cube-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="20" x2="18" y2="10"></line>
+                      <line x1="12" y1="20" x2="12" y2="4"></line>
+                      <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                  </div>
+              </div>
+              <div class="mp-card__content">
+                <h3 class="mp-card__title" data-aos="fade-up">PERFORMANCE REPORTING</h3>
+                <ul class="mp-card__list">
+                  <li>Performance Reporting in Google My Business refers to the data and insights provided on how users interact with a business's profile, helping track visibility and customer engagement.</li>
+                  <li>Search Queries</li>
+                  <li>Views and Impressions</li>
+                  <li>Customer Actions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <h2 class="mp-heading" style="margin-top: 20px;" data-aos="fade-up">Ecosystem Partners</h2>
+        </div>
+      </section>
+      <!-- =================== End Main Products =================== -->
+
+      <!-- Main Footer -->
+      <footer class="lt-footer" id="contact">
+        <div class="lt-dotgrid" aria-hidden="true"></div>
+        <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#e8622c" stroke-width="1.4" fill="none" opacity="0.9"/>
+          <path d="M-20 148 C 60 78, 140 188, 220 108 S 380 48, 460 118" stroke="#e8622c" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <path d="M-20 112 C 60 42, 140 152, 220 72 S 380 12, 460 82" stroke="#e8622c" stroke-width="1" fill="none" opacity="0.4"/>
+        </svg>
+
+        <div class="lt-outer">
+          <div class="lt-grid">
+
+            <!-- Column 1: Let's Talk -->
+            <div class="lt-col">
+              <h2 class="lt-heading" data-aos="fade-up">LET&rsquo;S<span class="lt-heading-accent">TALK
+                <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+                  <path class="lt-heading-arrow-path" d="M8 82 C 4 60, 10 46, 26 40 C 40 35, 46 44, 40 54 C 36 61, 30 55, 34 48 C 42 34, 60 24, 78 12" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </span></h2>
+              <div class="lt-underline"></div>
+              <p class="lt-desc">We&rsquo;re here to listen and help you grow your business online.</p>
+              <a class="lt-btn" href="mailto:hello@getitmediasolutions.com">
+                <span class="lt-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                Get In Touch
+              </a>
+            </div>
+
+            <!-- Column 2: Get In Touch With Us -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Get In Touch With Us</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-social-list">
+                <a class="lt-social-card" href="https://www.instagram.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--ig"><i class="fab fa-instagram"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Instagram</span>
+                    <span class="lt-social-sub">@getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.facebook.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--fb"><i class="fab fa-facebook-f"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Facebook</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.youtube.com/channel/UC6b2HvglRe3kztaasEYVNdQ" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--yt"><i class="fab fa-youtube"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">YouTube</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.google.com/search?q=Getit+Media+Solutions+Pvt+Ltd" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--gg"><i class="fab fa-google"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Google</span>
+                    <span class="lt-social-sub">Getit Media Solutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 3: Brand -->
+            <div class="lt-col">
+              <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png" alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
+              <div class="lt-underline"></div>
+              <p class="lt-brand-desc">When do they work well, and when do they on us and finally, when do we actually need how can we avoid them.</p>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-contact-list">
+                <a class="lt-contact-item" href="mailto:hello@getitmediasolutions.com">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Email Us</p>
+                    <p class="lt-contact-value">hello@getitmediasolutions.com</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="https://www.google.com/maps/search/?api=1&query=4517+Washington+Ave.+Newyork+39495" target="_blank" rel="noopener">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Address</p>
+                    <p class="lt-contact-value">4517 Washington Ave.<br>Newyork 39495</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="tel:+11234567890">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Phone</p>
+                    <p class="lt-contact-value">(123) 456-7890</p>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Trust / service features bar -->
+        <div class="lt-features">
+          <div class="lt-features-inner">
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-shield-check"></i></span>
+              <div>
+                <p class="lt-feature-title">Trusted Solutions</p>
+                <p class="lt-feature-sub">Reliable &amp; Secure</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-regular fa-clock"></i></span>
+              <div>
+                <p class="lt-feature-title">On-Time Delivery</p>
+                <p class="lt-feature-sub">Always On Schedule</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-user-group"></i></span>
+              <div>
+                <p class="lt-feature-title">Client Satisfaction</p>
+                <p class="lt-feature-sub">Our Priority</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-headset"></i></span>
+              <div>
+                <p class="lt-feature-title">24/7 Support</p>
+                <p class="lt-feature-sub">We&rsquo;re Always Here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom footer bar -->
+        <div class="lt-bottom">
+          <div class="lt-bottom-brand">
+            <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+            <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
+          </div>
+          <nav class="lt-bottom-nav" aria-label="Footer">
+            <a href="#home">About Us</a><span>|</span>
+            <a href="#portfolio">Our Portfolio</a><span>|</span>
+            <a href="#contact">Careers</a><span>|</span>
+            <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
+            <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          </nav>
+        </div>
+      </footer>
+      <!--End Main Footer -->
+    </div>
+    <!-- End Page Wrapper -->
+
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/knob.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/aos.js"></script>
+        <script src="js/gsap.min.js"></script>
+        <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitType.js"></script>
+    <script src="js/gsap-scroll-smoother.js"></script>
+    <script src="js/gsap-scroll-to-plugin.js"></script>
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/custom-gsap.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+  <script src="js/terranova-hero.js"></script>
+  <script src="js/services-cards.js"></script>
+  <script src="js/cta-brand.js"></script>
+  <script src="js/gmb-hero.js"></script>
+  <script src="js/one-tool.js"></script>
+  <script src="js/main-products.js"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"88f4fa328f314d4c95a104b4a60b2313","r":1}' crossorigin="anonymous"></script>
+<script src="js/scroll-anim.js"></script>
+</body>
+
+</html>

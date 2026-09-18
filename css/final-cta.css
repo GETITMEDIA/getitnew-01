@@ -1,0 +1,277 @@
+/* =====================================================================
+   Final CTA Banner Section — Super Animated & Modern Design
+   ===================================================================== */
+
+.cta-final-section {
+  position: relative;
+  background-color: #08080a;
+  padding: 90px 20px 110px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Background Ambient Glows */
+.cta-final-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 600px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 87, 34, 0.12) 0%, rgba(255, 87, 34, 0.02) 50%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Container Card */
+.cta-final-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(22, 22, 30, 0.95) 0%, rgba(12, 12, 16, 0.98) 100%);
+  border: 1.5px solid rgba(255, 87, 34, 0.35);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.75),
+    0 0 50px rgba(255, 87, 34, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  min-height: 520px;
+  z-index: 10;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cta-final-container:hover {
+  border-color: rgba(255, 87, 34, 0.6);
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.85),
+    0 0 70px rgba(255, 87, 34, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Background Image & Fade Overlay */
+.cta-final-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cta-final-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  opacity: 0.65;
+  filter: contrast(1.05) brightness(0.9);
+  transition: transform 0.8s ease;
+}
+
+.cta-final-container:hover .cta-final-bg img {
+  transform: scale(1.03);
+}
+
+/* Fade Gradient Mask */
+.cta-final-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+      #0a0a0e 0%, 
+      #0a0a0e 35%, 
+      rgba(10, 10, 14, 0.92) 50%, 
+      rgba(10, 10, 14, 0.5) 75%, 
+      rgba(10, 10, 14, 0.15) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Left Content Column */
+.cta-final-content {
+  position: relative;
+  z-index: 10;
+  width: 58%;
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cta-final-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
+  color: #ff5722;
+  background: rgba(255, 87, 34, 0.12);
+  border: 1px solid rgba(255, 87, 34, 0.3);
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
+}
+
+.cta-final-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(38px, 4.8vw, 62px);
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.08;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.02em;
+}
+
+.cta-final-title .highlight {
+  background: linear-gradient(120deg, #ff5722 0%, #ff8a3d 50%, #ffc48a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cta-final-desc {
+  font-size: 15.5px;
+  color: #b0b0c2;
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+/* Super Pill CTA Button */
+.cta-final-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(120deg, #ff5722 0%, #ff8a3d 100%);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 16px 32px 16px 36px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 14px 35px rgba(255, 87, 34, 0.45);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cta-btn-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cta-final-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 22px 50px rgba(255, 87, 34, 0.65);
+  color: #FFFFFF;
+}
+
+.cta-final-btn:hover .cta-btn-circle {
+  transform: rotate(45deg);
+}
+
+/* Right Side Floating Animated Badges */
+.cta-float-badge {
+  position: absolute;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: rgba(18, 18, 24, 0.88);
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cta-float-badge i {
+  font-size: 16px;
+  color: #ff5722;
+}
+
+.cta-float-badge--top {
+  top: 15%;
+  right: 6%;
+  animation: ctaBadgeFloatA 6s ease-in-out infinite;
+}
+
+.cta-float-badge--bottom {
+  bottom: 15%;
+  right: 12%;
+  animation: ctaBadgeFloatB 7s ease-in-out infinite 0.5s;
+}
+
+@keyframes ctaBadgeFloatA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes ctaBadgeFloatB {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .cta-final-content {
+    width: 68%;
+    padding: 55px 40px;
+  }
+  .cta-float-badge--top { right: 3%; }
+  .cta-float-badge--bottom { right: 4%; }
+}
+
+@media (max-width: 768px) {
+  .cta-final-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .cta-final-overlay {
+    background: linear-gradient(180deg, 
+        #0a0a0e 0%, 
+        #0a0a0e 65%, 
+        rgba(10, 10, 14, 0.7) 85%, 
+        rgba(10, 10, 14, 0.2) 100%);
+  }
+
+  .cta-final-content {
+    width: 100%;
+    padding: 50px 24px;
+  }
+
+  .cta-final-title {
+    font-size: 34px;
+  }
+  
+  .cta-final-bg {
+    position: relative;
+    height: 240px;
+    width: 100%;
+  }
+
+  .cta-float-badge {
+    display: none;
+  }
+}

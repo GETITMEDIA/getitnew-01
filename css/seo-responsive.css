@@ -1,0 +1,271 @@
+/* =====================================================================
+   SEO PAGE — RESPONSIVE LAYER
+   Loaded after seo-super-design.css. Handles every device width:
+   large desktop / desktop / laptop / tablet landscape / tablet portrait /
+   mobile / small mobile, plus touch-device and orientation fixes.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------
+   1. GLOBAL GUARDS — no sideways scroll on any device
+   --------------------------------------------------------------- */
+html,
+body.seo-page {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Zero-specificity (:where) so any component rule — logo sizing, icon
+   sizing — still wins. Logos and nav assets are excluded outright. */
+:where(body.seo-page section, body.seo-page footer) :where(img, svg, video):not([class*="logo"]):not([class*="brand"]) {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Never let a long keyword or URL push the layout wider than the screen */
+body.seo-page h1,
+body.seo-page h2,
+body.seo-page h3,
+body.seo-page h4,
+body.seo-page p,
+body.seo-page a,
+body.seo-page span {
+  overflow-wrap: break-word;
+}
+
+/* Comfortable tap targets on touch devices (WCAG 2.5.5) */
+@media (hover: none) and (pointer: coarse) {
+  .super-btn-primary,
+  .super-btn-secondary,
+  .arsenal-cta,
+  .arsenal-link,
+  .stat-item {
+    min-height: 44px;
+  }
+  /* Parallax backgrounds stutter or break on mobile browsers */
+  .super-hero {
+    background-attachment: scroll !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   2. FLUID TYPE — scales smoothly between every breakpoint
+   --------------------------------------------------------------- */
+.super-hero-h1 { font-size: clamp(30px, 5.2vw, 66px); }
+.super-hero-p  { font-size: clamp(15px, 1.25vw, 18px); }
+.super-title   { font-size: clamp(28px, 3.9vw, 52px); }
+.arsenal-title { font-size: clamp(30px, 4.2vw, 56px); }
+.arsenal-lead  { font-size: clamp(14.5px, 1.2vw, 16.5px); }
+.stat-value    { font-size: clamp(28px, 3.2vw, 44px); }
+.stat-affix    { font-size: clamp(17px, 1.9vw, 26px); }
+
+/* ---------------------------------------------------------------
+   3. LARGE DESKTOP  (1600px and up)
+   --------------------------------------------------------------- */
+@media (min-width: 1600px) {
+  .super-hero-container,
+  .arsenal-inner,
+  .stats-bar { max-width: 1440px; }
+
+  .super-hero { padding: 120px 40px 70px; }
+  .arsenal-section { padding: 150px 40px 160px; }
+  .arsenal-grid { gap: 30px; }
+}
+
+/* ---------------------------------------------------------------
+   4. SMALL DESKTOP / LAPTOP  (max 1280px)
+   --------------------------------------------------------------- */
+@media (max-width: 1280px) {
+  .super-hero-container { gap: 44px; }
+  .arsenal-inner,
+  .stats-bar { max-width: 100%; }
+  .arsenal-grid { gap: 22px; }
+  .arsenal-card { padding: 34px 26px 30px; }
+}
+
+/* Float badges hang outside the hero frame — pull them inside before
+   the hero's overflow clips them */
+@media (max-width: 1200px) {
+  .super-float-badge--top { top: 14px; right: 14px; }
+  .super-float-badge--bot { bottom: 14px; left: 14px; }
+  .super-float-badge { padding: 12px 16px; gap: 10px; }
+  .super-float-icon { width: 38px; height: 38px; font-size: 17px; }
+  .super-float-val { font-size: 13px; }
+  .super-float-sub { font-size: 11px; }
+}
+
+/* ---------------------------------------------------------------
+   5. TABLET LANDSCAPE  (max 1024px) — single-column hero
+   --------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .super-hero {
+    min-height: auto;
+    padding: 120px 24px 70px;
+    background-attachment: scroll;
+  }
+
+  .super-hero-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* Visual below the copy, capped so it never dominates the fold */
+  .super-serp-wrapper {
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .super-hero-p { max-width: 100%; }
+
+  /* Stats: 2 x 2 with proper dividers instead of a 4-wide squeeze */
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(odd)::before { display: none; }
+  .stat-item:nth-child(n + 3) { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+  /* "How We Do SEO" reuses the hero grid */
+  .super-bento-section { padding: 90px 24px; }
+  .super-section-header { margin-bottom: 46px; }
+
+  .arsenal-section { padding: 100px 24px 110px; }
+  .arsenal-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------------------------------------------------------------
+   6. TABLET PORTRAIT  (max 900px)
+   --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .super-hero-badge {
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    padding: 7px 16px;
+  }
+
+  .super-hero-btns { gap: 14px; }
+  .super-btn-primary,
+  .super-btn-secondary { padding: 14px 26px; font-size: 14px; }
+
+  .arsenal-header { margin-bottom: 50px; }
+  .arsenal-card { padding: 30px 24px 28px; }
+  .arsenal-num { font-size: 62px; }
+}
+
+/* ---------------------------------------------------------------
+   7. MOBILE  (max 767px)
+   --------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .super-hero {
+    padding: 100px 16px 56px;
+    min-height: auto;
+  }
+
+  .super-hero-container { gap: 38px; }
+  .super-hero-h1 { margin-bottom: 18px; }
+  .super-hero-p { margin-bottom: 26px; line-height: 1.65; }
+
+  /* Buttons go full width so they are easy to hit */
+  .super-hero-btns { gap: 12px; }
+  .super-hero-btns > a {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .super-hero-trust {
+    gap: 12px 18px;
+    padding-top: 14px;
+  }
+  .super-trust-item { font-size: 12px; }
+
+  /* Frame + badges: badges stack under the image rather than overlapping it */
+  .super-hero-visual-frame { padding: 8px; border-radius: 20px; }
+  .super-hero-3d-img { border-radius: 14px; }
+
+  .super-float-badge {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+    border-radius: 16px;
+  }
+
+  /* Stats bar sits flush instead of overlapping the hero */
+  .stats-ribbon { margin-top: -28px; padding: 0 16px; }
+  .stats-bar { border-radius: 18px; }
+  .stat-item { padding: 24px 12px; }
+  .stat-label { font-size: 12px; }
+
+  /* "How We Do SEO" */
+  .super-bento-section { padding: 70px 16px; }
+  .super-section-header { margin-bottom: 36px; }
+  .super-subtitle { font-size: 15px; }
+
+  /* The inline-styled panel + KPI chips in that section */
+  #how-we-do-seo .super-hero-container > div > div[style*="flex"] > div { flex: 1 1 100%; }
+  #how-we-do-seo [style*="padding: 32px"] { padding: 22px !important; }
+  #how-we-do-seo [style*="border-radius: 28px"] { border-radius: 20px !important; }
+
+  /* Arsenal */
+  .arsenal-section { padding: 76px 16px 84px; }
+  .arsenal-grid { grid-template-columns: 1fr; gap: 16px; }
+  .arsenal-foot { margin-top: 32px; flex-direction: column; gap: 14px; }
+  .arsenal-cta { width: 100%; justify-content: center; }
+}
+
+/* ---------------------------------------------------------------
+   8. SMALL MOBILE  (max 480px)
+   --------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .super-hero { padding: 92px 14px 48px; }
+  .super-hero-badge span { font-size: 10.5px; }
+
+  .stats-ribbon { margin-top: -22px; padding: 0 14px; }
+  .stats-bar { grid-template-columns: 1fr; }
+  .stat-item { padding: 22px 14px; }
+  .stat-item::before { display: none !important; }
+  .stat-item + .stat-item { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .stat-icon { margin-bottom: 10px; }
+
+  .super-bento-section { padding: 60px 14px; }
+  .arsenal-section { padding: 66px 14px 72px; }
+  .arsenal-card { padding: 26px 20px 24px; }
+  .arsenal-name { font-size: 16.5px; }
+  .arsenal-desc { font-size: 14px; }
+  .arsenal-num { font-size: 48px; top: 10px; right: 14px; }
+  .arsenal-eyebrow { font-size: 10.5px; letter-spacing: 1.8px; padding: 8px 15px; }
+}
+
+/* ---------------------------------------------------------------
+   9. VERY SMALL  (max 360px)
+   --------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .super-hero-badge { letter-spacing: 0.6px; }
+  .super-trust-item { font-size: 11.5px; }
+  .arsenal-card { padding: 24px 18px 22px; }
+  .stat-value { letter-spacing: -1px; }
+}
+
+/* ---------------------------------------------------------------
+   10. LANDSCAPE PHONES — keep the hero from eating the whole screen
+   --------------------------------------------------------------- */
+@media (max-width: 900px) and (orientation: landscape) {
+  .super-hero {
+    min-height: auto;
+    padding-top: 92px;
+    padding-bottom: 48px;
+  }
+  .super-serp-wrapper { max-width: 480px; }
+}
+
+/* ---------------------------------------------------------------
+   11. REDUCED MOTION
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .super-hero-visual-frame,
+  .super-serp-card { animation: none; }
+
+  .arsenal-card,
+  .arsenal-card::after,
+  .arsenal-media,
+  .stat-item,
+  .stat-icon {
+    transition-duration: 0.01ms !important;
+  }
+}

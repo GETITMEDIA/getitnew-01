@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>GetIt Media | Digital Marketing Agency</title>
+  <!-- Stylesheets -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/navbar.css" rel="stylesheet">
+  <link href="css/about.css" rel="stylesheet">
+  <link href="css/stats.css" rel="stylesheet">
+  <link href="css/cursor.css" rel="stylesheet">
+  <link href="css/text-reveal.css" rel="stylesheet">
+  <link href="css/lets-talk.css" rel="stylesheet">
+
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="icon" href="images/favicon.png" type="image/png">
+
+  <!-- Responsive -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme-3color.css">
+  <link rel="stylesheet" href="css/hero-redesign.css">
+  <!-- Scroll reveal system -->
+  <link href="css/scroll-anim.css" rel="stylesheet">
+  <script>
+    /* Arm the pre-hide only when animation will actually run, and always unarm
+       on a timer so a failed GSAP load can never leave the page blank.
+       js/scroll-anim.js unarms as soon as its start states are set. */
+    (function () {
+      var r = document.documentElement;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      r.classList.add("sa-armed");
+      setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+    })();
+  </script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+      </svg>
+      <div class="preloader-heading">
+        <div class="load-text">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- GetIt Media Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="#home" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited"
+            class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+            data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media">
+                Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true"
+                aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span class="mega-service__icon">G</span><span
+                        class="mega-service__text"><span class="mega-service__title">Google My
+                          Business</span></span></a>
+                    <a href="google-ads.html" class="mega-service" role="menuitem"><span class="mega-service__icon">A</span><span
+                        class="mega-service__text"><span class="mega-service__title">Google &amp; Meta
+                          Ads</span></span></a>
+                    <a href="socialmedia.html" class="mega-service" role="menuitem"><span class="mega-service__icon">S</span><span
+                        class="mega-service__text"><span class="mega-service__title">Social Media
+                          Marketing</span></span></a>
+                    <a href="searchengine.html" class="mega-service" role="menuitem"><span class="mega-service__icon">Q</span><span
+                        class="mega-service__text"><span class="mega-service__title">Search Engine
+                          Optimization</span></span></a>
+                    <a href="website.html" class="mega-service" role="menuitem"><span class="mega-service__icon">W</span><span
+                        class="mega-service__text"><span class="mega-service__title">Website Design &amp;
+                          Development</span></span></a>
+                    <a href="graphic.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">D</span><span class="mega-service__text"><span
+                          class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="video-editor.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">V</span><span class="mega-service__text"><span
+                          class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span>
+                      <h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4>
+                      <p class="mega-promo__text">One call with us changes your digital game.</p>
+                    </div>
+                    <a href="contact.html" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="contact.html" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+            aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="#home" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media"
+            class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+            data-aos="fade-up"><span class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span
+              class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media">
+                Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger"
+              id="mobileServicesTrigger" aria-expanded="false"
+              aria-controls="mobileServicesPanel"><span>Services</span><span
+                class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></span></button>
+            <div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html" class="mobile-service">Google
+                My Business</a><a href="google-ads.html" class="mobile-service">Google &amp; Meta Ads</a><a href="socialmedia.html"
+                class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine
+                Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a
+                href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html"
+                class="mobile-service">Video Editing</a></div>
+          </li>
+          <li><a href="team.html" class="mobile-link">Team</a></li>
+          <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+          <li><a href="price.html" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Back-to-top start -->
+    <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <!-- Back-to-top start -->
+
+    <!--Hero Section Start — Premium Cinematic -->
+    <section class="gm-hero" id="home-hero">
+
+      <!-- Antigravity particle field — replaces the old background video -->
+      <div id="antigravity-container" class="gm-hero__field" aria-hidden="true"></div>
+
+      <!-- Cinematic Overlays -->
+      <div class="gm-hero__overlay-dark"></div>
+      <div class="gm-hero__overlay-glow"></div>
+
+      <!-- Subtle Particle Decorations -->
+      <div class="gm-hero__particles">
+        <div class="gm-hero__line gm-hero__line--1"></div>
+        <div class="gm-hero__line gm-hero__line--2"></div>
+        <div class="gm-hero__line gm-hero__line--3"></div>
+        <div class="gm-hero__circle gm-hero__circle--1"></div>
+        <div class="gm-hero__circle gm-hero__circle--2"></div>
+      </div>
+
+      <!-- Floating Service Glass Cards -->
+      <div class="gm-hero__float-cards">
+        <!-- SEO Card -->
+        <div class="gm-hero__card liquid-glass gm-hero__card--seo">
+          <p class="gm-hero__card-label">SEO</p>
+          <p class="gm-hero__card-value">+124%</p>
+          <p class="gm-hero__card-sub">Organic Growth</p>
+        </div>
+        <!-- Meta Ads Card -->
+        <div class="gm-hero__card liquid-glass gm-hero__card--ads">
+          <p class="gm-hero__card-label">Meta Ads</p>
+          <p class="gm-hero__card-value">3.8x</p>
+          <p class="gm-hero__card-sub">ROAS</p>
+        </div>
+        <!-- Web Design Card -->
+        <div class="gm-hero__card liquid-glass gm-hero__card--web">
+          <p class="gm-hero__card-label">Web Design</p>
+          <p class="gm-hero__card-value">98%</p>
+          <p class="gm-hero__card-sub">Performance</p>
+        </div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="gm-hero__content">
+        <h1 class="gm-hero__heading gm-reveal">
+          We Build Digital Experiences That <span class="gm-hero__heading-accent">Grow.</span>
+        </h1>
+        <p class="gm-hero__subtitle gm-reveal">
+          Digital marketing, creative design, and high-performance web experiences built to move your brand forward.
+        </p>
+        <div class="gm-hero__cta-group gm-reveal">
+          <a href="#contact" class="gm-hero__cta-primary">
+            Start Your Project
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.33 8h9.34M8.67 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#portfolio" class="gm-hero__cta-secondary liquid-glass" style="border-radius: 100px;">
+            Explore Our Work
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="gm-hero__scroll">
+        <span class="gm-hero__scroll-text">Scroll to Explore</span>
+        <div class="gm-hero__scroll-line"></div>
+      </div>
+
+    </section>
+
+    <!-- GetIt Media — New About/Intro Section -->
+    <section class="about theme-light" id="home">
+      <div class="about__inner">
+
+        <div class="about__content">
+          <p class="about__eyebrow">Grow Your Business</p>
+          <h1 class="about__title" data-aos="fade-up">
+            <span class="about__title-line about__title-line--navy">We&rsquo;re Strategic</span>
+            <span class="about__title-line about__title-line--accent">Digital Marketing</span>
+            <span class="about__title-line about__title-line--navy">Agency</span>
+          </h1>
+          <p class="about__desc">Data-driven strategies that increase visibility, generate leads, and drive real
+            results. From SEO and Google Ads to social media and website development, we plan every campaign around
+            your business goals, then track what works and keep refining it.</p>
+
+          <a href="#contact" class="about__cta header-btn-main">
+            <span class="header-theme-btn">Get a Free Consultation</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+        <div class="about__visual">
+          <div class="about-stage">
+            <span class="about-dotgrid about-dotgrid--top" aria-hidden="true"></span>
+            <span class="about-dotgrid about-dotgrid--bottom" aria-hidden="true"></span>
+            <span class="about-dot" aria-hidden="true"></span>
+            <span class="about-blob about-blob--main" aria-hidden="true"></span>
+            <span class="about-blob about-blob--small" aria-hidden="true"></span>
+
+            <div class="about-photo">
+              <img src="images/sir/AM.png" alt="Smiling marketing professional working on a laptop"
+                data-aos="fade-up" />
+            </div>
+
+            <div class="about-badge">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="#e8622c">
+                <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.6 6.1 20.6l1.3-6.6-4.9-4.6 6.6-.8L12 2.5Z" />
+              </svg>
+              <span>Trusted by 500+ Businesses</span>
+            </div>
+
+            <div class="about-card about-card--leads">
+              <span class="about-card__icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="#e8622c">
+                  <path d="M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-3.3 0-7 1.7-7 4.5V20h14v-1.5c0-2.8-3.7-4.5-7-4.5Z" />
+                  <path
+                    d="M16.5 12.3a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm0 1.7c-.6 0-1.2.05-1.8.15 1.7 1 2.8 2.5 2.8 4.35V20H23v-1.5c0-2.6-3.3-4.2-6.5-4.5Z"
+                    opacity=".55" />
+                </svg>
+              </span>
+              <span class="about-card__text">
+                <span class="about-card__label">Leads</span>
+                <span class="about-card__value">+134%</span>
+                <span class="about-card__sub">vs. last month</span>
+              </span>
+            </div>
+
+            <div class="about-card about-card--traffic">
+              <span class="about-card__icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+                  <path d="M3 17l6-6 4 4 8-9" stroke="#e8622c" stroke-width="2.2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M15 6h6v6" stroke="#e8622c" stroke-width="2.2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="about-card__text">
+                <span class="about-card__label">Traffic</span>
+                <span class="about-card__value">+182%</span>
+                <span class="about-card__sub">vs. last month</span>
+              </span>
+            </div>
+
+            <div class="about-card about-card--revenue">
+              <span class="about-card__icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+                  <circle cx="12" cy="12" r="9" stroke="#e8622c" stroke-width="2" />
+                  <path
+                    d="M12 7v10M14.5 9.5c0-1-1-1.8-2.5-1.8s-2.5.8-2.5 1.8 1 1.6 2.5 1.9c1.5.3 2.5.9 2.5 1.9s-1 1.7-2.5 1.7-2.5-.7-2.5-1.7"
+                    stroke="#e8622c" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="about-card__text">
+                <span class="about-card__label">Revenue</span>
+                <span class="about-card__value">+212%</span>
+                <span class="about-card__sub">vs. last month</span>
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- Services Section Two-->
+    <section class="services-section-two section-padding theme-dark" id="portfolio"
+      style="background-image: url(images/home-2/service-bg.png); background-repeat: no-repeat; background-size: cover; background-position: center center">
+      <div class="auto-container">
+        <div class="row pb-60 align-items-end wow fadeInUp">
+          <div class="section-title-column col-lg-7 col-md-12" data-aos="fade-up">
+            <div class="sec-title">
+              <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Creative
+                Services</span>
+              <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                Complete Digital Marketing <br>
+                Services for You
+              </h2>
+            </div>
+          </div>
+          <div class="col-lg-5" data-aos="fade-up">
+            <p class="sec-descrption">GetIt Media is a dynamic digital marketing agency dedicated to empowering
+              businesses through innovative online presence and modern technology we have used</p>
+          </div>
+        </div>
+        <div class="swiper service-slider-2">
+          <div class="swiper-wrapper">
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="#gmb">Google My <br><span>Business</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/gmb.svg" alt="Google My Business"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">001.</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-bullhorn"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="#ads">Google &amp; Meta <br><span>Ads</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/ads.svg" alt="Google &amp; Meta Ads"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">002.</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="#smm">Social Media <br><span>Marketing</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/smm.svg" alt="Social Media Marketing"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">003.</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-magnifying-glass-location"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="#seo">Search Engine <br><span>Optimization</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/seo.svg" alt="Search Engine Optimization"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">004.</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-laptop-code"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="#web">Website Design &amp; <br><span>Development</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/web.svg" alt="Website Design &amp; Development"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">005.</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="video.html">Graphic <br><span>Design</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/graphic.svg" alt="Graphic Design"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">006.</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Service Block -->
+            <div class="swiper-slide">
+              <div class="service_single_item-2">
+                <div class="service-single-inner">
+                  <div class="service_icon">
+                    <i class="fa-solid fa-video"></i>
+                  </div>
+                  <div class="service_content">
+                    <h4 class="title">
+                      <a href="video.html">Video <br><span>Editing</span></a>
+                    </h4>
+                  </div>
+                  <figure class="service-img"><img src="images/services/video.svg" alt="Video Editing"
+                      data-aos="fade-up"></figure>
+                  <h6 class="service-no">007.</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-dot-2 text-center pt-5">
+            <div class="dot"></div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="shape rotate">
+        <img src="images/home-2/autor-mask1.png" alt="" data-aos="fade-up">
+      </div>
+      <div class="buler-bg"></div>
+    </section>
+    <!-- End Services Section -->
+
+
+
+
+
+    <!-- ============ stats section  ============ -->
+    <section class="stats theme-light" id="stats">
+      <div class="stats__inner">
+        <div class="stats__head">
+          <p class="stats__eyebrow"><span aria-hidden="true"></span>Our Impact</p>
+          <h2 class="stats__title" data-aos="fade-up">Numbers that speak for themselves</h2>
+        </div>
+        <div class="stats__grid" id="statsGrid">
+          <div class="stat-card">
+            <p class="stat-card__label">30+ Google reviews</p>
+            <p class="stat-card__value" data-count-target="4.9" data-count-decimals="1">4.9</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-card__label">Clients world-wide</p>
+            <p class="stat-card__value" data-count-target="170" data-count-suffix="+">170+</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-card__label">Completed projects</p>
+            <p class="stat-card__value" data-count-target="1.7" data-count-decimals="1" data-count-suffix="k">1.7k</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-card__label">Client satisfaction</p>
+            <p class="stat-card__value" data-count-target="95" data-count-suffix="%">95%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us-section why-choose-us-style section-padding theme-dark"
+      style="background-image: url(images/home-2/choose-bg.jpg); background-repeat: no-repeat; background-size: cover; background-position: center center">
+      <div class="auto-container">
+        <div class="sec-title mb-70">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-7 col-md-6" data-aos="fade-up">
+              <div class="sec-title">
+                <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt="" data-aos="fade-up">Why
+                  Choose Us</span>
+                <h2 class="hero_title text-reveal-anim" data-aos="fade-up">
+                  Solutions Designed <br>
+                  For Your Success
+                </h2>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6 text-start text-md-end" data-aos="fade-up">
+              <a class="theme-btn-main" href="index.html">
+                <span class="theme-btn-arrow-left theme-bg theme-color-white"><i
+                    class="fa-solid fa-arrow-left"></i></span>
+                <span class="theme-btn theme-bg theme-color-white">Get In Touch</span>
+                <span class="theme-btn-arrow-right theme-bg theme-color-white"><i
+                    class="fa-solid fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+            <div class="choose-single-box">
+              <div class="choose-icon">
+                <i class="fal fa-user"></i>
+              </div>
+              <div class="choose-content">
+                <h4 class="title">Experienced Team</h4>
+                <p>GetIt Media brings skilled specialists who focus on your business's unique goals</p>
+              </div>
+            </div>
+            <div class="choose-single-box">
+              <div class="choose-icon">
+                <i class="far fa-lightbulb-on"></i>
+              </div>
+              <div class="choose-content">
+                <h4 class="title">End to end Solutions</h4>
+                <p>GetIt Media delivers end-to-end digital solutions tailored to your business's unique goals</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 choose-img wow fadeInUp" data-wow-delay=".5s">
+            <div class="choose-thumb">
+              <figure class="image1"><img src="images/about_team/2.png" alt="" data-aos="fade-up"></figure>
+              <div class="image-bg-shape1"></div>
+              <div class="image-bg-shape2"></div>
+              <div class="dote-shape bounce-animate2"><img src="images/home-2/dot.png" alt="" data-aos="fade-up"></div>
+            </div>
+          </div>
+          <div class="column-right col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
+            <div class="choose-single-box">
+              <div class="choose-icon">
+                <i class="fa-regular fa-circle-dollar"></i>
+              </div>
+              <div class="choose-content">
+                <h4 class="title">Competitive Pricing</h4>
+                <p>GetIt Media offers competitive pricing plans built around your business's unique goals</p>
+              </div>
+            </div>
+            <div class="choose-single-box">
+              <div class="choose-icon">
+                <i class="fal fa-user-headset"></i>
+              </div>
+              <div class="choose-content">
+                <h4 class="title">24 Hours Supports</h4>
+                <p>GetIt Media provides round-the-clock support with a client-centric approach</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="choose-shape bounce-animate3">
+        <img src="images/home-2/choose-shape.png" alt="" data-aos="fade-up">
+      </div>
+      <div class="buler-bg"></div>
+    </section>
+    <!-- End Why Choose Us Section -->
+
+
+
+
+
+
+    <!-- Brand Section   -->
+    <div class="brand-section section-padding">
+      <div class="auto-container">
+        <!-- Sponsors Outer -->
+        <div class="sponsors-outer">
+          <div class="customar-service d-flex align-items-center">
+            <div class="customer-stats ">Our Happy Customers all over the World</div>
+            <div class="highlighted-number">6000+ <span>Clients</span></div>
+          </div>
+          <!--clients carousel-->
+          <div class="brand-slider swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/16-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/22-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/33-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/35-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/3D PNG (2).png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/4-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/42-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/48-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/50-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/51-Photoroom.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/Aditya-logo.png" alt="Aditya" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/Group 1.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/Karupatti.png" alt="Karupatti" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/Layer 1.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/NDSS 34 copy.png" alt="NDSS" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/RK MOTORS 20 copy.png" alt="RK Motors" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/SM 5 copy.png" alt="SM" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/SRI BALA 5 copy.png" alt="Sri Bala" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/ashoka.png" alt="Ashoka" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/concept kichen.png" alt="Concept Kitchen" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/download__8_-removebg-preview.png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/has.png" alt="Has" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/jana.png" alt="Jana" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/karuppatti 40 copy.png" alt="Karuppatti" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/kohi.png" alt="Kohi" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/logo (1).png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/meera 3 copy.png" alt="Meera" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/mother.png" alt="Mother" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/nas.png" alt="Nas" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/nilan.png" alt="Nilan" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/png (1).png" alt="Client Logo" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/priyathar.png" alt="Priyathar" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/pvg-mind-care-clinic-puducherry-65c5f7308287c.png" alt="PVG Mind Care Clinic"
+                    data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/queen.png" alt="Queen" data-aos="fade-up">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="slide-item">
+                  <img src="images/clients/ruban.png" alt="Ruban" data-aos="fade-up">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shape bounce-animate4">
+        <img src="images/home-2/up-shape.png" alt="" data-aos="fade-up">
+      </div>
+    </div>
+    <!--End brand Section -->
+
+    <!-- Testimonial Section Style Three -->
+    <section class="testimonial-section-three section-padding theme-light">
+      <div class="auto-container">
+        <div class="row d-flex align-items-center justify-content-between">
+          <div class="column-left col-lg-6 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="300ms">
+            <div class="sec-title">
+              <span class="sub-title"><img src="images/main-home/sub-title-shape.svg" alt=""
+                  data-aos="fade-up">Testimonial</span>
+              <h2 class="hero_title text-reveal-anim" data-aos="fade-up">Real Stories from Happy <br>Business Partners
+              </h2>
+            </div>
+          </div>
+
+          <div class="column-right col-lg-5 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="300ms">
+            <div class="counter_box-testi">
+              <div class="count-box"><span class="count-text" data-speed="3000" data-stop="6"></span>K<span
+                  class="plus">+</span><img class="counter-icn" src="images/main-home/autor-img.png" alt=""
+                  data-aos="fade-up"></div>
+              <h6 class="counter-title">Happy Customers</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-12" data-aos="fade-up">
+            <div class="tesimonail_list-3-slider swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="testimonial-single_box-three">
+                    <div class="testi-inner">
+                      <figure class="testimonial-author"><img src="images/testimonials/rajvarma.svg"
+                          alt="RajvarmaSangeethavani" data-aos="fade-up"></figure>
+                      <figure class="testi_ads"><img src="images/home-2/google.png" alt="Google Review"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                      <div class="testi_content">
+                        <p>&ldquo;My business phone number not live in google business page and we try so many time but
+                          no use&hellip; after i got the number Mr.Anthonimuthu from google sme channel
+                          partner&hellip;&rdquo;</p>
+                        <div class="testi-bio">
+                          <h4 class="title">RajvarmaSangeethavani</h4>
+                          <p>Google Review &middot; &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-single_box-three">
+                    <div class="testi-inner">
+                      <figure class="testimonial-author"><img src="images/testimonials/mother-c.svg" alt="MOTHER C"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_ads"><img src="images/home-2/google.png" alt="Google Review"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                      <div class="testi_content">
+                        <p>&ldquo;For businesses in Pondicherry looking to enhance their online visibility and generate
+                          more leads, Getit Media Solution Pvt Ltd comes highly recommended&hellip;&rdquo;</p>
+                        <div class="testi-bio">
+                          <h4 class="title">MOTHER C</h4>
+                          <p>Google Review &middot; &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-single_box-three">
+                    <div class="testi-inner">
+                      <figure class="testimonial-author"><img src="images/testimonials/vijay-g.svg" alt="Vijay G"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_ads"><img src="images/home-2/google.png" alt="Google Review"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                      <div class="testi_content">
+                        <p>&ldquo;Last 3 years we got lots of patients enquiry from google business thanks to getit
+                          media, they are given best seo service and digital marketing service&hellip;&rdquo;</p>
+                        <div class="testi-bio">
+                          <h4 class="title">Vijay G</h4>
+                          <p>Google Review &middot; &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-single_box-three">
+                    <div class="testi-inner">
+                      <figure class="testimonial-author"><img src="images/testimonials/a-b.svg" alt="A B"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_ads"><img src="images/home-2/google.png" alt="Google Review"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                      <div class="testi_content">
+                        <p>&ldquo;A very nice organization with the help of which we can take our business further. I
+                          have taken help from getitmedia to take my business further&hellip;&rdquo;</p>
+                        <div class="testi-bio">
+                          <h4 class="title">A B</h4>
+                          <p>Google Review &middot; &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="testimonial-single_box-three">
+                    <div class="testi-inner">
+                      <figure class="testimonial-author"><img src="images/testimonials/balaji-s.svg" alt="Balaji S"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_ads"><img src="images/home-2/google.png" alt="Google Review"
+                          data-aos="fade-up"></figure>
+                      <figure class="testi_aroow"><img src="images/home-2/arrow.png" alt="" data-aos="fade-up"></figure>
+                      <div class="testi_content">
+                        <p>&ldquo;I sincerely thank you for the outstanding catalog work carried out by you and your
+                          team. I am truly happy with the final outcome and deeply appreciate&hellip;&rdquo;</p>
+                        <div class="testi-bio">
+                          <h4 class="title">Balaji S</h4>
+                          <p>Google Review &middot; &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Testimonial Section Style Three -->
+
+    <!-- Main Footer -->
+    <footer class="lt-footer" id="contact">
+      <div class="lt-dotgrid" aria-hidden="true"></div>
+      <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#e8622c" stroke-width="1.4" fill="none"
+          opacity="0.9" />
+        <path d="M-20 148 C 60 78, 140 188, 220 108 S 380 48, 460 118" stroke="#e8622c" stroke-width="1.2" fill="none"
+          opacity="0.6" />
+        <path d="M-20 112 C 60 42, 140 152, 220 72 S 380 12, 460 82" stroke="#e8622c" stroke-width="1" fill="none"
+          opacity="0.4" />
+      </svg>
+
+      <div class="lt-outer">
+        <div class="lt-grid">
+
+          <!-- Column 1: Let's Talk -->
+          <div class="lt-col">
+            <h2 class="lt-heading" data-aos="fade-up">LET&rsquo;S<span class="lt-heading-accent">TALK
+                <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+                  <path class="lt-heading-arrow-path"
+                    d="M8 82 C 4 60, 10 46, 26 40 C 40 35, 46 44, 40 54 C 36 61, 30 55, 34 48 C 42 34, 60 24, 78 12"
+                    stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round" fill="none" />
+                </svg>
+              </span></h2>
+            <div class="lt-underline"></div>
+            <p class="lt-desc">We&rsquo;re here to listen and help you grow your business online.</p>
+            <a class="lt-btn" href="mailto:hello@getitmediasolutions.com">
+              <span class="lt-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+              Get In Touch
+            </a>
+          </div>
+
+          <!-- Column 2: Get In Touch With Us -->
+          <div class="lt-col">
+            <h3 class="lt-col-title" data-aos="fade-up">Get In Touch With Us</h3>
+            <div class="lt-underline"></div>
+            <div class="lt-social-list">
+              <a class="lt-social-card" href="https://www.instagram.com/getitmediasolutions" target="_blank"
+                rel="noopener">
+                <span class="lt-social-icon lt-social-icon--ig"><i class="fab fa-instagram"></i></span>
+                <span class="lt-social-text">
+                  <span class="lt-social-title">Instagram</span>
+                  <span class="lt-social-sub">@getitmediasolutions</span>
+                </span>
+                <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+              <a class="lt-social-card" href="https://www.facebook.com/getitmediasolutions" target="_blank"
+                rel="noopener">
+                <span class="lt-social-icon lt-social-icon--fb"><i class="fab fa-facebook-f"></i></span>
+                <span class="lt-social-text">
+                  <span class="lt-social-title">Facebook</span>
+                  <span class="lt-social-sub">/getitmediasolutions</span>
+                </span>
+                <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+              <a class="lt-social-card" href="https://www.youtube.com/channel/UC6b2HvglRe3kztaasEYVNdQ" target="_blank"
+                rel="noopener">
+                <span class="lt-social-icon lt-social-icon--yt"><i class="fab fa-youtube"></i></span>
+                <span class="lt-social-text">
+                  <span class="lt-social-title">YouTube</span>
+                  <span class="lt-social-sub">/getitmediasolutions</span>
+                </span>
+                <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+              <a class="lt-social-card" href="https://www.google.com/search?q=Getit+Media+Solutions+Pvt+Ltd"
+                target="_blank" rel="noopener">
+                <span class="lt-social-icon lt-social-icon--gg"><i class="fab fa-google"></i></span>
+                <span class="lt-social-text">
+                  <span class="lt-social-title">Google</span>
+                  <span class="lt-social-sub">Getit Media Solutions</span>
+                </span>
+                <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 3: Brand -->
+          <div class="lt-col">
+            <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png"
+                alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
+            <div class="lt-underline"></div>
+            <p class="lt-brand-desc">When do they work well, and when do they on us and finally, when do we actually
+              need how can we avoid them.</p>
+          </div>
+
+          <!-- Column 4: Contact Info -->
+          <div class="lt-col">
+            <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
+            <div class="lt-underline"></div>
+            <div class="lt-contact-list">
+              <a class="lt-contact-item" href="mailto:hello@getitmediasolutions.com">
+                <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span>
+                  <p class="lt-contact-label">Email Us</p>
+                  <p class="lt-contact-value">hello@getitmediasolutions.com</p>
+                </span>
+              </a>
+              <a class="lt-contact-item"
+                href="https://www.google.com/maps/search/?api=1&query=4517+Washington+Ave.+Newyork+39495"
+                target="_blank" rel="noopener">
+                <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                <span>
+                  <p class="lt-contact-label">Address</p>
+                  <p class="lt-contact-value">4517 Washington Ave.<br>Newyork 39495</p>
+                </span>
+              </a>
+              <a class="lt-contact-item" href="tel:+11234567890">
+                <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
+                <span>
+                  <p class="lt-contact-label">Phone</p>
+                  <p class="lt-contact-value">(123) 456-7890</p>
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Trust / service features bar -->
+      <div class="lt-features">
+        <div class="lt-features-inner">
+          <div class="lt-feature">
+            <span class="lt-feature-icon"><i class="fa-solid fa-shield-check"></i></span>
+            <div>
+              <p class="lt-feature-title">Trusted Solutions</p>
+              <p class="lt-feature-sub">Reliable &amp; Secure</p>
+            </div>
+          </div>
+          <div class="lt-feature">
+            <span class="lt-feature-icon"><i class="fa-regular fa-clock"></i></span>
+            <div>
+              <p class="lt-feature-title">On-Time Delivery</p>
+              <p class="lt-feature-sub">Always On Schedule</p>
+            </div>
+          </div>
+          <div class="lt-feature">
+            <span class="lt-feature-icon"><i class="fa-solid fa-user-group"></i></span>
+            <div>
+              <p class="lt-feature-title">Client Satisfaction</p>
+              <p class="lt-feature-sub">Our Priority</p>
+            </div>
+          </div>
+          <div class="lt-feature">
+            <span class="lt-feature-icon"><i class="fa-solid fa-headset"></i></span>
+            <div>
+              <p class="lt-feature-title">24/7 Support</p>
+              <p class="lt-feature-sub">We&rsquo;re Always Here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom footer bar -->
+      <div class="lt-bottom">
+        <div class="lt-bottom-brand">
+          <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+          <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
+        </div>
+        <nav class="lt-bottom-nav" aria-label="Footer">
+          <a href="#home">About Us</a><span>|</span>
+          <a href="#portfolio">Our Portfolio</a><span>|</span>
+          <a href="#contact">Careers</a><span>|</span>
+          <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
+          <a href="terms-conditions.html">Terms &amp; Conditions</a>
+        </nav>
+      </div>
+    </footer>
+    <!--End Main Footer -->
+  </div>
+  <!-- End Page Wrapper -->
+
+
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.fancybox.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/wow.js"></script>
+  <script src="js/select2.min.js"></script>
+  <script src="js/appear.js"></script>
+  <script src="js/knob.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/splitType.js"></script>
+  <script src="js/gsap-scroll-smoother.js"></script>
+  <script src="js/gsap-scroll-to-plugin.js"></script>
+  <script src="js/SplitText.min.js"></script>
+  <script src="js/custom-gsap.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+  <script type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496"
+    integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ=="
+    data-cf-beacon='{"version":"2024.11.0","token":"88f4fa328f314d4c95a104b4a60b2313","r":1}'
+    crossorigin="anonymous"></script>
+  <script src="js/scroll-anim.js"></script>
+  <script src="js/hero-cinematic.js"></script>
+  <!-- Three.js drives the hero particle field only; the hero is
+       complete without it and the script guards for its absence -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <script src="js/hero-antigravity.js"></script>
+</body>
+
+</html>

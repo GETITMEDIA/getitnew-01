@@ -1,0 +1,537 @@
+/* ==========================================================================
+   "One Tool / 5 Solutions" — interactive hub, light theme (white background)
+   Desktop/tablet: a 577 x 611 diagram stage; each numbered chip is a button
+   that lights its own wire and reveals a one-line description.
+   Mobile: the same buttons reflow into a stacked, always-open list.
+   ========================================================================== */
+
+.ot {
+  --ot-bg: #ffffff;
+  --ot-bg-2: #fff7f2;
+  --ot-neon: #f36523;
+  --ot-neon-deep: #d1490c;
+  --ot-neon-soft: #f9a97e;
+  --ot-line: rgba(243, 101, 35, 0.16);
+  --ot-ink: #14161a;
+  --ot-muted: #5b6270;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 72px 0 80px;
+  background:
+    radial-gradient(58% 46% at 50% 62%, rgba(243, 101, 35, 0.10) 0%, rgba(243, 101, 35, 0) 70%),
+    radial-gradient(90% 70% at 50% 40%, rgba(243, 101, 35, 0.05) 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, var(--ot-bg) 0%, var(--ot-bg-2) 50%, var(--ot-bg) 100%);
+  color: var(--ot-ink);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* faint perspective floor grid */
+.ot__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(243, 101, 35, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 101, 35, 0.10) 1px, transparent 1px);
+  background-size: 68px 68px;
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 58%, #000 10%, transparent 76%);
+  mask-image: radial-gradient(80% 70% at 50% 58%, #000 10%, transparent 76%);
+}
+
+/* soft white fade so the grid never touches the section edges */
+.ot__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(100% 80% at 50% 52%, rgba(255, 255, 255, 0) 42%, #ffffff 100%);
+}
+
+/* ---------- Stage: one scaling coordinate space ---------- */
+.ot__stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  aspect-ratio: 577 / 611;
+  container-type: inline-size;
+}
+
+.ot__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* ---------- Heading ---------- */
+.ot__title {
+  position: absolute;
+  top: 2.4%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  z-index: 2;
+  pointer-events: none;
+}
+.ot__title span { display: block; }
+.ot__title-main {
+  font-size: 8.7cqw;
+  font-weight: 800;
+  color: var(--ot-ink);
+}
+.ot__title-accent {
+  font-size: 8.3cqw;
+  font-weight: 800;
+  color: var(--ot-neon);
+}
+.ot__title-accent i {
+  font-style: normal;
+  background: linear-gradient(96deg, #ff8a3d 0%, #f36523 42%, #d1490c 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@supports not (background-clip: text) {
+  .ot__title-accent i { -webkit-text-fill-color: var(--ot-neon); }
+}
+
+/* nudge to explore — fades out once something is selected */
+.ot__hint {
+  position: absolute;
+  top: 21%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  font-size: 2.05cqw;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7280;
+  transition: opacity 0.35s ease;
+}
+.ot[data-active] .ot__hint { opacity: 0; }
+
+/* ---------- Icon-tile row chips ----------
+   One row: gradient icon tile, big orange number, label. A faint ring peeks
+   in from the right edge and the number carries a short accent dash. */
+.ot-node {
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;                 /* clips the decorative ring */
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-areas:
+    "icon num lab"
+    "desc desc desc";
+  align-items: center;
+  column-gap: 1.2cqw;
+  /* tall enough for the deepest label (05 wraps to 3 lines), so all five
+     chips are exactly the same height and the pairs bottom-align */
+  min-height: 11cqw;
+  margin: 0;
+  padding: 1.7cqw 2.2cqw;
+  border: 1px solid rgba(243, 101, 35, 0.12);
+  border-radius: 2.2cqw;
+  background: #ffffff;
+  box-shadow:
+    0 1.3cqw 3cqw rgba(20, 22, 26, 0.09),
+    0 0.3cqw 0.8cqw rgba(20, 22, 26, 0.05);
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    box-shadow 0.32s ease,
+    border-color 0.32s ease,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s ease;
+}
+.ot-node:focus { outline: none; }
+.ot-node:focus-visible {
+  outline: 2px solid var(--ot-neon);
+  outline-offset: 4px;
+}
+
+/* faint ring bleeding in from the right edge */
+.ot-node::after {
+  content: "";
+  position: absolute;
+  right: -4.6cqw;
+  top: 50%;
+  z-index: 0;                       /* must sit behind the label */
+  transform: translateY(-50%);
+  width: 8.6cqw;
+  height: 8.6cqw;
+  border-radius: 50%;
+  border: 1cqw solid rgba(243, 101, 35, 0.10);
+  pointer-events: none;
+  transition: border-color 0.32s ease;
+}
+/* content rides above the ring */
+.ot-icon, .ot-num, .ot-lab, .ot-desc { position: relative; z-index: 1; }
+
+/* gradient icon tile */
+.ot-icon {
+  grid-area: icon;
+  display: grid;
+  place-items: center;
+  width: 5.6cqw;
+  height: 5.6cqw;
+  border-radius: 1.4cqw;
+  background: linear-gradient(145deg, #ff9147 0%, #f36523 55%, #d1490c 100%);
+  box-shadow: 0 0.7cqw 1.6cqw rgba(209, 73, 12, 0.30);
+  color: #ffffff;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
+}
+.ot-icon svg {
+  width: 3.1cqw;
+  height: 3.1cqw;
+  display: block;
+}
+
+/* big number with its accent dash */
+.ot-num {
+  grid-area: num;
+  position: relative;
+  align-self: center;
+  padding-bottom: 1.2cqw;
+  font-size: 3.1cqw;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ot-neon);
+  transition: color 0.3s ease;
+}
+.ot-num::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.4cqw;
+  height: 0.32cqw;
+  border-radius: 1cqw;
+  background: linear-gradient(90deg, #f36523 0%, #ffa869 100%);
+}
+
+.ot-lab {
+  grid-area: lab;
+  min-width: 0;                     /* let the 1fr column shrink, not overflow */
+  font-size: 1.95cqw;
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--ot-ink);
+}
+
+/* description opens inside the chip */
+.ot-desc {
+  grid-area: desc;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  font-size: 1.95cqw;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ot-muted);
+  transition:
+    max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.28s ease,
+    margin-top 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Active / hovered state ---------- */
+.ot-node.is-active {
+  z-index: 4;
+  transform: translateY(-3px);
+  border-color: rgba(243, 101, 35, 0.34);
+  box-shadow:
+    0 2.2cqw 4.4cqw rgba(209, 73, 12, 0.18),
+    0 0.4cqw 1cqw rgba(20, 22, 26, 0.07);
+}
+.ot-node.is-active::after { border-color: rgba(243, 101, 35, 0.20); }
+.ot-node.is-active .ot-icon {
+  transform: scale(1.07);
+  box-shadow: 0 1cqw 2.2cqw rgba(209, 73, 12, 0.44);
+}
+.ot-node.is-active .ot-num { color: var(--ot-neon-deep); }
+.ot-node.is-active .ot-desc {
+  max-height: 12em;
+  opacity: 1;
+  margin-top: 1.3cqw;
+}
+
+/* everything not selected steps back */
+.ot[data-active] .ot-node:not(.is-active) { opacity: 0.4; }
+
+/* ---------- Connectors react to the selection ---------- */
+.ot-line {
+  transition: opacity 0.35s ease, stroke 0.35s ease, stroke-width 0.35s ease;
+}
+.ot[data-active] .ot-line { opacity: 0.25; }
+.ot[data-active="1"] .ot-line--1,
+.ot[data-active="2"] .ot-line--2,
+.ot[data-active="3"] .ot-line--3,
+.ot[data-active="4"] .ot-line--4,
+.ot[data-active="5"] .ot-line--5 {
+  opacity: 1;
+  stroke: var(--ot-neon);
+  stroke-width: 2.4;
+}
+.ot[data-active="1"] .ot-line--1 .ot-dot,
+.ot[data-active="2"] .ot-line--2 .ot-dot,
+.ot[data-active="3"] .ot-line--3 .ot-dot,
+.ot[data-active="4"] .ot-line--4 .ot-dot,
+.ot[data-active="5"] .ot-line--5 .ot-dot {
+  fill: var(--ot-neon);
+  stroke: var(--ot-neon-deep);
+}
+
+/* the selected feed line pulses faster, the rest go quiet */
+.ot[data-active] .ot-spark { opacity: 0; }
+.ot[data-active="1"] .ot-spark--1,
+.ot[data-active="2"] .ot-spark--2,
+.ot[data-active="3"] .ot-spark--3,
+.ot[data-active="4"] .ot-spark--4,
+.ot[data-active="5"] .ot-spark--5 {
+  opacity: 1;
+  stroke: var(--ot-neon-deep);
+}
+.ot.is-in[data-active="1"] .ot-spark--1,
+.ot.is-in[data-active="2"] .ot-spark--2,
+.ot.is-in[data-active="3"] .ot-spark--3,
+.ot.is-in[data-active="4"] .ot-spark--4,
+.ot.is-in[data-active="5"] .ot-spark--5 {
+  animation: otSpark 1.15s linear infinite;
+  animation-delay: 0s;
+}
+
+/* bulb burns brighter while a solution is selected */
+.ot-bulb, .ot-halo, .ot-core, .ot-pool {
+  transition: opacity 0.4s ease;
+}
+.ot[data-active] .ot-halo { opacity: 1; }
+
+/* platform under the bulb — hidden; delete this rule to bring it back */
+.ot-platform { display: none; }
+
+/* ---------- Chip placement on the 577 x 611 stage ----------
+   Chips are 31% x 10.39%. Narrowing them from 34% opens the channel round the
+   bulb to 36% (317px). Rows 2 and 3 stay equidistant from the bulb's centre
+   line (59.9%) with centres at 47.0% and 72.8%, so the gap between the
+   flanking pairs is 15.4% (144px) and row 3 stops at 78%, clear of the
+   platform at 79.5%. */
+.ot-node--2 { left: 33%;  top: 25.5%; width: 34%; }
+.ot-node--1 { left: 1%;   top: 41.8%; width: 31%; }
+.ot-node--3 { right: 1%;  top: 41.8%; width: 31%; }
+.ot-node--4 { left: 1%;   top: 67.6%; width: 31%; }
+.ot-node--5 { right: 1%;  top: 67.6%; width: 31%; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 991px) {
+  .ot { padding: 58px 0 64px; }
+  .ot__stage { max-width: 680px; }
+}
+
+/* ---------- Mobile: the diagram folds into a stacked list ---------- */
+@media (max-width: 767px) {
+  .ot { padding: 48px 0 56px; }
+  .ot__grid { background-size: 48px 48px; }
+
+  .ot__stage {
+    width: calc(100% - 32px);
+    max-width: 520px;
+    aspect-ratio: auto;
+    container-type: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ot__art { display: none; }
+
+  .ot__title {
+    position: static;
+    margin-bottom: 4px;
+  }
+  .ot__title-main   { font-size: clamp(28px, 9vw, 42px); }
+  .ot__title-accent { font-size: clamp(27px, 8.6vw, 40px); }
+
+  .ot__hint {
+    position: static;
+    margin: 0 0 10px;
+    font-size: 11px;
+  }
+  .ot[data-active] .ot__hint { opacity: 1; }
+
+  .ot-node,
+  .ot-node--1, .ot-node--2, .ot-node--3, .ot-node--4, .ot-node--5 {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 0;
+    min-height: 0;
+    padding: 15px 17px;
+    border-radius: 18px;
+    column-gap: 12px;
+    transform: none;
+    box-shadow: 0 5px 16px rgba(20, 22, 26, 0.07);
+  }
+
+  .ot-node::after {
+    right: -26px;
+    width: 74px;
+    height: 74px;
+    border-width: 9px;
+  }
+
+  .ot-icon { width: 40px; height: 40px; border-radius: 12px; }
+  .ot-icon svg { width: 21px; height: 21px; }
+
+  .ot-num { font-size: 22px; padding-bottom: 8px; }
+  .ot-num::after { width: 17px; height: 3px; }
+
+  .ot-lab { font-size: 15px; }
+
+  /* descriptions stay open on mobile — there is no hover to rely on */
+  .ot-desc {
+    max-height: none;
+    opacity: 1;
+    margin-top: 6px;
+    font-size: 13px;
+    transition: none;
+  }
+
+  .ot-node.is-active {
+    transform: none;
+    box-shadow: 0 8px 22px rgba(209, 73, 12, 0.16);
+  }
+  .ot-node.is-active .ot-icon { transform: none; }
+  .ot[data-active] .ot-node:not(.is-active) { opacity: 1; }
+}
+
+@media (max-width: 479px) {
+  .ot__stage { width: calc(100% - 24px); }
+  .ot-node,
+  .ot-node--1, .ot-node--2, .ot-node--3, .ot-node--4, .ot-node--5 {
+    padding: 13px 14px;
+    column-gap: 10px;
+  }
+  .ot-icon { width: 36px; height: 36px; border-radius: 11px; }
+  .ot-icon svg { width: 19px; height: 19px; }
+  .ot-num { font-size: 19px; padding-bottom: 7px; }
+  .ot-lab   { font-size: 14.5px; }
+  .ot-desc  { font-size: 12.5px; }
+}
+
+/* ==========================================================================
+   Motion — the diagram comes alive as it scrolls into view
+   ========================================================================== */
+@keyframes otDraw   { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes otSpark  { from { stroke-dashoffset: 1.09; } 70%, 100% { stroke-dashoffset: 0; } }
+@keyframes otBreath { 0%, 100% { opacity: 0.82; transform: scale(1); }
+                      50%      { opacity: 1;    transform: scale(1.06); } }
+@keyframes otHalo   { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+@keyframes otPool   { 0%, 100% { opacity: 0.85; transform: scale(1); }
+                      50%      { opacity: 1;    transform: scale(1.05); } }
+@keyframes otRise   { from { opacity: 0; transform: translateY(16px); }
+                      to   { opacity: 1; transform: translateY(0); } }
+@keyframes otPop    { from { opacity: 0; transform: scale(0.4); }
+                      to   { opacity: 1; transform: scale(1); } }
+@keyframes otShimmer{ 0%, 100% { background-position: 0% 50%; }
+                      50%      { background-position: 100% 50%; } }
+
+/* resting state */
+.ot:not(.is-in) .ot-wire   { stroke-dashoffset: 1; }
+.ot:not(.is-in) .ot-node,
+.ot:not(.is-in) .ot__hint,
+.ot:not(.is-in) .ot__title { opacity: 0; }
+.ot:not(.is-in) .ot-dot,
+.ot:not(.is-in) .ot-core,
+.ot:not(.is-in) .ot-pool,
+.ot:not(.is-in) .ot-reflect { opacity: 0; }
+.ot .ot-sparks path { stroke-dasharray: 0.09 1; stroke-dashoffset: 1.09; }
+
+/* heading */
+.ot.is-in .ot__title { animation: otRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.ot.is-in .ot__hint  { animation: otRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both; }
+.ot.is-in .ot__title-accent i { animation: otShimmer 7s ease-in-out 1.4s infinite; }
+
+/* wires draw themselves toward the bulb */
+.ot.is-in .ot-wire {
+  stroke-dasharray: 1;
+  animation: otDraw 1.15s ease-out 0.25s both;
+}
+
+/* nodes pop once the wire reaches them */
+.ot.is-in .ot-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: otPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.15s both;
+}
+
+/* labels cascade in */
+.ot.is-in .ot-node { animation: otRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.ot.is-in .ot-node--1 { animation-delay: 0.9s; }
+.ot.is-in .ot-node--2 { animation-delay: 1.0s; }
+.ot.is-in .ot-node--3 { animation-delay: 1.1s; }
+.ot.is-in .ot-node--4 { animation-delay: 1.2s; }
+.ot.is-in .ot-node--5 { animation-delay: 1.3s; }
+
+/* once a chip is picked, stop the entry animation fighting the hover lift */
+.ot.is-in .ot-node.is-active { animation: none; opacity: 1; }
+
+/* bulb + platform light up and keep breathing */
+.ot.is-in .ot-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: otBreath 3.6s ease-in-out 1.4s infinite;
+}
+.ot.is-in .ot-halo { animation: otHalo 3.6s ease-in-out 1.4s infinite; }
+.ot.is-in .ot-pool {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: otPool 3.6s ease-in-out 1.4s infinite;
+}
+.ot.is-in .ot-reflect { animation: otRise 1s ease-out 1.2s both; }
+
+/* energy pulses running down each feed line */
+.ot.is-in .ot-sparks path {
+  animation: otSpark 2.8s linear infinite;
+  animation-delay: calc(1.6s + var(--d, 0s));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ot .ot-wire,
+  .ot .ot-node,
+  .ot .ot__title,
+  .ot .ot__hint,
+  .ot .ot__title-accent i,
+  .ot .ot-dot,
+  .ot .ot-core,
+  .ot .ot-halo,
+  .ot .ot-pool,
+  .ot .ot-reflect {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .ot .ot-sparks { display: none; }
+  .ot[data-active] .ot-node:not(.is-active) { opacity: 0.45 !important; }
+  .ot .ot-desc { transition: none; }
+}

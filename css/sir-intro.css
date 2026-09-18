@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Founder intro — "G. Anthoni Muthu"
+   Desktop composition is authored on a 1225 x 786 reference grid (shifted
+   down 80 units so the title clears the fixed navbar); --u maps one
+   reference pixel, sized so the stage fits both the container width (capped
+   at 1920px) and one viewport height.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&display=swap');
+
+.jbs {
+  --jbs-bg: #000;
+  --jbs-white: #fff;
+  --jbs-text: #e9e9e9;
+  --jbs-card: #141414;
+  --jbs-card-border: #262626;
+  --jbs-blue: #1769e8;
+  --jbs-font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  position: relative;
+  background: var(--jbs-bg);
+  color: var(--jbs-white);
+  font-family: var(--jbs-font);
+  overflow: hidden;
+  container-type: inline-size;
+  scroll-margin-top: 76px;
+}
+
+.jbs *,
+.jbs *::before,
+.jbs *::after { box-sizing: border-box; }
+
+.jbs__stage {
+  --u: min(calc(min(100cqw, 1920px) / 1225), calc(100svh / 828));
+  position: relative;
+  width: calc(1225 * var(--u));
+  height: calc(828 * var(--u));
+  margin-inline: auto;
+}
+
+/* Title ------------------------------------------------------------------ */
+.jbs__title {
+  position: absolute;
+  z-index: 1;
+  top: calc(56 * var(--u));
+  right: calc(24 * var(--u));
+  margin: 0;
+  font-family: var(--jbs-font);
+  font-size: calc(140 * var(--u));
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--jbs-white);
+  white-space: nowrap;
+}
+
+.jbs__subtitle {
+  position: absolute;
+  z-index: 3;
+  top: calc(194 * var(--u));
+  right: calc(82 * var(--u));
+  margin: 0;
+  font-family: var(--jbs-font);
+  font-size: calc(21.4 * var(--u));
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--jbs-text);
+  white-space: nowrap;
+}
+
+.jbs__sep { margin-inline: 0.45em; }
+
+/* Person ----------------------------------------------------------------- */
+.jbs__person {
+  position: absolute;
+  z-index: 2;
+  top: calc(130 * var(--u));
+  left: calc(5 * var(--u));
+  width: calc(682 * var(--u));
+  margin: 0;
+}
+
+.jbs__person img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Stats card ------------------------------------------------------------- */
+.jbs__card {
+  position: absolute;
+  z-index: 1;
+  top: calc(409 * var(--u));
+  left: calc(440 * var(--u));
+  width: calc(755 * var(--u));
+  height: calc(155 * var(--u));
+  margin: 0;
+  padding: 0 calc(58 * var(--u)) 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-content: center;
+  justify-content: end;
+  column-gap: calc(48 * var(--u));
+  list-style: none;
+  background: var(--jbs-card);
+  border: 1px solid var(--jbs-card-border);
+  border-radius: 999px;
+}
+
+.jbs__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.jbs__stat-value {
+  font-size: calc(54 * var(--u));
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--jbs-white);
+}
+
+.jbs__stat-label {
+  margin-top: calc(8 * var(--u));
+  font-size: calc(14.6 * var(--u));
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--jbs-text);
+  white-space: nowrap;
+}
+
+/* CTA -------------------------------------------------------------------- */
+.jbs__cta {
+  position: absolute;
+  z-index: 3;
+  top: calc(752 * var(--u));
+  right: calc(30 * var(--u));
+  height: calc(55 * var(--u));
+  padding: 0 calc(3 * var(--u)) 0 calc(27 * var(--u));
+  display: inline-flex;
+  align-items: center;
+  gap: calc(19 * var(--u));
+  background: var(--jbs-white);
+  border-radius: 999px;
+  font-family: var(--jbs-font);
+  font-size: calc(24 * var(--u));
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--jbs-blue);
+  text-decoration: none;
+}
+
+.jbs__cta:hover,
+.jbs__cta:focus-visible { color: var(--jbs-blue); }
+
+.jbs__cta:focus-visible {
+  outline: 2px solid var(--jbs-blue);
+  outline-offset: 3px;
+}
+
+.jbs__cta-icon {
+  display: grid;
+  place-items: center;
+  width: calc(50 * var(--u));
+  height: calc(50 * var(--u));
+  border-radius: 50%;
+  background: var(--jbs-blue);
+  box-shadow: 0 0 0 calc(1.5 * var(--u)) #cfe0fb;
+  transition: transform 0.2s ease;
+}
+
+.jbs__cta-icon svg {
+  width: calc(14 * var(--u));
+  height: calc(24 * var(--u));
+}
+
+.jbs__cta:hover .jbs__cta-icon { transform: translateX(2px); }
+
+/* Mobile / small tablet: stacked layout ----------------------------------- */
+@media (max-width: 767px) {
+  .jbs__stage {
+    width: auto;
+    height: auto;
+    padding: 56px 16px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .jbs__title,
+  .jbs__subtitle,
+  .jbs__person,
+  .jbs__card,
+  .jbs__cta { position: relative; inset: auto; }
+
+  .jbs__title {
+    font-size: clamp(34px, 10.6vw, 84px);
+    white-space: normal;
+  }
+
+  .jbs__subtitle {
+    margin-top: 12px;
+    font-size: clamp(14px, 3.8vw, 18px);
+    line-height: 1.5;
+    white-space: normal;
+  }
+
+  .jbs__subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .jbs__subtitle > span { white-space: nowrap; }
+
+  .jbs__person {
+    width: min(100%, 460px);
+    margin-top: 12px;
+  }
+
+  .jbs__card {
+    width: 100%;
+    height: auto;
+    z-index: 3;
+    margin-top: -40px;
+    padding: 24px 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    column-gap: 4px;
+    border-radius: 32px;
+  }
+
+  .jbs__stat-value { font-size: clamp(28px, 8.4vw, 44px); }
+  .jbs__stat-label { margin-top: 6px; font-size: clamp(11px, 3vw, 14px); }
+
+  .jbs__cta {
+    margin-top: 32px;
+    height: 52px;
+    padding: 0 3px 0 24px;
+    gap: 16px;
+    font-size: 20px;
+  }
+
+  .jbs__cta-icon { width: 46px; height: 46px; box-shadow: 0 0 0 1.5px #cfe0fb; }
+  .jbs__cta-icon svg { width: 13px; height: 22px; }
+}

@@ -1,0 +1,574 @@
+/* video-editor.css - Video Editing Landing Page Styles */
+
+/* Base Reset & Variables */
+:root {
+    --bg-dark: #000000;
+    --text-muted: #7a81a4;
+    --text-white: #ffffff;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+    /* Project Theme Colors */
+    --theme-color1: #ea5a06;
+    --gradient-primary: linear-gradient(135deg, #ea5a06 0%, #fee17c 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(234, 90, 6, 0.4) 0%, rgba(254, 225, 124, 0.4) 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography Utility */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.white-text {
+    color: var(--text-white);
+    -webkit-text-fill-color: var(--text-white);
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 120px 20px 80px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content {
+    margin-bottom: 50px;
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(60px, 8vw, 120px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.hero-visual {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    border-radius: 50%;
+    /* Soft glow behind the image */
+    box-shadow: 0 0 100px 20px rgba(234, 90, 6, 0.15);
+}
+
+.hero-visual img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    mix-blend-mode: screen;
+}
+
+/* --- Services Common --- */
+.services-wrapper {
+    padding: 60px 0 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+/* The number was the same size and the same gradient as the title, so the
+   two ran together as one orange mass. Make it a quiet index instead. */
+.service-num {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--theme-color1);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    line-height: 1;
+}
+
+/* Small rule trailing the number, so the eye starts at the same x on every row */
+.service-num::after {
+    content: "";
+    flex: 0 0 44px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--theme-color1), transparent);
+}
+
+.service-title {
+    font-family: var(--font-serif);
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 600;
+    line-height: 1.12;
+    margin: 0 0 22px;
+    padding-bottom: 0.06em;      /* descender room inside the clip box */
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--theme-color1);  /* fallback */
+    letter-spacing: -0.5px;
+}
+
+/* Was 15px/300 weight in muted blue-grey, capped at 350px - it broke into
+   five stubby lines and sat too close under the title. */
+.service-desc {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    max-width: 46ch;
+    margin: 0;
+}
+
+/* Service Image Styles */
+.service-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(234, 90, 6, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.service-image:hover img {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(234, 90, 6, 0.2);
+}
+
+/* --- Layouts --- */
+
+/* Standard Row */
+.service-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.service-row.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 40/55 left a 5% dead gutter and squeezed the copy. */
+.service-text {
+    flex: 1 1 42%;
+    min-width: 0;
+}
+
+.service-image {
+    flex: 1 1 52%;
+    min-width: 0;
+}
+
+/* Block Layout (e.g. 02 Landscape) */
+.service-block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.service-image-wide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(234, 90, 6, 0.1);
+}
+
+.service-text-wide {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.service-text-wide .title-part {
+    flex: 1 1 44%;
+    min-width: 0;
+}
+
+.service-text-wide .desc-part {
+    flex: 1 1 50%;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+
+.service-text-wide .service-title { margin-bottom: 0; }
+
+/* Overlay Layout (e.g. 05 Event Videos) */
+.service-overlay {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(234, 90, 6, 0.1);
+}
+
+.service-overlay .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.service-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(5,8,20,0.9) 0%, rgba(5,8,20,0.2) 50%, rgba(5,8,20,0.9) 100%);
+    z-index: 2;
+}
+
+.overlay-content {
+    position: relative;
+    z-index: 3;
+    padding: 70px 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay-content .service-desc { max-width: 44ch; }
+
+.overlay-content.right-align {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.overlay-content.right-align .service-desc {
+    text-align: right;
+}
+
+.overlay-content.right-align .service-num { flex-direction: row-reverse; }
+.overlay-content.right-align .service-num::after {
+    background: linear-gradient(270deg, var(--theme-color1), transparent);
+}
+
+
+/* --- CTA Section --- */
+.cta-section {
+    position: relative;
+    padding: 150px 20px 160px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #05050a;
+}
+
+.cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.55;
+}
+
+/* Scrim: keeps the artwork visible but the type readable */
+.cta-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse 60% 55% at 50% 50%, rgba(5, 5, 10, 0.35) 0%, rgba(5, 5, 10, 0.88) 100%),
+        linear-gradient(180deg, rgba(5, 5, 10, 0.9) 0%, transparent 22%, transparent 78%, rgba(5, 5, 10, 0.95) 100%);
+    pointer-events: none;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.cta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 18px;
+    margin-bottom: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(234, 90, 6, 0.4);
+    background: rgba(234, 90, 6, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffa76b;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+/*
+ * The title is gradient-clipped text. It must NOT carry a transform
+ * (no data-aos on this element) — Chrome paints background-clip:text
+ * from the untransformed box, which garbles the letterforms.
+ * Animate .cta-content instead.
+ */
+/* NOTE: this heading deliberately does NOT use `background-clip: text`.
+   The clipped gradient failed to paint here (and garbled the letterforms in
+   an earlier revision), so it is painted as solid colour, which is reliable
+   in every browser. Do not reintroduce the gradient clip on this element. */
+.cta-title {
+    font-family: var(--font-serif);
+    font-size: clamp(42px, 7vw, 92px);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: 0.5px;
+    margin: 0 0 22px;
+    display: block;
+    color: #ff8a3d;
+    -webkit-text-fill-color: #ff8a3d;
+    text-shadow: 0 4px 30px rgba(234, 90, 6, 0.45),
+                 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.cta-sub {
+    font-family: var(--font-sans);
+    font-size: clamp(15px, 1.4vw, 17.5px);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 56ch;
+    margin: 0 auto 38px;
+}
+
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 46px;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #ea5a06, #ff8a3d);
+    box-shadow: 0 16px 36px rgba(234, 90, 6, 0.36);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    color: #fff;
+    box-shadow: 0 22px 46px rgba(234, 90, 6, 0.5);
+}
+
+.cta-btn--ghost {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.cta-btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4);
+}
+
+.cta-btn i { font-size: 13px; }
+
+/* Social row: one line, never an orphaned tile */
+.social-icons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 34px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 17px;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: linear-gradient(145deg, #ea5a06, #ff8a3d);
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(234, 90, 6, 0.4);
+}
+
+@media (max-width: 768px) {
+    .cta-section { padding: 96px 16px 100px; }
+    .cta-content { max-width: 100%; }
+    .cta-sub { margin-bottom: 30px; }
+    .cta-actions { gap: 12px; margin-bottom: 36px; }
+    .cta-btn { width: 100%; justify-content: center; padding: 15px 24px; }
+    .social-icons { gap: 10px; padding-top: 28px; }
+    .social-icons a { width: 42px; height: 42px; font-size: 15px; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+    .service-row, .service-row.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .service-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .service-desc {
+        text-align: center;
+        max-width: 60ch;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .service-num { justify-content: center; }
+
+    .service-text-wide .desc-part {
+        padding-top: 0;
+        justify-content: center;
+    }
+    
+    .service-text-wide {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+    
+    .service-text-wide .desc-part {
+        justify-content: center;
+    }
+
+    .overlay-content {
+        padding: 56px 24px;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .overlay-content .service-desc { max-width: 56ch; }
+    .overlay-content.right-align .service-num { flex-direction: row; }
+    .overlay-content.right-align .service-desc {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-wrapper {
+        padding: 40px 0 80px;
+        gap: 84px;
+    }
+
+    .service-row { gap: 34px; }
+    .service-block { gap: 24px; }
+    .service-num { font-size: 12.5px; letter-spacing: 2.4px; margin-bottom: 14px; }
+    .service-num::after { flex-basis: 32px; }
+    .service-title { margin-bottom: 16px; }
+    .service-desc { font-size: 15px; line-height: 1.75; }
+    .service-image-wide img { height: 280px; }
+    .service-overlay { min-height: 340px; }
+    .overlay-content { padding: 44px 20px; }
+
+    .cta-section {
+        padding: 100px 20px;
+    }
+}
+
+.theme-hue-shift { filter: hue-rotate(150deg); }
+

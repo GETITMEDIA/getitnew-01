@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Cursor Reveal — Demo</title>
+<style>
+  /* ==========================================================================
+     PREMIUM CURSOR + SPOTLIGHT TEXT REVEAL — single-file demo
+     ==========================================================================
+     Quick tuning guide (search these var names in :root below):
+       --reveal-color     -> the yellow reveal color
+       --reveal-radius     -> size of the spotlight circle (px)
+       --reveal-softness   -> feather/blur of the spotlight edge (px)
+       --cursor-dot-size   -> center dot diameter (px)
+       --cursor-ring-size  -> outer ring diameter, base state (px)
+       --cursor-ring-hover -> outer ring diameter, hovering interactive text (px)
+       --cursor-ease       -> 0..1, how fast the ring/spotlight catch up to the
+                              real pointer (higher = snappier, lower = floatier)
+       Text size -> .hero-word { font-size: ... } near the bottom of the CSS
+       Glow intensity -> .hero-word__reveal { filter: drop-shadow(...) }
+  ========================================================================== */
+
+  :root {
+    --reveal-color: #fcdb66;      /* <- CHANGE YELLOW COLOR HERE */
+    --reveal-radius: 160px;       /* <- CHANGE REVEAL RADIUS HERE */
+    --reveal-softness: 90px;      /* <- CHANGE REVEAL EDGE SOFTNESS HERE */
+
+    --cursor-dot-size: 8px;       /* <- CHANGE CURSOR DOT SIZE HERE */
+    --cursor-ring-size: 34px;     /* <- CHANGE CURSOR RING SIZE HERE */
+    --cursor-ring-hover: 54px;    /* <- CHANGE CURSOR RING HOVER SIZE HERE */
+    --cursor-ease: 0.16;          /* <- CHANGE CURSOR TRAIL SPEED HERE (0..1) */
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ------------------------------------------------------------------------
+     Demo section shell (matches the reference: black bg, "ABOUT US" eyebrow,
+     large centered typography)
+  ------------------------------------------------------------------------ */
+
+  .about-demo {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 40px 20px;
+    text-align: center;
+    background:
+      radial-gradient(60% 50% at 50% 30%, rgba(255,255,255,0.05), transparent 70%),
+      #050505;
+  }
+
+  .about-demo__eyebrow {
+    color: #fff;
+    letter-spacing: 0.35em;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ------------------------------------------------------------------------
+     Layered text: base (white/gray, always visible) + reveal (yellow,
+     clipped to a circle that follows the mouse). Both layers share the
+     exact same text/size/position via position:absolute stacking so the
+     yellow layer sits pixel-perfect on top of the base layer.
+  ------------------------------------------------------------------------ */
+
+  .hero-word {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(56px, 12vw, 160px);   /* <- CHANGE TEXT SIZE HERE */
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  .hero-word__base {
+    display: block;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-word__reveal {
+    position: absolute;
+    inset: 0;
+    display: block;
+    color: var(--reveal-color);
+    pointer-events: none;
+
+    /* The spotlight circle itself: a radial-gradient mask that's opaque at
+       its center and fades to transparent over --reveal-softness. Position
+       is updated every frame in JS via --mx / --my (percentages relative to
+       this element's own box), so it stays correct on resize/reflow with no
+       extra recalculation needed. */
+    -webkit-mask-image: radial-gradient(
+      circle var(--reveal-radius) at var(--mx, -999px) var(--my, -999px),
+      #000 0%,
+      #000 calc(100% - var(--reveal-softness)),
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      circle var(--reveal-radius) at var(--mx, -999px) var(--my, -999px),
+      #000 0%,
+      #000 calc(100% - var(--reveal-softness)),
+      transparent 100%
+    );
+
+    /* soft glow so the reveal reads like a light source, not a flat color
+       swap -- tune glow intensity here */
+    filter: drop-shadow(0 0 24px rgba(252, 219, 102, 0.55));
+
+    transition: opacity 0.35s ease;
+    opacity: 0; /* faded out until the pointer is actually inside the word */
+  }
+
+  .hero-word.is-active .hero-word__reveal {
+    opacity: 1;
+  }
+
+  /* ------------------------------------------------------------------------
+     Custom premium cursor: small solid dot glued to the real pointer +
+     a thin ring that trails behind it with easing. Hidden on touch devices.
+  ------------------------------------------------------------------------ */
+
+  @media (hover: hover) and (pointer: fine) {
+    html, body, * { cursor: none !important; }
+
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      will-change: transform;
+    }
+
+    .cursor-dot {
+      width: var(--cursor-dot-size);
+      height: var(--cursor-dot-size);
+      background: var(--reveal-color);
+      transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    }
+
+    .cursor-ring {
+      width: var(--cursor-ring-size);
+      height: var(--cursor-ring-size);
+      border: 1.5px solid var(--reveal-color);
+      background: transparent;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.2s ease;
+    }
+
+    /* subtle scale-up when hovering the interactive text */
+    body.cursor-hover .cursor-ring {
+      width: var(--cursor-ring-hover);
+      height: var(--cursor-ring-hover);
+      border-color: var(--reveal-color);
+    }
+
+    body.cursor-hidden .cursor-dot,
+    body.cursor-hidden .cursor-ring {
+      opacity: 0;
+    }
+  }
+
+  /* Touch/coarse-pointer fallback: keep the real cursor, no custom layer */
+  @media (hover: none), (pointer: coarse) {
+    .cursor-dot, .cursor-ring { display: none; }
+  }
+
+  .about-demo__hint {
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-word__reveal { transition: none; }
+  }
+</style>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+<body>
+
+  <section class="about-demo theme-dark">
+    <span class="about-demo__eyebrow">About Us</span>
+
+    <!-- The interactive word: base layer (always visible) + reveal layer
+         (yellow, circle-masked, follows the mouse) stacked on top of it. -->
+    <span class="hero-word" id="heroWord">
+      <span class="hero-word__base" aria-hidden="true">Design</span>
+      <span class="hero-word__reveal">Design</span>
+    </span>
+
+    <span class="about-demo__hint">Move your mouse across the word →</span>
+  </section>
+
+  <!-- Custom cursor elements -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var isFinePointer = window.matchMedia &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!isFinePointer) return; // leave native cursor + no reveal on touch
+
+    var dot = document.getElementById('cursorDot');
+    var ring = document.getElementById('cursorRing');
+    var heroWord = document.getElementById('heroWord');
+    var revealLayer = heroWord.querySelector('.hero-word__reveal');
+
+    // Real (unfiltered) pointer position
+    var mouseX = window.innerWidth / 2;
+    var mouseY = window.innerHeight / 2;
+
+    // Eased/lerped position the ring (and the text reveal spotlight) chase
+    // toward every frame -- this is what makes the trail feel smooth instead
+    // of glued 1:1 to the pointer.
+    var ringX = mouseX;
+    var ringY = mouseY;
+    var EASE = 0.16; /* <- CHANGE CURSOR/REVEAL SPEED HERE (0..1) */
+
+    window.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
+      document.body.classList.remove('cursor-hidden');
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function () {
+      document.body.classList.add('cursor-hidden');
+    });
+    document.addEventListener('mouseenter', function () {
+      document.body.classList.remove('cursor-hidden');
+    });
+
+    // Main render loop: eases the ring toward the real pointer, and — while
+    // the pointer is over the word — converts that same eased position into
+    // percentage coordinates local to the word's own box, writing them into
+    // --mx/--my so the CSS radial-gradient mask tracks it. Using the SAME
+    // eased x/y for both the ring and the text spotlight is what makes them
+    // read as one connected light source rather than two separate effects.
+    function tick() {
+      ringX += (mouseX - ringX) * EASE;
+      ringY += (mouseY - ringY) * EASE;
+      ring.style.transform = 'translate(' + ringX + 'px, ' + ringY + 'px) translate(-50%, -50%)';
+
+      if (heroWord.classList.contains('is-active')) {
+        var rect = heroWord.getBoundingClientRect();
+        var localX = ringX - rect.left;
+        var localY = ringY - rect.top;
+        revealLayer.style.setProperty('--mx', localX + 'px');
+        revealLayer.style.setProperty('--my', localY + 'px');
+      }
+
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Toggle the yellow reveal + cursor "hover" scale-up only while the
+    // pointer is actually over the word — fades in/out via CSS transition.
+    heroWord.addEventListener('mouseenter', function () {
+      heroWord.classList.add('is-active');
+      document.body.classList.add('cursor-hover');
+    });
+    heroWord.addEventListener('mouseleave', function () {
+      heroWord.classList.remove('is-active');
+      document.body.classList.remove('cursor-hover');
+    });
+
+    // Recompute nothing on resize: the mask position is written every frame
+    // in local (rect-relative) coordinates, so responsive text reflow / font
+    // size changes / mobile layout shifts are handled automatically.
+  })();
+  </script>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 800, once: true});</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+/* =====================================================================
+   HR PROFILE — "The Orbit"
+
+   The four responsibilities sit as nodes on a ring around a circular
+   portrait. The ring's stroke sweeps toward the next node while the set
+   advances on its own; pointing at, clicking, or tabbing to a node takes
+   over and swaps the slide beside it.
+
+   Namespace: .ho   Depends on the --tm-* tokens in team.css.
+   ===================================================================== */
+
+.ho {
+  --ho-dur: 5000ms;                  /* sweep interval, mirrored in the js */
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(58px, 6.4vw, 104px) 0;
+  /* extra room at the head so the watermark name sits above the content */
+  padding-top: calc(clamp(58px, 6.4vw, 104px) + clamp(56px, 10vw, 170px));
+  background:
+    radial-gradient(ellipse 48% 58% at 24% 12%, rgba(var(--tm-orange-rgb), 0.15), transparent 62%),
+    var(--tm-bg);
+  color: var(--tm-white);
+  isolation: isolate;
+}
+
+/* the name as an outlined watermark along the top of the section */
+.ho__bgname {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 1;
+  transform: translateX(-50%);
+  font-family: var(--tm-serif);
+  font-size: clamp(72px, 15vw, 250px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.025);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ho__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 440px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(34px, 5vw, 78px);
+}
+
+/* =====================================================================
+   1. THE ORBIT
+   ===================================================================== */
+.ho__stage {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+/* --- the ring: a track plus a stroke that sweeps --- */
+.ho__ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: rotate(-90deg);         /* so the sweep starts at 12 o'clock */
+  overflow: visible;
+}
+
+.ho__track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+}
+
+.ho__sweep {
+  fill: none;
+  stroke: var(--tm-orange);
+  stroke-width: 2;
+  stroke-linecap: round;
+  /* r = 49 in the viewBox, so the circumference is 2*pi*49 = 307.88 */
+  stroke-dasharray: 307.88;
+  stroke-dashoffset: 307.88;
+}
+
+/* the sweep only runs while the set is advancing on its own */
+.ho.is-auto .ho__sweep { animation: ho-sweep var(--ho-dur) linear infinite; }
+
+@keyframes ho-sweep {
+  from { stroke-dashoffset: 307.88; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* --- the portrait at the centre --- */
+.ho__figure {
+  position: absolute;
+  inset: 13%;
+  z-index: 2;
+  margin: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--tm-line);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55);
+}
+
+.ho__shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 16%;
+  transition: transform 0.8s var(--tm-ease);
+}
+
+.ho__stage:hover .ho__shot { transform: scale(1.04); }
+
+.ho__video {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--tm-ease);
+}
+
+.ho__figure.is-playing .ho__video { opacity: 1; pointer-events: auto; }
+.ho__figure.is-playing + .ho__play { opacity: 0; pointer-events: none; }
+
+.ho__play {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-left: -28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--tm-orange);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, scale 0.35s var(--tm-ease), opacity 0.4s var(--tm-ease);
+}
+
+.ho__play i { margin-left: 3px; }
+.ho__play:hover,
+.ho__play:focus-visible { background: var(--tm-orange-lt); scale: 1.08; outline: none; }
+.ho__play:focus-visible { box-shadow: 0 0 0 3px rgba(var(--tm-orange-rgb), 0.45); }
+
+/* --- the four nodes --- */
+.ho-node {
+  position: absolute;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin: -31px 0 0 -31px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--tm-line);
+  background: rgba(14, 14, 20, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.35s var(--tm-ease), border-color 0.35s var(--tm-ease),
+              background 0.35s var(--tm-ease), scale 0.4s var(--tm-ease),
+              box-shadow 0.4s ease;
+}
+
+/* placed on the ring at the four diagonals */
+.ho-node--1 { left: 14.64%; top: 14.64%; }
+.ho-node--2 { left: 85.36%; top: 14.64%; }
+.ho-node--3 { left: 85.36%; top: 85.36%; }
+.ho-node--4 { left: 14.64%; top: 85.36%; }
+
+.ho-node:hover,
+.ho-node:focus-visible {
+  color: var(--tm-orange-lt);
+  border-color: rgba(var(--tm-orange-rgb), 0.5);
+  outline: none;
+}
+
+.ho-node[aria-selected='true'] {
+  color: #fff;
+  background: var(--tm-orange);
+  border-color: var(--tm-orange);
+  scale: 1.12;
+  box-shadow: 0 10px 26px rgba(var(--tm-orange-rgb), 0.4);
+}
+
+.ho-node:focus-visible { box-shadow: 0 0 0 3px rgba(var(--tm-orange-rgb), 0.4); }
+
+/* the node's label, tucked outside the ring */
+.ho-node__tip {
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition: opacity 0.35s var(--tm-ease), color 0.35s var(--tm-ease);
+  pointer-events: none;
+}
+
+/* the top two nodes carry their label above, so it never crosses the ring */
+.ho-node--1 .ho-node__tip,
+.ho-node--2 .ho-node__tip { top: auto; bottom: calc(100% + 9px); }
+
+.ho-node:hover .ho-node__tip,
+.ho-node[aria-selected='true'] .ho-node__tip { opacity: 1; color: var(--tm-orange-lt); }
+
+/* =====================================================================
+   2. BODY
+   ===================================================================== */
+.ho__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 14px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  color: var(--tm-muted);
+}
+
+.ho__eyebrow b {
+  font-family: var(--tm-serif);
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--tm-orange);
+}
+
+.ho__eyebrow::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(var(--tm-orange-rgb), 0.55), transparent);
+}
+
+.ho__name {
+  margin: 0 0 8px;
+  font-family: var(--tm-serif);
+  font-size: clamp(28px, 3.3vw, 47px);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: 0.5px;
+  color: var(--tm-white);
+}
+
+.ho__name em { font-style: normal; color: var(--tm-orange-lt); }
+
+.ho__role {
+  margin: 0 0 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--tm-line);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- the slides the nodes drive --- */
+.ho__slides {
+  position: relative;
+  min-height: 168px;
+  margin-bottom: 24px;
+}
+
+.ho-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s var(--tm-ease), transform 0.45s var(--tm-ease);
+  pointer-events: none;
+}
+
+.ho-slide.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+.ho-slide__no {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--tm-serif);
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  color: var(--tm-orange);
+  font-variant-numeric: tabular-nums;
+}
+
+.ho-slide h3 {
+  margin: 0 0 10px;
+  font-family: var(--tm-serif);
+  font-size: clamp(19px, 1.9vw, 26px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--tm-white);
+}
+
+.ho-slide p {
+  margin: 0;
+  max-width: 50ch;
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  line-height: 1.74;
+  color: var(--tm-muted);
+}
+
+.ho__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  background: var(--tm-orange);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.35s var(--tm-ease), box-shadow 0.35s ease;
+}
+
+.ho__cta:hover,
+.ho__cta:focus-visible {
+  color: #fff;
+  background: var(--tm-orange-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(var(--tm-orange-rgb), 0.32);
+}
+
+.ho__cta i { transition: transform 0.35s var(--tm-ease); }
+.ho__cta:hover i { transform: translateX(3px); }
+
+/* =====================================================================
+   3. RESPONSIVE
+   ===================================================================== */
+/* below this the orbit sits too near the gutter for a centred label to
+   clear it, and the slide heading beside the orbit already names the node */
+@media (max-width: 1320px) {
+  .ho-node__tip { display: none; }
+}
+
+@media (max-width: 1080px) {
+  .ho__inner { grid-template-columns: 360px minmax(0, 1fr); }
+  .ho-node { width: 54px; height: 54px; margin: -27px 0 0 -27px; font-size: 14px; }
+}
+
+@media (max-width: 880px) {
+  .ho__inner { grid-template-columns: 1fr; }
+  /* width is explicit: every child is absolute, so an auto-margined
+     stage would otherwise shrink to nothing */
+  .ho__stage { width: 100%; max-width: 400px; margin: 0 auto; }
+  .ho__slides { min-height: 0; }
+
+  /* the slides stop stacking so the column keeps its natural height */
+  .ho-slide { position: relative; inset: auto; display: none; }
+  .ho-slide.is-active { display: block; }
+}
+
+@media (max-width: 520px) {
+  .ho__stage { max-width: none; }
+  .ho-node { width: 46px; height: 46px; margin: -23px 0 0 -23px; font-size: 12px; }
+  .ho__play { width: 48px; height: 48px; margin-left: -24px; font-size: 13px; }
+  .ho__cta { width: 100%; justify-content: center; }
+}
+
+/* =====================================================================
+   4. Reduced motion — no sweep, no auto-advance, no cross-fade
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .ho.is-auto .ho__sweep { animation: none; }
+
+  .ho__shot,
+  .ho-node,
+  .ho-node__tip,
+  .ho-slide,
+  .ho__play,
+  .ho__cta,
+  .ho__cta i { transition: none; }
+
+  .ho__stage:hover .ho__shot { transform: none; }
+  .ho-slide.is-active { transform: none; }
+  .ho__cta:hover { transform: none; }
+}

@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Scroll reveal system - GSAP + ScrollTrigger companion styles
+   --------------------------------------------------------------------------
+   js/scroll-anim.js does the animating. This file only:
+     1. pre-hides the elements that sit above the fold, so they never flash
+        at full opacity before GSAP takes its first frame,
+     2. sets up the 3D contexts and will-change hints the JS relies on,
+     3. carries the hover polish for buttons and cards.
+
+   Everything here is gated behind .sa-armed on <html>, which the inline
+   bootstrap in the page head adds ONLY when animation is actually going to
+   run. That bootstrap also strips the class on a timeout, so if GSAP fails
+   to load or the script throws, the page still shows all of its content.
+   ========================================================================== */
+
+/* --------------------------------------------------- pre-hide (FOUC guard) */
+/* Headings and paragraphs are the elements that would visibly pop. Buttons,
+   cards and images below the fold are handled by JS alone - no pre-hide
+   needed for those, and skipping them keeps this selector list cheap. */
+.sa-armed section h1,
+.sa-armed section h2,
+.sa-armed section h3,
+.sa-armed section p,
+.sa-armed footer h2,
+.sa-armed footer h3,
+.sa-armed footer p {
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------- word split */
+/* splitWords() wraps each word of a plain-text heading in one of these. */
+.sa-word {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  /* a transform on an inline-block can clip descenders in some engines;
+     the padding buys the glyphs room without shifting layout */
+  padding-bottom: 0.02em;
+}
+
+/* ------------------------------------------------------------ 3D contexts */
+/* Card grids get a shared perspective so sibling cards rotate on the same
+   vanishing point rather than each on its own. */
+.sa-3d {
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
+}
+.sa-card {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Parallax layers - JS drives the transform, this just promotes them. */
+.sa-parallax {
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------- button polish */
+/* Hover scale + brand glow. Kept in CSS rather than GSAP so it stays
+   responsive to the pointer without competing for the same transform
+   property the reveal timeline animates (reveal writes translate/opacity,
+   this writes scale via a separate custom property). */
+.sa-btn {
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.32s ease,
+              filter 0.32s ease;
+}
+.sa-btn:hover {
+  transform: scale(1.035);
+  filter: brightness(1.06);
+}
+
+/* --------------------------------------------------------------- a11y / OS */
+/* Anyone asking for less motion gets the finished state immediately.
+   The JS makes the same check and bails before animating anything. */
+@media (prefers-reduced-motion: reduce) {
+  .sa-armed section h1,
+  .sa-armed section h2,
+  .sa-armed section h3,
+  .sa-armed section p,
+  .sa-armed footer h2,
+  .sa-armed footer h3,
+  .sa-armed footer p {
+    opacity: 1 !important;
+  }
+  .sa-word,
+  .sa-card,
+  .sa-parallax {
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    will-change: auto;
+  }
+  .sa-btn {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ mobile */
+/* Blur is the most expensive part of the reveal; drop the promotion hints on
+   small screens so the compositor isn't holding extra layers around. The JS
+   independently drops blur and rotateX below 768px. */
+@media (max-width: 767px) {
+  .sa-word,
+  .sa-card,
+  .sa-parallax {
+    will-change: auto;
+  }
+  .sa-3d {
+    perspective: none;
+  }
+}

@@ -1,0 +1,10 @@
+<svg width="126" height="132" viewBox="0 0 126 132" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="getitCirclePath" d="M 63,66 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"/>
+  </defs>
+  <text font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" letter-spacing="2.4" fill="#000">
+    <textPath href="#getitCirclePath" startOffset="0%">
+      GETIT MEDIA &#8226; DIGITAL AGENCY &#8226;
+    </textPath>
+  </text>
+</svg>

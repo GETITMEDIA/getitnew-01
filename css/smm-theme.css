@@ -1,0 +1,182 @@
+/* ==========================================================================
+   Social Media Marketing Theme (Neon Green & Dark Mode)
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --smm-bg: #050505; /* Deep black background */
+  --smm-bg-surface: #111111; /* Slightly lighter for cards */
+  --smm-neon-primary: #00ff66; /* Bright neon green */
+  --smm-neon-glow: rgba(0, 255, 102, 0.4);
+  --smm-neon-glow-strong: rgba(0, 255, 102, 0.8);
+  
+  --smm-text-main: #ffffff;
+  --smm-text-muted: #a1a1aa;
+  
+  --smm-glass-bg: rgba(20, 20, 20, 0.6);
+  --smm-glass-border: rgba(255, 255, 255, 0.1);
+  --smm-glass-border-hover: rgba(0, 255, 102, 0.5);
+
+  /* Layout */
+  --smm-container-width: 1200px;
+}
+
+body {
+  background-color: var(--smm-bg);
+  color: var(--smm-text-main);
+  overflow-x: hidden;
+}
+
+/* Base Utility Classes */
+.smm-container {
+  max-width: var(--smm-container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 10;
+}
+
+.text-neon {
+  color: var(--smm-neon-primary);
+  text-shadow: 0 0 10px var(--smm-neon-glow);
+}
+
+.text-center { text-align: center; }
+.mt-4 { margin-top: 2rem; }
+
+/* Buttons */
+.smm-btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.smm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.smm-btn-primary {
+  background: var(--smm-neon-primary);
+  color: #000;
+  box-shadow: 0 0 20px var(--smm-neon-glow);
+}
+
+.smm-btn-primary:hover {
+  box-shadow: 0 0 30px var(--smm-neon-glow-strong);
+  transform: translateY(-2px);
+}
+
+.smm-btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--smm-glass-border);
+}
+
+.smm-btn-outline:hover {
+  border-color: var(--smm-neon-primary);
+  color: var(--smm-neon-primary);
+  box-shadow: inset 0 0 10px var(--smm-neon-glow);
+}
+
+.smm-btn-large {
+  padding: 18px 40px;
+  font-size: 18px;
+}
+
+/* Glass Card Mixin */
+.smm-glass-panel {
+  background: var(--smm-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--smm-glass-border);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Scroll Animation Hooks */
+[data-scroll] {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+[data-scroll="fade-up"] { transform: translateY(40px); }
+[data-scroll="fade-in"] { transform: translateY(0); }
+[data-scroll="fade-right"] { transform: translateX(-40px); }
+[data-scroll="fade-left"] { transform: translateX(40px); }
+[data-scroll="scale-up"] { transform: scale(0.9) translateY(20px); }
+[data-scroll="scale-in"] { transform: scale(0.9); }
+
+.is-visible[data-scroll] {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Headers */
+.smm-section-header {
+  margin-bottom: 60px;
+}
+.smm-section-header h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.smm-section-header p {
+  font-size: 18px;
+  color: var(--smm-text-muted);
+  max-width: 600px;
+}
+.smm-section-header.text-center p { margin-left: auto; margin-right: auto; }
+
+/* 3D Container */
+.perspective-container {
+  perspective: 1200px;
+}
+
+/* Global 3D Background */
+.smm-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--smm-bg);
+  overflow: hidden;
+}
+
+.smm-bg-grid {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  background-image: 
+    linear-gradient(var(--smm-glass-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--smm-glass-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+  animation: gridMove 20s linear infinite;
+  opacity: 0.15;
+}
+
+@keyframes gridMove {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(60px) translateZ(-200px); }
+}
+
+.smm-bg-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--smm-neon-glow) 0%, transparent 70%);
+  top: 20%; left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  opacity: 0.5;
+}

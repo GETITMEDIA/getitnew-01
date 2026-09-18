@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | GetIt Media - Branding, Social, Print &amp; Video Work</title>
+<meta name="description" content="Selected work from GetIt Media: brand identities, social media campaigns, posters and print, advertising creatives and video editing for businesses across Pondicherry and beyond.">
+<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+<link rel="icon" href="images/favicon.png" type="image/png">
+
+<!-- Fonts & icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Shared site styles -->
+<link href="css/navbar.css" rel="stylesheet">
+<link href="css/scroll-anim.css" rel="stylesheet">
+<link href="css/lets-talk.css" rel="stylesheet">
+<!-- Page styles -->
+<link href="css/portfolio-showcase.css" rel="stylesheet">
+
+<!-- GSAP 3.12.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+<body class="pf-body">
+
+<!-- GetIt Media Navbar (shared with index.html / team.html) -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="logo" aria-label="GetIt Media - Home">
+      <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited"
+        class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+      <span class="logo__fallback" aria-hidden="true">
+        <span class="logo__mark">G</span>
+        <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media">
+            Media</span></span>
+      </span>
+    </a>
+
+    <nav class="nav-menu" id="navMenu" aria-label="Primary">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+        <li class="nav-item nav-item--dropdown" id="servicesItem">
+          <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true"
+            aria-expanded="false" aria-controls="servicesMenu">
+            <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+          </button>
+          <div class="mega-dropdown" id="servicesMenu" role="menu">
+            <div class="mega-dropdown__grid">
+              <div class="mega-services">
+                <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">G</span><span class="mega-service__text"><span
+                      class="mega-service__title">Google My Business</span></span></a>
+                <a href="google-ads.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">A</span><span class="mega-service__text"><span
+                      class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                <a href="socialmedia.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">S</span><span class="mega-service__text"><span
+                      class="mega-service__title">Social Media Marketing</span></span></a>
+                <a href="searchengine.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">Q</span><span class="mega-service__text"><span
+                      class="mega-service__title">Search Engine Optimization</span></span></a>
+                <a href="website.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">W</span><span class="mega-service__text"><span
+                      class="mega-service__title">Website Design &amp; Development</span></span></a>
+                <a href="graphic.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">D</span><span class="mega-service__text"><span
+                      class="mega-service__title">Graphic Design</span></span></a>
+                <a href="video-editor.html" class="mega-service" role="menuitem"><span
+                    class="mega-service__icon">V</span><span class="mega-service__text"><span
+                      class="mega-service__title">Video Editing</span></span></a>
+              </div>
+              <div class="mega-promo">
+                <div class="mega-promo__content"><span class="mega-promo__badge">*</span>
+                  <h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4>
+                  <p class="mega-promo__text">One call with us changes your digital game.</p>
+                </div>
+                <a href="contact.html" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link" aria-current="page">Portfolio</a></li>
+        <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+      </ul>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="contact.html" class="btn-contact header-btn-main">
+        <span class="header-theme-btn">Contact Us</span>
+        <span class="header-btn-arrow-right"><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+      <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <div class="mobile-menu__header">
+    <a href="index.html" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png"
+        alt="GetIt Media" class="logo__img"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span
+        class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span
+          class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media">
+            Media</span></span></span></a>
+    <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile primary">
+    <ul class="mobile-list">
+      <li><a href="index.html" class="mobile-link">Home</a></li>
+      <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+      <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger"
+          id="mobileServicesTrigger" aria-expanded="false"
+          aria-controls="mobileServicesPanel"><span>Services</span><span
+            class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg></span></button>
+        <div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html"
+            class="mobile-service">Google My Business</a><a href="google-ads.html" class="mobile-service">Google
+            &amp; Meta Ads</a><a href="socialmedia.html" class="mobile-service">Social Media Marketing</a><a
+            href="searchengine.html" class="mobile-service">Search Engine Optimization</a><a href="website.html"
+            class="mobile-service">Website Design &amp; Development</a><a href="graphic.html"
+            class="mobile-service">Graphic Design</a><a href="video-editor.html" class="mobile-service">Video
+            Editing</a></div>
+      </li>
+      <li><a href="team.html" class="mobile-link">Team</a></li>
+      <li><a href="portfolio.html" class="mobile-link" aria-current="page">Portfolio</a></li>
+      <li><a href="price.html" class="mobile-link">Price Details</a></li>
+    </ul>
+    <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+      <span class="header-theme-btn">Contact Us</span>
+      <span class="header-btn-arrow-right"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+  </nav>
+</aside>
+
+<main class="pf">
+
+  <!-- ============================== 01 HERO ============================== -->
+  <section class="pf-hero" id="pfHero" data-sa-skip>
+    <div class="pf-hero__bg" aria-hidden="true"></div>
+
+    <div class="pf-wrap">
+      <div class="pf-hero__grid">
+        <div class="pf-hero__copy">
+          <p class="pf-eyebrow">Portfolio &middot; Selected work</p>
+          <h1 class="pf-hero__title">
+            <span class="pf-line"><span>Work that</span></span>
+            <span class="pf-line"><span>stops the</span></span>
+            <span class="pf-line"><span><em>scroll.</em></span></span>
+          </h1>
+          <p class="pf-lead">Brand identities, social campaigns, posters, ads and video, crafted by GetIt Media for businesses that refuse to blend in.</p>
+          <div class="pf-hero__actions">
+            <a href="#pfGallery" class="pf-btn pf-btn--primary">
+              Explore the work
+              <span class="pf-btn__icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="page-contact.html" class="pf-btn pf-btn--ghost">Start a project</a>
+          </div>
+        </div>
+
+        <div class="pf-hero__visual">
+          <div class="pf-collage__card pf-collage__card--b">
+            <div class="pf-collage__float" data-depth="1.8">
+              <div class="pf-collage__inner">
+                <img src="images/graphic/mobile_carousel_showcase.jpg" alt="Instagram feed design for a luxury watch brand" width="1024" height="1024">
+                <span class="pf-collage__tag">Social media</span>
+              </div>
+            </div>
+          </div>
+          <div class="pf-collage__card pf-collage__card--a">
+            <div class="pf-collage__float" data-depth="1">
+              <div class="pf-collage__inner">
+                <img src="images/graphic/perfume_bottle_showcase.jpg" alt="Aurelia perfume bottle product visual" width="1024" height="1024">
+                <span class="pf-collage__tag">Product visual</span>
+              </div>
+            </div>
+          </div>
+          <div class="pf-collage__card pf-collage__card--c">
+            <div class="pf-collage__float" data-depth="0.6">
+              <div class="pf-collage__inner">
+                <img src="images/graphic/festival_poster_showcase.jpg" alt="Festival of Lights celebration poster" width="1024" height="1024">
+                <span class="pf-collage__tag">Poster design</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="#pfWork" class="pf-badge-spin" aria-label="Scroll to featured work">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="pfBadgePath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"></path></defs>
+              <text><textPath href="#pfBadgePath" textLength="286" lengthAdjust="spacing">SELECTED WORK &#8226; GETIT MEDIA &#8226; </textPath></text>
+            </svg>
+            <span class="pf-badge-spin__core" aria-hidden="true"><i class="fa-solid fa-arrow-down"></i></span>
+          </a>
+        </div>
+      </div>
+
+      <ul class="pf-stats">
+        <li class="pf-stat">
+          <span class="pf-stat__num"><span data-count="250">250</span><span class="pf-stat__unit">+</span></span>
+          <span class="pf-stat__label">Creatives delivered</span>
+        </li>
+        <li class="pf-stat">
+          <span class="pf-stat__num"><span data-count="24">24</span><span class="pf-stat__unit">+</span></span>
+          <span class="pf-stat__label">Brands we&rsquo;ve worked with</span>
+        </li>
+        <li class="pf-stat">
+          <span class="pf-stat__num"><span data-count="7">7</span></span>
+          <span class="pf-stat__label">Core services</span>
+        </li>
+        <li class="pf-stat">
+          <span class="pf-stat__num"><span data-count="4.9" data-decimals="1">4.9</span><span class="pf-stat__unit">/5</span></span>
+          <span class="pf-stat__label">Client rating</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Discipline marquee -->
+  <div class="pf-marquee pf-disciplines" style="--pf-marquee-dur: 46s">
+    <div class="pf-marquee__track">
+      <div class="pf-marquee__group">
+        <span class="pf-disc">Social Media</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Branding</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Posters</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Video Editing</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Advertising</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Print</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Web Design</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+        <span class="pf-disc">Motion</span><span class="pf-disc-star" aria-hidden="true">&#10022;</span>
+      </div>
+      <div class="pf-marquee__group" aria-hidden="true">
+        <span class="pf-disc">Social Media</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Branding</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Posters</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Video Editing</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Advertising</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Print</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Web Design</span><span class="pf-disc-star">&#10022;</span>
+        <span class="pf-disc">Motion</span><span class="pf-disc-star">&#10022;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================= 02 FEATURED WORK STAGE ========================= -->
+  <section class="pf-work" id="pfWork" data-sa-skip aria-label="Featured work">
+    <div class="pf-work__word" aria-hidden="true">WORK</div>
+
+    <div class="pf-wrap pf-work__cards">
+      <button type="button" class="pf-wcard" data-project="aurelia" data-title="Aurelia Parfum">
+        <img src="images/graphic/perfume_bottle_showcase.jpg" alt="" loading="lazy" width="1024" height="1024">
+        <span class="pf-wcard__top"><span class="pf-wcard__index">01</span><span class="pf-pill">Product visual</span></span>
+        <span class="pf-wcard__body">
+          <span class="pf-wcard__title">Aurelia Parfum</span>
+          <span class="pf-wcard__desc">Light-cut key visual built to work from billboard to phone screen.</span>
+        </span>
+      </button>
+      <button type="button" class="pf-wcard" data-project="aurora" data-title="Aurora Automotive">
+        <img src="images/graphic/banner_design_showcase.jpg" alt="" loading="lazy" width="1376" height="768">
+        <span class="pf-wcard__top"><span class="pf-wcard__index">02</span><span class="pf-pill">Advertising</span></span>
+        <span class="pf-wcard__body">
+          <span class="pf-wcard__title">Aurora Automotive</span>
+          <span class="pf-wcard__desc">&ldquo;The Future of Drive&rdquo; launch campaign across billboards and paid social.</span>
+        </span>
+      </button>
+      <button type="button" class="pf-wcard" data-project="opulent" data-title="Opulent Timepieces">
+        <img src="images/graphic/mobile_carousel_showcase.jpg" alt="" loading="lazy" width="1024" height="1024">
+        <span class="pf-wcard__top"><span class="pf-wcard__index">03</span><span class="pf-pill">Social media</span></span>
+        <span class="pf-wcard__body">
+          <span class="pf-wcard__title">Opulent Timepieces</span>
+          <span class="pf-wcard__desc">A premium Instagram feed system for a luxury watch label.</span>
+        </span>
+      </button>
+      <button type="button" class="pf-wcard" data-project="lights" data-title="Festival of Lights">
+        <img src="images/graphic/festival_poster_showcase.jpg" alt="" loading="lazy" width="1024" height="1024">
+        <span class="pf-wcard__top"><span class="pf-wcard__index">04</span><span class="pf-pill">Poster design</span></span>
+        <span class="pf-wcard__body">
+          <span class="pf-wcard__title">Festival of Lights</span>
+          <span class="pf-wcard__desc">Ornate celebration key art for print and social.</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="pf-work__hud" aria-hidden="true">
+      <span class="pf-work__count"><strong id="pfWorkCount">01</strong> / 04 &nbsp;&middot;&nbsp; <span class="pf-work__name" id="pfWorkName">Aurelia Parfum</span></span>
+      <span class="pf-work__progress"><span class="pf-work__bar"></span></span>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- =========================== 03 PROJECT GALLERY =========================== -->
+  <section class="pf-section" id="pfGallery">
+    <div class="pf-wrap">
+      <div class="pf-head">
+        <div>
+          <p class="pf-eyebrow">Selected projects</p>
+          <h2 class="pf-h2">A closer look<br>at the <em>craft.</em></h2>
+          <p class="pf-lead">Open any project to see what we delivered, the tools behind it and the formats it shipped in.</p>
+        </div>
+        <div class="pf-filters" role="group" aria-label="Filter projects">
+          <button type="button" class="pf-filter is-active" data-filter="all" aria-pressed="true">All <span class="pf-filter__n"></span></button>
+          <button type="button" class="pf-filter" data-filter="branding" aria-pressed="false">Branding <span class="pf-filter__n"></span></button>
+          <button type="button" class="pf-filter" data-filter="social" aria-pressed="false">Social <span class="pf-filter__n"></span></button>
+          <button type="button" class="pf-filter" data-filter="advertising" aria-pressed="false">Advertising <span class="pf-filter__n"></span></button>
+          <button type="button" class="pf-filter" data-filter="print" aria-pressed="false">Print &amp; Posters <span class="pf-filter__n"></span></button>
+        </div>
+      </div>
+
+      <div class="pf-bento" id="pfBento" data-sa-no-parallax>
+        <button type="button" class="pf-tile pf-tile--xl" data-project="aurelia" data-cat="advertising">
+          <img src="images/graphic/perfume_bottle_showcase.jpg" alt="Aurelia perfume bottle on a lit marble plinth" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Product visual</span><span class="pf-tile__title">Aurelia Parfum</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile pf-tile--md" data-project="opulent" data-cat="social">
+          <img src="images/graphic/mobile_carousel_showcase.jpg" alt="Instagram feed design for Opulent Timepieces" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Social media</span><span class="pf-tile__title">Opulent Timepieces</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile pf-tile--md" data-project="lights" data-cat="print social">
+          <img src="images/graphic/festival_poster_showcase.jpg" alt="Festival of Lights celebration poster" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Poster design</span><span class="pf-tile__title">Festival of Lights</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile pf-tile--wide" data-project="aurora" data-cat="advertising">
+          <img src="images/graphic/banner_design_showcase.jpg" alt="Aurora Automotive digital billboards on a city tower" loading="lazy" width="1376" height="768">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Advertising</span><span class="pf-tile__title">Aurora Automotive</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile" data-project="gcube" data-cat="branding">
+          <img src="images/graphic/g_logo_showcase.jpg" alt="G monogram rendered as a glowing metal cube" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Branding</span><span class="pf-tile__title">G-Cube Brand Mark</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile" data-project="aethel" data-cat="branding print">
+          <img src="images/graphic/id_card_showcase.jpg" alt="Aethel Technologies employee ID card designs" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Corporate identity</span><span class="pf-tile__title">Aethel Technologies</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile" data-project="editorial" data-cat="print">
+          <img src="images/graphic/brochure_grid_showcase.jpg" alt="Grid of corporate brochures and magazine layouts" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Print &amp; editorial</span><span class="pf-tile__title">Corporate Editorial Suite</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile" data-project="sale" data-cat="advertising social">
+          <img src="images/graphic/retail_poster_sale.jpg" alt="Orange and black 50% off sale poster" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Advertising</span><span class="pf-tile__title">Seasonal Sale Campaign</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile pf-tile--wide" data-project="socialsuite" data-cat="social">
+          <img src="images/video/branding_phones.jpg" alt="Social launch creatives on Instagram, short video and X" loading="lazy" width="1376" height="768">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Social media</span><span class="pf-tile__title">Multi-platform Social Launch</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button type="button" class="pf-tile" data-project="press" data-cat="print advertising">
+          <img src="images/graphic/newspaper_ad_mockup.jpg" alt="Newspaper print advertisement mockup" loading="lazy" width="1024" height="1024">
+          <span class="pf-tile__shade"></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Print advertising</span><span class="pf-tile__title">Newspaper Ad Placement</span></span>
+          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== 04 WEBSITE SHOWCASE =========================== -->
+  <section class="pf-section pf-sites" id="pfSites">
+    <div class="pf-wrap">
+      <div class="pf-head">
+        <div>
+          <p class="pf-eyebrow">Web design &amp; development</p>
+          <h2 class="pf-h2">Websites that<br><em>work</em> for you.</h2>
+        </div>
+        <p class="pf-lead">Pages we&rsquo;ve designed and built in-house. Every one is live on this site, so open it and try it for yourself.</p>
+      </div>
+
+      <div class="pf-sites__stage" data-sa-no-parallax>
+        <div class="pf-sites__side">
+          <div class="pf-sites__tabs" role="tablist" aria-label="Website projects">
+            <button type="button" class="pf-site-tab is-active" role="tab" aria-selected="true" aria-controls="pfSitesDevice"
+              data-url="getitmediasolutions.com/socialmedia" data-href="socialmedia.html"
+              data-tags="Service landing page|Scroll animations|Lead capture">
+              <span class="pf-site-tab__num">01</span>
+              <span><span class="pf-site-tab__name">Social Media Growth Engine</span><span class="pf-site-tab__type">Service landing page</span></span>
+              <span class="pf-site-tab__bar" aria-hidden="true"><span></span></span>
+            </button>
+            <button type="button" class="pf-site-tab" role="tab" aria-selected="false" aria-controls="pfSitesDevice" tabindex="-1"
+              data-url="getitmediasolutions.com" data-href="index.html"
+              data-tags="Agency website|Service showcase|Fully responsive">
+              <span class="pf-site-tab__num">02</span>
+              <span><span class="pf-site-tab__name">GetIt Media Home</span><span class="pf-site-tab__type">Agency website</span></span>
+              <span class="pf-site-tab__bar" aria-hidden="true"><span></span></span>
+            </button>
+            <button type="button" class="pf-site-tab" role="tab" aria-selected="false" aria-controls="pfSitesDevice" tabindex="-1"
+              data-url="getitmediasolutions.com/google-ads" data-href="google-ads.html"
+              data-tags="Conversion page|Interactive UI|Performance focused">
+              <span class="pf-site-tab__num">03</span>
+              <span><span class="pf-site-tab__name">Google Ads Landing Page</span><span class="pf-site-tab__type">Conversion page</span></span>
+              <span class="pf-site-tab__bar" aria-hidden="true"><span></span></span>
+            </button>
+            <button type="button" class="pf-site-tab" role="tab" aria-selected="false" aria-controls="pfSitesDevice" tabindex="-1"
+              data-url="getitmediasolutions.com/team" data-href="team.html"
+              data-tags="Editorial layout|Profile storytelling|Motion design">
+              <span class="pf-site-tab__num">04</span>
+              <span><span class="pf-site-tab__name">Meet the Team</span><span class="pf-site-tab__type">Editorial people page</span></span>
+              <span class="pf-site-tab__bar" aria-hidden="true"><span></span></span>
+            </button>
+          </div>
+
+          <div class="pf-sites__meta">
+            <ul class="pf-sites__tags" id="pfSiteTags">
+              <li>Service landing page</li><li>Scroll animations</li><li>Lead capture</li>
+            </ul>
+            <a class="pf-btn pf-btn--dark" id="pfSiteLink" href="socialmedia.html">
+              Visit live page
+              <span class="pf-btn__icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="pf-sites__device" id="pfSitesDevice" role="tabpanel" aria-label="Website preview">
+          <div class="pf-browser">
+            <div class="pf-browser__bar" aria-hidden="true">
+              <span class="pf-browser__dots"><i></i><i></i><i></i></span>
+              <span class="pf-browser__url"><i class="fa-solid fa-lock"></i><span id="pfSiteUrl">getitmediasolutions.com/socialmedia</span></span>
+            </div>
+            <div class="pf-browser__view">
+              <img class="pf-screen is-active" data-site="0" src="images/websites/social-desktop.jpg" alt="Social media marketing landing page on desktop" width="1200" height="5000" loading="lazy">
+              <img class="pf-screen" data-site="1" src="images/websites/home-desktop.jpg" alt="GetIt Media home page on desktop" width="1200" height="3725" loading="lazy">
+              <img class="pf-screen" data-site="2" src="images/websites/ads-desktop.jpg" alt="Google Ads landing page on desktop" width="1200" height="2900" loading="lazy">
+              <img class="pf-screen" data-site="3" src="images/websites/team-desktop.jpg" alt="Meet the team page on desktop" width="1200" height="2917" loading="lazy">
+            </div>
+          </div>
+          <div class="pf-phone" aria-hidden="true">
+            <div class="pf-phone__view">
+              <img class="pf-screen is-active" data-site="0" src="images/websites/social-mobile.jpg" alt="" loading="lazy">
+              <img class="pf-screen" data-site="1" src="images/websites/home-mobile.jpg" alt="" loading="lazy">
+              <img class="pf-screen" data-site="2" src="images/websites/ads-mobile.jpg" alt="" loading="lazy">
+              <img class="pf-screen" data-site="3" src="images/websites/team-mobile.jpg" alt="" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 05 WHAT WE MAKE ============================ -->
+  <section class="pf-section" id="pfServices">
+    <div class="pf-wrap">
+      <div class="pf-head">
+        <div>
+          <p class="pf-eyebrow">What we make</p>
+          <h2 class="pf-h2">Seven ways we<br>grow your <em>brand.</em></h2>
+        </div>
+        <p class="pf-lead">Every project on this page comes out of one of these services. Pick one to see how we work.</p>
+      </div>
+
+      <ul class="pf-svc-list">
+        <li><a class="pf-svc" href="socialmedia.html" data-img="images/graphic/mobile_carousel_showcase.jpg">
+          <span class="pf-svc__num">01</span><span class="pf-svc__name">Social Media Marketing</span>
+          <span class="pf-svc__tags">Content calendars, reels, carousels, community</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+        <li><a class="pf-svc" href="graphic.html" data-img="images/graphic/brochure_grid_showcase.jpg">
+          <span class="pf-svc__num">02</span><span class="pf-svc__name">Graphic Design</span>
+          <span class="pf-svc__tags">Logos, posters, brochures, packaging</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+        <li><a class="pf-svc" href="video-editor.html" data-img="images/graphic/video_editing_console.jpg">
+          <span class="pf-svc__num">03</span><span class="pf-svc__name">Video Editing</span>
+          <span class="pf-svc__tags">Commercials, reels, event films, colour grading</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+        <li><a class="pf-svc" href="google-ads.html" data-img="images/graphic/retail_poster_sale.jpg">
+          <span class="pf-svc__num">04</span><span class="pf-svc__name">Google &amp; Meta Ads</span>
+          <span class="pf-svc__tags">Ad creatives, campaign setup, optimisation</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+        <li><a class="pf-svc" href="website.html" data-img="images/video/branding_phones.jpg">
+          <span class="pf-svc__num">05</span><span class="pf-svc__name">Website Design &amp; Development</span>
+          <span class="pf-svc__tags">Landing pages, business sites, e-commerce</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+        <li><a class="pf-svc" href="searchengine.html" data-img="images/graphic/newspaper_ad_mockup.jpg">
+          <span class="pf-svc__num">06</span><span class="pf-svc__name">Search Engine Optimization</span>
+          <span class="pf-svc__tags">On-page SEO, content, local rankings</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+        <li><a class="pf-svc" href="googlemybusiness.html" data-img="images/graphic/banner_design_showcase.jpg">
+          <span class="pf-svc__num">07</span><span class="pf-svc__name">Google My Business</span>
+          <span class="pf-svc__tags">Profile setup, reviews, local visibility</span>
+          <span class="pf-svc__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ 05 MOTION REEL ============================ -->
+  <section class="pf-reel" id="pfReel" data-sa-skip aria-label="Motion and campaign highlights">
+    <div class="pf-reel__track">
+      <div class="pf-reel__intro">
+        <p class="pf-eyebrow">Motion &amp; campaigns</p>
+        <h2 class="pf-h2">Made to be<br>watched <em>twice.</em></h2>
+        <p class="pf-lead">Product films, live event coverage and studio finishing, cut for every screen your audience uses.</p>
+        <span class="pf-reel__hint">Keep scrolling <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+
+      <button type="button" class="pf-reel__panel" data-project="drone">
+        <img src="images/video/product_drone.jpg" alt="" loading="lazy" width="1376" height="768">
+        <span class="pf-reel__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+        <span class="pf-reel__meta">
+          <span><span class="pf-pill">Product film</span><span class="pf-reel__title">Strider X7 Product Film</span></span>
+          <span class="pf-reel__index" aria-hidden="true">01</span>
+        </span>
+      </button>
+      <button type="button" class="pf-reel__panel" data-project="concert">
+        <img src="images/video/event_concert.jpg" alt="" loading="lazy" width="848" height="1264">
+        <span class="pf-reel__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+        <span class="pf-reel__meta">
+          <span><span class="pf-pill">Event video</span><span class="pf-reel__title">Live Event Coverage</span></span>
+          <span class="pf-reel__index" aria-hidden="true">02</span>
+        </span>
+      </button>
+      <button type="button" class="pf-reel__panel" data-project="studio">
+        <img src="images/graphic/video_editing_console.jpg" alt="" loading="lazy" width="1376" height="768">
+        <span class="pf-reel__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
+        <span class="pf-reel__meta">
+          <span><span class="pf-pill">Post-production</span><span class="pf-reel__title">Studio Edit &amp; Colour</span></span>
+          <span class="pf-reel__index" aria-hidden="true">03</span>
+        </span>
+      </button>
+
+      <div class="pf-reel__outro">
+        <h3 class="pf-reel__outro-title">Need a video<br>that sells?</h3>
+        <a href="video-editor.html" class="pf-btn pf-btn--primary">
+          Video services
+          <span class="pf-btn__icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== 06 PROCESS ============================== -->
+  <section class="pf-section" id="pfProcess">
+    <div class="pf-wrap">
+      <div class="pf-head">
+        <div>
+          <p class="pf-eyebrow">How we work</p>
+          <h2 class="pf-h2">From brief<br>to <em>buzz.</em></h2>
+        </div>
+        <p class="pf-lead">A simple, transparent process, so you always know what&rsquo;s happening and what comes next.</p>
+      </div>
+
+      <ol class="pf-steps">
+        <li class="pf-step">
+          <span class="pf-step__num" aria-hidden="true">01</span>
+          <h3>Discover</h3>
+          <p>We dig into your business, audience and competitors before a single pixel is placed.</p>
+        </li>
+        <li class="pf-step">
+          <span class="pf-step__num" aria-hidden="true">02</span>
+          <h3>Concept</h3>
+          <p>Moodboards, directions and copy angles you can react to, with no guesswork.</p>
+        </li>
+        <li class="pf-step">
+          <span class="pf-step__num" aria-hidden="true">03</span>
+          <h3>Craft</h3>
+          <p>Design, edit and polish across every format your campaign needs.</p>
+        </li>
+        <li class="pf-step">
+          <span class="pf-step__num" aria-hidden="true">04</span>
+          <h3>Launch &amp; grow</h3>
+          <p>We ship, measure what lands, and refine the next round with real data.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================== 07 CLIENTS ============================== -->
+  <section class="pf-section pf-clients" id="pfClients">
+    <div class="pf-wrap">
+      <div class="pf-head">
+        <div>
+          <p class="pf-eyebrow">Trusted by</p>
+          <h2 class="pf-h2">Brands we&rsquo;ve<br><em>worked with.</em></h2>
+        </div>
+        <p class="pf-lead">From clinics and kitchens to motors and food brands, businesses across Pondicherry trust GetIt Media with their creative work.</p>
+      </div>
+    </div>
+
+    <div class="pf-logo-rows">
+      <div class="pf-marquee" style="--pf-marquee-dur: 50s">
+        <div class="pf-marquee__track">
+          <ul class="pf-marquee__group" style="list-style:none;margin:0;padding:0">
+            <li class="pf-logo"><img src="images/clients/Aditya-logo.png" alt="AIHM" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/Karupatti.png" alt="Karupatti Kaapi" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/RK%20MOTORS%2020%20copy.png" alt="RK Motors Hero" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/SRI%20BALA%205%20copy.png" alt="SBE" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/ashoka.png" alt="Asoka Ice Creams" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/concept%20kichen.png" alt="Concept Kitchen" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/jana.png" alt="Jana Interiors" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/kohi.png" alt="Komaki Electric Vehicles" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/meera%203%20copy.png" alt="Sri Mirra Furniture" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/mother.png" alt="Mother &amp; Baby" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/nas.png" alt="NDS Wedding Cards" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/nilan.png" alt="Nilan Grand" loading="lazy"></li>
+          </ul>
+          <ul class="pf-marquee__group" aria-hidden="true" style="list-style:none;margin:0;padding:0">
+            <li class="pf-logo"><img src="images/clients/Aditya-logo.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/Karupatti.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/RK%20MOTORS%2020%20copy.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/SRI%20BALA%205%20copy.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/ashoka.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/concept%20kichen.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/jana.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/kohi.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/meera%203%20copy.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/mother.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/nas.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/nilan.png" alt="" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pf-marquee pf-marquee--reverse" style="--pf-marquee-dur: 54s">
+        <div class="pf-marquee__track">
+          <ul class="pf-marquee__group" style="list-style:none;margin:0;padding:0">
+            <li class="pf-logo"><img src="images/clients/priyathar.png" alt="Priyathar" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/pvg-mind-care-clinic-puducherry-65c5f7308287c.png" alt="PVG Mind Care Clinic" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/queen.png" alt="Queen" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/ruban.png" alt="Ruban Construction" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/NDSS%2034%20copy.png" alt="NDSS" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/SM%205%20copy.png" alt="SM Marketing" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/has.png" alt="HAS Academy" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/16-Photoroom.png" alt="Janata" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/22-Photoroom.png" alt="MAB" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/33-Photoroom.png" alt="Okinawa" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/4-Photoroom.png" alt="Bharathiya" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/48-Photoroom.png" alt="Client logo" loading="lazy"></li>
+          </ul>
+          <ul class="pf-marquee__group" aria-hidden="true" style="list-style:none;margin:0;padding:0">
+            <li class="pf-logo"><img src="images/clients/priyathar.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/pvg-mind-care-clinic-puducherry-65c5f7308287c.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/queen.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/ruban.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/NDSS%2034%20copy.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/SM%205%20copy.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/has.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/16-Photoroom.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/22-Photoroom.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/33-Photoroom.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/4-Photoroom.png" alt="" loading="lazy"></li>
+            <li class="pf-logo"><img src="images/clients/48-Photoroom.png" alt="" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ 08 CTA ================================ -->
+  <section class="pf-section" id="pfCta">
+    <div class="pf-wrap">
+      <div class="pf-cta__inner">
+        <h2 class="pf-cta__title"><span>Your brand</span> <span>could be <em>next.</em></span></h2>
+        <div class="pf-cta__row">
+          <div class="pf-cta__copy">
+            <p class="pf-cta__text">Tell us what you&rsquo;re building. We&rsquo;ll come back with ideas, a plan and a clear quote.</p>
+            <div class="pf-cta__links">
+              <a class="pf-cta__link" href="page-pricing.html">See pricing <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a class="pf-cta__link" href="#pfGallery">Browse the work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <a href="page-contact.html" class="pf-magnet" data-magnet>
+            Start a<br>project
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Main Footer (shared with index.html) -->
+<footer class="lt-footer" id="contact">
+  <div class="lt-dotgrid" aria-hidden="true"></div>
+  <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#e8622c" stroke-width="1.4" fill="none" opacity="0.9" />
+    <path d="M-20 148 C 60 78, 140 188, 220 108 S 380 48, 460 118" stroke="#e8622c" stroke-width="1.2" fill="none" opacity="0.6" />
+    <path d="M-20 112 C 60 42, 140 152, 220 72 S 380 12, 460 82" stroke="#e8622c" stroke-width="1" fill="none" opacity="0.4" />
+  </svg>
+
+  <div class="lt-outer">
+    <div class="lt-grid">
+
+      <div class="lt-col">
+        <h2 class="lt-heading">LET&rsquo;S<span class="lt-heading-accent">TALK
+            <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+              <path class="lt-heading-arrow-path"
+                d="M8 82 C 4 60, 10 46, 26 40 C 40 35, 46 44, 40 54 C 36 61, 30 55, 34 48 C 42 34, 60 24, 78 12"
+                stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" fill="none" />
+            </svg>
+          </span></h2>
+        <div class="lt-underline"></div>
+        <p class="lt-desc">We&rsquo;re here to listen and help you grow your business online.</p>
+        <a class="lt-btn" href="mailto:hello@getitmediasolutions.com">
+          <span class="lt-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+          Get In Touch
+        </a>
+      </div>
+
+      <div class="lt-col">
+        <h3 class="lt-col-title">Get In Touch With Us</h3>
+        <div class="lt-underline"></div>
+        <div class="lt-social-list">
+          <a class="lt-social-card" href="https://www.instagram.com/getitmediasolutions" target="_blank" rel="noopener">
+            <span class="lt-social-icon lt-social-icon--ig"><i class="fab fa-instagram"></i></span>
+            <span class="lt-social-text">
+              <span class="lt-social-title">Instagram</span>
+              <span class="lt-social-sub">@getitmediasolutions</span>
+            </span>
+            <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="lt-social-card" href="https://www.facebook.com/getitmediasolutions" target="_blank" rel="noopener">
+            <span class="lt-social-icon lt-social-icon--fb"><i class="fab fa-facebook-f"></i></span>
+            <span class="lt-social-text">
+              <span class="lt-social-title">Facebook</span>
+              <span class="lt-social-sub">/getitmediasolutions</span>
+            </span>
+            <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="lt-social-card" href="https://www.youtube.com/channel/UC6b2HvglRe3kztaasEYVNdQ" target="_blank" rel="noopener">
+            <span class="lt-social-icon lt-social-icon--yt"><i class="fab fa-youtube"></i></span>
+            <span class="lt-social-text">
+              <span class="lt-social-title">YouTube</span>
+              <span class="lt-social-sub">/getitmediasolutions</span>
+            </span>
+            <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="lt-social-card" href="https://www.google.com/search?q=Getit+Media+Solutions+Pvt+Ltd" target="_blank" rel="noopener">
+            <span class="lt-social-icon lt-social-icon--gg"><i class="fab fa-google"></i></span>
+            <span class="lt-social-text">
+              <span class="lt-social-title">Google</span>
+              <span class="lt-social-sub">Getit Media Solutions</span>
+            </span>
+            <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lt-col">
+        <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png"
+            alt="GetIt Media Solutions Private Limited"></a>
+        <div class="lt-underline"></div>
+        <p class="lt-brand-desc">When do they work well, and when do they on us and finally, when do we actually
+          need how can we avoid them.</p>
+      </div>
+
+      <div class="lt-col">
+        <h3 class="lt-col-title">Contact Info</h3>
+        <div class="lt-underline"></div>
+        <div class="lt-contact-list">
+          <a class="lt-contact-item" href="mailto:hello@getitmediasolutions.com">
+            <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+            <span>
+              <p class="lt-contact-label">Email Us</p>
+              <p class="lt-contact-value">hello@getitmediasolutions.com</p>
+            </span>
+          </a>
+          <a class="lt-contact-item" href="https://www.google.com/maps/search/?api=1&amp;query=4517+Washington+Ave.+Newyork+39495" target="_blank" rel="noopener">
+            <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <span>
+              <p class="lt-contact-label">Address</p>
+              <p class="lt-contact-value">4517 Washington Ave.<br>Newyork 39495</p>
+            </span>
+          </a>
+          <a class="lt-contact-item" href="tel:+11234567890">
+            <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
+            <span>
+              <p class="lt-contact-label">Phone</p>
+              <p class="lt-contact-value">(123) 456-7890</p>
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="lt-features">
+    <div class="lt-features-inner">
+      <div class="lt-feature">
+        <span class="lt-feature-icon"><i class="fa-solid fa-shield-check"></i></span>
+        <div>
+          <p class="lt-feature-title">Trusted Solutions</p>
+          <p class="lt-feature-sub">Reliable &amp; Secure</p>
+        </div>
+      </div>
+      <div class="lt-feature">
+        <span class="lt-feature-icon"><i class="fa-regular fa-clock"></i></span>
+        <div>
+          <p class="lt-feature-title">On-Time Delivery</p>
+          <p class="lt-feature-sub">Always On Schedule</p>
+        </div>
+      </div>
+      <div class="lt-feature">
+        <span class="lt-feature-icon"><i class="fa-solid fa-user-group"></i></span>
+        <div>
+          <p class="lt-feature-title">Client Satisfaction</p>
+          <p class="lt-feature-sub">Our Priority</p>
+        </div>
+      </div>
+      <div class="lt-feature">
+        <span class="lt-feature-icon"><i class="fa-solid fa-headset"></i></span>
+        <div>
+          <p class="lt-feature-title">24/7 Support</p>
+          <p class="lt-feature-sub">We&rsquo;re Always Here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lt-bottom">
+    <div class="lt-bottom-brand">
+      <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+      <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
+    </div>
+    <nav class="lt-bottom-nav" aria-label="Footer">
+      <a href="abouts.html">About Us</a><span>|</span>
+      <a href="portfolio.html">Our Portfolio</a><span>|</span>
+      <a href="team.html">Careers</a><span>|</span>
+      <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
+      <a href="terms-conditions.html">Terms &amp; Conditions</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Service row hover preview (desktop pointer only) -->
+<div class="pf-preview" id="pfPreview" aria-hidden="true"><img src="images/graphic/mobile_carousel_showcase.jpg" alt=""></div>
+
+<!-- Project case-study modal -->
+<div class="pf-modal" id="pfModal" hidden>
+  <div class="pf-modal__backdrop" data-close></div>
+  <div class="pf-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pfModalTitle" tabindex="-1">
+    <button type="button" class="pf-icon-btn pf-modal__close" data-close aria-label="Close project">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <div class="pf-modal__media"><img id="pfModalImg" src="images/graphic/perfume_bottle_showcase.jpg" alt=""></div>
+    <div class="pf-modal__body">
+      <span class="pf-eyebrow" id="pfModalCat">Category</span>
+      <h2 class="pf-modal__title" id="pfModalTitle">Project</h2>
+      <p class="pf-modal__summary" id="pfModalSummary"></p>
+      <dl class="pf-modal__facts">
+        <div><dt>Service</dt><dd id="pfModalService"></dd></div>
+        <div><dt>Format</dt><dd id="pfModalFormat"></dd></div>
+        <div><dt>Deliverables</dt><dd id="pfModalDeliverables"></dd></div>
+        <div><dt>Tools</dt><dd id="pfModalTools"></dd></div>
+      </dl>
+      <div class="pf-modal__actions">
+        <a href="page-contact.html" class="pf-btn pf-btn--primary">
+          Start a similar project
+          <span class="pf-btn__icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+        <div class="pf-modal__nav">
+          <button type="button" class="pf-icon-btn" data-step="-1" aria-label="Previous project"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i></button>
+          <span id="pfModalCount" aria-live="polite">1 / 13</span>
+          <button type="button" class="pf-icon-btn" data-step="1" aria-label="Next project"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/navbar.js"></script>
+<script src="js/portfolio-showcase.js"></script>
+<script src="js/scroll-anim.js"></script>
+</body>
+</html>

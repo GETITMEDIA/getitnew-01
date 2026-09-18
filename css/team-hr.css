@@ -1,0 +1,241 @@
+/* =====================================================================
+   06 · HUMAN RESOURCES — "The People Desk"
+   A department section in the page's dark house language, with its own
+   design language like every other desk: here an ID-card motif, since
+   that is what this desk actually handles.
+
+   Namespace: .hrd   Depends on the --tm-* tokens in team.css.
+   ===================================================================== */
+
+.hrd {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(62px, 6.6vw, 110px) 0;
+  background:
+    radial-gradient(ellipse 54% 62% at 84% 6%, rgba(var(--tm-orange-rgb), 0.13), transparent 62%),
+    var(--tm-bg);
+  color: var(--tm-white);
+  isolation: isolate;
+}
+
+/* a soft punched-card perforation running down the left edge */
+.hrd::before {
+  content: '';
+  position: absolute;
+  left: clamp(10px, 2.4vw, 34px);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.6px);
+  background-size: 2px 14px;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 16%, #000 84%, transparent);
+  pointer-events: none;
+}
+
+.hrd__inner { position: relative; z-index: 2; }
+
+/* ---------------------------------------------------------------
+   A. Masthead
+   --------------------------------------------------------------- */
+.hrd__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 40px;
+  margin-bottom: clamp(32px, 3.6vw, 54px);
+}
+
+.hrd__no {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--tm-serif);
+  font-size: clamp(40px, 4.6vw, 66px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.1);
+  font-variant-numeric: tabular-nums;
+}
+
+.hrd__kicker {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--tm-orange);
+}
+
+.hrd__title {
+  font-family: var(--tm-serif);
+  font-size: clamp(28px, 3.4vw, 50px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--tm-white);
+}
+
+.hrd__title em { font-style: normal; color: var(--tm-orange-lt); }
+
+.hrd__sub {
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  line-height: 1.78;
+  color: var(--tm-muted);
+  margin: 0;
+  max-width: 50ch;
+}
+
+/* ---------------------------------------------------------------
+   B. What the desk holds — the ID-card grid
+   --------------------------------------------------------------- */
+.hrd__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hrd-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 226px;
+  padding: 26px 22px 22px;
+  border-radius: 16px;
+  border: 1px solid var(--tm-line);
+  background: linear-gradient(162deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  overflow: hidden;
+  transition: border-color 0.45s var(--tm-ease), transform 0.45s var(--tm-ease), background 0.45s var(--tm-ease);
+}
+
+/* the lanyard slot at the top of an ID card */
+.hrd-card::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  width: 34px;
+  height: 5px;
+  margin-left: -17px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hrd-card:hover {
+  border-color: rgba(var(--tm-orange-rgb), 0.48);
+  background: linear-gradient(162deg, rgba(var(--tm-orange-rgb), 0.1), rgba(255, 255, 255, 0.016));
+  transform: translateY(-4px);
+}
+
+.hrd-card__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: rgba(var(--tm-orange-rgb), 0.14);
+  border: 1px solid rgba(var(--tm-orange-rgb), 0.3);
+  color: var(--tm-orange-lt);
+  font-size: 16px;
+}
+
+.hrd-card__name {
+  margin: 0 0 8px;
+  font-family: var(--tm-serif);
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--tm-white);
+}
+
+.hrd-card__line {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.62;
+  color: var(--tm-muted);
+}
+
+/* ---------------------------------------------------------------
+   C. Contact strip
+   --------------------------------------------------------------- */
+.hrd__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: clamp(28px, 3vw, 44px);
+  padding: 24px 28px;
+  border-radius: 18px;
+  border: 1px solid var(--tm-line);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+}
+
+.hrd__barText { margin: 0; max-width: 58ch; }
+
+.hrd__barText b {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--tm-serif);
+  font-size: clamp(16px, 1.5vw, 21px);
+  font-weight: 700;
+  color: var(--tm-white);
+}
+
+.hrd__barText span { font-size: 14px; line-height: 1.65; color: var(--tm-muted); }
+
+.hrd__mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--tm-orange-rgb), 0.5);
+  background: rgba(var(--tm-orange-rgb), 0.12);
+  color: var(--tm-orange-lt);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.35s var(--tm-ease);
+}
+
+.hrd__mail:hover,
+.hrd__mail:focus-visible {
+  background: var(--tm-orange);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------
+   D. Responsive
+   --------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .hrd__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .hrd__head { grid-template-columns: 1fr; align-items: start; gap: 20px; }
+}
+
+@media (max-width: 600px) {
+  .hrd__grid { grid-template-columns: 1fr; gap: 12px; }
+  .hrd-card { min-height: 0; }
+  .hrd__bar { flex-direction: column; align-items: flex-start; padding: 20px; }
+  .hrd__mail { width: 100%; justify-content: center; }
+}
+
+/* ---------------------------------------------------------------
+   E. Reduced motion
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hrd-card,
+  .hrd__mail { transition: none; }
+
+  .hrd-card:hover { transform: none; }
+}

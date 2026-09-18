@@ -1,0 +1,419 @@
+/* =====================================================================
+   The Blueprint Timeline Section — Super Animated & Interactive
+   ===================================================================== */
+
+.blueprint-section {
+  position: relative;
+  background-color: #08080a;
+  padding: 140px 20px;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  isolation: isolate;
+}
+
+/* Dynamic Grid Background with Subtle Scanline Effect */
+.blueprint-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, #000 40%, transparent 85%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Atmospheric Orange Ambient Glow */
+.blueprint-section::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 87, 34, 0.12) 0%, rgba(255, 87, 34, 0.03) 45%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  animation: bpGlowPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes bpGlowPulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+/* Header Styling */
+.bp-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.bp-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #ff5722;
+  background: rgba(255, 87, 34, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.25);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
+}
+
+.bp-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+/* Timeline Container */
+.blueprint-timeline {
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+  z-index: 10;
+  padding: 20px 0;
+}
+
+/* Central Static Background Line */
+.bp-line-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Central Dynamic Glowing Progress Line */
+.bp-line-progress {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 0%;
+  background: linear-gradient(180deg, #ff5722 0%, #ea5a06 50%, #ff8a3d 100%);
+  box-shadow: 
+    0 0 15px #ff5722,
+    0 0 30px rgba(255, 87, 34, 0.8),
+    0 0 60px rgba(255, 87, 34, 0.4);
+  transform: translateX(-50%);
+  z-index: 2;
+  transition: height 0.1s linear;
+  border-radius: 999px;
+}
+
+/* Laser Pulse Traveling Orb at the head of progress line */
+.bp-laser-pulse {
+  position: absolute;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 
+    0 0 20px 6px #ff5722,
+    0 0 40px 12px rgba(255, 87, 34, 0.9),
+    0 0 70px 20px rgba(255, 138, 61, 0.7);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  opacity: 0;
+  transition: top 0.1s linear, opacity 0.3s ease;
+  pointer-events: none;
+  animation: laserPulseGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes laserPulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.85); box-shadow: 0 0 15px 4px #ff5722, 0 0 30px 8px rgba(255, 87, 34, 0.8); }
+  100% { transform: translate(-50%, -50%) scale(1.25); box-shadow: 0 0 25px 8px #ff5722, 0 0 50px 16px rgba(255, 138, 61, 0.9); }
+}
+
+/* Process Step Row */
+.bp-step {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-bottom: 120px;
+  align-items: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.bp-step:last-child {
+  margin-bottom: 0;
+}
+
+/* Step Layout Alignment */
+.bp-step.left-step {
+  justify-content: flex-start;
+}
+.bp-step.right-step {
+  justify-content: flex-end;
+}
+
+/* Content Card Containers */
+.bp-content {
+  width: 43%;
+  position: relative;
+  z-index: 10;
+  padding: 28px 32px;
+  border-radius: 20px;
+  background: rgba(18, 18, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              background 0.4s ease;
+}
+
+.left-step .bp-content {
+  text-align: right;
+  border-right: 3px solid rgba(255, 87, 34, 0.4);
+}
+
+.right-step .bp-content {
+  text-align: left;
+  border-left: 3px solid rgba(255, 87, 34, 0.4);
+}
+
+/* Hover Effects on Content Cards */
+.bp-step:hover .bp-content {
+  transform: translateY(-8px);
+  background: rgba(26, 24, 32, 0.92);
+  border-color: rgba(255, 87, 34, 0.6);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(255, 87, 34, 0.2),
+    inset 0 0 20px rgba(255, 87, 34, 0.05);
+}
+
+.bp-step.left-step:hover .bp-content {
+  border-right-color: #ff5722;
+}
+
+.bp-step.right-step:hover .bp-content {
+  border-left-color: #ff5722;
+}
+
+/* Step Titles & Descriptions */
+.bp-step-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.left-step .bp-step-title {
+  justify-content: flex-end;
+}
+.right-step .bp-step-title {
+  justify-content: flex-start;
+}
+
+.bp-step-desc {
+  font-size: 14.5px;
+  color: #b0b0c0;
+  line-height: 1.65;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.bp-step:hover .bp-step-desc {
+  color: #e2e2ee;
+}
+
+/* Timeline Node over central line */
+.bp-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(14, 14, 18, 0.92);
+  border: 2px solid rgba(255, 87, 34, 0.35);
+  box-shadow: 
+    0 0 25px rgba(255, 87, 34, 0.25),
+    inset 0 0 12px rgba(255, 87, 34, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+/* Radial pulse ring on Node */
+.bp-node::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 87, 34, 0.3);
+  animation: bpNodeSpin 20s linear infinite;
+  pointer-events: none;
+  transition: border-color 0.4s ease;
+}
+
+.bp-node::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 87, 34, 0.4);
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+@keyframes bpNodeSpin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bpNodeRipple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.bp-icon {
+  font-size: 22px;
+  color: #ff5722;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.4s ease;
+}
+
+/* Active Node State when Scrolled Into View */
+.bp-step.is-active .bp-node {
+  background: linear-gradient(135deg, #ff5722 0%, #ea5a06 100%);
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 35px #ff5722,
+    0 0 70px rgba(255, 87, 34, 0.7),
+    inset 0 0 15px rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.bp-step.is-active .bp-node::after {
+  animation: bpNodeRipple 2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+.bp-step.is-active .bp-node::before {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.bp-step.is-active .bp-icon {
+  color: #ffffff;
+}
+
+.bp-step.is-active .bp-content {
+  border-color: rgba(255, 87, 34, 0.5);
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 87, 34, 0.15);
+}
+
+/* Direct Hover state on Node or Step */
+.bp-step:hover .bp-node {
+  transform: translate(-50%, -50%) scale(1.25) rotate(5deg);
+  background: linear-gradient(135deg, #ff8a3d 0%, #ff5722 100%);
+  border-color: #ffffff;
+  box-shadow: 
+    0 0 45px #ff5722,
+    0 0 90px rgba(255, 87, 34, 0.9);
+}
+
+.bp-step:hover .bp-icon {
+  color: #ffffff;
+  transform: scale(1.18) rotate(15deg);
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .bp-title {
+    font-size: 48px;
+  }
+  .bp-content {
+    width: 44%;
+    padding: 22px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blueprint-section {
+    padding: 90px 16px;
+  }
+  .bp-header {
+    margin-bottom: 60px;
+  }
+  .bp-title {
+    font-size: 34px;
+  }
+
+  /* Left-aligned single line timeline for mobile */
+  .bp-line-bg,
+  .bp-line-progress {
+    left: 28px;
+  }
+  
+  .bp-laser-pulse {
+    left: 28px;
+  }
+
+  .bp-node {
+    left: 28px;
+    width: 56px;
+    height: 56px;
+  }
+  .bp-icon {
+    font-size: 18px;
+  }
+
+  .bp-step {
+    justify-content: flex-start;
+    margin-bottom: 70px;
+  }
+
+  .bp-content,
+  .left-step .bp-content,
+  .right-step .bp-content {
+    width: calc(100% - 76px);
+    margin-left: 76px;
+    text-align: left;
+    border-left: 3px solid rgba(255, 87, 34, 0.5) !important;
+    border-right: none !important;
+    padding: 20px 22px;
+  }
+
+  .left-step .bp-step-title,
+  .right-step .bp-step-title {
+    justify-content: flex-start;
+  }
+}

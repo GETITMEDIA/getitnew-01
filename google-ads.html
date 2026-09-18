@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <title>GetIt Media | Digital Marketing Agency</title>
+    <!-- Stylesheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+    <link href="css/stats.css" rel="stylesheet">
+    <link href="css/cursor.css" rel="stylesheet">
+    <link href="css/text-reveal.css" rel="stylesheet">
+    <link href="css/lets-talk.css" rel="stylesheet">
+    <link href="css/about-hero.css" rel="stylesheet">
+    <link href="css/terranova-hero.css" rel="stylesheet">
+    <link href="css/services-cards.css" rel="stylesheet">
+    <link href="css/cta-brand.css" rel="stylesheet">
+    <link href="css/about-us.css" rel="stylesheet">
+    <link href="css/gmb-hero.css" rel="stylesheet">
+    <link href="css/one-tool.css" rel="stylesheet">
+    <link href="css/main-products.css" rel="stylesheet">
+    <link href="css/lumine-hero.css" rel="stylesheet">
+    <link href="css/meta-ads.css" rel="stylesheet">
+    <link href="css/3d-carousel.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/gads-hero.css" rel="stylesheet">
+  <link href="css/performance-ecosystem.css" rel="stylesheet">
+  <link href="css/tools-ecosystem.css" rel="stylesheet">
+  <link href="css/the-blueprint.css" rel="stylesheet">
+  <link href="css/final-cta.css" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="page-wrapper">
+
+    <!-- Preloader start -->
+    <div class="preloader">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <path id="preloaderSvg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+        <div class="preloader-heading">
+            <div class="load-text">
+            <span>L</span>
+            <span>o</span>
+            <span>a</span>
+            <span>d</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader end -->
+
+    <!-- GetIt Media Navbar -->
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <a href="#home" class="logo" aria-label="GetIt Media - Home">
+          <img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media Solutions Private Limited" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up">
+          <span class="logo__fallback" aria-hidden="true">
+            <span class="logo__mark">G</span>
+            <span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span>
+          </span>
+        </a>
+
+        <nav class="nav-menu" id="navMenu" aria-label="Primary">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="abouts.html" class="nav-link">About Us</a></li>
+            <li class="nav-item nav-item--dropdown" id="servicesItem">
+              <button type="button" class="nav-link nav-link--services" id="servicesTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="servicesMenu">
+                <span>Services</span><span class="arrow-circle" aria-hidden="true">&#8599;</span>
+              </button>
+              <div class="mega-dropdown" id="servicesMenu" role="menu">
+                <div class="mega-dropdown__grid">
+                  <div class="mega-services">
+                    <a href="googlemybusiness.html" class="mega-service" role="menuitem"><span class="mega-service__icon">G</span><span class="mega-service__text"><span class="mega-service__title">Google My Business</span></span></a>
+                    <a href="google-ads.html" class="mega-service" role="menuitem"><span class="mega-service__icon">A</span><span class="mega-service__text"><span class="mega-service__title">Google &amp; Meta Ads</span></span></a>
+                    <a href="socialmedia.html" class="mega-service" role="menuitem"><span class="mega-service__icon">S</span><span class="mega-service__text"><span class="mega-service__title">Social Media Marketing</span></span></a>
+                    <a href="searchengine.html" class="mega-service" role="menuitem"><span class="mega-service__icon">Q</span><span class="mega-service__text"><span class="mega-service__title">Search Engine Optimization</span></span></a>
+                    <a href="website.html" class="mega-service" role="menuitem"><span class="mega-service__icon">W</span><span class="mega-service__text"><span class="mega-service__title">Website Design &amp; Development</span></span></a>
+                    <a href="graphic.html" class="mega-service" role="menuitem"><span class="mega-service__icon">D</span><span class="mega-service__text"><span class="mega-service__title">Graphic Design</span></span></a>
+                    <a href="video-editor.html" class="mega-service" role="menuitem"><span class="mega-service__icon">V</span><span class="mega-service__text"><span class="mega-service__title">Video Editing</span></span></a>
+                  </div>
+                  <div class="mega-promo">
+                    <div class="mega-promo__content"><span class="mega-promo__badge">*</span><h4 class="mega-promo__title">GetIt Media.<br>Digital Solutions.</h4><p class="mega-promo__text">One call with us changes your digital game.</p></div>
+                    <a href="contact.html" class="mega-promo__btn">Contact Us <span aria-hidden="true">&#8599;</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+            <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+            <li class="nav-item"><a href="price.html" class="nav-link">Price Details</a></li>
+          </ul>
+        </nav>
+
+        <div class="navbar__actions">
+          <a href="contact.html" class="btn-contact header-btn-main">
+            <span class="header-theme-btn">Contact Us</span>
+            <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+          </a>
+          <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <div class="mobile-menu__header">
+        <a href="#home" class="logo logo--mobile"><img src="images/logo/getit_logo_light_trimmed.png" alt="GetIt Media" class="logo__img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" data-aos="fade-up"><span class="logo__fallback" aria-hidden="true"><span class="logo__mark">G</span><span class="logo__text">Get<span class="logo__accent">It</span><span class="logo__media"> Media</span></span></span></a>
+        <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu">&#10005;</button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <ul class="mobile-list">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="abouts.html" class="mobile-link">About Us</a></li>
+          <li class="mobile-accordion"><button type="button" class="mobile-link mobile-accordion__trigger" id="mobileServicesTrigger" aria-expanded="false" aria-controls="mobileServicesPanel"><span>Services</span><span class="arrow-circle arrow-circle--chevron"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="mobile-accordion__panel" id="mobileServicesPanel"><a href="googlemybusiness.html" class="mobile-service">Google My Business</a><a href="google-ads.html" class="mobile-service">Google &amp; Meta Ads</a><a href="socialmedia.html" class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html" class="mobile-service">Video Editing</a></div></li>
+          <li><a href="team.html" class="mobile-link">Team</a></li>
+          <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
+          <li><a href="price.html" class="mobile-link">Price Details</a></li>
+        </ul>
+        <a href="contact.html" class="btn-contact btn-contact--mobile header-btn-main">
+          <span class="header-theme-btn">Contact Us</span>
+          <span class="header-btn-arrow-right"><i class="fa-regular fa-arrow-right"></i></span>
+        </a>
+      </nav>
+    </aside>
+
+
+
+<!-- ===================== Google Ads Hero ===================== -->
+<section class="gah theme-dark" id="home" data-sa-skip>
+
+  <!-- Background decor -->
+  <div class="gah__bg" aria-hidden="true">
+    <span class="gah__img-bg"></span>
+    <span class="gah__glow gah__glow--a"></span>
+    <span class="gah__glow gah__glow--b"></span>
+    <span class="gah__glow gah__glow--c"></span>
+    <span class="gah__grid"></span>
+    <span class="gah__vignette"></span>
+  </div>
+
+  <div class="gah__inner">
+
+    <!-- Left: copy -->
+    <div class="gah__content">
+      <span class="gah__badge">
+        <span class="gah__badge-dot" aria-hidden="true">&#8599;</span>
+        Google Ads Specialists <span class="gah__badge-sep">|</span> Certified &amp; Data-Driven
+      </span>
+
+      <h1 class="gah__title" data-aos="fade-up">
+        <span>Turn Ad Spend Into</span>
+        <span class="gah__title-accent">Predictable Revenue</span>
+      </h1>
+
+      <p class="gah__desc">
+        We plan, launch and optimise high-intent Google Ads campaigns &mdash; Search, Performance Max,
+        Display and YouTube &mdash; so every rupee is tracked to a lead, a call or a sale.
+      </p>
+
+      <div class="gah__cta">
+        <a href="#contact" class="gah-btn gah-btn--primary">
+          <span>Get a Free Ad Audit</span>
+          <span class="gah-btn__circle" aria-hidden="true">&#8599;</span>
+        </a>
+        <a href="#pricing" class="gah-btn gah-btn--ghost">
+          <span>View Pricing</span>
+          <span class="gah-btn__circle" aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Right: visual -->
+    <div class="gah__visual" aria-hidden="true">
+      <span class="gah-ring"></span>
+      <span class="gah-ring gah-ring--inner"></span>
+
+      <div class="gah-stage">
+
+        <!-- SERP mock panel -->
+        <div class="gah-panel">
+          <div class="gah-panel__bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>best digital marketing agency near me</span>
+            <span class="gah-panel__caret"></span>
+          </div>
+
+          <div class="gah-result">
+            <span class="gah-result__tag">Sponsored</span>
+            <p class="gah-result__title">GetIt Media &mdash; Google Ads That Actually Convert</p>
+            <p class="gah-result__url">www.getitmedia.in/google-ads</p>
+            <p class="gah-result__text">Certified campaign managers, transparent reporting and conversion tracking from day one.</p>
+          </div>
+
+          <div class="gah-result gah-result--plain">
+            <p class="gah-result__title" style="margin-top:0">Other results&hellip;</p>
+            <p class="gah-result__text">Position #1 is bought with strategy, not budget.</p>
+          </div>
+
+          <div class="gah-panel__metrics">
+            <div class="gah-metric">
+              <p class="gah-metric__label">CTR</p>
+              <p class="gah-metric__value">9.2%<small>&#9650;</small></p>
+            </div>
+            <div class="gah-metric">
+              <p class="gah-metric__label">CPC</p>
+              <p class="gah-metric__value">&#8377;14<small>&#9660;</small></p>
+            </div>
+            <div class="gah-metric">
+              <p class="gah-metric__label">Conv.</p>
+              <p class="gah-metric__value">312<small>&#9650;</small></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating cards -->
+        <div class="gah-float gah-float--roas">
+          <span class="gah-float__icon"><i class="fa-solid fa-arrow-trend-up"></i></span>
+          <div>
+            <p class="gah-float__title">ROAS 6.4x</p>
+            <p class="gah-float__sub">Last 30 days</p>
+          </div>
+        </div>
+
+        <div class="gah-float gah-float--cpc">
+          <span class="gah-float__icon"><i class="fa-solid fa-bullseye"></i></span>
+          <div>
+            <p class="gah-float__title">Cost / Lead &darr; 38%</p>
+            <p class="gah-float__sub">Smart bidding active</p>
+          </div>
+        </div>
+
+        <!-- Live leads ticker -->
+        <div class="gah-leads">
+          <div class="gah-leads__head">
+            <p class="gah-leads__label">Leads</p>
+            <span class="gah-leads__live"><span class="gah-leads__pulse"></span>LIVE</span>
+          </div>
+          <p class="gah-leads__num">+128</p>
+          <div class="gah-leads__bars">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<!-- =================== End Google Ads Hero =================== -->
+
+<!-- ===================== Performance Ecosystem Section ===================== -->
+<section class="performance-ecosystem theme-dark">
+  <div class="pe-horizon"></div>
+  <div class="pe-horizon-core"></div>
+  
+  <div class="pe-container">
+    <div class="pe-header">
+      <span class="pe-subtitle">Services</span>
+      <h2 class="pe-title" data-aos="fade-up">Performance<br>Ecosystem</h2>
+    </div>
+
+    <div class="pe-cards-wrapper">
+      
+      <!-- Card 1 -->
+      <div class="pe-card">
+        <div class="pe-card-content">
+          <div class="pe-icon-wrapper">
+            <i class="fa-solid fa-globe"></i>
+          </div>
+          <h3 class="pe-card-title" data-aos="fade-up">AI Creation</h3>
+          <p class="pe-card-desc">Generative AI powered asset creation.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="pe-card">
+        <div class="pe-card-content">
+          <div class="pe-icon-wrapper">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+          <h3 class="pe-card-title" data-aos="fade-up">Targeting</h3>
+          <p class="pe-card-desc">Precision audience targeting and lookalikes.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="pe-card">
+        <div class="pe-card-content">
+          <div class="pe-icon-wrapper">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+          <h3 class="pe-card-title" data-aos="fade-up">Bidding</h3>
+          <p class="pe-card-desc">Automated smart bidding strategies.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="pe-card">
+        <div class="pe-card-content">
+          <div class="pe-icon-wrapper">
+            <i class="fa-solid fa-chart-pie"></i>
+          </div>
+          <h3 class="pe-card-title" data-aos="fade-up">Analytics</h3>
+          <p class="pe-card-desc">Real-time performance tracking and ROI.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- =================== End Performance Ecosystem Section =================== -->
+
+    
+<!-- ===================== Meta Ads Section ===================== -->
+<section class="meta-section theme-light" aria-labelledby="meta-heading">
+  <div class="meta-stage" id="metaStage">
+    <div class="meta-canvas">
+
+      <!-- oversized ghost wordmark bleeding off both edges -->
+      <div class="meta-ghost" aria-hidden="true">META ADS</div>
+
+      <!-- subtle background geometry -->
+      <svg class="meta-shapes" viewBox="0 0 582 550" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="metaShade" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".05"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path d="M-40 470 L200 210 L200 590 Z" fill="url(#metaShade)"/>
+        <path d="M622 90 L400 320 L622 470 Z" fill="url(#metaShade)"/>
+        <circle cx="470" cy="120" r="150" fill="#ffffff" opacity=".022"/>
+
+        <!-- thin decorative arc around the Meta brand block -->
+        <path class="meta-arc" d="M213.1 234.9 A110 110 0 0 1 208.3 418.3" fill="none"
+              stroke="#ffffff" stroke-opacity=".55" stroke-width="1.4" stroke-linecap="round"/>
+
+        <!-- small white decorative dots -->
+        <circle class="meta-dot" style="--dd:.55s" cx="210.5" cy="204.9" r="3" fill="#ffffff" opacity=".7"/>
+        
+        <!-- active dot with ring -->
+        <circle class="meta-dot" style="--dd:.67s" cx="258.1" cy="252.5" r="3" fill="#ea5a06" opacity="1"/>
+        <circle cx="258.1" cy="252.5" r="10" fill="none" stroke="#ea5a06" stroke-width="1.5" opacity="0.8"/>
+        
+        <circle class="meta-dot" style="--dd:.79s" cx="275.5" cy="317.5" r="3" fill="#ffffff" opacity=".7"/>
+        <circle class="meta-dot" style="--dd:.91s" cx="258.1" cy="382.5" r="3" fill="#ffffff" opacity=".7"/>
+        <circle class="meta-dot" style="--dd:1.03s" cx="210.5" cy="430.1" r="3" fill="#ffffff" opacity=".7"/>
+      </svg>
+
+      <!-- title -->
+      <h2 class="meta-title" id="meta-heading" data-aos="fade-up">Meta Ads</h2>
+
+      <!-- Meta brand block -->
+      <div class="meta-brand">
+        <svg class="meta-mark" viewBox="0 0 128 76" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meta">
+          <path d="M10 44C10 20 24 12 36 12c16 0 24 18 28 26 4 8 12 26 28 26 16 0 26-12 26-28 0-16-10-24-22-24-14 0-24 12-32 26-8 14-18 26-32 26C18 64 10 56 10 44"
+                fill="none" stroke="currentColor" stroke-width="13"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="meta-brand-name">Meta</p>
+      </div>
+
+      <!-- 01 â€” money / conversion -->
+      <div class="meta-item" style="left:206.8px; top:156px; --d:0.34s;">
+        <span class="meta-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5.1"/>
+            <path d="M13.6 10.2c-.3-.6-.9-.9-1.6-.9-.9 0-1.6.5-1.6 1.2 0 1.7 3.3.9 3.3 2.6 0 .8-.7 1.3-1.7 1.3-.8 0-1.4-.3-1.7-.9M12 8.6v.7M12 14.7v.8"/>
+            <path d="M4.3 9.6A8.2 8.2 0 0 1 10 4.1"/>
+            <path d="m9.1 2.4 1.3 1.6-1.9.9"/>
+            <path d="M19.7 14.4A8.2 8.2 0 0 1 14 19.9"/>
+            <path d="m14.9 21.6-1.3-1.6 1.9-.9"/>
+          </svg>
+        </span>
+        <p class="meta-text">Eliminate Low<br>Quality Conversion</p>
+      </div>
+
+      <!-- 02 â€” budget / performance -->
+      <div class="meta-item" style="left:275px; top:224.2px; --d:0.46s;">
+        <span class="meta-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7.4 7.6h4.9l1.4 2.3a4.6 4.6 0 0 1-3.8 7.1H9.7a4.6 4.6 0 0 1-3.8-7.1Z"/>
+            <path d="M8.1 7.6 7.2 5.2h5.3l-.9 2.4"/>
+            <path d="M10.9 11.1c-.3-.4-.7-.6-1.2-.6-.7 0-1.2.4-1.2.9 0 1.2 2.5.7 2.5 1.9 0 .6-.5.9-1.3.9-.6 0-1-.2-1.3-.6"/>
+            <path d="M16.4 18.4v-3.1M19 18.4v-5.6M21.6 18.4v-8.2"/>
+            <path d="m18.4 6.6 3.4-.6-.5 3.4"/>
+          </svg>
+        </span>
+        <p class="meta-text">Increase Budget of<br>Performing Ad Sets</p>
+      </div>
+
+      <!-- 03 â€” creative testing -->
+      <div class="meta-item" style="left:300px; top:317.5px; --d:0.58s;">
+        <span class="meta-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5.4a4.9 4.9 0 0 0-2.9 8.9c.5.3.8.9.8 1.5v.3h4.2v-.3c0-.6.3-1.2.8-1.5A4.9 4.9 0 0 0 12 5.4Z"/>
+            <path d="M10.2 18.4h3.6M10.8 20.4h2.4"/>
+            <rect x="1.6" y="4" width="4.6" height="4.6" rx="1.2"/>
+            <path d="m2.9 6.3 1 1 1.4-1.7"/>
+            <rect x="17.8" y="4" width="4.6" height="4.6" rx="1.2"/>
+            <path d="m19.1 5.3 2 2M21.1 5.3l-2 2"/>
+          </svg>
+        </span>
+        <p class="meta-text">Continuously Test<br>Creatives &amp; Copy</p>
+      </div>
+
+      <!-- 04 â€” pause underperforming (inverted in the reference) -->
+      <div class="meta-item meta-item--solid" style="left:275px; top:410.8px; --d:0.70s;">
+        <span class="meta-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5.4 4.6v14.8L16 12z" fill="currentColor"/>
+            <rect x="17.4" y="4.6" width="2.9" height="14.8" rx="1.4" fill="currentColor"/>
+          </svg>
+        </span>
+        <p class="meta-text">Pause Underperforming<br>Ads</p>
+      </div>
+
+      <!-- 05 â€” audience / reach -->
+      <div class="meta-item" style="left:206.8px; top:479px; --d:0.82s;">
+        <span class="meta-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="10.4" r="2.8"/>
+            <path d="M7 19.4c0-2.8 2.2-5 5-5s5 2.2 5 5"/>
+            <circle cx="4.5" cy="12.4" r="2.1"/>
+            <path d="M1.2 19.4c0-1.9 1.3-3.5 3.1-3.9"/>
+            <circle cx="19.5" cy="12.4" r="2.1"/>
+            <path d="M22.8 19.4c0-1.9-1.3-3.5-3.1-3.9"/>
+            <circle cx="12" cy="4.3" r="2.6"/>
+            <path d="M12 3.1v2.4M10.8 4.3h2.4"/>
+          </svg>
+        </span>
+        <p class="meta-text">Refresh Your Reach<br>To New Users</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- =================== End Meta Ads Section =================== -->
+
+<!-- ===================== Tools Ecosystem Section ===================== -->
+<section class="tools-ecosystem theme-dark">
+  
+  <div class="ecosystem-header">
+    <span class="ecosystem-eyebrow">Integrated Tech Stack</span>
+    <h2 class="ecosystem-title" data-aos="fade-up">Google Ads Ecosystem</h2>
+  </div>
+
+  <div class="ecosystem-stage">
+    
+    <!-- Connector Lines -->
+    <svg class="connector-svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="orange-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(234,90,6,0)" />
+          <stop offset="100%" stop-color="rgba(234,90,6,0.8)" />
+        </linearGradient>
+        <linearGradient id="purple-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="rgba(234,90,6,0.8)" />
+          <stop offset="100%" stop-color="rgba(234,90,6,0)" />
+        </linearGradient>
+      </defs>
+      
+      <!-- Left side paths -->
+      <path class="connector-path connector-path-left" d="M 425 115 C 475 115, 450 300, 510 300" />
+      
+      <path class="connector-path connector-path-left" d="M 375 300 L 510 300" />
+      <circle cx="420" cy="300" r="2.5" fill="rgba(234,90,6,0.8)" filter="blur(1px)"/>
+      <circle cx="450" cy="300" r="1.5" fill="rgba(234,90,6,0.6)"/>
+      <circle cx="480" cy="300" r="3" fill="rgba(234,90,6,0.9)" filter="blur(1px)"/>
+
+      <path class="connector-path connector-path-left" d="M 425 485 C 475 485, 450 300, 510 300" />
+      
+      <!-- Right side paths -->
+      <path class="connector-path connector-path-right" d="M 775 115 C 725 115, 750 300, 690 300" />
+      
+      <path class="connector-path connector-path-right" d="M 825 300 L 690 300" />
+      <circle cx="780" cy="300" r="2.5" fill="rgba(234,90,6,0.8)" filter="blur(1px)"/>
+      <circle cx="750" cy="300" r="1.5" fill="rgba(234,90,6,0.6)"/>
+      <circle cx="720" cy="300" r="3" fill="rgba(234,90,6,0.9)" filter="blur(1px)"/>
+
+      <path class="connector-path connector-path-right" d="M 775 485 C 725 485, 750 300, 690 300" />
+    </svg>
+
+    <!-- Central Card with Official Google Ads Logo -->
+    <div class="ecosystem-center" title="Google Ads Core Hub">
+      <div class="ads-logo-wrap">
+        <img src="images/gads_official_logo.png" alt="Google Ads Logo" class="gads-official-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <svg class="gads-official-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+          <defs>
+            <filter id="gadsShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="-2" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.35"/>
+            </filter>
+            <filter id="gadsGlow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#ff5722" flood-opacity="0.4"/>
+            </filter>
+          </defs>
+          <g filter="url(#gadsGlow)" transform="translate(0, 2)">
+            <rect x="22" y="18" width="22" height="56" rx="11" fill="#FBBC04" transform="rotate(26 33 46)" />
+            <circle cx="26" cy="66" r="11" fill="#34A853" />
+            <rect x="56" y="18" width="22" height="56" rx="11" fill="#4285F4" transform="rotate(-26 67 46)" filter="url(#gadsShadow)" />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Left Nodes -->
+    <div class="tool-node left-node node-top">
+      <div class="tool-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <div class="tool-content">
+        <h3 class="tool-title" data-aos="fade-up">Google Analytics 4 (GA4)</h3>
+        <p class="tool-desc">Real-time conversion modeling, user journey tracking &amp; revenue attribution.</p>
+      </div>
+    </div>
+
+    <div class="tool-node left-node node-mid">
+      <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
+      <div class="tool-content">
+        <h3 class="tool-title" data-aos="fade-up">Google Tag Manager</h3>
+        <p class="tool-desc">Seamless server-side &amp; client-side event tracking without code clutter.</p>
+      </div>
+    </div>
+
+    <div class="tool-node left-node node-bot">
+      <div class="tool-icon"><i class="fa-brands fa-google"></i></div>
+      <div class="tool-content">
+        <h3 class="tool-title" data-aos="fade-up">Search Console</h3>
+        <p class="tool-desc">Organic search intent data, query indexing &amp; keyword rank optimization.</p>
+      </div>
+    </div>
+
+    <!-- Right Nodes -->
+    <div class="tool-node right-node node-top">
+      <div class="tool-icon"><i class="fa-solid fa-chart-pie"></i></div>
+      <div class="tool-content">
+        <h3 class="tool-title" data-aos="fade-up">Looker Studio Dashboards</h3>
+        <p class="tool-desc">Live, interactive multi-channel ROAS &amp; performance client reporting.</p>
+      </div>
+    </div>
+
+    <div class="tool-node right-node node-mid">
+      <div class="tool-icon"><i class="fa-solid fa-database"></i></div>
+      <div class="tool-content">
+        <h3 class="tool-title" data-aos="fade-up">CRM &amp; First-Party Data</h3>
+        <p class="tool-desc">Offline conversion imports &amp; customer match targeting for Smart Bidding.</p>
+      </div>
+    </div>
+
+    <div class="tool-node right-node node-bot">
+      <div class="tool-icon"><i class="fa-solid fa-phone-volume"></i></div>
+      <div class="tool-content">
+        <h3 class="tool-title" data-aos="fade-up">AI Call &amp; Lead Tracking</h3>
+        <p class="tool-desc">Dynamic number insertion (DNI) to attribute phone calls to exact ads.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- =================== End Tools Ecosystem Section =================== -->
+
+<!-- ===================== The Blueprint Section ===================== -->
+<section class="blueprint-section theme-light" id="blueprint">
+  
+  <div class="bp-header">
+    <span class="bp-eyebrow" data-aos="fade-down">Process</span>
+    <h2 class="bp-title" data-aos="fade-up">The Blueprint</h2>
+  </div>
+
+  <div class="blueprint-timeline">
+    <!-- Central Animated Progress Line Elements -->
+    <div class="bp-line-bg"></div>
+    <div class="bp-line-progress" id="bpProgressLine"></div>
+    <div class="bp-laser-pulse" id="bpLaserPulse"></div>
+    
+    <!-- Step 01 -->
+    <div class="bp-step left-step" data-aos="fade-right" data-aos-duration="700">
+      <div class="bp-node">
+        <i class="fa-solid fa-magnifying-glass bp-icon"></i>
+      </div>
+      <div class="bp-content">
+        <h3 class="bp-step-title">01. Audit</h3>
+        <p class="bp-step-desc">Comprehensive audit of your existing account, tracking setup, and wasted spend identification.</p>
+      </div>
+    </div>
+
+    <!-- Step 02 -->
+    <div class="bp-step right-step" data-aos="fade-left" data-aos-duration="700" data-aos-delay="100">
+      <div class="bp-node">
+        <i class="fa-solid fa-bullseye bp-icon"></i>
+      </div>
+      <div class="bp-content">
+        <h3 class="bp-step-title">02. Strategy</h3>
+        <p class="bp-step-desc">Bespoke campaign structure, high-intent keyword discovery, and competitor positioning strategy.</p>
+      </div>
+    </div>
+
+    <!-- Step 03 -->
+    <div class="bp-step left-step" data-aos="fade-right" data-aos-duration="700" data-aos-delay="200">
+      <div class="bp-node">
+        <i class="fa-solid fa-rocket bp-icon"></i>
+      </div>
+      <div class="bp-content">
+        <h3 class="bp-step-title">03. Launch</h3>
+        <p class="bp-step-desc">High-converting ad copies, landing page alignment, and live campaign deployment across networks.</p>
+      </div>
+    </div>
+
+    <!-- Step 04 -->
+    <div class="bp-step right-step" data-aos="fade-left" data-aos-duration="700" data-aos-delay="300">
+      <div class="bp-node">
+        <i class="fa-solid fa-gear bp-icon"></i>
+      </div>
+      <div class="bp-content">
+        <h3 class="bp-step-title">04. Optimize</h3>
+        <p class="bp-step-desc">Daily bid tuning, negative keyword addition, and A/B testing copy to continuously drive down CPC.</p>
+      </div>
+    </div>
+
+    <!-- Step 05 -->
+    <div class="bp-step left-step" data-aos="fade-right" data-aos-duration="700" data-aos-delay="400">
+      <div class="bp-node">
+        <i class="fa-solid fa-chart-line bp-icon"></i>
+      </div>
+      <div class="bp-content">
+        <h3 class="bp-step-title">05. Scale</h3>
+        <p class="bp-step-desc">Aggressive budget scaling into top-performing keywords and expanding into Performance Max.</p>
+      </div>
+    </div>
+
+    <!-- Step 06 -->
+    <div class="bp-step right-step" data-aos="fade-left" data-aos-duration="700" data-aos-delay="500">
+      <div class="bp-node">
+        <i class="fa-regular fa-file-lines bp-icon"></i>
+      </div>
+      <div class="bp-content">
+        <h3 class="bp-step-title">06. Report</h3>
+        <p class="bp-step-desc">Transparent weekly & monthly dashboard reporting directly linked to ROAS and qualified leads.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- =================== End The Blueprint Section =================== -->
+
+<!-- ===================== Final CTA Section ===================== -->
+<section class="cta-final-section theme-dark" id="contact-cta">
+  <div class="cta-final-container">
+    
+    <div class="cta-final-bg">
+      <img src="images/gads_cta_visual.jpg" alt="Google Ads Performance Analytics Dashboard" data-aos="fade-up">
+      <div class="cta-final-overlay"></div>
+    </div>
+
+    <!-- Floating Badges -->
+    <div class="cta-float-badge cta-float-badge--top">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>ROAS 6.8x ▲</span>
+    </div>
+    <div class="cta-float-badge cta-float-badge--bottom">
+      <i class="fa-solid fa-shield-halved"></i>
+      <span>100% Tracked ROI</span>
+    </div>
+
+    <div class="cta-final-content">
+      <span class="cta-final-eyebrow">
+        <i class="fa-solid fa-bolt" style="font-size: 11px;"></i> Ready To Scale
+      </span>
+      <h2 class="cta-final-title" data-aos="fade-up">
+        Ready to<br><span class="highlight">Outperform?</span>
+      </h2>
+      <p class="cta-final-desc">
+        Turn your Google Ads budget into predictable revenue with certified performance marketing specialists.
+      </p>
+      <a href="#contact" class="cta-final-btn">
+        <span>Start Your Growth Engine</span>
+        <span class="cta-btn-circle" aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- =================== End Final CTA Section =================== -->
+
+
+
+      <!-- Main Footer -->
+      <footer class="lt-footer" id="contact">
+        <div class="lt-dotgrid" aria-hidden="true"></div>
+        <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#ea5a06" stroke-width="1.4" fill="none" opacity="0.9"/>
+          <path d="M-20 148 C 60 78, 140 188, 220 108 S 380 48, 460 118" stroke="#ea5a06" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <path d="M-20 112 C 60 42, 140 152, 220 72 S 380 12, 460 82" stroke="#ea5a06" stroke-width="1" fill="none" opacity="0.4"/>
+        </svg>
+
+        <div class="lt-outer">
+          <div class="lt-grid">
+
+            <!-- Column 1: Let's Talk -->
+            <div class="lt-col">
+              <h2 class="lt-heading" data-aos="fade-up">LET&rsquo;S<span class="lt-heading-accent">TALK
+                <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+                  <path class="lt-heading-arrow-path" d="M8 82 C 4 60, 10 46, 26 40 C 40 35, 46 44, 40 54 C 36 61, 30 55, 34 48 C 42 34, 60 24, 78 12" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </span></h2>
+              <div class="lt-underline"></div>
+              <p class="lt-desc">We&rsquo;re here to listen and help you grow your business online.</p>
+              <a class="lt-btn" href="mailto:hello@getitmediasolutions.com">
+                <span class="lt-btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                Get In Touch
+              </a>
+            </div>
+
+            <!-- Column 2: Get In Touch With Us -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Get In Touch With Us</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-social-list">
+                <a class="lt-social-card" href="https://www.instagram.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--ig"><i class="fab fa-instagram"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Instagram</span>
+                    <span class="lt-social-sub">@getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.facebook.com/getitmediasolutions" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--fb"><i class="fab fa-facebook-f"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Facebook</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.youtube.com/channel/UC6b2HvglRe3kztaasEYVNdQ" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--yt"><i class="fab fa-youtube"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">YouTube</span>
+                    <span class="lt-social-sub">/getitmediasolutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a class="lt-social-card" href="https://www.google.com/search?q=Getit+Media+Solutions+Pvt+Ltd" target="_blank" rel="noopener">
+                  <span class="lt-social-icon lt-social-icon--gg"><i class="fab fa-google"></i></span>
+                  <span class="lt-social-text">
+                    <span class="lt-social-title">Google</span>
+                    <span class="lt-social-sub">Getit Media Solutions</span>
+                  </span>
+                  <span class="lt-social-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Column 3: Brand -->
+            <div class="lt-col">
+              <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png" alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
+              <div class="lt-underline"></div>
+              <p class="lt-brand-desc">When do they work well, and when do they on us and finally, when do we actually need how can we avoid them.</p>
+            </div>
+
+            <!-- Column 4: Contact Info -->
+            <div class="lt-col">
+              <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
+              <div class="lt-underline"></div>
+              <div class="lt-contact-list">
+                <a class="lt-contact-item" href="mailto:hello@getitmediasolutions.com">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Email Us</p>
+                    <p class="lt-contact-value">hello@getitmediasolutions.com</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="https://www.google.com/maps/search/?api=1&query=4517+Washington+Ave.+Newyork+39495" target="_blank" rel="noopener">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Address</p>
+                    <p class="lt-contact-value">4517 Washington Ave.<br>Newyork 39495</p>
+                  </span>
+                </a>
+                <a class="lt-contact-item" href="tel:+11234567890">
+                  <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
+                  <span>
+                    <p class="lt-contact-label">Phone</p>
+                    <p class="lt-contact-value">(123) 456-7890</p>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Trust / service features bar -->
+        <div class="lt-features">
+          <div class="lt-features-inner">
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-shield-check"></i></span>
+              <div>
+                <p class="lt-feature-title">Trusted Solutions</p>
+                <p class="lt-feature-sub">Reliable &amp; Secure</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-regular fa-clock"></i></span>
+              <div>
+                <p class="lt-feature-title">On-Time Delivery</p>
+                <p class="lt-feature-sub">Always On Schedule</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-user-group"></i></span>
+              <div>
+                <p class="lt-feature-title">Client Satisfaction</p>
+                <p class="lt-feature-sub">Our Priority</p>
+              </div>
+            </div>
+            <div class="lt-feature">
+              <span class="lt-feature-icon"><i class="fa-solid fa-headset"></i></span>
+              <div>
+                <p class="lt-feature-title">24/7 Support</p>
+                <p class="lt-feature-sub">We&rsquo;re Always Here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom footer bar -->
+        <div class="lt-bottom">
+          <div class="lt-bottom-brand">
+            <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+            <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
+          </div>
+          <nav class="lt-bottom-nav" aria-label="Footer">
+            <a href="#home">About Us</a><span>|</span>
+            <a href="#portfolio">Our Portfolio</a><span>|</span>
+            <a href="#contact">Careers</a><span>|</span>
+            <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
+            <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          </nav>
+        </div>
+      </footer>
+      <!--End Main Footer -->
+    </div>
+    <!-- End Page Wrapper -->
+
+
+    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/select2.min.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/knob.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/aos.js"></script>
+        <script src="js/gsap.min.js"></script>
+        <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/splitType.js"></script>
+    <script src="js/gsap-scroll-smoother.js"></script>
+    <script src="js/gsap-scroll-to-plugin.js"></script>
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/custom-gsap.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/cursor.js"></script>
+  <script src="js/text-reveal.js"></script>
+  <script src="js/terranova-hero.js"></script>
+  <script src="js/services-cards.js"></script>
+  <script src="js/cta-brand.js"></script>
+  <script src="js/gmb-hero.js"></script>
+  <script src="js/one-tool.js"></script>
+  <script src="js/main-products.js"></script>
+  <script src="js/meta-ads.js"></script>
+  <script src="js/3d-carousel.js"></script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"88f4fa328f314d4c95a104b4a60b2313","r":1}' crossorigin="anonymous"></script>
+<script src="js/scroll-anim.js"></script>
+<script src="js/the-blueprint.js"></script>
+</body>
+
+</html>

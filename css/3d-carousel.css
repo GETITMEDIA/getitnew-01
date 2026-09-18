@@ -1,0 +1,743 @@
+/* ==========================================================================
+   3D Services Carousel
+   ========================================================================== */
+
+:root {
+  --color-bg: #000000;
+  --color-text: #FFFFFF;
+  --color-text-muted: rgba(255,255,255,0.7);
+  --color-brand: #ea5a06;
+  --color-brand-glow: rgba(234, 90, 6, 0.6);
+  --color-brand-glow-strong: rgba(234, 90, 6, 0.9);
+  
+  /* Card Theme Colors - Enforced to brand colors */
+  --c-purple: #ea5a06;
+  --c-green: #ea5a06;
+  --c-blue: #ea5a06;
+  --c-orange: #ea5a06;
+  --c-blue-dark: #ea5a06;
+  --c-purple-dark: #ea5a06;
+
+  --card-width: 400px;
+  --card-height: 380px;
+  --card-width-featured: 400px;
+  --card-height-featured: 380px;
+  --card-gap: 50px;
+  
+  --transition-speed: 0.8s;
+  --transition-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Hero Container & Background
+   ========================================================================== */
+.hero-google-ads {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 70px 20px 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-radial {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.top-glow {
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 40%;
+  background: radial-gradient(circle, rgba(234, 90, 6, 0.4) 0%, rgba(0,0,0,0) 70%);
+}
+
+.center-glow {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(234, 90, 6, 0.4) 0%, rgba(0,0,0,0) 60%);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Header Text
+   ========================================================================== */
+.hero-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-subtitle {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--color-brand);
+  text-transform: uppercase;
+  background: rgba(255, 87, 34, 0.1);
+  border: 1px solid rgba(255, 87, 34, 0.25);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.15);
+}
+
+.hero-title {
+  font-size: clamp(34px, 4.5vw, 54px);
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.hero-title .highlight {
+  color: var(--color-brand);
+  text-shadow: 0 0 20px rgba(234, 90, 6, 0.4);
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Carousel Layout
+   ========================================================================== */
+.carousel-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+  padding: 0 60px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(14, 14, 18, 0.9);
+  border: 1.5px solid rgba(255, 87, 34, 0.6);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(255, 87, 34, 0.3);
+}
+
+.nav-btn:hover {
+  background: #ff5722;
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 87, 34, 0.8);
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* ==========================================================================
+   Carousel Cards
+   ========================================================================== */
+.carousel-card {
+  position: absolute;
+  transition: transform var(--transition-speed) var(--transition-ease),
+              opacity var(--transition-speed) var(--transition-ease),
+              filter var(--transition-speed) var(--transition-ease);
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Glass & Glow */
+.card-glass {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
+}
+
+.card-glow-inner {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  box-shadow: inset 0 0 60px rgba(234, 90, 6, 0.1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-number {
+  background: var(--c-accent);
+  color: #FFFFFF;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 12px var(--c-accent-glow);
+}
+
+.badge-featured {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Card Typography */
+.card-category {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 4px;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Custom Checklist for Focus Areas */
+.card-focus-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-focus-list li {
+  position: relative;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+  padding-left: 24px;
+}
+
+.card-focus-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #ea5a06;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Theme Colors */
+.card-purple { --c-accent: var(--c-purple); --c-accent-glow: rgba(234, 90, 6, 0.4); }
+.card-green { --c-accent: var(--c-green); --c-accent-glow: rgba(234, 90, 6, 0.4); }
+.card-blue { --c-accent: var(--c-blue); --c-accent-glow: rgba(234, 90, 6, 0.4); }
+.card-orange { --c-accent: var(--c-orange); --c-accent-glow: rgba(234, 90, 6, 0.4); }
+.card-blue-dark { --c-accent: var(--c-blue-dark); --c-accent-glow: rgba(234, 90, 6, 0.4); }
+.card-purple-dark { --c-accent: var(--c-purple-dark); --c-accent-glow: rgba(234, 90, 6, 0.4); }
+
+
+.btn-view-details {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--c-accent);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px var(--c-accent-glow);
+  position: relative;
+  z-index: 2;
+}
+
+.btn-view-details:hover {
+  filter: brightness(1.2);
+}
+
+.card-footer-small {
+  margin-top: auto;
+}
+.card-footer-center {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* ==========================================================================
+   Normal Cards (Side Cards)
+   ========================================================================== */
+.carousel-card:not(.card-featured) {
+  width: var(--card-width);
+  height: var(--card-height);
+}
+
+.carousel-card:not(.card-featured) .card-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+/* Graphic Placeholders for Normal Cards */
+.card-graphic {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Very simple CSS graphics to mimic the 3D icons */
+.graphic-social .mega-phone, .graphic-ppc .target-board, 
+.graphic-content .doc-icon, .graphic-email .envelope, 
+.graphic-web .laptop {
+  width: 64px; height: 64px; color: var(--c-accent); opacity: 0.8;
+}
+
+/* ==========================================================================
+   Featured Center Card (01 Search Engine)
+   ========================================================================== */
+.card-featured {
+  width: var(--card-width-featured);
+  height: var(--card-height-featured);
+}
+
+.card-featured .card-inner {
+  padding: 20px;
+}
+
+/* Dynamic Active Glow for whichever card is in the center */
+.card-state-0 .card-inner {
+  border: 2px solid rgba(234, 90, 6, 1) !important;
+  box-shadow: 0 0 60px rgba(234, 90, 6, 0.6),
+              inset 0 0 40px rgba(234, 90, 6, 0.4),
+              0 30px 60px rgba(0,0,0,0.9) !important;
+}
+
+.card-layout-split {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.card-col-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-search {
+  color: var(--color-brand);
+  margin-bottom: 10px;
+}
+
+.side-menu {
+  display: none;
+}
+
+.m-item {
+  color: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.m-item.active, .m-item:hover {
+  color: var(--color-brand);
+}
+
+.card-col-left .content-main {
+  margin-bottom: 10px;
+}
+.card-col-left .card-title {
+  font-size: 24px;
+}
+
+/* Dashboard Right Column */
+.dashboard-ui {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panel {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Chart */
+.chart-panel { height: 100px; }
+.chart-area {
+  display: flex;
+  align-items: flex-end;
+  height: 45px;
+  position: relative;
+}
+.chart-line {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+.chart-line svg { width: 100%; height: 100%; }
+.chart-point {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: #FFFFFF;
+  border: 2px solid var(--color-brand);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--color-brand);
+}
+.chart-stat {
+  display: flex; flex-direction: column; text-align: right; margin-left: 10px;
+}
+.stat-val { font-size: 20px; font-weight: 700; color: var(--color-brand); }
+.stat-label { font-size: 9px; color: rgba(255,255,255,0.5); }
+
+/* Performance */
+.perf-panel { height: 110px; }
+.perf-content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.circular-progress {
+  position: relative;
+  width: 60px; height: 60px;
+}
+.circular-progress svg {
+  transform: rotate(-90deg);
+}
+.circular-progress circle {
+  fill: none; stroke-width: 8; stroke-linecap: round;
+}
+.circular-progress .bg { stroke: rgba(255,255,255,0.1); }
+.circular-progress .progress { stroke: var(--color-brand); transition: 1s ease; }
+.progress-val {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  font-size: 12px; font-weight: 700; text-align: center; line-height: 1.1;
+}
+.progress-val span { font-size: 8px; font-weight: 400; color: rgba(255,255,255,0.5); }
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+}
+.check-icon { color: var(--color-brand); margin-right: 6px; font-weight: bold; }
+
+/* ==========================================================================
+   The Person Layer (Creates Pop-out 3D Effect)
+   ========================================================================== */
+.global-person-layer {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100; /* Higher than cards */
+  pointer-events: none;
+}
+
+/* CSS silhouette recreation of the person */
+.person-silhouette {
+  position: relative;
+  width: 140px;
+  height: 280px;
+}
+
+.person-drawing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 20px 20px rgba(0,0,0,0.8));
+}
+
+.p-head {
+  position: absolute; top: 10px; left: 55px; width: 30px; height: 40px;
+  background: #000000; border-radius: 40% 40% 50% 50%;
+  box-shadow: inset -3px 5px 8px rgba(234, 90, 6, 0.4);
+}
+.p-torso {
+  position: absolute; top: 55px; left: 35px; width: 70px; height: 90px;
+  background: #000000; border-radius: 15px 15px 10px 10px;
+  box-shadow: inset -5px 10px 15px rgba(234, 90, 6, 0.3);
+}
+.p-arm-l {
+  position: absolute; top: 60px; left: 20px; width: 22px; height: 80px;
+  background: #000000; border-radius: 10px; transform: rotate(10deg);
+}
+.p-arm-r {
+  position: absolute; top: 65px; left: 95px; width: 22px; height: 85px;
+  background: #000000; border-radius: 10px; transform: rotate(-35deg); transform-origin: top center;
+  box-shadow: inset -4px 0 10px rgba(234, 90, 6, 0.5);
+}
+.p-leg-l {
+  position: absolute; top: 140px; left: 45px; width: 25px; height: 110px;
+  background: #000000; border-radius: 5px; transform: rotate(-5deg);
+}
+.p-leg-r {
+  position: absolute; top: 140px; left: 70px; width: 25px; height: 110px;
+  background: #000000; border-radius: 5px; transform: rotate(10deg);
+  box-shadow: inset -2px 0 8px rgba(234, 90, 6, 0.3);
+}
+
+/* ==========================================================================
+   Pagination & Scroll
+   ========================================================================== */
+.carousel-pagination {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: var(--color-brand);
+  box-shadow: 0 0 10px var(--color-brand);
+  transform: scale(1.2);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  z-index: 10;
+}
+
+.scroll-icon svg {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-3px); }
+}
+
+/* ==========================================================================
+   Floor Reflection
+   ========================================================================== */
+.floor-reflection {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), #000000);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floor-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: rgba(234, 90, 6, 0.6);
+  box-shadow: 0 0 40px 10px rgba(234, 90, 6, 0.5);
+}
+
+/* ==========================================================================
+   3D Transformation Classes (Applied by JS)
+   ========================================================================== */
+
+/* Defaults */
+.carousel-card {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+/* Active Center */
+.card-state-0 {
+  transform: translateX(0) translateZ(0) rotateY(0);
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+
+/* Right Side Cards */
+.card-state-1 {
+  transform: translateX(370px) translateZ(-160px) rotateY(-18deg);
+  opacity: 0.88;
+  visibility: visible;
+  z-index: 4;
+}
+.card-state-2 {
+  transform: translateX(650px) translateZ(-320px) rotateY(-28deg);
+  opacity: 0.55;
+  visibility: visible;
+  z-index: 3;
+}
+.card-state-3 {
+  transform: translateX(920px) translateZ(-450px) rotateY(-35deg);
+  opacity: 0.2;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* Left Side Cards */
+.card-state--1 {
+  transform: translateX(-370px) translateZ(-160px) rotateY(18deg);
+  opacity: 0.88;
+  visibility: visible;
+  z-index: 4;
+}
+.card-state--2 {
+  transform: translateX(-650px) translateZ(-320px) rotateY(28deg);
+  opacity: 0.55;
+  visibility: visible;
+  z-index: 3;
+}
+.card-state--3 {
+  transform: translateX(-920px) translateZ(-450px) rotateY(35deg);
+  opacity: 0.2;
+  visibility: visible;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .carousel-wrapper { transform: scale(0.8); }
+  .global-person-layer { transform: translateX(-50%) scale(0.8); bottom: 100px; }
+  .card-state-1 { transform: translateX(300px) translateZ(-150px) rotateY(-15deg); }
+  .card-state--1 { transform: translateX(-300px) translateZ(-150px) rotateY(15deg); }
+  .card-state-2 { transform: translateX(550px) translateZ(-300px) rotateY(-25deg); }
+  .card-state--2 { transform: translateX(-550px) translateZ(-300px) rotateY(25deg); }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper { transform: scale(0.6); }
+  .nav-btn { display: none; } /* Rely on touch/swipe or pagination on mobile */
+  .hero-title { font-size: 32px; }
+}

@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Google Ads Key Focus Areas Section
+   ========================================================================== */
+
+.ga-focus-section {
+  position: relative;
+  background-color: #030508;
+  padding: 120px 0;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Background grid effect */
+.ga-focus-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Glowing orbs */
+.ga-glow-left {
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(243, 101, 35, 0.15) 0%, rgba(243, 101, 35, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ga-glow-right {
+  position: absolute;
+  bottom: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(243, 101, 35, 0.1) 0%, rgba(243, 101, 35, 0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ga-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  z-index: 2;
+}
+
+/* Header */
+.ga-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.ga-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.ga-title .highlight {
+  color: #f36523;
+  position: relative;
+  display: inline-block;
+}
+
+.ga-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #f36523;
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(243, 101, 35, 0.8);
+}
+
+.ga-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.ga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Cards */
+.ga-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px 30px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ga-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(243, 101, 35, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+/* Animated Border Glow Effect on Hover */
+.ga-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, #f36523, transparent, rgba(255, 255, 255, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.ga-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(243, 101, 35, 0.2),
+              0 15px 20px rgba(0, 0, 0, 0.8);
+}
+
+.ga-card:hover::before,
+.ga-card:hover::after {
+  opacity: 1;
+}
+
+/* Card Content */
+.ga-content {
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+}
+
+.ga-number {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+  z-index: 0;
+  transition: color 0.4s ease;
+}
+
+.ga-card:hover .ga-number {
+  color: rgba(243, 101, 35, 0.08);
+}
+
+.ga-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 25px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ga-card-title::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: #f36523;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #f36523;
+}
+
+.ga-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ga-list li {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 24px;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.ga-card:hover .ga-list li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ga-list li:last-child {
+  margin-bottom: 0;
+}
+
+.ga-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #f36523;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .ga-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .ga-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ga-focus-section {
+    padding: 80px 0;
+  }
+  .ga-title {
+    font-size: 28px;
+  }
+  .ga-container {
+    padding: 0 20px;
+  }
+}

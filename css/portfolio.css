@@ -1,0 +1,356 @@
+/* ==========================================================================
+   Portfolio Page (Neon Green & Dark Mode) — builds on smm-theme.css tokens
+   ========================================================================== */
+
+/* ---------- Background ---------- */
+.pf-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.pf-bg-grid {
+  position: absolute;
+  inset: -50%;
+  background-image:
+    linear-gradient(rgba(0, 255, 102, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 102, 0.06) 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: perspective(600px) rotateX(60deg);
+  opacity: 0.5;
+}
+.pf-bg-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--smm-neon-glow) 0%, transparent 60%);
+  opacity: 0.16;
+  filter: blur(40px);
+}
+
+/* ---------- Hero ---------- */
+.pf-hero {
+  position: relative;
+  padding: 190px 0 90px;
+  text-align: center;
+}
+.pf-eyebrow {
+  display: inline-block;
+  padding: 8px 18px;
+  margin-bottom: 22px;
+  border: 1px solid var(--smm-glass-border-hover);
+  border-radius: 100px;
+  background: var(--smm-glass-bg);
+  color: var(--smm-neon-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.pf-hero h1 {
+  margin: 0 auto 20px;
+  max-width: 900px;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.08;
+}
+.pf-hero p {
+  margin: 0 auto 34px;
+  max-width: 640px;
+  color: var(--smm-text-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.pf-hero .smm-btn-group { justify-content: center; }
+
+/* ---------- Stats ---------- */
+.pf-stats {
+  position: relative;
+  padding: 40px 0 70px;
+}
+.pf-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.pf-stat {
+  padding: 30px 22px;
+  text-align: center;
+  border: 1px solid var(--smm-glass-border);
+  border-radius: 16px;
+  background: var(--smm-glass-bg);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.pf-stat:hover {
+  border-color: var(--smm-glass-border-hover);
+  transform: translateY(-6px);
+}
+.pf-stat-num {
+  display: block;
+  color: var(--smm-neon-primary);
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: 0 0 18px var(--smm-neon-glow);
+}
+.pf-stat-label {
+  display: block;
+  margin-top: 10px;
+  color: var(--smm-text-muted);
+  font-size: 14px;
+  letter-spacing: 0.6px;
+}
+
+/* ---------- Section header ---------- */
+.pf-section { position: relative; padding: 70px 0; }
+.pf-section-header {
+  margin-bottom: 44px;
+  text-align: center;
+}
+.pf-section-header h2 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+}
+.pf-section-header p {
+  margin: 0 auto;
+  max-width: 620px;
+  color: var(--smm-text-muted);
+  font-size: 16px;
+}
+
+/* ---------- Filters ---------- */
+.pf-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+.pf-filter {
+  padding: 11px 22px;
+  border: 1px solid var(--smm-glass-border);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--smm-text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.pf-filter:hover {
+  color: var(--smm-text-main);
+  border-color: var(--smm-glass-border-hover);
+}
+.pf-filter.is-active {
+  background: var(--smm-neon-primary);
+  border-color: var(--smm-neon-primary);
+  color: #000;
+  box-shadow: 0 0 20px var(--smm-neon-glow);
+}
+
+/* ---------- Project grid ---------- */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+.pf-item {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.pf-item.is-hidden { display: none; }
+.pf-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--smm-glass-border);
+  border-radius: 18px;
+  background: var(--smm-bg-surface);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pf-card:hover {
+  border-color: var(--smm-glass-border-hover);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 102, 0.12);
+}
+.pf-card-media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 210px;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 50% 120%, rgba(0, 255, 102, 0.18), transparent 60%),
+    #0d0d0d;
+  border-bottom: 1px solid var(--smm-glass-border);
+}
+.pf-card-media img {
+  max-width: 74%;
+  max-height: 120px;
+  object-fit: contain;
+  filter: brightness(1.05);
+  transition: transform 0.4s ease;
+}
+.pf-card:hover .pf-card-media img { transform: scale(1.06); }
+.pf-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 12px;
+  border: 1px solid var(--smm-glass-border-hover);
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--smm-neon-primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.pf-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+}
+.pf-card-body h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.pf-card-body p {
+  margin: 0 0 18px;
+  color: var(--smm-text-muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+.pf-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+.pf-result {
+  padding: 7px 12px;
+  border: 1px solid rgba(0, 255, 102, 0.22);
+  border-radius: 8px;
+  background: rgba(0, 255, 102, 0.06);
+  color: var(--smm-neon-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* ---------- Client logo strip ---------- */
+.pf-clients { padding: 60px 0 80px; }
+.pf-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 0;
+  border-top: 1px solid var(--smm-glass-border);
+  border-bottom: 1px solid var(--smm-glass-border);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.pf-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: max-content;
+  animation: pf-scroll 38s linear infinite;
+}
+.pf-marquee:hover .pf-marquee-track { animation-play-state: paused; }
+.pf-marquee-track img {
+  height: 54px;
+  width: auto;
+  opacity: 0.55;
+  filter: grayscale(1);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.pf-marquee-track img:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+@keyframes pf-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Process / approach ---------- */
+.pf-approach-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.pf-approach {
+  position: relative;
+  padding: 30px 24px;
+  border: 1px solid var(--smm-glass-border);
+  border-radius: 16px;
+  background: var(--smm-glass-bg);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.pf-approach:hover {
+  border-color: var(--smm-glass-border-hover);
+  transform: translateY(-6px);
+}
+.pf-approach-step {
+  display: block;
+  margin-bottom: 14px;
+  color: rgba(0, 255, 102, 0.35);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+.pf-approach h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.pf-approach p {
+  margin: 0;
+  color: var(--smm-text-muted);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ---------- CTA ---------- */
+.pf-cta {
+  position: relative;
+  padding: 90px 0 110px;
+  text-align: center;
+}
+.pf-cta h2 {
+  margin: 0 auto 16px;
+  max-width: 760px;
+  font-size: clamp(28px, 4.4vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+.pf-cta p {
+  margin: 0 auto 32px;
+  max-width: 580px;
+  color: var(--smm-text-muted);
+  font-size: 17px;
+}
+.pf-cta .smm-btn-group { justify-content: center; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .pf-grid { grid-template-columns: repeat(2, 1fr); }
+  .pf-approach-grid { grid-template-columns: repeat(2, 1fr); }
+  .pf-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .pf-hero { padding: 150px 0 60px; }
+  .pf-grid { grid-template-columns: 1fr; }
+  .pf-approach-grid { grid-template-columns: 1fr; }
+  .pf-stat-num { font-size: 36px; }
+  .pf-marquee-track { gap: 40px; }
+  .pf-marquee-track img { height: 42px; }
+}

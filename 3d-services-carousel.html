@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Digital Marketing - 3D Carousel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/3d-carousel.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/theme-3color.css">
+<!-- Scroll reveal system -->
+<link href="css/scroll-anim.css" rel="stylesheet">
+<script>
+  /* Arm the pre-hide only when animation will actually run, and always unarm
+     on a timer so a failed GSAP load can never leave the page blank.
+     js/scroll-anim.js unarms as soon as its start states are set. */
+  (function () {
+    var r = document.documentElement;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    r.classList.add("sa-armed");
+    setTimeout(function () { r.classList.remove("sa-armed"); }, 3000);
+  })();
+</script>
+  <!-- Global font family override (must load last) -->
+  <link href="css/global-font.css" rel="stylesheet">
+</head>
+<body>
+
+  <section class="hero-google-ads theme-dark">
+    <!-- Background Effects -->
+    <div class="hero-bg">
+      <div class="glow-radial top-glow"></div>
+      <div class="glow-radial center-glow"></div>
+    </div>
+
+    <!-- Header Text -->
+    <div class="hero-header">
+      <h3 class="hero-subtitle" data-aos="fade-up">SMART DIGITAL MARKETING</h3>
+      <h1 class="hero-title" data-aos="fade-up">All Services, <span class="highlight">One Solution</span></h1>
+      <p class="hero-desc">Scroll to explore our complete range of digital marketing services</p>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container">
+      
+      <button class="nav-btn prev-btn" aria-label="Previous Slide">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="carousel-wrapper" id="carouselWrapper">
+        
+        <!-- CARD 1: Social Media (05) -->
+        <div class="carousel-card card-purple" data-index="0">
+          <div class="card-inner">
+            <div class="card-glass"></div>
+            <div class="card-header">
+              <span class="card-number">05</span>
+            </div>
+            <div class="card-content">
+              <h4 class="card-category">SOCIAL MEDIA</h4>
+              <h3 class="card-title" data-aos="fade-up">Marketing</h3>
+              <p class="card-desc">Build your brand, engage with your audience and boost conversions.</p>
+              <div class="card-graphic">
+                <div class="graphic-social">
+                  <div class="mega-phone">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 4.5v15c0 .8-.6 1.5-1.5 1.5H8v-1.5c0-.8-.6-1.5-1.5-1.5H5c-.8 0-1.5-.6-1.5-1.5v-9c0-.8.6-1.5 1.5-1.5h1.5c.8 0 1.5-.6 1.5-1.5V4.5c0-.8.6-1.5 1.5-1.5h1.5c.8 0 1.5.6 1.5 1.5zm10 4.5l-6-2.5v11l6-2.5v-6z"/></svg>
+                  </div>
+                  <div class="social-icons-float">
+                    <div class="s-icon i-fb">f</div>
+                    <div class="s-icon i-ig">ig</div>
+                    <div class="s-icon i-smile">:)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-small">
+              <a href="#" class="btn-view-details">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Pay Per Click (02) -->
+        <div class="carousel-card card-green" data-index="1">
+          <div class="card-inner">
+            <div class="card-glass"></div>
+            <div class="card-header">
+              <span class="card-number">02</span>
+            </div>
+            <div class="card-content">
+              <h4 class="card-category">PAY PER CLICK</h4>
+              <h3 class="card-title" data-aos="fade-up">Advertising</h3>
+              <p class="card-desc">Drive instant traffic and generate quality leads with targeted ads.</p>
+              <div class="card-graphic">
+                <div class="graphic-ppc">
+                  <div class="target-board">
+                    <div class="target-ring r1"></div>
+                    <div class="target-ring r2"></div>
+                    <div class="target-center"></div>
+                    <div class="arrow-hit"></div>
+                  </div>
+                  <div class="ads-badge">ADS</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-small">
+              <a href="#" class="btn-view-details">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: Search Engine Optimization (01) - CENTER FEATURED -->
+        <div class="carousel-card card-blue card-featured" data-index="2">
+          <div class="card-inner">
+            <div class="card-glass"></div>
+            <div class="card-glow-inner"></div>
+            
+            <div class="card-header">
+              <span class="card-number">01</span>
+              <span class="badge-featured">FEATURED SERVICE</span>
+            </div>
+            
+            <div class="card-layout-split">
+              <!-- Left Column: Title and text -->
+              <div class="card-col-left">
+                <div class="icon-search">
+                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <div class="side-menu">
+                   <div class="m-item active"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+                   <div class="m-item"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg></div>
+                   <div class="m-item"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
+                   <div class="m-item"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 20V10"></path><path d="M18 20V4"></path><path d="M6 20v-4"></path></svg></div>
+                   <div class="m-item"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
+                </div>
+
+                <div class="content-main">
+                  <h4 class="card-category">SEARCH ENGINE</h4>
+                  <h3 class="card-title" data-aos="fade-up">Optimization</h3>
+                  <p class="card-desc">Improve your website ranking, drive organic traffic and grow your business.</p>
+                </div>
+              </div>
+              
+              <!-- Right Column: Dashboard UI -->
+              <div class="card-col-right dashboard-ui">
+                <!-- Chart Panel -->
+                <div class="panel chart-panel">
+                  <div class="panel-header">
+                    <span>Keyword Rankings</span>
+                    <span class="dots">...</span>
+                  </div>
+                  <div class="chart-area">
+                    <div class="chart-line">
+                      <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+                         <path d="M0,50 L40,40 L80,45 L120,20 L160,25 L200,5" fill="none" stroke="#f36523" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                         <path d="M0,50 L40,40 L80,45 L120,20 L160,25 L200,5 L200,60 L0,60 Z" fill="url(#brand-grad)" opacity="0.3" />
+                         <defs>
+                           <linearGradient id="brand-grad" x1="0" y1="0" x2="0" y2="1">
+                             <stop offset="0%" stop-color="#f36523" />
+                             <stop offset="100%" stop-color="rgba(243, 101, 35, 0)" />
+                           </linearGradient>
+                         </defs>
+                      </svg>
+                      <div class="chart-point" style="left: 100%; top: 8%;"></div>
+                    </div>
+                    <div class="chart-stat">
+                       <span class="stat-val">+145%</span>
+                       <span class="stat-label">Traffic increase</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Performance Panel -->
+                <div class="panel perf-panel">
+                  <div class="panel-header">
+                    <span>Performance</span>
+                    <span class="dots">...</span>
+                  </div>
+                  <div class="perf-content">
+                    <div class="circular-progress">
+                      <svg viewBox="0 0 100 100">
+                        <circle class="bg" cx="50" cy="50" r="40" />
+                        <circle class="progress" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="37.68" />
+                      </svg>
+                      <div class="progress-val">85%<br><span>Growth</span></div>
+                    </div>
+                    <div class="checklist">
+                      <div class="check-item"><span class="check-icon">✓</span> On-Page SEO</div>
+                      <div class="check-item"><span class="check-icon">✓</span> Technical SEO</div>
+                      <div class="check-item"><span class="check-icon">✓</span> Link Building</div>
+                      <div class="check-item"><span class="check-icon">✓</span> Content Strategy</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer-center">
+              <a href="#" class="btn-view-details">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Content Marketing (03) -->
+        <div class="carousel-card card-orange" data-index="3">
+          <div class="card-inner">
+            <div class="card-glass"></div>
+            <div class="card-header">
+              <span class="card-number">03</span>
+            </div>
+            <div class="card-content">
+              <h4 class="card-category">CONTENT</h4>
+              <h3 class="card-title" data-aos="fade-up">Marketing</h3>
+              <p class="card-desc">Create valuable content that attracts, engages and converts your audience.</p>
+              <div class="card-graphic">
+                <div class="graphic-content">
+                  <div class="doc-icon">
+                    <div class="image-box"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+                  </div>
+                  <div class="pencil-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-small">
+              <a href="#" class="btn-view-details">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Email Marketing (04) -->
+        <div class="carousel-card card-blue-dark" data-index="4">
+          <div class="card-inner">
+            <div class="card-glass"></div>
+            <div class="card-header">
+              <span class="card-number">04</span>
+            </div>
+            <div class="card-content">
+              <h4 class="card-category">EMAIL</h4>
+              <h3 class="card-title" data-aos="fade-up">Marketing</h3>
+              <p class="card-desc">Nurture leads and build strong relationships through email campaigns.</p>
+              <div class="card-graphic">
+                <div class="graphic-email">
+                  <div class="envelope">
+                     <div class="env-flap"></div>
+                     <div class="env-body">
+                       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                     </div>
+                  </div>
+                  <div class="paper-plane">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-small">
+              <a href="#" class="btn-view-details">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6: Web & SEO Development (06) -->
+        <div class="carousel-card card-purple-dark" data-index="5">
+          <div class="card-inner">
+            <div class="card-glass"></div>
+            <div class="card-header">
+              <span class="card-number">06</span>
+            </div>
+            <div class="card-content">
+              <h4 class="card-category">WEB DESIGN &</h4>
+              <h3 class="card-title" data-aos="fade-up">Development</h3>
+              <p class="card-desc">Build responsive, fast and user-friendly websites that drive results.</p>
+              <div class="card-graphic">
+                <div class="graphic-web">
+                   <div class="laptop">
+                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+                   </div>
+                   <div class="floating-ui-box">
+                      <div class="line l1"></div>
+                      <div class="line l2"></div>
+                      <div class="line l3"></div>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-small">
+              <a href="#" class="btn-view-details">View Details &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="nav-btn next-btn" aria-label="Next Slide">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+    </div>
+
+    <!-- The Person is placed absolutely over the carousel -->
+    <div class="global-person-layer">
+      <div class="person-silhouette">
+         <img src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?q=80&w=400&auto=format&fit=crop" style="display:none;" alt="" data-aos="fade-up">
+         <div class="person-drawing">
+            <!-- Basic CSS shapes for a stylized dark silhouette -->
+            <div class="p-head"></div>
+            <div class="p-torso"></div>
+            <div class="p-arm-l"></div>
+            <div class="p-arm-r"></div>
+            <div class="p-leg-l"></div>
+            <div class="p-leg-r"></div>
+         </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="carousel-pagination" id="carouselPagination">
+      <button class="dot" data-index="0" aria-label="Go to slide 1"></button>
+      <button class="dot" data-index="1" aria-label="Go to slide 2"></button>
+      <button class="dot active" data-index="2" aria-label="Go to slide 3"></button>
+      <button class="dot" data-index="3" aria-label="Go to slide 4"></button>
+      <button class="dot" data-index="4" aria-label="Go to slide 5"></button>
+      <button class="dot" data-index="5" aria-label="Go to slide 6"></button>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>Scroll to explore</span>
+      <div class="scroll-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="7" y="4" width="10" height="16" rx="5" ry="5"></rect>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Floor Reflection Area -->
+    <div class="floor-reflection">
+       <div class="floor-glow"></div>
+    </div>
+
+  </section>
+
+  <script src="js/3d-carousel.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({duration: 800, once: true});</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/scroll-anim.js"></script>
+</body>
+</html>

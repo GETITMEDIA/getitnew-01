@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Premium custom cursor — small dot + trailing outline ring
+   Desktop (fine pointer) only; untouched on touch devices.
+   Tuning: change the yellow via --cursor-color below.
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --cursor-color: #fcdb66; /* <- CHANGE CURSOR / REVEAL COLOR HERE */
+  }
+
+  /* Custom yellow dot and trailing ring cursor hidden */
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
