@@ -10916,7 +10916,10 @@ Start sass Icon Single Box
   cursor: pointer;
 }
 .why-choose-us-section .choose-single-box .choose-content .title {
-  margin: 0 0 14px;
+   margin: 0 0 14px;
+    font-size: 36px;
+    font-weight: 700;
+    color: #ea5a06;
 }
 .why-choose-us-section .choose-single-box:nth-child(2) {
   border-bottom: 0;

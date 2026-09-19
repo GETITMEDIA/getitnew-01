@@ -15,7 +15,7 @@
   --au-accent: #f4510b;
   --au-dark: #0b0e14;
   --au-body: #23262c;
-  --au-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1024' preserveAspectRatio='none'><path d='M232 0 C 92 150, 44 322, 132 468 C 226 624, 292 706, 246 828 C 208 930, 190 982, 216 1024 L800 1024 L800 0 Z' fill='white'/></svg>");
+  --au-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1024' preserveAspectRatio='none'><path d='M 310 0 C 190 120, 110 260, 130 420 C 150 560, 260 650, 240 790 C 220 900, 180 970, 210 1024 L800 1024 L800 0 Z' fill='white'/></svg>");
 
   position: relative;
   width: 100%;
@@ -147,22 +147,40 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* the reference photo is a dark, cool-lit office - push the source there */
-  filter: brightness(0.4) saturate(0.7) contrast(1.14);
+  object-position: 70% center;
+  filter: brightness(0.6) saturate(0.95) contrast(1.08) blur(1.5px);
+  transform: scale(1.04);
 }
 .au-panel__tint {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
-    linear-gradient(180deg, rgba(8, 11, 18, 0.72) 0%, rgba(8, 11, 18, 0.3) 42%, rgba(6, 8, 13, 0.92) 100%),
-    radial-gradient(ellipse 60% 45% at 72% 34%, rgba(244, 81, 11, 0.16) 0%, transparent 65%),
-    linear-gradient(100deg, rgba(6, 9, 14, 0.96) 0%, rgba(6, 9, 14, 0.35) 38%, transparent 62%);
+    linear-gradient(180deg, rgba(8, 11, 18, 0.45) 0%, rgba(8, 11, 18, 0.15) 42%, rgba(6, 8, 13, 0.88) 100%),
+    radial-gradient(ellipse 65% 55% at 75% 38%, rgba(244, 81, 11, 0.14) 0%, transparent 68%),
+    linear-gradient(90deg, rgba(6, 9, 14, 0.85) 0%, rgba(6, 9, 14, 0.25) 35%, transparent 65%);
+}
+.au-person {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 58%;
+  transform: translateX(-46%);
+  height: 95%;
+  max-height: 800px;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) contrast(1.04) brightness(1.01);
+  transition: transform 0.4s ease;
 }
 .au-panel__glow {
   position: absolute;
   inset: 0;
+  z-index: 4;
   pointer-events: none;
-  background: radial-gradient(circle 180px at 88% 12%, rgba(244, 81, 11, 0.2), transparent 70%);
+  background: radial-gradient(circle 220px at 86% 14%, rgba(244, 81, 11, 0.22), transparent 70%);
 }
 
 /* orange stroke that follows the panel boundary and sweeps in from top right */
@@ -386,6 +404,11 @@
   .au-stroke { inset: 0; width: 100%; }
   .au-dots { left: auto; right: 6%; top: 4%; }
   .au-dash { top: 22%; left: 8%; width: 72%; }
+  .au-person {
+    left: 50%;
+    transform: translateX(-50%);
+    height: 96%;
+  }
   .au-card { width: clamp(168px, 34vw, 240px); }
   .au-card--mission { left: 4%; bottom: 4%; }
   .au-card--vision { right: 4%; bottom: 17%; }
@@ -396,6 +419,12 @@
   .au-dash { top: 14%; left: 6%; width: 86%; }
   .au-stats { grid-template-columns: repeat(3, 1fr); }
   .au-donut { display: none; }
+  .au-person {
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80%;
+    bottom: 25%;
+  }
   .au-cards {
     position: absolute;
     z-index: 7;
