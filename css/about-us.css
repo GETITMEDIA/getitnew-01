@@ -1,8 +1,9 @@
 /* ==========================================================================
-   About Us section - reproduces the GetIt Media "We're More Than Marketers"
-   reference composition (1536 x 1024). Scoped under .au- so it cannot collide
-   with the existing .about block in css/about.css.
+   About Us section - dark cinematic "We're More Than Marketers" layout.
+   Text column on the left, office photo bleeding in from the right.
+   Scoped under .au- so it cannot collide with css/about.css.
    ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 .au-section,
 .au-section *,
@@ -10,434 +11,161 @@
 .au-section *::after { box-sizing: border-box; }
 
 .au-section {
-  --au-bg: #f7f7f6;
-  --au-ink: #101216;
-  --au-accent: #f4510b;
-  --au-dark: #0b0e14;
-  --au-body: #23262c;
-  --au-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 1024' preserveAspectRatio='none'><path d='M 310 0 C 190 120, 110 260, 130 420 C 150 560, 260 650, 240 790 C 220 900, 180 970, 210 1024 L800 1024 L800 0 Z' fill='white'/></svg>");
+  --au-bg: #0b0d10;
+  --au-ink: #ffffff;
+  --au-accent: #ff6a13;
+  --au-body: rgba(255, 255, 255, 0.86);
+  --au-muted: rgba(255, 255, 255, 0.72);
+  /* photo starts at this % of the viewport; the text column must end before it */
+  --au-split: 42vw;
+  --au-pad: clamp(20px, 5vw, 84px);
 
   position: relative;
   width: 100%;
   overflow: hidden;
+  isolation: isolate;
   background: var(--au-bg);
   color: var(--au-ink);
-  padding: clamp(28px, 3vw, 56px) clamp(20px, 3.6vw, 56px);
-  font-family: var(--body-font-family, "Noto Sans", sans-serif);
+  font-family: "Poppins", sans-serif;
 }
 
-.au-inner {
-  /* centred container so the section lines up with the rest of the page
-     instead of bleeding to the viewport edges on wide screens */
-  position: relative;
+/* ------------------------------------------------------------- photo */
+.au-media {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: calc(100% - var(--au-split));
+  z-index: -1;
+}
+.au-media__img {
+  /* fill the full height; anchor near the left so the "Digital Marketing"
+     card is never cropped - any overflow is trimmed off the laptop side */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 46% 54%;
-  align-items: stretch;
-  min-height: clamp(520px, 46vw, 720px);
+  /* fill the height, but never zoom more than ~15% past the photo's natural
+     ratio (941/1072 = 0.878) or the neon sign + right card get cropped */
+  height: 100%;
+  object-fit: cover;
+  object-position: 8% 45%;
+  /* feather the left + top edges into the dark text column */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%), linear-gradient(180deg, transparent 0, #000 5%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%), linear-gradient(180deg, transparent 0, #000 5%);
+  mask-composite: intersect;
 }
 
-/* --------------------------------------------------------------- left col */
-.au-content {
+/* ------------------------------------------------------------- layout */
+.au-inner {
   position: relative;
-  z-index: 3;
-  padding: clamp(34px, 3.1vw, 48px) clamp(24px, 3.2vw, 48px) clamp(34px, 3.1vw, 48px) clamp(24px, 3.9vw, 60px);
-  max-width: 820px;
+  max-width: 1600px;
+  margin: 0 auto;
+  /* just tall enough that the photo (941/1072) only loses ~12% top+bottom */
+  min-height: min(800px, calc((100vw - var(--au-split)) * 0.77));
+  padding: clamp(40px, 3.6vw, 64px) var(--au-pad);
+  display: flex;
+  align-items: center;
+}
+.au-content {
+  width: 100%;
+  /* split point - centring offset of .au-inner - side padding - gap */
+  max-width: min(620px, calc(var(--au-split) - max(0px, (100vw - 1600px) / 2) - var(--au-pad) - 28px));
 }
 
+/* ------------------------------------------------------------- text */
 .au-eyebrow {
   display: block;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(0.78rem, 0.9vw, 0.95rem);
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: clamp(0.9rem, 1.15vw, 1.2rem);
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--au-accent);
 }
 .au-rule {
   display: block;
-  width: 56px;
-  height: 3px;
+  width: 82px;
+  height: 4px;
+  margin: 12px 0 clamp(16px, 1.6vw, 24px);
   background: var(--au-accent);
   border-radius: 2px;
 }
-.au-rule--top { margin: 13px 0 clamp(20px, 2.2vw, 30px); }
-.au-rule--mid { margin: clamp(18px, 2vw, 26px) 0 clamp(14px, 1.5vw, 20px); }
+.au-rule--mid { margin: clamp(16px, 1.5vw, 22px) 0 clamp(14px, 1.2vw, 18px); }
 
 .au-title {
   margin: 0;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(1.7rem, 2.45vw, 2.7rem);
-  font-weight: 800;
-  line-height: 1.14;
-  letter-spacing: -0.02em;
-  color: var(--au-ink);
-}
-.au-title span { display: block; }
-.au-title .au-title__accent { color: var(--au-accent); }
-
-.au-subtitle {
-  margin: 0;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(1.15rem, 1.55vw, 1.6rem);
-  font-weight: 700;
+  font-family: inherit;
+  font-size: clamp(2rem, 2.85vw, 3.1rem);
+  font-weight: 600;
+  line-height: 1.12;
   letter-spacing: -0.01em;
   color: var(--au-ink);
 }
-.au-subtitle span { color: var(--au-accent); }
-
-.au-text {
-  margin: clamp(12px, 1.3vw, 18px) 0 0;
-  max-width: 100ch;
-  font-size: clamp(0.8rem, 0.86vw, 0.92rem);
-  line-height: 1.56;
-  color: var(--au-body);
+.au-title span { display: block; }
+.au-title .au-title__accent {
+  color: var(--au-accent);
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.au-list {
-  margin: clamp(16px, 1.8vw, 24px) 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: clamp(0.8rem, 0.86vw, 0.92rem);
+.au-subtitle {
+  margin: 0 0 clamp(14px, 1.3vw, 20px);
+  font-family: inherit;
+  font-size: clamp(1.45rem, 2.05vw, 2.1rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--au-ink);
+}
+.au-subtitle span { color: var(--au-accent); font-weight: 400; }
+
+.au-text {
+  margin: 0 0 clamp(14px, 1.3vw, 20px);
+  font-size: clamp(0.84rem, 0.88vw, 0.95rem);
   line-height: 1.55;
   color: var(--au-body);
 }
-.au-list li + li { margin-top: 2px; }
-
-/* -------------------------------------------------------------- right col */
-.au-visual {
-  position: relative;
-  min-height: 100%;
+.au-text--muted {
+  margin-bottom: 0;
+  color: var(--au-muted);
+  font-size: clamp(0.82rem, 0.84vw, 0.92rem);
+  line-height: 1.35;
 }
 
-/* orange dotted grid, upper-centre of the section */
-.au-dots {
-  position: absolute;
-  z-index: 4;
-  top: clamp(56px, 8.6vw, 96px);
-  left: clamp(-124px, -9vw, -70px);
-  width: clamp(88px, 8vw, 122px);
-  height: clamp(88px, 8vw, 122px);
-  pointer-events: none;
-  background-image: radial-gradient(circle, var(--au-accent) 1.7px, transparent 2px);
-  background-size: 20% 20%;
-  opacity: 0.9;
+/* ------------------------------------------------------------- large laptop */
+@media (max-width: 1440px) {
+  .au-title .au-title__accent { white-space: normal; }
+  .au-text { font-size: 0.84rem; line-height: 1.5; }
+  .au-text--muted { font-size: 0.8rem; }
 }
 
-/* masked dark visual panel carrying the irregular curved boundary */
-.au-panel {
-  position: absolute;
-  inset: 0 0 0 -6%;
-  background: var(--au-dark);
-  -webkit-mask-image: var(--au-mask);
-  mask-image: var(--au-mask);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.au-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 70% center;
-  filter: brightness(0.6) saturate(0.95) contrast(1.08) blur(1.5px);
-  transform: scale(1.04);
-}
-.au-panel__tint {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    linear-gradient(180deg, rgba(8, 11, 18, 0.45) 0%, rgba(8, 11, 18, 0.15) 42%, rgba(6, 8, 13, 0.88) 100%),
-    radial-gradient(ellipse 65% 55% at 75% 38%, rgba(244, 81, 11, 0.14) 0%, transparent 68%),
-    linear-gradient(90deg, rgba(6, 9, 14, 0.85) 0%, rgba(6, 9, 14, 0.25) 35%, transparent 65%);
-}
-.au-person {
-  position: absolute;
-  z-index: 3;
-  bottom: 0;
-  left: 58%;
-  transform: translateX(-46%);
-  height: 95%;
-  max-height: 800px;
-  width: auto;
-  object-fit: contain;
-  object-position: bottom center;
-  pointer-events: none;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) contrast(1.04) brightness(1.01);
-  transition: transform 0.4s ease;
-}
-.au-panel__glow {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  background: radial-gradient(circle 220px at 86% 14%, rgba(244, 81, 11, 0.22), transparent 70%);
-}
-
-/* orange stroke that follows the panel boundary and sweeps in from top right */
-.au-stroke {
-  position: absolute;
-  inset: 0 0 0 -6%;
-  z-index: 5;
-  width: 106%;
-  height: 100%;
-  pointer-events: none;
-  overflow: visible;
-  filter: drop-shadow(0 0 6px rgba(244, 81, 11, 0.5));
-}
-.au-stroke path {
-  fill: none;
-  stroke: var(--au-accent);
-  vector-effect: non-scaling-stroke;
-}
-.au-stroke__edge { stroke-width: 3; }
-.au-stroke__sweep { stroke-width: 3; }
-.au-stroke__hair { stroke-width: 1.4; opacity: 0.5; }
-.au-stroke__orbit { stroke-width: 1.4; stroke-dasharray: 2 9; opacity: 0.75; }
-
-/* logo, top-right of the composition */
-.au-logo {
-  position: absolute;
-  z-index: 6;
-  top: clamp(26px, 3.4vw, 48px);
-  right: clamp(26px, 3.4vw, 54px);
-  width: clamp(96px, 10.5vw, 152px);
-}
-.au-logo img { display: block; width: 100%; height: auto; }
-.au-logo__tag {
-  display: block;
-  margin-top: 7px;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(0.36rem, 0.46vw, 0.48rem);
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-align: center;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-/* ------------------------------------------------- floating dashboard ---- */
-.au-dash {
-  position: absolute;
-  z-index: 6;
-  top: 15%;
-  left: 12%;
-  width: 74%;
-  padding: clamp(12px, 1.5vw, 20px) clamp(14px, 1.7vw, 22px) clamp(12px, 1.4vw, 18px);
-  border-radius: 6px;
-  color: #fff;
-  background: linear-gradient(165deg, #12161f 0%, #0a0d13 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(244, 81, 11, 0.08), 0 0 42px rgba(244, 81, 11, 0.1);
-}
-.au-dash__title {
-  margin: 0;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(0.95rem, 1.35vw, 1.35rem);
-  font-weight: 700;
-  line-height: 1.15;
-}
-.au-dash__sub {
-  margin: 2px 0 clamp(8px, 1vw, 14px);
-  font-size: clamp(0.7rem, 0.95vw, 0.95rem);
-  color: rgba(255, 255, 255, 0.78);
-}
-.au-chart { display: block; width: 100%; height: auto; }
-.au-chart__grid { stroke: rgba(255, 255, 255, 0.09); stroke-width: 1; }
-.au-chart__line {
-  fill: none;
-  stroke: var(--au-accent);
-  stroke-width: 2.4;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 4px rgba(244, 81, 11, 0.6));
-}
-.au-chart__fill { fill: url(#auChartFill); }
-.au-chart__tick {
-  fill: rgba(255, 255, 255, 0.32);
-  font-size: 7px;
-  font-family: var(--body-font-family, "Noto Sans", sans-serif);
-}
-
-.au-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) auto;
-  align-items: end;
-  gap: clamp(8px, 1.1vw, 16px);
-  margin-top: clamp(8px, 1vw, 14px);
-}
-.au-stat__label {
-  display: block;
-  font-size: clamp(0.5rem, 0.62vw, 0.62rem);
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.55);
-}
-.au-stat__value {
-  display: block;
-  margin-top: 2px;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(0.8rem, 1.05vw, 1.05rem);
-  font-weight: 700;
-}
-.au-stat__delta {
-  display: block;
-  font-size: clamp(0.45rem, 0.58vw, 0.58rem);
-  font-weight: 700;
-  color: var(--au-accent);
-}
-.au-donut { position: relative; width: clamp(38px, 4vw, 56px); }
-.au-donut svg { display: block; width: 100%; height: auto; transform: rotate(-90deg); }
-.au-donut__track { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 5; }
-.au-donut__bar {
-  fill: none;
-  stroke: var(--au-accent);
-  stroke-width: 5;
-  stroke-linecap: round;
-  stroke-dasharray: 78 100;
-}
-.au-donut__num {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(0.45rem, 0.6vw, 0.6rem);
-  font-weight: 700;
-}
-.au-donut__label {
-  display: block;
-  margin-top: 4px;
-  font-size: clamp(0.4rem, 0.5vw, 0.5rem);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* ------------------------------------------------ mission / vision cards - */
-.au-card {
-  position: absolute;
-  z-index: 7;
-  width: clamp(180px, 17.5vw, 268px);
-  padding: clamp(14px, 1.5vw, 22px);
-  border-radius: 18px;
-  color: #fff;
-  background: linear-gradient(160deg, rgba(23, 27, 36, 0.92) 0%, rgba(10, 13, 19, 0.96) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.6), 0 0 26px rgba(244, 81, 11, 0.12);
-}
-.au-card--mission { left: 7%; bottom: 3%; }
-.au-card--vision { right: 7%; bottom: 13%; }
-
-.au-card__icon {
-  display: grid;
-  place-items: center;
-  width: clamp(38px, 3.6vw, 52px);
-  height: clamp(38px, 3.6vw, 52px);
-  border-radius: 14px;
-  background: linear-gradient(150deg, #ff7a33 0%, var(--au-accent) 100%);
-  box-shadow: 0 10px 24px rgba(244, 81, 11, 0.45), 0 0 22px rgba(244, 81, 11, 0.35);
-}
-.au-card__icon svg { width: 54%; height: 54%; fill: #fff; }
-.au-card__title {
-  margin: clamp(12px, 1.2vw, 18px) 0 6px;
-  font-family: var(--heading-font-family, "Plus Jakarta Sans", sans-serif);
-  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
-  font-weight: 700;
-}
-.au-card__text {
-  margin: 0;
-  font-size: clamp(0.72rem, 0.85vw, 0.9rem);
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.82);
-}
-.au-card__accent {
-  display: block;
-  width: 34px;
-  height: 3px;
-  margin-top: clamp(12px, 1.2vw, 18px);
-  border-radius: 2px;
-  background: var(--au-accent);
-}
-
-/* glowing particles */
-.au-spark {
-  position: absolute;
-  z-index: 6;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--au-accent);
-  box-shadow: 0 0 12px 3px rgba(244, 81, 11, 0.65);
-}
-.au-spark--1 { top: 70%; right: 3%; }
-.au-spark--2 { top: 84%; right: 20%; width: 5px; height: 5px; }
-.au-spark--3 { bottom: 3%; left: 14%; width: 5px; height: 5px; }
-
-/* ------------------------------------------------------------- responsive */
-@media (max-width: 1200px) {
-  .au-dash { top: 13%; left: 10%; width: 78%; }
-  .au-card--mission { left: -4%; bottom: 2%; }
-  .au-card--vision { right: 5%; bottom: 12%; }
-}
-
-@media (max-width: 991px) {
-  .au-inner {
-    grid-template-columns: 1fr;
-    min-height: 0;
-  }
-  .au-content {
-    padding: clamp(48px, 7vw, 72px) clamp(20px, 5vw, 48px) clamp(28px, 4vw, 40px);
-    max-width: none;
-  }
-  .au-visual { height: clamp(520px, 96vw, 760px); }
-  .au-panel,
-  .au-stroke { inset: 0; width: 100%; }
-  .au-dots { left: auto; right: 6%; top: 4%; }
-  .au-dash { top: 22%; left: 8%; width: 72%; }
-  .au-person {
-    left: 50%;
-    transform: translateX(-50%);
-    height: 96%;
-  }
-  .au-card { width: clamp(168px, 34vw, 240px); }
-  .au-card--mission { left: 4%; bottom: 4%; }
-  .au-card--vision { right: 4%; bottom: 17%; }
-}
-
-@media (max-width: 575px) {
-  .au-visual { height: clamp(600px, 150vw, 760px); }
-  .au-dash { top: 14%; left: 6%; width: 86%; }
-  .au-stats { grid-template-columns: repeat(3, 1fr); }
-  .au-donut { display: none; }
-  .au-person {
-    left: 50%;
-    transform: translateX(-50%);
-    height: 80%;
-    bottom: 25%;
-  }
-  .au-cards {
-    position: absolute;
-    z-index: 7;
-    left: 6%;
-    right: 6%;
-    bottom: 5%;
-    display: grid;
-    gap: 12px;
-  }
-  .au-card {
+/* ------------------------------------------------------------- tablet: stack */
+@media (max-width: 1199px) {
+  .au-section { display: flex; flex-direction: column-reverse; }
+  .au-media {
     position: relative;
     inset: auto;
-    width: auto;
+    width: 100%;
+    max-width: 820px;
+    z-index: 0;
+    margin: 0 auto;
   }
-  .au-logo { width: 88px; }
+  .au-media__img {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+  }
+  .au-inner { min-height: 0; padding-bottom: 24px; }
+  .au-content { max-width: 720px; }
+  .au-title .au-title__accent { white-space: normal; }
+}
+
+/* ------------------------------------------------------------- mobile */
+@media (max-width: 640px) {
+  .au-inner { padding: 48px 16px 16px; }
+  .au-rule { width: 64px; height: 3px; }
+  .au-title .au-title__accent { white-space: normal; }
 }
