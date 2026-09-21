@@ -148,6 +148,8 @@
    separate breakpoint rules. */
 .about-stage {
   position: relative;
+  /* lets .about-photo size itself in stage-width units (cqw) */
+  container-type: inline-size;
   width: 100%;
   aspect-ratio: 760 / 660;
   font-size: clamp(9px, 1.62vw, 17px);
@@ -217,25 +219,32 @@
 
 .about-photo {
   position: absolute;
-  /* Perfect circle, concentric with .about-blob--main (same center point) so
-     the size difference reads as one uniform-width orange ring all the way
-     around, instead of an oval crescent that's thicker on one side. */
-  top: 46px;
+  /* The portrait "pops out" of .about-blob--main: its bottom edge sits on
+     the disc's bottom edge and everything below the disc's centre is clipped
+     to the disc, while the head and shoulders rise above it.
+     Disc: top 19% of stage height, 68cqw wide.  Photo: 58cqw wide, portrait
+     ratio 1121/1403, so 72.6cqw tall  ->  top = 19% + 68cqw - 72.6cqw. */
+  top: calc(19% - 4.6cqw);
   left: 32%;
   width: 58%;
-  /* aspect-ratio: 1 / 1; */
+  aspect-ratio: 1121 / 1403;
   height: auto;
-  border-radius: 50%;
   overflow: hidden;
+  /* disc radius 34cqw = 58.62% of the photo width / 46.84% of its height;
+     disc centre sits 53.16% down the photo */
+  -webkit-mask-image:
+    linear-gradient(#000 0 53.16%, transparent 53.16%),
+    radial-gradient(ellipse 58.62% 46.84% at 50% 53.16%, #000 calc(100% - 1px), transparent 100%);
+  mask-image:
+    linear-gradient(#000 0 53.16%, transparent 53.16%),
+    radial-gradient(ellipse 58.62% 46.84% at 50% 53.16%, #000 calc(100% - 1px), transparent 100%);
 }
 
 .about-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Shifted right + no extra zoom so the laptop she's working on stays in
-     frame alongside her, instead of being cropped out to the right. */
-  object-position: 62% 18%;
+  object-position: center top;
   display: block;
 }
 
@@ -392,3 +401,25 @@
   .about-card--traffic { top: 24%; right: 190px; }
   .about-card--revenue { bottom: 2%; right: 0; }
 }
+
+/* ==========================================================================
+   Shared section heading - same type as .about__title ("We're Strategic
+   Digital Marketing Agency") so every home-page section title matches:
+   800 weight, tight leading, white lines + one orange accent line.
+   ========================================================================== */
+/* h2 + .sec-title prefixes out-rank the template's ".sec-title h2"
+   (42px / 500) and ".stats__title", which would otherwise win */
+h2.gm-sec-title,
+.sec-title h2.gm-sec-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 4.1vw, 3.15rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #fff;
+  text-transform: none;
+}
+.gm-sec-title__line { display: block; }
+.gm-sec-title__line--accent { color: var(--about-accent, #ff6a2c); }
+/* white sections (stats) keep the same type in dark ink */
+h2.gm-sec-title--on-light { color: #171f32; }

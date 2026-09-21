@@ -213,6 +213,11 @@
 
 /* ---------------- Responsive ---------------- */
 
+/* tablets: four columns squeeze the labels onto 3 lines, so go 2 x 2 */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+}
+
 @media (max-width: 760px) {
   .stats__inner { padding: 0 20px; }
   .stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }

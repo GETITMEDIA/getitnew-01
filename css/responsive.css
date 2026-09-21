@@ -4435,3 +4435,99 @@
 
 
 }
+
+/* ==========================================================================
+   Why Choose Us (home) - tablet + mobile
+   The template hides the photo below 992px and the 3D ring then floats over
+   the text. Bring the photo back (centred, above the points), drop the ring,
+   and tighten spacing.
+   ========================================================================== */
+@media (max-width: 991.98px) {
+	.why-choose-us-style {
+		padding-top: 72px;
+		padding-bottom: 56px;
+	}
+	.why-choose-us-style .sec-title.mb-70 {
+		margin-bottom: 36px !important;
+	}
+	.why-choose-us-style .sec-title .sub-title {
+		font-size: 38px !important; /* overrides the inline 45px */
+		line-height: 1.15;
+	}
+	.why-choose-us-style .choose-shape,
+	.why-choose-us-style .choose-shape2 {
+		display: none;
+	}
+	.why-choose-us-style .choose-img {
+		display: block;
+		order: -1;
+		width: 100%;
+		margin-bottom: 24px;
+	}
+	.why-choose-us-style .choose-thumb {
+		max-width: 360px;
+		margin: 0 auto;
+	}
+	.why-choose-us-style .choose-thumb .image1 {
+		top: 0;
+		margin: 0 16px;
+	}
+	.why-choose-us-style .choose-thumb .dote-shape {
+		bottom: -12%;
+	}
+	.why-choose-us-style .buler-bg {
+		display: block;
+		left: 50%;
+		top: 18%;
+		bottom: auto;
+		width: 420px;
+		height: 420px;
+		transform: translateX(-50%);
+	}
+	.why-choose-us-style .choose-single-box,
+	.why-choose-us-style .column-right .choose-single-box {
+		margin-right: 0;
+		margin-bottom: 24px;
+		padding-bottom: 20px;
+	}
+	.why-choose-us-style .column-right {
+		padding-left: calc(var(--bs-gutter-x) * .5);
+	}
+	.why-choose-us-style .choose-single-box .choose-icon i {
+		margin-bottom: 14px;
+	}
+	.why-choose-us-style .choose-single-box .choose-content .title {
+		font-size: 26px;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.why-choose-us-style {
+		padding-top: 56px;
+		padding-bottom: 40px;
+	}
+	.why-choose-us-style .sec-title .sub-title {
+		font-size: 32px !important;
+	}
+	.why-choose-us-style .sec-title .theme-btn-main {
+		margin-top: 4px;
+	}
+	.why-choose-us-style .choose-thumb {
+		max-width: 300px;
+	}
+	.why-choose-us-style .buler-bg {
+		width: 320px;
+		height: 320px;
+	}
+	/* single column: keep a divider between every point */
+	.why-choose-us-style .choose-single-box:nth-child(2) {
+		border-bottom: 1px solid rgba(var(--theme-color-white-rgb), 0.15);
+	}
+	.why-choose-us-style .column-right .choose-single-box:last-child {
+		border-bottom: 0;
+		margin-bottom: 0;
+	}
+	.why-choose-us-style .choose-single-box .choose-content .title {
+		font-size: 22px;
+	}
+}

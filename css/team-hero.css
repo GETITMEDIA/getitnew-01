@@ -98,7 +98,7 @@
   align-items: center;
   gap: calc(12 * var(--uc));
   margin: 0 0 calc(20 * var(--uc));
-  font-size: calc(14 * var(--uc));
+  font-size: max(11.5px, calc(14 * var(--uc)));  /* readable floor on small screens */
   font-weight: 600;
   letter-spacing: calc(2.4 * var(--uc));
   text-transform: uppercase;
@@ -159,7 +159,7 @@
   margin: calc(26 * var(--uc)) 0 0;
   width: calc(446 * var(--uc));
   max-width: 100%;
-  font-size: calc(22 * var(--uc));
+  font-size: max(14px, calc(22 * var(--uc)));  /* readable floor on small screens */
   line-height: calc(35 / 22);
   color: var(--hz-body);
 }
@@ -186,7 +186,7 @@
   border-radius: 999px;
   background: var(--hz-green);
   color: #fff;
-  font-size: calc(16.5 * var(--uc));
+  font-size: max(13px, calc(16.5 * var(--uc)));  /* readable floor on small screens */
   font-weight: 500;
   /* the button may give up width in a tight row, but never break its label */
   white-space: nowrap;
@@ -260,12 +260,12 @@
   border: calc(3 * var(--uc)) solid var(--hz-cream);
   background: var(--hz-green);
   color: #fff;
-  font-size: calc(12 * var(--uc));
+  font-size: max(11px, calc(12 * var(--uc)));  /* readable floor on small screens */
   font-weight: 600;
 }
 
 .hz__rosterText {
-  font-size: calc(12 * var(--uc));
+  font-size: max(11px, calc(12 * var(--uc)));  /* readable floor on small screens */
   font-weight: 600;
   line-height: 1.45;
   letter-spacing: calc(0.6 * var(--uc));
@@ -277,7 +277,7 @@
 .hz__rosterText b {
   display: block;
   color: var(--hz-ink);
-  font-size: calc(14 * var(--uc));
+  font-size: max(12px, calc(14 * var(--uc)));  /* readable floor on small screens */
 }
 
 /* =====================================================================
@@ -351,7 +351,7 @@
 }
 
 .hz-card b {
-  font-size: calc(24 * var(--ua));
+  font-size: max(13px, calc(24 * var(--ua)));  /* readable floor on small screens */
   font-weight: 800;
   line-height: 1;
   color: var(--hz-green);
@@ -359,7 +359,7 @@
 }
 
 .hz-card span {
-  font-size: calc(11 * var(--ua));
+  font-size: max(9px, calc(11 * var(--ua)));  /* readable floor on small screens */
   font-weight: 600;
   letter-spacing: calc(1.1 * var(--ua));
   text-transform: uppercase;
@@ -469,6 +469,8 @@
 
   .hz__copy {
     flex: 0 0 auto;
+    /* the desktop 100px indent squeezed the stacked copy to one side */
+    padding-left: 0;
   }
   .hz__text {
     width: calc(470 * var(--uc));
@@ -534,8 +536,9 @@
 
 @media (max-width: 560px) {
   .hz {
-    --ua: 0.62px;
-    --uc: 0.68px;
+    --ua: 0.72px;
+    --uc: 0.72px;
+    padding-inline: 16px;
   }
   .hz__title {
     font-size: clamp(26px, 13cqw, 62px);

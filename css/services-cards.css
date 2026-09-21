@@ -335,6 +335,11 @@
 /* small tablets: the cards shrink faster than the text, so the description is
    tightened and capped at seven lines to keep the number and title inside */
 @media (min-width: 768px) and (max-width: 1000px) {
+  /* keep all four cards inside the screen (desktop puts card 1 at -5%) */
+  .sc-card--1 { left: 0%; }
+  .sc-card--2 { left: 24.5%; }
+  .sc-card--3 { left: 49%; }
+  .sc-card--4 { left: 74%; }
   .sc-card__desc {
     font-size: 0.7rem;
     line-height: 1.55;
@@ -347,25 +352,56 @@
 }
 
 @media (max-width: 767px) {
-  .sc-section { padding: 40px 0; min-height: auto; }
-  .sc-stage { width: 92vw; height: clamp(360px, 110vw, 480px); }
-  .sc-card,
-  .sc-card--1, .sc-card--2, .sc-card--3, .sc-card--4 {
-    width: clamp(130px, 40vw, 170px);
-    height: clamp(175px, 53vw, 230px);
+  /* one pinned card per row under the "LET'S" heading - the scattered
+     layout covered the heading and clipped the card text */
+  .sc-section {
+    flex-direction: column;
+    padding: 56px 0 64px;
+    min-height: auto;
   }
-  .sc-card__title { font-size: 1.05rem; }
-  .sc-card__desc {
-    font-size: 0.68rem;
-    padding-top: 14px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    overflow: hidden;
+  .sc-bgtype {
+    position: relative;
+    inset: auto;
   }
-  .sc-meta { display: none; }
+  .sc-bgtype span { padding-bottom: 0; }
   .sc-bgtype .sc-bgtype__l1,
-  .sc-bgtype .sc-bgtype__l2 { font-size: clamp(2.6rem, 15vw, 4rem); }
+  .sc-bgtype .sc-bgtype__l2 { font-size: clamp(3.2rem, 17vw, 4.4rem); }
   .sc-bgtype .sc-bgtype__l3,
   .sc-bgtype .sc-bgtype__l4 { font-size: clamp(1.1rem, 6vw, 1.6rem); }
+
+  .sc-stage {
+    width: min(88vw, 420px);
+    height: auto;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .sc-card,
+  .sc-card--1, .sc-card--2, .sc-card--3, .sc-card--4 {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+  }
+  /* a slight alternating tilt keeps the pinned-paper feel */
+  .sc-card--1 { --sc-rot: -2deg;   transform: rotate(-2deg); }
+  .sc-card--2 { --sc-rot: 1.5deg;  transform: rotate(1.5deg); }
+  .sc-card--3 { --sc-rot: -1.5deg; transform: rotate(-1.5deg); }
+  .sc-card--4 { --sc-rot: 2deg;    transform: rotate(2deg); }
+  .sc-card__body {
+    height: auto;
+    min-height: 170px;
+    padding: 24px 20px 20px;
+  }
+  .sc-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    padding-top: 8px;
+    margin-bottom: 18px;
+  }
+  .sc-card__title { font-size: 1.25rem; }
+  .sc-card__index { font-size: 0.78rem; }
+  .sc-meta { display: none; }
 }

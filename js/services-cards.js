@@ -12,6 +12,10 @@
   const section = document.getElementById('scServices');
   if (!section) return;
 
+  // phones stack the cards in one column - drifting them there makes
+  // neighbours collide, so the parallax is desktop/tablet only
+  if (window.matchMedia('(max-width: 767px)').matches) return;
+
   const cards = section.querySelectorAll('.sc-card');
   if (!cards.length) return;
 

@@ -136,8 +136,10 @@ var THEMEMASCOT = {};
       document.querySelectorAll(".text-reveal-anim");
     if (tagetedElementContainer?.length) {
       tagetedElementContainer.forEach(e => {
+        // split into words first so lines can only wrap between words
+        // (chars-only splitting lets narrow screens break mid-word)
         var t = new SplitType(e, {
-          types: "chars",
+          types: "words, chars",
         });
         gsap.from(t.chars, {
           scrollTrigger: {

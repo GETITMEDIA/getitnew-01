@@ -421,8 +421,8 @@
   font-size: 13px;
   white-space: nowrap;
 }
-@container (max-width: 620px) { .gmbh-card { font-size: 11px; } }
-@container (max-width: 460px) { .gmbh-card { font-size: 9px; } }
+@container (max-width: 620px) { .gmbh-card { font-size: 12px; } }
+@container (max-width: 460px) { .gmbh-card { font-size: 10.5px; } }  /* was 9px: sub-lines rendered at ~7.6px */
 
 .gmbh-card__icon {
   display: inline-flex;

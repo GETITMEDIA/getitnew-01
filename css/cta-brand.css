@@ -264,9 +264,12 @@
   .cta13-badge { border-radius: 18px; }
   .cta13-badge--yt,
   .cta13-badge--me { display: none; }
-  .cta13-badge--ig { top: 4%; left: 3%; }
-  .cta13-badge--go { bottom: 5%; left: 4%; }
-  .cta13-badge--fb { top: 4%; right: 3%; }
+  /* reserve a band above and below the copy so the badges never sit on the
+     heading or the buttons */
+  .cta13-section { padding-top: 92px; padding-bottom: 92px; }
+  .cta13-badge--ig { top: 18px; left: 4%; }
+  .cta13-badge--go { top: auto; bottom: 18px; left: 4%; }
+  .cta13-badge--fb { top: 18px; right: 4%; }
   .cta13-actions { flex-direction: column; align-items: stretch; }
   .cta13-btn { justify-content: center; }
 }

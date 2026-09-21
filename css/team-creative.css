@@ -595,33 +595,46 @@
   .cm__bg { font-size: 190px; top: 150px; }
 
   .cm__foot { flex-direction: column; align-items: flex-start; margin-top: 20px; }
+
+  /* the unit scale shrinks text below readable sizes here - set floors */
+  .cm__lead { font-size: 14px; }
+  .cm-card__name,
+  .cm-card--1 .cm-card__name,
+  .cm-card--3 .cm-card__name,
+  .cm-card--4 .cm-card__name { font-size: 18px; }
+  .cm-card__role { font-size: 11px; }
+  .cm-card__no { font-size: 13px; }
+  .cm-card__note { font-size: 14px; }
 }
 
-/* mobile — 02 full width, the other three in a scrollable rail so we
-   never fall back to four identical stacked cards */
+/* mobile — one upright card per row, full width (same rhythm as the social
+   team feed below); the old sideways rail left card 02 cut off at the edge */
 @media (max-width: 600px) {
-  .cm { --cm-u: 0.58px; }
-  .cm__wrap { padding: 0 18px; }
+  .cm { --cm-u: 0.58px; padding-bottom: 48px; }
+  .cm__wrap { padding: 0 16px; }
+  .cm__title { font-size: clamp(38px, 11vw, 48px); line-height: 1.05; }
+  .cm__lead { font-size: 14px; line-height: 1.6; }
 
   .cm__stage {
+    flex-direction: column;
     flex-wrap: nowrap;
-    /* centring an overflowing flex row strands the first item in the left
-       overflow, which no amount of scrolling can reach — the rail has to
-       start at the beginning */
-    justify-content: flex-start;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 14px;
+    align-items: stretch;
+    gap: 20px;
+    overflow: visible;
+    padding-bottom: 0;
   }
-  .cm__stage::-webkit-scrollbar { display: none; }
   .cm-card {
-    /* start, not center: card 01 can never be centred at scroll position 0,
-       so a centred snap point lands the rail on card 02 on first paint */
-    scroll-snap-align: start;
-    margin-inline: 0;
-    width: 70vw;
-    height: calc(600 * var(--cm-u));
+    width: 100%;
+    height: min(540px, 125vw);
   }
+  .cm-card__body { padding: 0 20px 22px; }
+  .cm-card__name,
+  .cm-card--1 .cm-card__name,
+  .cm-card--3 .cm-card__name,
+  .cm-card--4 .cm-card__name { font-size: 22px; }
+  .cm-card__role { font-size: 12px; }
+  .cm-card__no { font-size: 14px; }
+  .cm-card__note { font-size: 16px; }
 
   .cm__bg { font-size: 120px; top: 130px; }
 }
