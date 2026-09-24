@@ -523,6 +523,53 @@ var THEMEMASCOT = {};
 				},
 			},
 		});
+
+		/* Hold the client strip at the first logo until the section is actually
+		   on screen, and pause it again once it leaves.
+
+		   Autoplay used to begin at page load with a 1s delay, so by the time a
+		   visitor scrolled down to the strip it had already cycled well past the
+		   opening clients - the DOM order was right but nobody ever saw its
+		   start. Starting on intersection makes the run begin at client #1. */
+		(function () {
+			var sliders = [].concat(brandSlider);
+			var els = document.querySelectorAll('.brand-slider');
+			if (!els.length) return;
+
+			sliders.forEach(function (sw) {
+				if (sw && sw.autoplay) sw.autoplay.stop();
+			});
+
+			if (!('IntersectionObserver' in window)) {
+				sliders.forEach(function (sw) {
+					if (sw && sw.autoplay) sw.autoplay.start();
+				});
+				return;
+			}
+
+			var seen = [];
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					var i = [].indexOf.call(els, entry.target);
+					var sw = sliders[i] || sliders[0];
+					if (!sw || !sw.autoplay) return;
+
+					if (entry.isIntersecting) {
+						/* first time in view: rewind to the real first slide.
+						   slideToLoop, not slideTo - loop mode prepends clones. */
+						if (!seen[i]) {
+							seen[i] = true;
+							if (sw.slideToLoop) sw.slideToLoop(0, 0);
+						}
+						sw.autoplay.start();
+					} else {
+						sw.autoplay.stop();
+					}
+				});
+			}, { threshold: 0.25 });
+
+			[].forEach.call(els, function (el) { io.observe(el); });
+		})();
 	}
 
   //service-carousel One

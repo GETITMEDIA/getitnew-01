@@ -6566,13 +6566,26 @@ Start sass Icon Single Box
 .services-section-two .sec-title .sub-title {
   padding-top: 0;
 }
+.services-section-two .services-header-right {
+  margin-left: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+}
 .services-section-two p.sec-descrption {
-  margin: 0 0 0 auto;
+  margin: 0;
   max-width: 477px;
+  line-height: 1.5;
+  font-size: 18px;
 }
 @media (max-width: 991.98px) {
+  .services-section-two .services-header-right {
+    margin-left: 0;
+    margin-top: 20px;
+  }
   .services-section-two p.sec-descrption {
-    margin-left: initial;
+    margin-left: 0;
     max-width: none;
   }
 }
@@ -6725,6 +6738,30 @@ Start sass Icon Single Box
 }
 .service_single_item-2 .service-img img {
   width: 100%;
+}
+/* square stand-in shown until a service has its own photo */
+.service_single_item-2 .service-img--pending {
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(232, 98, 44, 0.45), transparent 60%),
+    linear-gradient(145deg, #2a1a12 0%, #121212 100%);
+}
+.service_single_item-2 .service-img--pending img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+}
+.service_single_item-2 .service-img--pending .service-img__icon {
+  font-size: 96px;
+  color: rgba(232, 98, 44, 0.9);
+  -webkit-transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
+}
+.service_single_item-2:hover .service-img--pending .service-img__icon {
+  transform: scale(1.08) rotate(-6deg);
 }
 .service_single_item-2:hover .service-img:after {
   left: 0;
@@ -10943,11 +10980,21 @@ Start sass Icon Single Box
 .why-choose-us-section .choose-thumb .image1 {
   position: relative;
   z-index: 1;
-  margin: 0 23px 0;
+  margin: 0 auto;
   top: -26px;
 }
 .why-choose-us-section .choose-thumb img {
   width: 100%;
+}
+/* Waist-up cut-out sized to sit inside the 424x450 arch. Capped so it cannot
+   outgrow the arch on wide columns, and centred within it. */
+.why-choose-us-section .choose-thumb .image1 img {
+  width: 100%;
+  max-width: 424px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .why-choose-us-section .choose-thumb .dote-shape {
   position: absolute;

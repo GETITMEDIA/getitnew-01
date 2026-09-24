@@ -57,7 +57,31 @@
 
 .about__title-line { display: block; }
 .about__title-line--navy { color: #fff; }
-.about__title-line--accent { color: var(--about-accent); }
+/* "Digital Marketing" — multi-colour animated sweep, matching the hero
+   headline. `color` stays first as the fallback: if a browser lacks
+   background-clip:text it also lacks -webkit-text-fill-color, so the text
+   renders in the flat accent instead of vanishing. ltTalkFlow comes from
+   lets-talk.css, which index.html also loads. */
+.about__title-line--accent {
+  color: var(--about-accent);
+  background: linear-gradient(90deg,
+      #ffd23f 0%,
+      var(--about-accent) 25%,
+      #e6395a 50%,
+      var(--about-accent) 75%,
+      #ffd23f 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ltTalkFlow 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__title-line--accent {
+    animation: none;
+  }
+}
 
 .about__desc {
   margin: 0 0 32px;
@@ -419,7 +443,72 @@ h2.gm-sec-title,
   color: #fff;
   text-transform: none;
 }
-.gm-sec-title__line { display: block; }
-.gm-sec-title__line--accent { color: var(--about-accent, #ff6a2c); }
+/* ── Section title: small white lines against one large gradient line ──
+   Only typography, spacing, position and the gradient animation are set here;
+   the h2's own colour, weight and clamp are untouched above. Sizes are in `em`
+   so the whole arrangement scales with the clamped h2 at every viewport. */
+.gm-sec-title {
+  /* one place to retune the pairing */
+  --gm-title-quiet: 0.55em;
+  --gm-title-loud: 90px;
+}
+
+/* the quiet white lines: smaller, lighter, gently tracked out so they read as
+   a label sitting above and below the statement line */
+.gm-sec-title__line {
+  display: block;
+  font-size: var(--gm-title-quiet);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  color: #fff;
+  opacity: 0.92;
+}
+
+/* the loud line: the section's actual subject */
+.gm-sec-title__line--accent {
+  font-size: var(--gm-title-loud);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  margin-left: 0;
+  margin-block: 0.06em 0.04em;
+  /* a long accent ("Happy Business Partners") wraps in its column, so balance
+     the lines instead of leaving one orphaned word */
+  text-wrap: balance;
+  color: var(--about-accent, #ff6a2c);
+  background: linear-gradient(100deg,
+      #ff5a00 0%,
+      #ff8a1f 18%,
+      #ffb020 36%,
+      #ffd23f 50%,
+      #ffb020 64%,
+      #ff8a1f 82%,
+      #ff5a00 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* alternate + ease-in-out gives a slow tide rather than a looping conveyor */
+  animation: gmTitleFlow 7s ease-in-out infinite alternate;
+}
+
+/* every line shares one left edge - no indent on the line after the accent */
+.gm-sec-title__line--accent + .gm-sec-title__line {
+  padding-left: 0;
+  opacity: 0.92;
+}
+
+@keyframes gmTitleFlow {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-sec-title__line--accent {
+    animation: none;
+    background-position: 30% 50%;
+  }
+}
 /* white sections (stats) keep the same type in dark ink */
 h2.gm-sec-title--on-light { color: #171f32; }

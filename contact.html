@@ -119,6 +119,9 @@
                     <a href="video-editor.html" class="mega-service" role="menuitem"><span
                         class="mega-service__icon">V</span><span class="mega-service__text"><span
                           class="mega-service__title">Video Editing</span></span></a>
+                    <a href="advertising.html" class="mega-service" role="menuitem"><span
+                        class="mega-service__icon">Ad</span><span class="mega-service__text"><span
+                          class="mega-service__title">Advertising</span></span></a>
                   </div>
                   <div class="mega-promo">
                     <div class="mega-promo__content"><span class="mega-promo__badge">*</span>
@@ -173,7 +176,7 @@
                 class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine
                 Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a
                 href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html"
-                class="mobile-service">Video Editing</a></div>
+                class="mobile-service">Video Editing</a><a href="advertising.html" class="mobile-service">Advertising</a></div>
           </li>
           <li><a href="team.html" class="mobile-link">Team</a></li>
           <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
@@ -339,19 +342,94 @@
               margin-top: 40px;
           }
           .badge-item {
+              --i: 0;
+              position: relative;
+              overflow: hidden;
+              isolation: isolate;
               background: #fff;
               border: 1px solid #ddd;
               padding: 10px 20px;
               border-radius: 30px;
               color: #333;
               font-weight: 500;
+              text-decoration: none;
               box-shadow: 0 4px 10px rgba(0,0,0,0.03);
               display: flex;
               align-items: center;
               gap: 10px;
+              cursor: pointer;
+              transition: color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(.2,.8,.2,1);
+              animation: badge-float 4s ease-in-out infinite;
+              animation-delay: calc(var(--i) * -1s);
+          }
+          .badge-item:nth-child(2) { --i: 1; }
+          .badge-item:nth-child(3) { --i: 2; }
+          .badge-item:nth-child(4) { --i: 3; }
+          /* orange fill that sweeps in from the left on hover */
+          .badge-item::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              z-index: -1;
+              background: linear-gradient(135deg, #f0692f 0%, #d9521b 100%);
+              transform: scaleX(0);
+              transform-origin: left center;
+              transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+          }
+          /* light glint that crosses the pill */
+          .badge-item::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: -60%;
+              width: 40%;
+              z-index: -1;
+              background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+              transform: skewX(-20deg);
+              pointer-events: none;
           }
           .badge-item i {
               color: var(--theme-color1);
+              transition: color 0.35s ease, transform 0.45s cubic-bezier(.3,1.6,.5,1);
+          }
+          .badge-item:hover,
+          .badge-item:focus-visible {
+              color: #fff;
+              border-color: transparent;
+              box-shadow: 0 14px 28px -12px rgba(232, 98, 44, 0.65);
+              animation-play-state: paused;
+              transform: translateY(-4px) scale(1.04);
+              outline: none;
+          }
+          .badge-item:hover::before,
+          .badge-item:focus-visible::before { transform: scaleX(1); }
+          .badge-item:hover::after { animation: badge-glint 0.8s ease 0.15s; }
+          .badge-item:hover i,
+          .badge-item:focus-visible i {
+              color: #fff;
+              transform: rotate(-12deg) scale(1.25);
+          }
+          .badge-item:active { transform: translateY(-1px) scale(0.98); }
+          @keyframes badge-float {
+              0%, 100% { translate: 0 0; }
+              50%      { translate: 0 -5px; }
+          }
+          @keyframes badge-glint {
+              from { left: -60%; }
+              to   { left: 130%; }
+          }
+          /* the service picked from a pill flashes once in the form */
+          .form-select.is-prefilled {
+              animation: prefill-flash 1.4s ease;
+          }
+          @keyframes prefill-flash {
+              0%, 100% { box-shadow: 0 0 0 0 rgba(232, 98, 44, 0); }
+              25%      { box-shadow: 0 0 0 5px rgba(232, 98, 44, 0.35); border-color: var(--theme-color1); }
+          }
+          @media (prefers-reduced-motion: reduce) {
+              .badge-item, .badge-item::after, .form-select.is-prefilled { animation: none !important; }
+              .badge-item:hover, .badge-item:focus-visible { transform: none; }
           }
           
           /* Info Cards */
@@ -429,8 +507,56 @@
               display: flex;
               flex-direction: column;
           }
-          .info-card .btn {
+          /* card action button: soft orange pill that fills on hover */
+          .info-btn {
               margin-top: auto;
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 10px;
+              width: 100%;
+              min-height: 50px;
+              padding: 14px 20px 11px;
+              border: 1.5px solid rgba(232, 98, 44, 0.35);
+              border-radius: 50px;
+              background: rgba(232, 98, 44, 0.07);
+              color: var(--theme-color1);
+              font-size: 0.9rem;
+              font-weight: 700;
+              letter-spacing: 1.2px;
+              text-transform: uppercase;
+              text-decoration: none;
+              line-height: 1;
+              transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+          }
+          .info-btn i {
+              font-size: 1rem;
+          }
+          .info-btn .info-btn__arrow {
+              font-size: 0.8rem;
+              opacity: 0;
+              width: 0;
+              transform: translateX(-6px);
+              transition: opacity 0.3s ease, transform 0.3s ease, width 0.3s ease;
+          }
+          .info-btn:hover,
+          .info-btn:focus-visible,
+          .info-card:hover .info-btn {
+              background: linear-gradient(135deg, #f0692f 0%, #d9521b 100%);
+              border-color: transparent;
+              color: #fff;
+              box-shadow: 0 10px 22px -10px rgba(232, 98, 44, 0.75);
+          }
+          .info-btn:hover .info-btn__arrow,
+          .info-card:hover .info-btn__arrow {
+              opacity: 1;
+              width: 12px;
+              transform: translateX(0);
+          }
+          .info-btn:focus-visible {
+              outline: 3px solid rgba(232, 98, 44, 0.4);
+              outline-offset: 3px;
           }
           .info-card:hover {
               transform: translateY(-5px);
@@ -492,7 +618,126 @@
           .privacy-text {
               font-size: 0.85rem;
               color: #888;
-              margin-top: 15px;
+              margin: 16px 0 0;
+              text-align: center;
+          }
+          .privacy-text i {
+              color: #aaa;
+              font-size: 0.8rem;
+              margin-right: 6px;
+          }
+
+          /* Preferred contact method - selectable pills */
+          .cm-label {
+              display: block;
+              font-weight: 700;
+              color: #222;
+              margin-bottom: 12px;
+          }
+          .cm-options {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 12px;
+          }
+          .cm-option {
+              position: relative;
+              margin: 0;
+              cursor: pointer;
+          }
+          .cm-option input {
+              position: absolute;
+              opacity: 0;
+              pointer-events: none;
+          }
+          .cm-pill {
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              padding: 11px 22px;
+              border: 1.5px solid #e2e2e2;
+              border-radius: 50px;
+              background: #fcfcfc;
+              color: #444;
+              font-weight: 600;
+              font-size: 0.95rem;
+              transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+          }
+          .cm-pill i {
+              color: #999;
+              transition: color 0.25s ease;
+          }
+          .cm-option:hover .cm-pill {
+              border-color: rgba(232, 98, 44, 0.5);
+          }
+          .cm-option input:checked + .cm-pill {
+              border-color: var(--theme-color1);
+              background: rgba(232, 98, 44, 0.08);
+              color: var(--theme-color1);
+          }
+          .cm-option input:checked + .cm-pill i {
+              color: var(--theme-color1);
+          }
+          .cm-option input:focus-visible + .cm-pill {
+              box-shadow: 0 0 0 3px rgba(232, 98, 44, 0.25);
+          }
+
+          /* Submit */
+          .enquiry-submit {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 14px;
+              width: 100%;
+              min-height: 60px;
+              padding: 14px 64px;
+              border: 0;
+              border-radius: 50px;
+              background: linear-gradient(135deg, #f0692f 0%, #d9521b 100%);
+              color: #fff;
+              font-size: 1rem;
+              font-weight: 700;
+              letter-spacing: 1.5px;
+              text-transform: uppercase;
+              box-shadow: 0 12px 28px -12px rgba(232, 98, 44, 0.7);
+              cursor: pointer;
+              transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+          }
+          .enquiry-submit__icon {
+              position: absolute;
+              right: 13px;
+              top: 50%;
+              margin-top: -17px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 34px;
+              height: 34px;
+              border-radius: 50%;
+              background: rgba(255, 255, 255, 0.18);
+              font-size: 0.85rem;
+              transition: transform 0.3s ease;
+          }
+          .enquiry-submit:hover {
+              transform: translateY(-2px);
+              filter: brightness(1.05);
+              box-shadow: 0 18px 34px -14px rgba(232, 98, 44, 0.85);
+          }
+          .enquiry-submit:hover .enquiry-submit__icon {
+              transform: translateX(3px) rotate(-12deg);
+          }
+          .enquiry-submit:active {
+              transform: translateY(0);
+          }
+          .enquiry-submit:focus-visible {
+              outline: 3px solid rgba(232, 98, 44, 0.4);
+              outline-offset: 3px;
+          }
+          @media (max-width: 575.98px) {
+              .contact-form-wrapper { padding: 28px 20px; }
+              .cm-options { gap: 8px; }
+              .cm-pill { padding: 10px 16px; font-size: 0.9rem; }
+              .enquiry-submit { min-height: 56px; font-size: 0.9rem; letter-spacing: 1px; }
           }
           
           /* Why Us Section */
@@ -642,10 +887,10 @@
               <p class="text-muted mx-auto" style="max-width: 700px; font-size: 1.1rem;" data-aos="fade-up" data-aos-delay="100">Every business has a different goal. Share your requirements with us and our team will understand your needs, recommend the right solution, and help you move forward with confidence.</p>
               
               <div class="highlight-badges" data-aos="fade-up" data-aos-delay="200">
-                  <div class="badge-item"><i class="fa fa-laptop-code"></i> Have a Website Project?</div>
-                  <div class="badge-item"><i class="fa fa-chart-line"></i> Need More Leads?</div>
-                  <div class="badge-item"><i class="fa fa-search"></i> Want Better Online Visibility?</div>
-                  <div class="badge-item"><i class="fa fa-paint-brush"></i> Looking for Creative Services?</div>
+                  <a href="#enquiry-form" class="badge-item" data-service="Website Design &amp; Development"><i class="fa fa-laptop-code"></i> Have a Website Project?</a>
+                  <a href="#enquiry-form" class="badge-item" data-service="Google Ads"><i class="fa fa-chart-line"></i> Need More Leads?</a>
+                  <a href="#enquiry-form" class="badge-item" data-service="Search Engine Optimization"><i class="fa fa-search"></i> Want Better Online Visibility?</a>
+                  <a href="#enquiry-form" class="badge-item" data-service="Graphic Design"><i class="fa fa-paint-brush"></i> Looking for Creative Services?</a>
               </div>
               <p class="mt-4 text-muted fw-bold" data-aos="fade-up" data-aos-delay="300">From your first idea to the final launch, we're here to help.</p>
           </div>
@@ -665,7 +910,7 @@
                           <h3 class="info-title">Call Us</h3>
                           <p class="info-desc">Speak directly with our team about your project requirements.</p>
                           <span class="info-detail">0413-4900887<br>98439 26286</span>
-                          <a href="tel:04134900887" class="btn btn-outline-dark w-100 rounded-pill fw-bold">CALL NOW</a>
+                          <a href="tel:04134900887" class="info-btn"><i class="fa-solid fa-phone"></i> Call Now <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
                   <!-- Card 2 -->
@@ -675,7 +920,7 @@
                           <h3 class="info-title">Email Us</h3>
                           <p class="info-desc">Send us your requirements, questions, or project details.</p>
                           <span class="info-detail">anthoni.g@getitmediasolutions.in</span>
-                          <a href="mailto:anthoni.g@getitmediasolutions.in" class="btn btn-outline-dark w-100 rounded-pill fw-bold">SEND EMAIL</a>
+                          <a href="mailto:anthoni.g@getitmediasolutions.in" class="info-btn"><i class="fa-solid fa-envelope"></i> Send Email <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
                   <!-- Card 3 -->
@@ -685,7 +930,7 @@
                           <h3 class="info-title">WhatsApp</h3>
                           <p class="info-desc">Have a quick question? Start a conversation with our team.</p>
                           <span class="info-detail">98439 26286</span>
-                          <a href="https://wa.me/919843926286" target="_blank" class="btn btn-outline-dark w-100 rounded-pill fw-bold">CHAT ON WHATSAPP</a>
+                          <a href="https://wa.me/919843926286" target="_blank" rel="noopener" class="info-btn"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
                   <!-- Card 4 -->
@@ -695,7 +940,7 @@
                           <h3 class="info-title">Visit Us</h3>
                           <p class="info-desc">Connect with us and discuss your digital requirements.</p>
                           <span class="info-detail">No.10 2nd Floor, 4th Cross,<br>Victoria Nagar, Puducherry</span>
-                          <a href="https://maps.google.com" target="_blank" class="btn btn-outline-dark w-100 rounded-pill fw-bold">GET DIRECTIONS</a>
+                          <a href="https://maps.google.com/?q=Victoria+Nagar+Pondicherry" target="_blank" rel="noopener" class="info-btn"><i class="fa-solid fa-location-dot"></i> Get Directions <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
               </div>
@@ -766,23 +1011,20 @@
                                       </div>
                                   </div>
                                   <div class="col-12 mb-4">
-                                      <label class="fw-bold mb-2 d-block">Preferred Contact Method:</label>
-                                      <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" name="contact_method" id="methodPhone" value="Phone" checked>
-                                          <label class="form-check-label" for="methodPhone">Phone</label>
+                                          <span class="cm-label">Preferred Contact Method</span>
+                                          <div class="cm-options" role="radiogroup" aria-label="Preferred contact method">
+                                              <label class="cm-option" for="methodWhatsapp">
+                                                  <input type="radio" name="contact_method" id="methodWhatsapp" value="WhatsApp" checked>
+                                                  <span class="cm-pill"><i class="fa-brands fa-whatsapp"></i> WhatsApp</span>
+                                              </label>
+                                          </div>
                                       </div>
-                                      <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" name="contact_method" id="methodWhatsapp" value="WhatsApp">
-                                          <label class="form-check-label" for="methodWhatsapp">WhatsApp</label>
-                                      </div>
-                                      <div class="form-check form-check-inline">
-                                          <input class="form-check-input" type="radio" name="contact_method" id="methodEmail" value="Email">
-                                          <label class="form-check-label" for="methodEmail">Email</label>
-                                      </div>
-                                  </div>
-                                  <div class="col-12">
-                                      <button type="submit" class="theme-btn btn-style-one w-100 border-0" style="padding: 18px;"><span class="btn-title fs-5">SEND PROJECT ENQUIRY</span></button>
-                                      <p class="privacy-text text-center"><i class="fa fa-lock me-1"></i> Your information is used only to understand your requirements and respond to your enquiry.</p>
+                                      <div class="col-12">
+                                          <button type="submit" class="enquiry-submit">
+                                              <span>Send Project Enquiry</span>
+                                              <span class="enquiry-submit__icon"><i class="fa-solid fa-paper-plane"></i></span>
+                                          </button>
+                                          <p class="privacy-text"><i class="fa-solid fa-lock"></i> Your information is used only to understand your requirements and respond to your enquiry.</p>
                                   </div>
                               </div>
                           </form>
@@ -964,6 +1206,21 @@
       <script>
       document.addEventListener('DOMContentLoaded', function() {
           const form = document.getElementById('contact-form');
+
+          // question pills: jump to the form with the matching service chosen
+          document.querySelectorAll('.badge-item[data-service]').forEach(function(pill) {
+              pill.addEventListener('click', function(e) {
+                  const select = form && form.querySelector('select[name="service"]');
+                  if (!select) return;
+                  e.preventDefault();
+                  select.value = pill.dataset.service;
+                  select.classList.remove('is-prefilled');
+                  void select.offsetWidth;
+                  select.classList.add('is-prefilled');
+                  document.getElementById('enquiry-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  setTimeout(function() { form.querySelector('input[name="name"]').focus({ preventScroll: true }); }, 700);
+              });
+          });
           if(form) {
               form.addEventListener('submit', function(e) {
                   e.preventDefault();
@@ -975,7 +1232,7 @@
       </script>
 
 <!-- Main Footer -->
-    <footer class="lt-footer" id="contact">
+  <footer class="lt-footer" id="contact">
       <div class="lt-dotgrid" aria-hidden="true"></div>
       <svg class="lt-waves" viewBox="0 0 420 160" preserveAspectRatio="none" aria-hidden="true">
         <path d="M-20 130 C 60 60, 140 170, 220 90 S 380 30, 460 100" stroke="#e8622c" stroke-width="1.4" fill="none"
@@ -994,13 +1251,13 @@
             <h2 class="lt-heading" data-aos="fade-up">LET&rsquo;S<span class="lt-heading-accent">TALK
                 <svg class="lt-heading-arrow" viewBox="0 0 90 90" fill="none" aria-hidden="true">
               <path
-  class="lt-heading-arrow-path"
-  d="M8 82 L78 12"
-  stroke="#ffffff"
-  stroke-width="3"
-  stroke-linecap="round"
-  stroke-linejoin="round">
-</path>
+      class="lt-heading-arrow-path"
+      d="M8 82 L78 12"
+      stroke="#ffffff"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round">
+    </path>
                   <path d="M62 10 L78 12 L72 27" stroke="#ffffff" stroke-width="3" stroke-linecap="round"
                     stroke-linejoin="round" fill="none" />
                 </svg>
@@ -1063,10 +1320,9 @@
             <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png"
                 alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
             <div class="lt-underline"></div>
-            <p class="lt-brand-desc">A full-service digital marketing studio in Pondicherry &mdash; strategy,
-              development, social, content and design, all delivered in-house.</p>
+            <p class="lt-brand-desc">A full-service digital marketing studio in Pondicherry  </p>
             <!-- quick links to every service page (fills the brand column) -->
-            <nav class="lt-services" aria-label="Our services">
+            <!-- <nav class="lt-services" aria-label="Our services">
               <span class="lt-services-title">Our Services</span>
               <ul class="lt-services-list">
                 <li><a href="googlemybusiness.html">Google My Business</a></li>
@@ -1077,7 +1333,7 @@
                 <li><a href="graphic.html">Graphic Design</a></li>
                 <li><a href="video-editor.html">Video Editing</a></li>
               </ul>
-            </nav>
+            </nav> -->
           </div>
 
           <!-- Column 4: Contact Info -->
@@ -1089,7 +1345,8 @@
                 <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
                 <span>
                   <p class="lt-contact-label">Email Us</p>
-                  <p class="lt-contact-value">getitmediasolutions@gmail.com</p>
+                  <p class="lt-contact-value">getitmediasolutions@gmail.com </p>
+                     <p class="lt-contact-value"> anthoni.g@getitmediasolutions.in</p>
                 </span>
               </a>
               <a class="lt-contact-item" href="https://maps.google.com/?q=Victoria+Nagar+Pondicherry" target="_blank"
@@ -1104,7 +1361,7 @@
                 <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
                 <span>
                   <p class="lt-contact-label">Phone</p>
-                  <p class="lt-contact-value">+91 98439 26286</p>
+                  <p class="lt-contact-value">+91 98439 26286 / 98439 26261 / 0413-4900887 / 2204388 </p>
                 </span>
               </a>
             </div>
@@ -1154,9 +1411,9 @@
           <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
         </div>
         <nav class="lt-bottom-nav" aria-label="Footer">
-          <a href="#home">About Us</a><span>|</span>
-          <a href="#portfolio">Our Portfolio</a><span>|</span>
-          <a href="#contact">Careers</a><span>|</span>
+          <a href="abouts.html">About Us</a><span>|</span>
+          <a href="portfolio.html">Our Portfolio</a><span>|</span>
+          <a href="team.html#careers">Careers</a><span>|</span>
           <a href="privacy-policy.html">Privacy Policy</a><span>|</span>
           <a href="terms-conditions.html">Terms &amp; Conditions</a>
         </nav>

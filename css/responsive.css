@@ -4472,6 +4472,12 @@
 		top: 0;
 		margin: 0 16px;
 	}
+	.why-choose-us-style .choose-thumb .image1 img {
+		height: 420px;
+		width: auto;
+		max-width: 100%;
+		object-fit: contain;
+	}
 	.why-choose-us-style .choose-thumb .dote-shape {
 		bottom: -12%;
 	}
@@ -4514,6 +4520,12 @@
 	}
 	.why-choose-us-style .choose-thumb {
 		max-width: 300px;
+	}
+	.why-choose-us-style .choose-thumb .image1 img {
+		height: 350px;
+		width: auto;
+		max-width: 100%;
+		object-fit: contain;
 	}
 	.why-choose-us-style .buler-bg {
 		width: 320px;

@@ -487,6 +487,33 @@
     return function () { sec.classList.remove('is-pinned'); };
   }
 
+  /* ------------------------------------------------------- reel playback */
+  /* Reel panels keep their poster frame until the clip is on screen, then
+     play muted and loop. Nothing here depends on GSAP, so it also works on
+     mobile and with reduced motion, and a missing .mp4 simply leaves the
+     poster in place. */
+  function initReelVideos() {
+    var vids = $$('.pf-reel__panel video');
+    if (!vids.length) return;
+
+    if (reduceMotion || !window.IntersectionObserver) return;
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var vid = entry.target;
+        if (entry.isIntersecting) {
+          if (vid.preload === 'none') vid.preload = 'auto';
+          var played = vid.play();
+          if (played && played.catch) played.catch(function () { /* autoplay blocked */ });
+        } else {
+          vid.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+
+    vids.forEach(function (vid) { io.observe(vid); });
+  }
+
   /* ------------------------------------------------------ horizontal reel */
   function pinReel() {
     var sec = $('#pfReel');
@@ -511,8 +538,8 @@
       }
     });
 
-    /* images slide inside their frames while the track moves */
-    $$('.pf-reel__panel img', sec).forEach(function (img) {
+    /* images and reel videos slide inside their frames while the track moves */
+    $$('.pf-reel__panel img, .pf-reel__panel video', sec).forEach(function (img) {
       gsap.fromTo(img, { xPercent: 7 }, {
         xPercent: -7,
         ease: 'none',
@@ -598,6 +625,7 @@
   initModal();
   initFilters();
   initSites();
+  initReelVideos();
 
   if (!animate) return;
 

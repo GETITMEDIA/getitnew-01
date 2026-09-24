@@ -322,6 +322,56 @@
   opacity: 0.6;
 }
 
+/* ── Rest of the headline (". Be Remembered.") ──
+   It was the flat white from `color: var(--gm-white)` above. This paints the
+   whole h1 with a lighter multi-colour sweep; the "Be Seen" span below sets
+   its own stronger gradient, so the accent still leads. */
+.gm-hero__heading {
+  background: linear-gradient(90deg,
+      #ffffff 0%,
+      #ffd23f 28%,
+      #ff8a3d 52%,
+      #ffffff 82%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: ltTalkFlow 7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-hero__heading {
+    animation: none;
+  }
+}
+
+/* ── "Be Seen": multi-colour animated gradient ──
+   The headline reuses .lt-heading-accent, but that class is only styled under
+   .lt-heading in lets-talk.css, so it needs its own rule here. No display:block
+   (the lt version has one) — this accent sits inline before ". Be Remembered.".
+   The ltTalkFlow keyframes come from lets-talk.css, which index.html loads. */
+.gm-hero__heading .lt-heading-accent {
+  background: linear-gradient(90deg,
+      #ffd23f 0%,
+      var(--gm-orange) 25%,
+      #e6395a 50%,
+      var(--gm-orange) 75%,
+      #ffd23f 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: ltTalkFlow 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-hero__heading .lt-heading-accent {
+    animation: none;
+  }
+}
+
 /* ── Typewriter accent word (Grow. / Connect. / Convert.) ──
    The accent span reserves the width of the longest word via a hidden sizer so
    the centred headline never reflows while letters are typed. The glow

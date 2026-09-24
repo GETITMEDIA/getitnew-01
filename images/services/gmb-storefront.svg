@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img"
+  aria-label="Google My Business">
+  <title>Google My Business</title>
+
+  <rect width="1024" height="1024" fill="#101215" />
+
+  <!-- shop body -->
+  <rect x="232" y="320" width="560" height="330" rx="28" fill="#4285f4" />
+  <path d="M232 348 L534 650 L260 650 A28 28 0 0 1 232 622 Z" fill="#3b78e0" opacity="0.5" />
+
+  <!-- the G on the shopfront -->
+  <text x="676" y="610" fill="#f1f3f4" font-family="Arial, Helvetica, sans-serif" font-size="210"
+    text-anchor="middle">G</text>
+
+  <!-- awning: four panels flaring outwards, each closed by a half-round scallop -->
+  <path d="M290 140 L401 140 L372 320 A70 70 0 0 1 232 320 Z" fill="#8ab4f8" />
+  <path d="M401 140 L512 140 L512 320 A70 70 0 0 1 372 320 Z" fill="#3f51b5" />
+  <path d="M512 140 L623 140 L652 320 A70 70 0 0 1 512 320 Z" fill="#8ab4f8" />
+  <path d="M623 140 L734 140 L792 320 A70 70 0 0 1 652 320 Z" fill="#3f51b5" />
+
+  <!-- wordmark -->
+  <text x="512" y="820" font-family="Arial, Helvetica, sans-serif" font-size="150" text-anchor="middle">
+    <tspan fill="#4285f4">G</tspan><tspan fill="#ea4335">o</tspan><tspan fill="#fbbc05">o</tspan><tspan
+      fill="#4285f4">g</tspan><tspan fill="#34a853">l</tspan><tspan fill="#ea4335">e</tspan>
+  </text>
+  <text x="512" y="945" fill="#e3e3e3" font-family="Arial, Helvetica, sans-serif" font-size="108"
+    text-anchor="middle">My Business</text>
+</svg>
