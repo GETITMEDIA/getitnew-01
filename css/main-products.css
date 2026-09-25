@@ -25,12 +25,22 @@
 
 .mp-heading {
   text-align: center;
-  font-size: 28px;
-  font-weight: 500;
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: 0.5px;
+  /* was a fixed 68px: at that size the line ran past the viewport on phones.
+     clamp keeps the display scale on desktop and lets it come down cleanly. */
+  font-size: clamp(1.75rem, 4.6vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.16;
+  /* positive tracking loosens display type; large sizes want it slightly tight */
+  letter-spacing: -0.012em;
+  color: #ea5a06;
+  /* holds the line length to a readable measure instead of the full container */
+  max-width: 900px;
+  margin: 0 auto;
 }
+/* The long closing statement, unlike the short "Main Products" title, needs a
+   white base so the payoff half can carry the accent. */
+.mp-heading--split { color: #ffffff; }
+.mp-heading__accent { color: #ea5a06; }
 
 .mp-cards {
   display: flex;
@@ -68,7 +78,7 @@
 
 .mp-card__title {
   color: #e8622c;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 600;
   margin: 0 0 20px 0;
   letter-spacing: 0.5px;
@@ -82,7 +92,7 @@
 
 .mp-card__list li {
   position: relative;
-  font-size: 12.5px;
+  font-size: 18px;
   line-height: 1.7;
   color: #d1d5db;
   margin-bottom: 16px;

@@ -203,7 +203,7 @@
 }
 
 .pe-card-title {
-  font-size: 19px;
+  font-size: 25px;
   font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: 0.3px;
@@ -211,7 +211,7 @@
 }
 
 .pe-card-desc {
-  font-size: 13px;
+  font-size: 19px;
   color: rgba(255, 255, 255, 0.78);
   line-height: 1.5;
   font-weight: 400;

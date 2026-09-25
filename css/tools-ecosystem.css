@@ -153,9 +153,9 @@
 
 .gads-official-svg,
 .gads-official-img {
-  width: 135px;
-  height: 135px;
-  max-width: 100%;
+  width: 555px;
+  height: 555px;
+  max-width: 550%;
   max-height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.7));

@@ -121,7 +121,7 @@
 
 .gah__title {
   margin: clamp(20px, 2vw, 28px) 0 0;
-  font-size: clamp(38px, 5.1vw, 76px);
+  font-size: clamp(38px, 5.1vw, 70px);
   line-height: 1.04;
   font-weight: 800;
   letter-spacing: -0.025em;

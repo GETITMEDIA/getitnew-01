@@ -161,25 +161,31 @@
 .gmbh__title {
   margin: var(--gmb-gap-sm) 0 0;
   font-size: clamp(2.6rem, 5.4vw, 5.4rem);
-  line-height: 0.9;
-  font-weight: 800;
-  letter-spacing: -0.035em;
+  /* was 0.9: shorter than the glyphs themselves, so with the overflow:hidden
+     on .gmbh__line below the caps were being sliced and the two lines nearly
+     collided */
+  line-height: 1.02;
+  font-weight: 700;
+  /* was -0.035em, which packed BUSINESS too tight at hero size */
+  letter-spacing: -0.022em;
   text-transform: uppercase;
   color: var(--gmb-text-main);
 }
 .gmbh__line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.06em;
+  /* room for ascenders and descenders inside the clipped box */
+  padding-top: 0.04em;
+  padding-bottom: 0.1em;
 }
 .gmbh__title i { display: block; font-style: normal; }
 /* first line sits back a weight so the orange payoff line carries the punch */
-.gmbh__line:first-child i { font-weight: 600; color: rgba(255, 255, 255, 0.92); }
+.gmbh__line:first-child i { font-weight: 500; color: rgba(255, 255, 255, 0.92); }
 /* no text-shadow here - .gmbh__line clips with overflow:hidden for the rise
    animation, which would slice a visible box out of any glow */
 .gmbh__title-accent {
   color: var(--gmb-orange);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .gmbh__desc {
