@@ -1,0 +1,1213 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GetIt Media Solutions | Digital Marketing Agency</title>
+
+    <meta name="description"
+          content="GetIt Media Solutions is a digital marketing agency offering SEO, Google Ads, Meta Ads, social media marketing, web development and creative services.">
+
+    <!-- Bricolage Grotesque Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        /* ================================
+           GLOBAL
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ================================
+           NAVBAR
+        ================================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+
+            padding: 20px 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(5, 5, 5, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+        }
+
+        .logo span {
+            color: #F37021;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #F37021;
+        }
+
+        .nav-button {
+            padding: 11px 21px;
+
+            background: #F37021;
+            color: #ffffff;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: #ffffff;
+            color: #050505;
+            transform: translateY(-2px);
+        }
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding: 150px 7% 100px;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            right: -200px;
+            top: 100px;
+
+            background: rgba(243, 112, 33, 0.14);
+
+            filter: blur(130px);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            left: -150px;
+            bottom: -100px;
+
+            background: rgba(243, 112, 33, 0.08);
+
+            filter: blur(100px);
+
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+
+            margin-bottom: 24px;
+
+            color: #F37021;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 125px);
+
+            line-height: 0.88;
+
+            font-weight: 800;
+
+            letter-spacing: -6px;
+
+            margin-bottom: 35px;
+        }
+
+        .hero h1 .orange {
+            color: #F37021;
+        }
+
+        .hero h1 .italic {
+            font-style: italic;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            color: #a9a9a9;
+
+            font-size: 18px;
+            font-weight: 400;
+
+            line-height: 1.7;
+
+            margin-bottom: 38px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-button,
+        .secondary-button {
+            padding: 15px 27px;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s ease;
+        }
+
+        .primary-button {
+            background: #F37021;
+            color: #ffffff;
+        }
+
+        .primary-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(243, 112, 33, 0.22);
+        }
+
+        .secondary-button {
+            border: 1px solid #383838;
+            color: #ffffff;
+        }
+
+        .secondary-button:hover {
+            border-color: #F37021;
+            color: #F37021;
+        }
+
+        /* ================================
+           SERVICES
+        ================================= */
+
+        .services {
+            padding: 120px 7%;
+            background: #0a0a0a;
+        }
+
+        .section-label {
+            color: #F37021;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            max-width: 850px;
+
+            font-size: clamp(42px, 6vw, 80px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            font-weight: 750;
+
+            margin-bottom: 65px;
+        }
+
+        .section-title span {
+            color: #F37021;
+        }
+
+        .service-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .service-card {
+            min-height: 290px;
+
+            padding: 35px;
+
+            background: #111111;
+
+            border: 1px solid #242424;
+
+            border-radius: 14px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.35s ease;
+        }
+
+        .service-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 120px;
+
+            right: -60px;
+            bottom: -60px;
+
+            border-radius: 50%;
+
+            background: rgba(243, 112, 33, 0.08);
+
+            transition: 0.35s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(243, 112, 33, 0.7);
+        }
+
+        .service-card:hover::before {
+            transform: scale(2);
+        }
+
+        .service-number {
+            color: #F37021;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card h3 {
+            margin-top: 55px;
+
+            font-size: 28px;
+
+            line-height: 1.1;
+
+            font-weight: 700;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            margin-top: 15px;
+
+            color: #999999;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ================================
+           ABOUT
+        ================================= */
+
+        .about {
+            padding: 130px 7%;
+
+            display: grid;
+
+            grid-template-columns: 1.1fr 0.9fr;
+
+            gap: 90px;
+
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: clamp(45px, 6vw, 85px);
+
+            line-height: 0.92;
+
+            letter-spacing: -5px;
+
+            font-weight: 750;
+        }
+
+        .about h2 span {
+            color: #F37021;
+        }
+
+        .about-description {
+            max-width: 650px;
+
+            margin-top: 30px;
+
+            color: #a4a4a4;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+        .about-card {
+            padding: 55px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #171717,
+                    #090909
+                );
+
+            border: 1px solid #292929;
+        }
+
+        .about-card-number {
+            color: #F37021;
+
+            font-size: 65px;
+
+            line-height: 1;
+
+            font-weight: 800;
+        }
+
+        .about-card h3 {
+            margin-top: 20px;
+
+            font-size: 32px;
+
+            font-weight: 700;
+        }
+
+        .about-card p {
+            margin-top: 15px;
+
+            color: #999999;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+        }
+
+        /* ================================
+           STATS
+        ================================= */
+
+        .stats {
+            padding: 30px 7% 110px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .stat {
+            padding: 35px;
+
+            border-top: 1px solid #303030;
+        }
+
+        .stat strong {
+            display: block;
+
+            color: #F37021;
+
+            font-size: 48px;
+
+            font-weight: 750;
+
+            line-height: 1;
+        }
+
+        .stat span {
+            display: block;
+
+            margin-top: 10px;
+
+            color: #999999;
+
+            font-size: 14px;
+        }
+
+        /* ================================
+           CTA
+        ================================= */
+
+        .cta {
+            margin: 20px 7% 100px;
+
+            padding: 100px 8%;
+
+            border-radius: 22px;
+
+            background: #F37021;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            right: -150px;
+            top: -180px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-radius: 50%;
+        }
+
+        .cta h2 {
+            position: relative;
+            z-index: 2;
+
+            font-size: clamp(45px, 7vw, 95px);
+
+            line-height: 0.9;
+
+            letter-spacing: -5px;
+
+            font-weight: 800;
+        }
+
+        .cta p {
+            position: relative;
+            z-index: 2;
+
+            max-width: 600px;
+
+            margin: 28px auto 0;
+
+            font-size: 17px;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            position: relative;
+            z-index: 2;
+
+            margin-top: 32px;
+
+            padding: 15px 28px;
+
+            background: #050505;
+
+            color: #ffffff;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+        }
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            padding: 35px 7%;
+
+            border-top: 1px solid #222222;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #777777;
+
+            font-size: 13px;
+        }
+
+        .footer-logo {
+            color: #ffffff;
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: #F37021;
+        }
+
+        /* ================================
+           MOBILE MENU BUTTON
+        ================================= */
+
+        .menu-button {
+            display: none;
+
+            border: none;
+
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            cursor: pointer;
+        }
+
+        /* ================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+        }
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 18px 5%;
+            }
+
+            .nav-links,
+            .nav-button {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .hero {
+                padding: 135px 5% 80px;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+                letter-spacing: -3px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .services {
+                padding: 85px 5%;
+            }
+
+            .section-title {
+                font-size: 45px;
+                letter-spacing: -2.5px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                min-height: 240px;
+            }
+
+            .about {
+                padding: 90px 5%;
+            }
+
+            .about h2 {
+                font-size: 50px;
+                letter-spacing: -3px;
+            }
+
+            .about-card {
+                padding: 35px;
+            }
+
+            .stats {
+                padding: 10px 5% 80px;
+
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                margin: 20px 5% 70px;
+
+                padding: 70px 6%;
+            }
+
+            .cta h2 {
+                font-size: 52px;
+
+                letter-spacing: -3px;
+            }
+
+            footer {
+                padding: 25px 5%;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+        /* ================================
+           SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 400px) {
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 39px;
+            }
+
+            .about h2 {
+                font-size: 44px;
+            }
+
+            .cta h2 {
+                font-size: 45px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================
+         NAVIGATION
+    ================================= -->
+
+    <header class="navbar">
+
+        <a href="#" class="logo">
+            GETIT<span>.</span>
+        </a>
+
+        <nav>
+            <ul class="nav-links">
+
+                <li>
+                    <a href="#">HOME</a>
+                </li>
+
+                <li>
+                    <a href="#about">ABOUT US</a>
+                </li>
+
+                <li>
+                    <a href="#services">SERVICES</a>
+                </li>
+
+                <li>
+                    <a href="#">PORTFOLIO</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">CONTACT US</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <a href="contact.html" class="nav-button">
+            LET'S TALK
+        </a>
+
+        <button class="menu-button">
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-tag">
+                    Digital Marketing Agency
+                </div>
+
+                <h1>
+                    BUILD.<br>
+                    <span class="orange">GROW.</span><br>
+                    <span class="italic">DOMINATE.</span>
+                </h1>
+
+                <p class="hero-description">
+                    We combine strategy, creativity and technology
+                    to help ambitious brands build a powerful digital
+                    presence and turn attention into business growth.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="contact.html" class="primary-button">
+                        START YOUR PROJECT
+                    </a>
+
+                    <a href="#services" class="secondary-button">
+                        EXPLORE SERVICES
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             SERVICES
+        ================================= -->
+
+        <section class="services" id="services">
+
+            <div class="section-label">
+                Our Expertise
+            </div>
+
+            <h2 class="section-title">
+                DIGITAL SOLUTIONS
+                BUILT FOR <span>GROWTH.</span>
+            </h2>
+
+            <div class="service-grid">
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        01
+                    </div>
+
+                    <h3>
+                        SEO
+                    </h3>
+
+                    <p>
+                        Improve your search visibility and connect
+                        with customers actively looking for your
+                        products and services.
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Google & Meta Ads
+                    </h3>
+
+                    <p>
+                        Create targeted advertising campaigns
+                        designed around your business objectives.
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Social Media Marketing
+                    </h3>
+
+                    <p>
+                        Build stronger communities and consistent
+                        brand visibility across social platforms.
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Web Design & Development
+                    </h3>
+
+                    <p>
+                        Responsive and modern websites designed
+                        to communicate your brand effectively.
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        05
+                    </div>
+
+                    <h3>
+                        Graphic Design
+                    </h3>
+
+                    <p>
+                        Create memorable visual identities,
+                        advertising creatives and brand assets.
+                    </p>
+
+                </article>
+
+
+                <article class="service-card">
+
+                    <div class="service-number">
+                        06
+                    </div>
+
+                    <h3>
+                        Video Editing
+                    </h3>
+
+                    <p>
+                        Transform ideas into engaging video content
+                        for social media, advertising and branding.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             ABOUT
+        ================================= -->
+
+        <section class="about" id="about">
+
+            <div>
+
+                <div class="section-label">
+                    About GetIt
+                </div>
+
+                <h2>
+                    WE TURN<br>
+                    <span>ATTENTION</span><br>
+                    INTO IMPACT.
+                </h2>
+
+                <p class="about-description">
+                    GetIt Media Solutions brings together digital
+                    marketing, web development and creative services
+                    to help businesses communicate their value,
+                    reach their audience and strengthen their online
+                    presence.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+
+                <div class="about-card-number">
+                    2005
+                </div>
+
+                <h3>
+                    Years of Experience
+                </h3>
+
+                <p>
+                    Building digital experiences and marketing
+                    solutions for businesses across different
+                    industries.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             STATS
+        ================================= -->
+
+        <section class="stats">
+
+            <div class="stat">
+
+                <strong>
+                    20+
+                </strong>
+
+                <span>
+                    Years of Experience
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    360°
+                </strong>
+
+                <span>
+                    Digital Solutions
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    100%
+                </strong>
+
+                <span>
+                    Creative Focus
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             CTA
+        ================================= -->
+
+        <section class="cta">
+
+            <h2>
+                READY TO<br>
+                GROW?
+            </h2>
+
+            <p>
+                Let's create a digital presence that gives
+                your brand a stronger place in the market.
+            </p>
+
+            <a href="contact.html" class="cta-button">
+                GET STARTED
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            GETIT<span>.</span>
+        </div>
+
+        <div>
+            © 2026 GetIt Media Solutions. All Rights Reserved.
+        </div>
+
+        <div>
+            Digital Marketing • Web Development • Creative
+        </div>
+
+    </footer>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script>
+
+        const menuButton = document.querySelector('.menu-button');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuButton.addEventListener('click', function () {
+
+            if (navLinks.style.display === 'flex') {
+
+                navLinks.style.display = 'none';
+
+            } else {
+
+                navLinks.style.display = 'flex';
+
+                navLinks.style.flexDirection = 'column';
+
+                navLinks.style.position = 'absolute';
+
+                navLinks.style.top = '70px';
+
+                navLinks.style.left = '5%';
+
+                navLinks.style.right = '5%';
+
+                navLinks.style.padding = '25px';
+
+                navLinks.style.background = '#111111';
+
+                navLinks.style.border = '1px solid #292929';
+
+                navLinks.style.borderRadius = '12px';
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
+```

@@ -8,7 +8,9 @@
 .au-section,
 .au-section *,
 .au-section *::before,
-.au-section *::after { box-sizing: border-box; }
+.au-section *::after {
+  box-sizing: border-box;
+}
 
 .au-section {
   --au-bg: #0b0d10;
@@ -56,6 +58,7 @@
   mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
   animation: auBackdrop 26s ease-in-out infinite alternate;
 }
+
 /* a small, slow float - enough to feel alive, not enough to distract */
 @keyframes auBackdrop {
   to {
@@ -64,12 +67,17 @@
       12% -6%, 90% 106%;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .au-section::before { animation: none; }
+  .au-section::before {
+    animation: none;
+  }
 }
 
 /* content rides above the backdrop */
-.au-inner { z-index: 1; }
+.au-inner {
+  z-index: 1;
+}
 
 /* ------------------------------------------------------------- layout */
 /* One centred column. It was two (text | photo, then text | statement), but
@@ -85,13 +93,18 @@
   justify-items: center;
   gap: clamp(12px, 1.4vw, 22px);
 }
+
 .au-content {
   width: 100%;
   max-width: 900px;
   text-align: center;
 }
+
 /* the accent rules were flush-left; centre them with the text */
-.au-content .au-rule { margin-left: auto; margin-right: auto; }
+.au-content .au-rule {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* ------------------------------------------------------- company profile */
 /* Photo and blurb. The photo carries an offset accent frame for depth, the
@@ -118,6 +131,7 @@
   position: relative;
   margin: 0;
 }
+
 /* the offset outline, sitting back and to the top-left */
 .au-profile__media::before {
   content: "";
@@ -130,6 +144,7 @@
   clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
   pointer-events: none;
 }
+
 .au-profile__frame {
   position: relative;
   display: block;
@@ -138,7 +153,12 @@
   clip-path: polygon(0 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 0 100%);
   box-shadow: 0 34px 80px rgba(0, 0, 0, 0.6);
 }
-.au-profile__frame img { display: block; width: 100%; height: auto; }
+
+.au-profile__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* name sits below the photo, clear of the nameplate inside it */
 .au-profile__plate {
@@ -149,6 +169,7 @@
   padding-left: 16px;
   position: relative;
 }
+
 .au-profile__plate::before {
   content: "";
   position: absolute;
@@ -159,12 +180,14 @@
   border-radius: 3px;
   background: var(--au-accent);
 }
+
 .au-profile__name {
   font-size: clamp(1rem, 1.12vw, 1.18rem);
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--au-ink);
 }
+
 .au-profile__role {
   font-size: clamp(0.7rem, 0.78vw, 0.82rem);
   font-weight: 600;
@@ -185,6 +208,7 @@
   text-transform: uppercase;
   color: var(--au-accent);
 }
+
 .au-profile__eyebrow::before {
   content: "";
   width: 28px;
@@ -192,15 +216,26 @@
   border-radius: 2px;
   background: var(--au-accent);
 }
+
 .au-profile__text {
   margin: 0 0 clamp(12px, 1.2vw, 18px);
   font-size: clamp(0.9rem, 0.98vw, 1.05rem);
   line-height: 1.68;
   color: var(--au-body);
 }
-.au-profile__text strong { color: var(--au-ink); font-weight: 600; }
-.au-profile__text:first-of-type strong:first-child { color: var(--au-accent); }
-.au-profile__text--close { margin-bottom: 0; }
+
+.au-profile__text strong {
+  color: var(--au-ink);
+  font-weight: 600;
+}
+
+.au-profile__text:first-of-type strong:first-child {
+  color: var(--au-accent);
+}
+
+.au-profile__text--close {
+  margin-bottom: 0;
+}
 
 /* the eight services, as chips */
 .au-profile__tags {
@@ -211,6 +246,7 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+
 .au-profile__tags li {
   padding: 7px 14px;
   border-radius: 999px;
@@ -220,6 +256,7 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.11);
 }
+
 /* the two headline services lead the row */
 .au-profile__tags li:nth-child(-n+2) {
   color: #fff;
@@ -241,8 +278,12 @@
   row-gap: clamp(10px, 1.2vw, 18px);
   counter-reset: say;
 }
+
 .au-say__lead,
-.au-say__intro { grid-column: 1 / -1; }
+.au-say__intro {
+  grid-column: 1 / -1;
+}
+
 .au-say__lead {
   margin: 0;
   font-size: clamp(1.15rem, 1.5vw, 1.6rem);
@@ -251,12 +292,14 @@
   letter-spacing: -0.01em;
   color: var(--au-ink);
 }
+
 .au-say__intro {
   margin: 0;
   font-size: clamp(0.88rem, 0.95vw, 1.02rem);
   line-height: 1.6;
   color: var(--au-muted);
 }
+
 .au-say__block {
   position: relative;
   isolation: isolate;
@@ -268,7 +311,7 @@
 
 /* Divider between the columns. Drawn as a gradient bar rather than a plain
    border so it fades out top and bottom instead of stopping square. */
-.au-say__block + .au-say__block::after {
+.au-say__block+.au-say__block::after {
   content: "";
   position: absolute;
   left: 0;
@@ -294,9 +337,22 @@
   background: rgba(255, 106, 19, 0.12);
   border: 1px solid rgba(255, 106, 19, 0.30);
 }
-.au-say__icon svg { width: 52%; height: 52%; display: block; }
-.au-say__icon { position: relative; z-index: 1; }
-.au-say__block:last-child { margin-bottom: 0; }
+
+.au-say__icon svg {
+  width: 52%;
+  height: 52%;
+  display: block;
+}
+
+.au-say__icon {
+  position: relative;
+  z-index: 1;
+}
+
+.au-say__block:last-child {
+  margin-bottom: 0;
+}
+
 .au-say__head {
   margin: 0 0 10px;
   font-family: inherit;
@@ -306,13 +362,18 @@
   letter-spacing: -0.005em;
   color: var(--au-accent);
 }
+
 .au-say__block p {
   margin: 0 0 8px;
   font-size: clamp(0.84rem, 0.9vw, 0.96rem);
   line-height: 1.6;
   color: var(--au-body);
 }
-.au-say__block p:last-child { margin-bottom: 0; }
+
+.au-say__block p:last-child {
+  margin-bottom: 0;
+}
+
 .au-say__punch {
   color: var(--au-ink) !important;
   font-weight: 600;
@@ -327,6 +388,7 @@
   text-transform: uppercase;
   color: var(--au-accent);
 }
+
 .au-rule {
   display: block;
   width: 82px;
@@ -345,12 +407,14 @@
   letter-spacing: -0.01em;
   color: var(--au-ink);
 }
+
 .au-title span {
   display: block;
   /* hold each line on one row at desktop; released below 1440px where the
      column is too narrow for it */
   white-space: nowrap;
 }
+
 .au-title .au-title__accent {
   color: var(--au-accent);
   font-weight: 700;
@@ -365,7 +429,11 @@
   letter-spacing: -0.01em;
   color: var(--au-ink);
 }
-.au-subtitle span { color: var(--au-accent); font-weight: 400; }
+
+.au-subtitle span {
+  color: var(--au-accent);
+  font-weight: 400;
+}
 
 .au-text {
   margin: 0 0 clamp(14px, 1.3vw, 20px);
@@ -373,6 +441,7 @@
   line-height: 1.55;
   color: var(--au-body);
 }
+
 .au-text--muted {
   margin-bottom: 0;
   color: var(--au-muted);
@@ -382,8 +451,14 @@
 
 /* ------------------------------------------------------------- large laptop */
 @media (max-width: 1440px) {
-  .au-text { font-size: 0.84rem; line-height: 1.5; }
-  .au-text--muted { font-size: 0.8rem; }
+  .au-text {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .au-text--muted {
+    font-size: 0.8rem;
+  }
 }
 
 /* ------------------------------------------------------------- tablet: stack */
@@ -392,25 +467,35 @@
     gap: clamp(22px, 3vw, 34px);
     padding-bottom: 40px;
   }
+
   .au-content,
-  .au-profile { max-width: 720px; }
+  .au-profile {
+    max-width: 720px;
+  }
+
   /* photo above the copy once there is no room beside it */
   .au-profile {
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(18px, 2.6vw, 28px);
   }
+
   /* stack the three statements; dividers become horizontal */
   .au-say {
     max-width: 720px;
     grid-template-columns: minmax(0, 1fr);
     row-gap: clamp(26px, 3.4vw, 40px);
   }
-  .au-say__block { padding-inline: 0; }
-  .au-say__block + .au-say__block {
+
+  .au-say__block {
+    padding-inline: 0;
+  }
+
+  .au-say__block+.au-say__block {
     padding-top: clamp(24px, 3vw, 34px);
   }
+
   /* flip the divider from a vertical bar to a horizontal one */
-  .au-say__block + .au-say__block::after {
+  .au-say__block+.au-say__block::after {
     left: 18%;
     right: 18%;
     top: 0;
@@ -427,7 +512,16 @@
 
 /* ------------------------------------------------------------- mobile */
 @media (max-width: 640px) {
-  .au-inner { padding: 48px 16px 16px; }
-  .au-rule { width: 64px; height: 3px; }
-  .au-title span { white-space: normal; }
+  .au-inner {
+    padding: 48px 16px 16px;
+  }
+
+  .au-rule {
+    width: 64px;
+    height: 3px;
+  }
+
+  .au-title span {
+    white-space: normal;
+  }
 }

@@ -1,0 +1,355 @@
+/* ==========================================================================
+   GetIt Media - Growth Partner Section (Brand Palette from Official Logo)
+   ========================================================================== */
+
+:root {
+  --gp-orange: #ea5903;
+  --gp-orange-hover: #d34e00;
+  --gp-orange-soft: #fffaf7;
+  --gp-orange-border: rgba(234, 89, 3, 0.2);
+  --gp-orange-shadow: rgba(234, 89, 3, 0.35);
+}
+
+.gp-section {
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  background-color: #ffffff;
+  background-image: url('../images/about/about-us-photo.jpg');
+  background-repeat: no-repeat;
+  background-position: right 0% center;
+  background-size: cover;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Seamless Left-to-Right White Gradient Overlay - Stops completely before Sir's face */
+.gp-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 26%,
+    rgba(255, 255, 255, 0.96) 31%,
+    rgba(255, 255, 255, 0.5) 36%,
+    rgba(255, 255, 255, 0) 41%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inner Container - aligns content with standard site margins */
+.gp-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  display: flex;
+  align-items: center;
+}
+
+/* Left Content Column - strictly bounded to stay away from Sir's face */
+.gp-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. Eyebrow */
+.gp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gp-eyebrow__bar {
+  width: 22px;
+  height: 2.5px;
+  background-color: var(--gp-orange);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.gp-eyebrow__text {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #5d6778;
+  text-transform: uppercase;
+}
+
+/* 2. Main Title */
+.gp-title {
+  margin: 0 0 16px 0;
+  font-family: inherit;
+  font-size: clamp(34px, 3.4vw, 48px);
+  font-weight: 800;
+  line-height: 1.05;
+  color: #111317;
+  letter-spacing: -0.025em;
+  display: flex;
+  flex-direction: column;
+}
+
+.gp-title__word--accent {
+  color: var(--gp-orange);
+}
+
+.gp-title__bottom-row {
+  position: relative;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.gp-title__underline {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 64px;
+  height: 8px;
+  pointer-events: none;
+}
+
+/* 3. Company Overview */
+.gp-desc {
+  margin: 0 0 16px 0;
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #3f4753;
+}
+
+.gp-desc strong {
+  color: #111317;
+  font-weight: 700;
+}
+
+/* 4. Service Tags (Pills) */
+.gp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+
+.gp-tags li {
+  margin: 0;
+  padding: 0;
+}
+
+.gp-tags li span {
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f242d;
+  background: var(--gp-orange-soft);
+  border: 1px solid var(--gp-orange-border);
+  border-radius: 999px;
+  padding: 5px 13px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.gp-tags li span:hover {
+  background: var(--gp-orange);
+  color: #ffffff;
+  border-color: var(--gp-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px var(--gp-orange-shadow);
+}
+
+/* 5. Closing Statement & Highlight */
+.gp-close {
+  margin: 0 0 10px 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #4b5563;
+}
+
+.gp-close strong {
+  color: #111317;
+  font-weight: 600;
+}
+
+.gp-highlight {
+  margin: 0 0 22px 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--gp-orange);
+  line-height: 1.3;
+}
+
+/* 6. Primary CTA Button */
+.gp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--gp-orange);
+  color: #ffffff !important;
+  text-decoration: none;
+  border-radius: 9999px;
+  padding: 5px 6px 5px 22px;
+  height: 48px;
+  width: fit-content;
+  box-shadow: 0 8px 22px var(--gp-orange-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.gp-btn:hover {
+  background-color: var(--gp-orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(211, 78, 0, 0.45);
+}
+
+.gp-btn__text {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.gp-btn__circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--gp-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.gp-btn:hover .gp-btn__circle {
+  transform: translateX(2px);
+}
+
+.gp-btn__circle svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .gp-section {
+    min-height: 640px;
+    background-position: right 0% center;
+  }
+  .gp-inner {
+    padding: 50px 36px;
+  }
+  .gp-content {
+    max-width: 420px;
+  }
+  .gp-section::before {
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #ffffff 28%,
+      rgba(255, 255, 255, 0.95) 34%,
+      rgba(255, 255, 255, 0.4) 40%,
+      rgba(255, 255, 255, 0) 46%
+    );
+  }
+}
+
+@media (max-width: 991px) {
+  .gp-section {
+    min-height: 580px;
+    background-position: right -30px center;
+  }
+  .gp-inner {
+    padding: 40px 24px;
+  }
+  .gp-content {
+    max-width: 390px;
+  }
+  .gp-section::before {
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #ffffff 30%,
+      rgba(255, 255, 255, 0.95) 36%,
+      rgba(255, 255, 255, 0.4) 43%,
+      rgba(255, 255, 255, 0) 50%
+    );
+  }
+}
+
+@media (max-width: 768px) {
+  .gp-section {
+    min-height: auto;
+    background-position: right 30% top;
+    background-size: cover;
+  }
+  .gp-section::before {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.94) 0%,
+      rgba(255, 255, 255, 0.98) 45%,
+      #ffffff 100%
+    );
+  }
+  .gp-inner {
+    padding: 50px 20px;
+    justify-content: center;
+  }
+  .gp-content {
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  .gp-title {
+    align-items: center;
+  }
+  .gp-title__bottom-row {
+    align-self: center;
+  }
+  .gp-tags {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gp-inner {
+    padding: 40px 16px;
+  }
+  .gp-tags {
+    gap: 6px;
+  }
+  .gp-tags li span {
+    font-size: 11.5px;
+    padding: 4px 10px;
+  }
+  .gp-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 20px;
+  }
+}

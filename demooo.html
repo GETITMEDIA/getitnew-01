@@ -1,0 +1,595 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="GetIt Media Solutions Pvt. Ltd. is a digital marketing and web development company in Pondicherry, providing SEO, Google Ads, social media marketing, website development, graphic design and more."
+  >
+
+  <title>About Us | GetIt Media Solutions</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================
+       GLOBAL
+    ========================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #080808;
+      color: #ffffff;
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+
+    /* =========================================
+       ABOUT PROFILE SECTION
+    ========================================= */
+
+    .au-profile {
+      width: 100%;
+      min-height: 100vh;
+      padding: 100px 20px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(243, 112, 33, 0.08),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 80%,
+          rgba(243, 112, 33, 0.05),
+          transparent 30%
+        ),
+        #080808;
+    }
+
+
+    /* Background grid */
+
+    .au-profile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 60px 60px;
+
+      mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 20%,
+        black 80%,
+        transparent
+      );
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================
+       MAIN GLASS CONTAINER
+    ========================================= */
+
+    .au-profile__body {
+      width: 100%;
+      max-width: 1100px;
+
+      margin: 0 auto;
+
+      padding: 60px;
+
+      position: relative;
+      z-index: 2;
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.055),
+          rgba(255, 255, 255, 0.015)
+        );
+
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+      overflow: hidden;
+    }
+
+
+    /* =========================================
+       ORANGE GLOW
+    ========================================= */
+
+    .au-profile__body::before {
+      content: "";
+
+      position: absolute;
+
+      width: 300px;
+      height: 300px;
+
+      top: -150px;
+      right: -100px;
+
+      border-radius: 50%;
+
+      background: rgba(243, 112, 33, 0.17);
+
+      filter: blur(90px);
+
+      pointer-events: none;
+    }
+
+
+    .au-profile__body::after {
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      bottom: -100px;
+      left: -70px;
+
+      border-radius: 50%;
+
+      background: rgba(243, 112, 33, 0.08);
+
+      filter: blur(70px);
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================
+       EYEBROW
+    ========================================= */
+
+    .au-profile__eyebrow {
+      position: relative;
+      z-index: 3;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 25px;
+
+      color: #f37021;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      letter-spacing: 2.5px;
+
+      text-transform: uppercase;
+    }
+
+
+    .au-profile__eyebrow::before {
+      content: "";
+
+      width: 35px;
+      height: 2px;
+
+      background: #f37021;
+
+      border-radius: 10px;
+
+      box-shadow: 0 0 10px rgba(243, 112, 33, 0.5);
+    }
+
+
+    /* =========================================
+       MAIN TEXT
+    ========================================= */
+
+    .au-profile__text {
+      position: relative;
+      z-index: 3;
+
+      max-width: 950px;
+
+      margin: 0;
+
+      color: #cfcfcf;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 19px;
+
+      line-height: 1.85;
+
+      font-weight: 400;
+    }
+
+
+    .au-profile__text strong {
+      color: #ffffff;
+
+      font-weight: 700;
+    }
+
+
+    /* =========================================
+       SERVICE TAGS
+    ========================================= */
+
+    .au-profile__tags {
+      position: relative;
+      z-index: 3;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+
+      margin: 32px 0;
+
+      padding: 0;
+
+      list-style: none;
+    }
+
+
+    .au-profile__tags li {
+      padding: 11px 18px;
+
+      border: 1px solid rgba(243, 112, 33, 0.28);
+
+      border-radius: 50px;
+
+      background: rgba(243, 112, 33, 0.055);
+
+      color: #eeeeee;
+
+      font-family: "Space Grotesk", sans-serif;
+
+      font-size: 14px;
+
+      font-weight: 500;
+
+      letter-spacing: 0.2px;
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+
+      cursor: default;
+    }
+
+
+    .au-profile__tags li:hover {
+      color: #ffffff;
+
+      background: #f37021;
+
+      border-color: #f37021;
+
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 10px 30px rgba(243, 112, 33, 0.25);
+    }
+
+
+    /* =========================================
+       CLOSING TEXT
+    ========================================= */
+
+    .au-profile__text--close {
+      position: relative;
+
+      margin-top: 10px;
+
+      padding-top: 28px;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+
+    .au-profile__text--close strong {
+      color: #f37021;
+    }
+
+
+    /* =========================================
+       TABLET
+    ========================================= */
+
+    @media (max-width: 900px) {
+
+      .au-profile {
+        min-height: auto;
+
+        padding: 80px 20px;
+      }
+
+
+      .au-profile__body {
+        padding: 48px 40px;
+
+        border-radius: 26px;
+      }
+
+
+      .au-profile__text {
+        font-size: 17px;
+
+        line-height: 1.75;
+      }
+
+
+      .au-profile__tags {
+        gap: 10px;
+
+        margin: 27px 0;
+      }
+
+
+      .au-profile__tags li {
+        padding: 10px 15px;
+
+        font-size: 13px;
+      }
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 600px) {
+
+      .au-profile {
+        padding: 55px 15px;
+      }
+
+
+      .au-profile::after {
+        background-size: 40px 40px;
+      }
+
+
+      .au-profile__body {
+        padding: 32px 22px;
+
+        border-radius: 22px;
+      }
+
+
+      .au-profile__eyebrow {
+        margin-bottom: 18px;
+
+        font-size: 12px;
+
+        letter-spacing: 1.6px;
+
+        gap: 9px;
+      }
+
+
+      .au-profile__eyebrow::before {
+        width: 25px;
+      }
+
+
+      .au-profile__text {
+        font-size: 15px;
+
+        line-height: 1.75;
+      }
+
+
+      .au-profile__tags {
+        gap: 8px;
+
+        margin: 24px 0;
+      }
+
+
+      .au-profile__tags li {
+        padding: 8px 13px;
+
+        font-size: 12px;
+      }
+
+
+      .au-profile__text--close {
+        margin-top: 5px;
+
+        padding-top: 22px;
+      }
+    }
+
+
+    /* =========================================
+       SMALL MOBILE
+    ========================================= */
+
+    @media (max-width: 380px) {
+
+      .au-profile {
+        padding: 45px 12px;
+      }
+
+
+      .au-profile__body {
+        padding: 28px 18px;
+
+        border-radius: 19px;
+      }
+
+
+      .au-profile__eyebrow {
+        font-size: 11px;
+
+        letter-spacing: 1.3px;
+      }
+
+
+      .au-profile__text {
+        font-size: 14px;
+
+        line-height: 1.7;
+      }
+
+
+      .au-profile__tags {
+        gap: 7px;
+      }
+
+
+      .au-profile__tags li {
+        padding: 7px 11px;
+
+        font-size: 11px;
+      }
+    }
+
+
+    /* =========================================
+       REDUCE MOTION
+    ========================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .au-profile__tags li {
+        transition: none;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================================
+       WHO WE ARE SECTION
+  ========================================= -->
+
+  <section class="au-profile">
+
+    <div class="au-profile__body">
+
+      <span class="au-profile__eyebrow">
+        Who we are
+      </span>
+
+
+      <p class="au-profile__text">
+
+        <strong>GetIt Media Solutions Pvt. Ltd.</strong>
+        is a leading digital marketing and web development company in
+        Pondicherry, established in 2005. We provide innovative digital
+        solutions including:
+
+      </p>
+
+
+      <!-- SERVICES -->
+
+      <ul class="au-profile__tags">
+
+        <li>SEO</li>
+
+        <li>Google Ads</li>
+
+        <li>Social Media Marketing</li>
+
+        <li>Website Design &amp; Development</li>
+
+        <li>YouTube Promotions</li>
+
+        <li>Graphic Design</li>
+
+        <li>Video Editing</li>
+
+        <li>Mobile App Development</li>
+
+      </ul>
+
+
+      <!-- CLOSING CONTENT -->
+
+      <p class="au-profile__text au-profile__text--close">
+
+        With years of experience and a passionate team of professionals,
+        we help businesses
+        <strong>
+          build their brand, reach the right audience, and grow online
+        </strong>.
+
+      </p>
+
+
+    </div>
+
+  </section>
+
+
+</body>
+</html>
+```

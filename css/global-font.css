@@ -1,58 +1,63 @@
 /* ==========================================================================
-   Global font family override
+   Global font family override - Montserrat
    --------------------------------------------------------------------------
-   Applies "Josefin Sans", serif to every text element site-wide.
+   Applies "Montserrat", sans-serif to every text element site-wide.
    Nothing else is changed: no sizes, weights, colors, spacing or layout.
    Icon fonts (Font Awesome, Linearicons, Swiper, Material Symbols) are
    re-asserted below so all icons keep rendering as icons.
    Load this file LAST in the <head> of every page.
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* --- Re-point every font-family custom property used across the site --- */
 :root {
-  --body-font-family: "Josefin Sans", serif;
-  --heading-font-family: "Josefin Sans", serif;
-  --sec-title-font-family: "Josefin Sans", serif;
-  --sec-title-subtitle-font-family: "Josefin Sans", serif;
+  --font-primary: Montserrat, sans-serif;
+  --body-font-family: Montserrat, sans-serif;
+  --heading-font-family: Montserrat, sans-serif;
+  --sec-title-font-family: Montserrat, sans-serif;
+  --sec-title-subtitle-font-family: Montserrat, sans-serif;
 
-  --font-sans: "Josefin Sans", serif;
-  --font-serif: "Josefin Sans", serif;
+  --font-sans: Montserrat, sans-serif;
+  --font-serif: Montserrat, sans-serif;
 
-  --tm-sans: "Josefin Sans", serif;
-  --tm-serif: "Josefin Sans", serif;
+  --tm-sans: Montserrat, sans-serif;
+  --tm-serif: Montserrat, sans-serif;
 
-  --pf-display: "Josefin Sans", serif;
-  --pf-body: "Josefin Sans", serif;
-  --pf-label: "Josefin Sans", serif;
+  --pf-display: Montserrat, sans-serif;
+  --pf-body: Montserrat, sans-serif;
+  --pf-label: Montserrat, sans-serif;
 
-  --dp-serif: "Josefin Sans", serif;
-  --dp-mono: "Josefin Sans", serif;
+  --dp-serif: Montserrat, sans-serif;
+  --dp-mono: Montserrat, sans-serif;
 
-  --gd-font-serif: "Josefin Sans", serif;
-  --gd-font-sans: "Josefin Sans", serif;
+  --gd-font-serif: Montserrat, sans-serif;
+  --gd-font-sans: Montserrat, sans-serif;
 
-  --wx-display: "Josefin Sans", serif;
-  --wx-sans: "Josefin Sans", serif;
+  --wx-display: Montserrat, sans-serif;
+  --wx-sans: Montserrat, sans-serif;
 
-  --seo-font-heading: "Josefin Sans", serif;
-  --seo-font-body: "Josefin Sans", serif;
+  --seo-font-heading: Montserrat, sans-serif;
+  --seo-font-body: Montserrat, sans-serif;
 
-  --gm-font: "Josefin Sans", serif;
-  --jbs-font: "Josefin Sans", serif;
-  --ag-sans: "Josefin Sans", serif;
+  --gm-font: Montserrat, sans-serif;
+  --jbs-font: Montserrat, sans-serif;
+  --ag-sans: Montserrat, sans-serif;
 
-  --bs-font-sans-serif: "Josefin Sans", serif;
-  --bs-font-monospace: "Josefin Sans", serif;
+  --bs-font-sans-serif: Montserrat, sans-serif;
+  --bs-font-monospace: Montserrat, sans-serif;
 }
 
-/* --- Every element gets the new family ---------------------------------
-   Deliberately no ::before / ::after in this selector: generated content
-   inherits the family from its element, while icon pseudo-elements that
-   declare their own icon font keep it untouched.                         */
-* {
-  font-family: "Josefin Sans", serif !important;
+/* --- Apply Montserrat to the entire website --- */
+html,
+body,
+body *,
+input,
+textarea,
+select,
+button,
+option {
+  font-family: Montserrat, sans-serif !important;
 }
 
 /* --- Keep icon fonts as icon fonts -------------------------------------- */
@@ -94,9 +99,6 @@
 [class*=" lnr-"] {
   font-family: "linearicons-free" !important;
 }
-
-/* Swiper navigation glyphs live on ::after with their own family, so they
-   need no rule here. */
 
 /* Google Material Symbols */
 .material-symbols-outlined,
