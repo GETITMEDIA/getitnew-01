@@ -627,3 +627,22 @@
   .as-js .as-reveal-img img { transform: none; }
   .as-word { opacity: 1; }
 }
+
+/* Hero title: keep "Shoots, Made" (and every line) on a single line,
+   scaled to the width of the copy column */
+.as-hero__copy { container-type: inline-size; }
+.as-hero__title { font-size: clamp(2.4rem, 15cqi, 9.6rem); }
+.as-hero__title .as-mask > span { white-space: nowrap; }
+
+/* Statement paragraph: elegant editorial serif.
+   global-font.css forces Montserrat with !important, so this needs it too;
+   the "*" covers the per-word spans the scroll reveal wraps it in. */
+.as-statement__text,
+.as-statement__text * {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif !important;
+}
+.as-statement__text {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}

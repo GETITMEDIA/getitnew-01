@@ -38,6 +38,7 @@
 </script>
   <!-- Global font family override (must load last) -->
   <link href="css/global-font.css" rel="stylesheet">
+  <link href="css/price-hero.css" rel="stylesheet">
 </head>
 
   <body>
@@ -191,10 +192,18 @@
 
       
       <!-- Start main-content -->
-      <section class="page-title theme-dark" style="background-image: url(images/inner/page-title-bg.png);">
+      <section class="page-title theme-dark pr-hero">
+          <div class="pr-hero__bg" aria-hidden="true">
+              <span class="pr-hero__rupee">&#8377;</span>
+              <div class="pr-hero__tag pr-hero__tag--a"><small>Starter</small><b>&#8377;</b><i></i><i></i></div>
+              <div class="pr-hero__tag pr-hero__tag--b"><small>Growth</small><b>&#8377;</b><i></i><i></i><i></i></div>
+              <div class="pr-hero__tag pr-hero__tag--c"><small>Premium</small><b>&#8377;</b><i></i><i></i></div>
+          </div>
           <div class="auto-container">
               <div class="title-outer text-center">
-                  <h1 class="title" data-aos="fade-up">Plans That Power Your Digital Growth</h1>
+                  <p class="pr-hero__eyebrow" data-aos="fade-up">Pricing &amp; Plans</p>
+                  <h1 class="title" data-aos="fade-up">Simple Pricing. <span>Real Growth.</span></h1>
+                  <p class="pr-hero__lead" data-aos="fade-up">Transparent monthly plans for social media, ads, SEO and websites &mdash; no hidden costs, pick what fits your budget and scale when you&rsquo;re ready.</p>
                   <ul class="page-breadcrumb">
                       <li><a href="index.html">Home</a></li>
                       <li>Pricing</li>
@@ -784,7 +793,7 @@
       <!-- Bottom footer bar -->
       <div class="lt-bottom">
         <div class="lt-bottom-brand">
-          <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+          <span class="lt-bottom-mark"><img src="images/favicon.png" alt="Getit Media"></span>
           <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
         </div>
         <nav class="lt-bottom-nav" aria-label="Footer">

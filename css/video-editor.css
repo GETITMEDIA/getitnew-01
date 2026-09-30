@@ -572,3 +572,8 @@ body {
 
 .theme-hue-shift { filter: hue-rotate(150deg); }
 
+
+/* 02 Landscape: a shorter banner so it doesn't dominate the section */
+@media (min-width: 768px) {
+    .service-image-wide img { height: 340px; }
+}

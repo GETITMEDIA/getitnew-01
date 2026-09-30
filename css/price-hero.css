@@ -1,0 +1,65 @@
+/* Pricing page banner: a designed pricing backdrop instead of a stock photo */
+.pr-hero {
+  overflow: hidden;
+  padding: 150px 0 70px;
+  background: radial-gradient(ellipse 60% 70% at 50% 110%, rgba(242, 101, 34, 0.45), transparent 70%),
+              radial-gradient(ellipse 40% 50% at 85% 10%, rgba(255, 138, 61, 0.18), transparent 70%),
+              linear-gradient(180deg, #0b0a10 0%, #120c0a 100%);
+}
+.pr-hero:before { display: none; }
+.pr-hero .auto-container { position: relative; z-index: 2; }
+
+.pr-hero__bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.pr-hero__bg::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000, transparent 80%);
+}
+.pr-hero__rupee {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-size: clamp(260px, 34vw, 520px); font-weight: 800; line-height: 1;
+  color: transparent; -webkit-text-stroke: 2px rgba(242, 101, 34, 0.14);
+}
+
+/* floating plan cards */
+.pr-hero__tag {
+  position: absolute; width: 150px; padding: 16px 16px 18px;
+  border-radius: 16px; border: 1px solid rgba(255, 138, 61, 0.35);
+  background: rgba(20, 16, 18, 0.72); backdrop-filter: blur(6px);
+  box-shadow: 0 24px 50px -20px rgba(0,0,0,0.9), 0 0 30px rgba(242,101,34,0.15);
+  animation: prFloat 6s ease-in-out infinite;
+}
+.pr-hero__tag small { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #ff8a3d; margin-bottom: 6px; }
+.pr-hero__tag b { display: block; font-size: 30px; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+.pr-hero__tag i { display: block; height: 6px; border-radius: 4px; background: rgba(255,255,255,0.14); margin-top: 7px; }
+.pr-hero__tag i:nth-of-type(2) { width: 75%; }
+.pr-hero__tag i:nth-of-type(3) { width: 55%; }
+.pr-hero__tag--a { left: 6%;  top: 34%; transform: rotate(-8deg); }
+.pr-hero__tag--b { right: 7%; top: 22%; transform: rotate(7deg); animation-delay: -2s; border-color: rgba(255,138,61,0.7); }
+.pr-hero__tag--c { right: 18%; bottom: 8%; transform: rotate(-4deg); animation-delay: -4s; }
+@keyframes prFloat { 0%,100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+
+.pr-hero__eyebrow {
+  display: inline-block; margin: 0 0 16px; padding: 7px 16px; border-radius: 999px;
+  border: 1px solid rgba(255, 138, 61, 0.45); background: rgba(242, 101, 34, 0.12);
+  color: #ff8a3d; font-size: 13px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+}
+.pr-hero .title span { color: #ff6b35; }
+.pr-hero__lead {
+  max-width: 620px; margin: 0 auto 22px; color: rgba(255,255,255,0.8);
+  font-size: 17px; line-height: 1.7;
+}
+
+@media (max-width: 991px) {
+  .pr-hero__tag--a, .pr-hero__tag--c { display: none; }
+  .pr-hero__tag--b { right: 4%; top: 12%; width: 120px; opacity: 0.6; }
+}
+@media (max-width: 600px) {
+  .pr-hero { padding: 120px 0 50px; }
+  .pr-hero__tag { display: none; }
+  .pr-hero__lead { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) { .pr-hero__tag { animation: none; } }

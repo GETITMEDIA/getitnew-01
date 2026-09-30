@@ -592,6 +592,17 @@
               display: block;
               word-break: break-word;
           }
+          /* phone numbers: each one dials, and stays whole on its line */
+          .info-detail--phones { line-height: 1.9; }
+          .info-detail--phones a { color: inherit; text-decoration: none; white-space: nowrap; }
+          .info-detail--phones a:hover { color: #f26522; }
+          /* keep the email address on one line, scaled to the card width */
+          .info-card { container-type: inline-size; }
+          .info-detail--email {
+              white-space: nowrap;
+              word-break: normal;
+              font-size: min(15px, 5cqi);
+          }
           
           /* Form Section */
           .form-section {
@@ -870,7 +881,7 @@
           <div class="contact-hero__spot" aria-hidden="true"></div>
           <div class="auto-container contact-hero-inner text-center">
               <span class="eyebrow" data-aos="fade-up">Let's Create Something Great</span>
-              <h1 class="contact-hero-title" data-aos="fade-up" data-aos-delay="100">Let's Build Your Digital Future</h1>
+              <h1 class="contact-hero-title" data-aos="fade-up" data-aos-delay="100">Let&rsquo;s Talk. Let&rsquo;s Create. Let&rsquo;s Get-it.</h1>
               <p class="contact-hero-desc" data-aos="fade-up" data-aos-delay="200">Have a project in mind? Whether you need a powerful website, digital marketing strategy, creative design, or a complete online growth solution, GetIt Media Solutions is ready to bring your ideas to life.</p>
               <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
                   <a href="#enquiry-form" class="theme-btn btn-style-one"><span class="btn-title">START YOUR PROJECT</span></a>
@@ -884,7 +895,7 @@
       <section class="contact-intro text-center">
           <div class="auto-container">
               <h2 class="section-heading-dark" data-aos="fade-up">Let's Talk About Your Project</h2>
-              <p class="text-muted mx-auto" style="max-width: 700px; font-size: 1.1rem;" data-aos="fade-up" data-aos-delay="100">Every business has a different goal. Share your requirements with us and our team will understand your needs, recommend the right solution, and help you move forward with confidence.</p>
+              <p class="text-muted mx-auto" style="max-width: 700px; font-size: 1.1rem; font-weight: 500; color: #555 !important;" data-aos="fade-up" data-aos-delay="100">Every business has a different goal. Share your requirements with us and our team will understand your needs, recommend the right solution, and help you move forward with confidence.</p>
               
               <div class="highlight-badges" data-aos="fade-up" data-aos-delay="200">
                   <a href="#enquiry-form" class="badge-item" data-service="Website Design &amp; Development"><i class="fa fa-laptop-code"></i> Have a Website Project?</a>
@@ -909,7 +920,10 @@
                           <div class="info-icon"><i class="fa fa-phone"></i></div>
                           <h3 class="info-title">Call Us</h3>
                           <p class="info-desc">Speak directly with our team about your project requirements.</p>
-                          <span class="info-detail">0413-4900887<br>98439 26286</span>
+                          <span class="info-detail info-detail--phones">
+                              <a href="tel:04134900887">0413-4900887</a> / <a href="tel:04132204388">0413-2204388</a><br>
+                              <a href="tel:+919843926286">98439 26286</a> / <a href="tel:+919843926261">98439 26261</a>
+                          </span>
                           <a href="tel:04134900887" class="info-btn"><i class="fa-solid fa-phone"></i> Call Now <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
@@ -919,7 +933,7 @@
                           <div class="info-icon"><i class="fa fa-envelope"></i></div>
                           <h3 class="info-title">Email Us</h3>
                           <p class="info-desc">Send us your requirements, questions, or project details.</p>
-                          <span class="info-detail">anthoni.g@getitmediasolutions.in</span>
+                          <span class="info-detail info-detail--email">anthoni.g@getitmediasolutions.in</span>
                           <a href="mailto:anthoni.g@getitmediasolutions.in" class="info-btn"><i class="fa-solid fa-envelope"></i> Send Email <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
@@ -929,8 +943,8 @@
                           <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
                           <h3 class="info-title">WhatsApp</h3>
                           <p class="info-desc">Have a quick question? Start a conversation with our team.</p>
-                          <span class="info-detail">98439 26286</span>
-                          <a href="https://wa.me/919843926286" target="_blank" rel="noopener" class="info-btn"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
+                          <span class="info-detail">98439 26299</span>
+                          <a href="https://wa.me/919843926299" target="_blank" rel="noopener" class="info-btn"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp <i class="fa-solid fa-arrow-right info-btn__arrow"></i></a>
                       </div>
                   </div>
                   <!-- Card 4 -->
@@ -989,17 +1003,18 @@
                                           <label class="fw-bold mb-2">Service Required *</label>
                                           <select name="service" class="form-select" required>
                                               <option value="" disabled selected>Select a service</option>
-                                              <option value="Website Design & Development">Website Design & Development</option>
-                                              <option value="Search Engine Optimization">Search Engine Optimization</option>
+                                              <option value="Google Business Profile">Google Business Profile</option>
                                               <option value="Google Ads">Google Ads</option>
                                               <option value="Meta Ads">Meta Ads</option>
                                               <option value="Social Media Marketing">Social Media Marketing</option>
-                                              <option value="Google Business Profile">Google Business Profile</option>
-                                              <option value="Graphic Design">Graphic Design</option>
-                                              <option value="Video Editing">Video Editing</option>
-                                              <option value="Branding & Logo Design">Branding & Logo Design</option>
+                                              <option value="Search Engine Optimization">Search Engine Optimization</option>
+                                              <option value="Website Design & Development">Website Design & Development</option>
                                               <option value="E-commerce Website">E-commerce Website</option>
                                               <option value="UI/UX Design">UI/UX Design</option>
+                                              <option value="Graphic Design">Graphic Design</option>
+                                              <option value="Branding & Logo Design">Branding & Logo Design</option>
+                                              <option value="Video Editing">Video Editing</option>
+                                              <option value="Advertisement">Advertisement</option>
                                               <option value="Other">Other</option>
                                           </select>
                                       </div>
@@ -1077,17 +1092,17 @@
               <p class="text-muted fs-5" data-aos="fade-up" data-aos-delay="100">From building your digital foundation to growing your online presence, explore our core services.</p>
               
               <div class="services-grid" data-aos="fade-up" data-aos-delay="200">
-                  <a href="index.html#gmb" class="service-pill">Google Business Profile</a>
-                  <a href="index.html#ads" class="service-pill">Google Ads & Meta Ads</a>
-                  <a href="index.html#smm" class="service-pill">Social Media Marketing</a>
-                  <a href="index.html#seo" class="service-pill">Search Engine Optimization</a>
-                  <a href="index.html#web" class="service-pill">Website Design & Development</a>
-                  <a href="video.html" class="service-pill">Graphic Design</a>
+                  <a href="googlemybusiness.html" class="service-pill">Google Business Profile</a>
+                  <a href="google-ads.html" class="service-pill">Google Ads & Meta Ads</a>
+                  <a href="socialmedia.html" class="service-pill">Social Media Marketing</a>
+                  <a href="searchengine.html" class="service-pill">Search Engine Optimization</a>
+                  <a href="website.html" class="service-pill">Website Design & Development</a>
+                  <a href="graphic.html" class="service-pill">Graphic Design</a>
                   <a href="video-editor.html" class="service-pill">Video Editing</a>
-                  <a href="index.html#branding" class="service-pill">Branding & Creative Services</a>
+                  <a href="advertising.html" class="service-pill">Branding & Creative Services</a>
               </div>
               
-              <a href="index.html#services" class="theme-btn btn-style-one mt-2" data-aos="fade-up" data-aos-delay="300"><span class="btn-title">EXPLORE OUR SERVICES</span></a>
+              <a href="index.html#portfolio" class="theme-btn btn-style-one mt-2" data-aos="fade-up" data-aos-delay="300"><span class="btn-title">EXPLORE OUR SERVICES</span></a>
           </div>
       </section>
 
@@ -1222,9 +1237,29 @@
               });
           });
           if(form) {
+              // send the enquiry as a pre-filled WhatsApp message
+              const WHATSAPP_NUMBER = '919843926286';
               form.addEventListener('submit', function(e) {
                   e.preventDefault();
-                  alert("Thank you for contacting GetIt Media Solutions. We've received your enquiry and our team will get in touch with you shortly.");
+                  const val = function(n) {
+                      const el = form.querySelector('[name="' + n + '"]');
+                      return el ? el.value.trim() : '';
+                  };
+                  const lines = [
+                      '*New Project Enquiry - GetIt Media*',
+                      '',
+                      '*Name:* ' + val('name'),
+                      '*Email:* ' + val('email'),
+                      '*Phone:* ' + val('phone')
+                  ];
+                  if (val('company')) lines.push('*Company:* ' + val('company'));
+                  lines.push('*Service:* ' + val('service'));
+                  lines.push('', '*Project details:*', val('message'));
+
+                  const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+                  const win = window.open(url, '_blank');
+                  if (win) win.opener = null;
+                  else window.location.href = url;   // popup blocked: open in this tab
                   form.reset();
               });
           }
@@ -1407,7 +1442,7 @@
       <!-- Bottom footer bar -->
       <div class="lt-bottom">
         <div class="lt-bottom-brand">
-          <span class="lt-bottom-mark"><i class="fa-solid fa-play" style="transform:rotate(-90deg)"></i></span>
+          <span class="lt-bottom-mark"><img src="images/favicon.png" alt="Getit Media"></span>
           <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
         </div>
         <nav class="lt-bottom-nav" aria-label="Footer">

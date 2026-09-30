@@ -440,7 +440,7 @@
     var now = document.getElementById('wxNow');
     if (shots.length < 2) return;
 
-    var DWELL = 6000;
+    var DWELL = 4000;
     var i = 0;
     var timer = null;
     var held = false;
@@ -475,7 +475,6 @@
 
     function schedule() {
       clearTimeout(timer);
-      if (env.reduced) return;
       timer = setTimeout(function () {
         if (!held) show((i + 1) % shots.length);
         schedule();
@@ -486,8 +485,10 @@
       t.addEventListener('click', function () { show(k); schedule(); });
     });
 
-    hero.addEventListener('mouseenter', function () { held = true; });
-    hero.addEventListener('mouseleave', function () { held = false; });
+    /* hold only while the pointer is on the framed site itself */
+    var frame = hero.querySelector('.wx-frame') || hero;
+    frame.addEventListener('mouseenter', function () { held = true; });
+    frame.addEventListener('mouseleave', function () { held = false; });
 
     show(0);
 

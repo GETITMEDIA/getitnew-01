@@ -1897,3 +1897,15 @@ body.website-page .lt-footer { overflow: hidden; }
   .wx-cursor,
   .wx-cursor-ring { display: none; }
 }
+
+/* Hero subtitle: make the left rule a visible orange line */
+.wx-hero__sub {
+  border-left: 3px solid #f26522;
+  border-image: linear-gradient(180deg, #FF8A3D, #f26522) 1;
+}
+
+/* 05 app preview with four real app screens */
+.wx-app--four { gap: 0.8em; padding: 1.4em 1em 0; }
+.wx-app--four .wx-phone { width: 8.6em; padding: 0.5em 0.4em; }
+.wx-app--four .wx-phone--back { width: 7.4em; opacity: 0.75; transform: translateY(1.6em); }
+.wx-app--four .wx-phone__screen { min-height: 18em; padding: 0; overflow: hidden; }

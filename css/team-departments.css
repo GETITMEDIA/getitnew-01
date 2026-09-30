@@ -1764,3 +1764,40 @@
     transition: none !important;
   }
 }
+
+/* ---------------------------------------------------------------
+   Sales / Telesales: larger type and portraits, heading closer to
+   the cards, portraits shown at their corrected colour
+   --------------------------------------------------------------- */
+.bz { padding: 80px 0 100px; }
+.bz__head { margin-bottom: 34px; }
+.bz__title { font-size: clamp(34px, 5vw, 64px); }
+.bz__sub { font-size: 19px; }
+.bz-card__arch img { filter: none; }
+.bz-card:hover .bz-card__arch img { filter: none; }
+.bz-card__no { font-size: 20px; }
+.bz-card__role { font-size: 13px; margin-bottom: 14px; }
+.bz-card__name { font-size: clamp(32px, 3.4vw, 50px); }
+
+/* wide screens only: the tablet/phone stacks above stay as they were */
+@media (min-width: 1081px) {
+  .bz__row { max-width: 1280px; gap: 40px; }
+  .bz-card { grid-template-columns: 300px 1fr; gap: 40px; padding: 30px 36px 30px 0; }
+}
+@media (min-width: 1081px) and (max-width: 1240px) {
+  .bz-card { grid-template-columns: 240px 1fr; gap: 30px; }
+}
+
+/* Section index numbers (01, 02, 03 ...): thicker, brighter outline so
+   they read on the dark background */
+.dp__no {
+  -webkit-text-stroke: 2.2px rgba(var(--dp-o-rgb), 0.85);
+  color: rgba(var(--dp-o-rgb), 0.08);
+}
+
+/* Designer plates: role sits on its own line under the name */
+.cr-plate__slug {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}

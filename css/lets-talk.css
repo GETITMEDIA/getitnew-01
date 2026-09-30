@@ -677,3 +677,14 @@
   border-color: var(--lt-accent);
   background: rgba(232, 98, 44, 0.12);
 }
+
+.lt-bottom-mark {
+  overflow: hidden;
+}
+
+.lt-bottom-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

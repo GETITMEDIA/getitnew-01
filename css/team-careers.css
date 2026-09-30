@@ -103,7 +103,7 @@
    --------------------------------------------------------------- */
 .wk__desks {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin: 0 0 clamp(34px, 4vw, 56px);
   padding: 0;

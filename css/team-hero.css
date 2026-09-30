@@ -809,3 +809,12 @@
 .hz.is-settled .hz__ring {
   animation: hz-spin 90s linear infinite;
 }
+
+/* Title set on two lines ("Different People" / "Brighter Possibilities"):
+   keep each line whole and size the type so the longer line fits */
+.hz .hz__title {
+  font-size: clamp(20px, min(8.2cqw, 9.5vh), 76px);
+}
+.hz .hz__line--one > span {
+  white-space: nowrap;
+}

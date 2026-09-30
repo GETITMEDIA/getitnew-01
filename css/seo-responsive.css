@@ -269,3 +269,68 @@ body.seo-page span {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero heading: keep "Capture High-Intent Revenue." on a single line,
+   scaling the font to the width of the text column */
+.super-hero-h1-wrap { width: 100%; container-type: inline-size; }
+.super-hero-h1 { font-size: clamp(20px, 5.9cqi, 66px); }
+.super-hero-line { display: block; white-space: nowrap; }
+
+/* Hero trust bar: bold values were inheriting a dark colour and looked like blank gaps */
+.super-hero-trust .super-trust-item strong {
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-right: 3px;
+}
+
+/* Hero trust bar: centre the three items with even spacing */
+.super-hero-trust {
+  justify-content: center;
+  gap: 12px 36px;
+}
+
+/* Hero floating badges: smooth float + glow pulse.
+   Only transform and opacity are animated, so it runs on the GPU without repainting. */
+@keyframes seoBadgeFloat {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(0, -10px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes seoBadgeGlow {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+@keyframes seoIconPulse {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(0, 0, 0) scale(1.08); }
+}
+.super-float-badge {
+  transition: none;
+  backface-visibility: hidden;
+  will-change: transform;
+  animation: seoBadgeFloat 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+.super-float-badge::after {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  box-shadow: 0 0 36px rgba(234, 90, 6, 0.55);
+  pointer-events: none;
+  opacity: 0.35;
+  will-change: opacity;
+  animation: seoBadgeGlow 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+.super-float-badge--bot,
+.super-float-badge--bot::after {
+  animation-delay: -2.5s; /* moves opposite to the top badge */
+}
+.super-float-icon {
+  will-change: transform;
+  animation: seoIconPulse 2.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .super-float-badge,
+  .super-float-badge::after,
+  .super-float-icon { animation: none; }
+}

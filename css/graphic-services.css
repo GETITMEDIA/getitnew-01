@@ -1511,3 +1511,15 @@ body.graphic-page .preloader.loaded {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
+
+/* Hero subtitle: readable over the bright background image */
+.gd-hero__subtitle {
+  color: #FFFFFF;
+  font-weight: 500;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* CTA title: tighter tracking so "Let's Talk" reads as one phrase */
+.gd-cta__title {
+  letter-spacing: 1px;
+}

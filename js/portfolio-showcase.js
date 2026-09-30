@@ -15,6 +15,106 @@
      data-project attributes in portfolio.html; this order is also the
      prev / next order inside the modal. */
   var PROJECTS = {
+    waker: {
+      title: 'Waker Earbuds',
+      category: 'Product ad',
+      img: 'images/1/web/waker-earbuds.jpg',
+      summary: 'A premium launch poster for Welcord’s Waker true-wireless earbuds: the charging case lit on a marble plinth under a glowing arch, with a “Pure Sound, Zero Noise” line that sells the product in one glance.',
+      service: 'Graphic Design',
+      deliverables: 'Launch poster, social posts, e-commerce banners',
+      tools: 'Photoshop, 3D render',
+      format: 'Print & digital'
+    },
+    seyon: {
+      title: 'Seyon Herbal Hair Oil',
+      category: 'Social ad',
+      img: 'images/1/web/seyon-hair-oil.jpg',
+      summary: 'A warm, festive social ad for Seyon herbal hair oil: a confident model, the bottle front and centre, and a clear price badge so the offer reads instantly in the feed.',
+      service: 'Social Media Marketing',
+      deliverables: 'Offer creative, feed posts, story variants',
+      tools: 'Photoshop',
+      format: 'Instagram & Facebook'
+    },
+    myden: {
+      title: 'Myden Pillows',
+      category: 'Product ad',
+      img: 'images/1/web/myden-pillow.jpg',
+      summary: '“Dream deeper, Sleep softer”: a calm, night-sky product ad for Myden that makes softness feel visible, with floating feathers and a clear shop-now call to action.',
+      service: 'Graphic Design',
+      deliverables: 'Product ad, social posts, marketplace banners',
+      tools: 'Photoshop',
+      format: 'Print & digital'
+    },
+    betapower: {
+      title: 'Beta Power Solar',
+      category: 'Campaign poster',
+      img: 'images/1/web/beta-power-solar.jpg',
+      summary: 'A story-led campaign for Beta Power Corporation and Luminous hybrid solar: a child studying in a lit room while the street is dark, turning a technical product into an emotional reason to buy.',
+      service: 'Google & Meta Ads',
+      deliverables: 'Campaign poster, social ads, subsidy creatives',
+      tools: 'Photoshop, Illustrator',
+      format: 'Print & paid social'
+    },
+    psnk: {
+      title: 'PSNK Jewellery',
+      category: 'Product visual',
+      img: 'images/1/web/psnk-jewellery.jpg',
+      summary: 'A rich, minimal product visual for PSNK Fashion Jewellery: an emerald pendant against deep maroon drapes, lit to bring out the gold and stone detail.',
+      service: 'Graphic Design',
+      deliverables: 'Product visual, catalogue images, social posts',
+      tools: 'Photography & retouching',
+      format: 'Print & digital'
+    },
+    seagull: {
+      title: 'Seagull Cruise',
+      category: 'Tourism poster',
+      img: 'images/1/web/seagull-cruise.jpg',
+      summary: '“Where the Sea Meets Your Next Memory”: bright, sunny key art for Seagull Cruise, with the boat, lighthouse and coastline composed to make people want to book the trip.',
+      service: 'Graphic Design',
+      deliverables: 'Tourism poster, social posts, booking banners',
+      tools: 'Photoshop',
+      format: 'Print & social'
+    },
+    cola: {
+      title: 'Crushed Can Concept',
+      category: 'Concept art',
+      img: 'images/1/web/cola-concept.jpg',
+      summary: 'A surreal spec creative: a porcelain hand crushing a soda can against a flat teal backdrop, exploring how one bold, strange idea can carry an entire ad.',
+      service: 'Graphic Design',
+      deliverables: 'Concept key visual',
+      tools: 'Photoshop, 3D render',
+      format: 'Digital'
+    },
+    welcord: {
+      title: 'Welcord',
+      category: 'Website',
+      img: 'images/sites/welcord-desktop.jpg',
+      summary: 'A corporate website for Welcord, an Indian electronics manufacturer: company story, product range, infrastructure and units, with enquiry points on every page.',
+      service: 'Website Development',
+      deliverables: 'Corporate website, product pages, enquiry forms',
+      tools: 'Design & development',
+      format: 'Responsive web'
+    },
+    hrapp: {
+      title: 'GetIt HR App',
+      category: 'App design',
+      img: 'images/app/hrm-dashboard.jpg',
+      summary: 'A mobile HR app for day-to-day team operations: one-tap attendance check-in, holiday alerts, requests, payroll and an employee directory, in a dark interface built for quick daily use.',
+      service: 'App Development',
+      deliverables: 'Mobile app UI, attendance, directory, payroll screens',
+      tools: 'Design & development',
+      format: 'Android & iOS'
+    },
+    frenchcity: {
+      title: 'Hotel French City',
+      category: 'Website',
+      img: 'images/sites/02-desktop.jpg',
+      summary: 'A heritage hotel website for Puducherry’s French Quarter: rich photography, a room showcase and clear booking calls-to-action that send guests straight to reserve.',
+      service: 'Website Development',
+      deliverables: 'Hotel website, rooms & amenities pages, booking flow',
+      tools: 'Design & development',
+      format: 'Responsive web'
+    },
     aurelia: {
       title: 'Aurelia Parfum',
       category: 'Product visual',
@@ -326,6 +426,14 @@
       });
       url.textContent = tab.getAttribute('data-url');
       link.href = tab.getAttribute('data-href');
+      /* client sites live on their own domains: open those in a new tab */
+      if (/^https?:/.test(link.href) && link.hostname !== location.hostname) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      } else {
+        link.removeAttribute('target');
+        link.removeAttribute('rel');
+      }
       tags.textContent = '';
       tab.getAttribute('data-tags').split('|').forEach(function (label) {
         var li = document.createElement('li');
