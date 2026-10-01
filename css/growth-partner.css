@@ -15,10 +15,11 @@
   width: 100%;
   min-height: 720px;
   background-color: #ffffff;
-  background-image: url('../images/about/about-us-photo.jpg');
+  background-image: url('../images/about/about-us-photo-gm-desk.jpg');
   background-repeat: no-repeat;
-  background-position: right 0% center;
-  background-size: cover;
+  background-position: right center;
+  /* show the whole photo (full height) instead of a zoomed crop */
+  background-size: auto 100%;
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -37,10 +38,11 @@
   background: linear-gradient(
     90deg,
     #ffffff 0%,
-    #ffffff 26%,
-    rgba(255, 255, 255, 0.96) 31%,
-    rgba(255, 255, 255, 0.5) 36%,
-    rgba(255, 255, 255, 0) 41%
+    #ffffff 35%,
+    rgba(255, 255, 255, 0.9) 39%,
+    rgba(255, 255, 255, 0.55) 43%,
+    rgba(255, 255, 255, 0.2) 47%,
+    rgba(255, 255, 255, 0) 51%
   );
   pointer-events: none;
   z-index: 1;
@@ -102,8 +104,14 @@
   line-height: 1.05;
   color: #111317;
   letter-spacing: -0.025em;
+  /* whole heading on one straight line */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  column-gap: 0.25em;
+  white-space: nowrap;
+  font-size: clamp(24px, 2.05vw, 31px);
 }
 
 .gp-title__word--accent {
@@ -259,7 +267,7 @@
 @media (max-width: 1200px) {
   .gp-section {
     min-height: 640px;
-    background-position: right 0% center;
+    background-position: right center;
   }
   .gp-inner {
     padding: 50px 36px;
@@ -271,10 +279,10 @@
     background: linear-gradient(
       90deg,
       #ffffff 0%,
-      #ffffff 28%,
-      rgba(255, 255, 255, 0.95) 34%,
-      rgba(255, 255, 255, 0.4) 40%,
-      rgba(255, 255, 255, 0) 46%
+      #ffffff 38%,
+      rgba(255, 255, 255, 0.9) 42%,
+      rgba(255, 255, 255, 0.45) 47%,
+      rgba(255, 255, 255, 0) 53%
     );
   }
 }
@@ -326,7 +334,9 @@
     text-align: center;
   }
   .gp-title {
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: normal;
   }
   .gp-title__bottom-row {
     align-self: center;
