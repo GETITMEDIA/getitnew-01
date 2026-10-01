@@ -5,6 +5,9 @@
    ========================================================================== */
 
 .lt-footer {
+  /* pin the base line-height so the footer looks the same on pages
+     that don't load style.css (e.g. portfolio.html) */
+  line-height: 1.8;
   --lt-bg: #0a0a0a;
   --lt-panel: rgba(255, 255, 255, 0.045);
   --lt-border: rgba(255, 255, 255, 0.1);

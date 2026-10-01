@@ -328,7 +328,7 @@
 /* --- stage 2: live lighting set --- */
 .as-set { position: relative; }
 .as-set__stage {
-  position: relative; max-width: 540px; aspect-ratio: 4 / 5; margin-left: auto; border-radius: 28px; overflow: hidden;
+  position: relative; max-width: 540px; aspect-ratio: 1 / 1; margin-left: auto; border-radius: 28px; overflow: hidden;
   box-shadow: 0 50px 90px -40px rgba(255, 90, 31, 0.45), 0 40px 70px -30px rgba(0, 0, 0, 0.9);
   --lx: 30%; --ly: 25%; --lsize: 55%; --lc: rgba(255, 244, 230, 0.75); --vig: 0.35;
   transition: --lx 0.9s var(--as-ease), --ly 0.9s var(--as-ease), --lsize 0.9s var(--as-ease), --lc 0.9s ease, --vig 0.9s ease;
