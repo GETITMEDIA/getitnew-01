@@ -19,7 +19,7 @@
 <link href="css/scroll-anim.css" rel="stylesheet">
 <link href="css/lets-talk.css?v=20261001" rel="stylesheet">
 <!-- Page styles -->
-<link href="css/portfolio-showcase.css" rel="stylesheet">
+<link href="css/portfolio-showcase.css?v=20261003b" rel="stylesheet">
 
 <!-- GSAP 3.12.5 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -349,7 +349,6 @@
         </div>
         <div class="pf-filters" role="group" aria-label="Filter projects">
           <button type="button" class="pf-filter is-active" data-filter="all" aria-pressed="true">All <span class="pf-filter__n"></span></button>
-          <button type="button" class="pf-filter" data-filter="branding" aria-pressed="false">Branding <span class="pf-filter__n"></span></button>
           <button type="button" class="pf-filter" data-filter="social" aria-pressed="false">Social <span class="pf-filter__n"></span></button>
           <button type="button" class="pf-filter" data-filter="advertising" aria-pressed="false">Advertising <span class="pf-filter__n"></span></button>
           <button type="button" class="pf-filter" data-filter="print" aria-pressed="false">Print &amp; Posters <span class="pf-filter__n"></span></button>
@@ -357,64 +356,34 @@
       </div>
 
       <div class="pf-bento" id="pfBento" data-sa-no-parallax>
-        <button type="button" class="pf-tile pf-tile--xl" data-project="aurelia" data-cat="advertising">
-          <img src="images/graphic/perfume_bottle_showcase.jpg" alt="Aurelia perfume bottle on a lit marble plinth" loading="lazy" width="1024" height="1024">
+        <button type="button" class="pf-tile pf-tile--xl" data-project="mydenoffer" data-cat="advertising social print">
+          <img src="images/graphic/myden_offer_poster.jpg" alt="Myden Christmas 35% off offer poster with natural rattan baskets" loading="lazy" width="1272" height="1600" style="object-position: 50% 4%">
           <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Product visual</span><span class="pf-tile__title">Aurelia Parfum</span></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Offer poster</span><span class="pf-tile__title">Myden Christmas Offer</span></span>
           <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </button>
-        <button type="button" class="pf-tile pf-tile--md" data-project="opulent" data-cat="social">
-          <img src="images/graphic/mobile_carousel_showcase.jpg" alt="Instagram feed design for Opulent Timepieces" loading="lazy" width="1024" height="1024">
+        <button type="button" class="pf-tile pf-tile--md" data-project="kothari" data-cat="print advertising">
+          <img src="images/graphic/kothari_school_banner.jpg" alt="Kothari Vidya Mandir school admission hoarding banner" loading="lazy" width="1348" height="888" style="object-position: 0% 0%">
           <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Social media</span><span class="pf-tile__title">Opulent Timepieces</span></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Banner</span><span class="pf-tile__title">Kothari Vidya Mandir Admissions</span></span>
           <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </button>
-        <button type="button" class="pf-tile pf-tile--md" data-project="lights" data-cat="print social">
-          <img src="images/graphic/festival_poster_showcase.jpg" alt="Festival of Lights celebration poster" loading="lazy" width="1024" height="1024">
+        <button type="button" class="pf-tile pf-tile--md" data-project="press" data-cat="print advertising">
+          <img src="images/graphic/pondy_times_newspaper_ad.jpg" alt="The Pondy Times front-page newspaper ad for Getit Media" loading="lazy" width="1280" height="1600" style="object-position: 50% 20%">
           <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Poster design</span><span class="pf-tile__title">Festival of Lights</span></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Newspaper ad</span><span class="pf-tile__title">The Pondy Times Front Page</span></span>
           <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </button>
-        <button type="button" class="pf-tile pf-tile--wide" data-project="aurora" data-cat="advertising">
-          <img src="images/graphic/banner_design_showcase.jpg" alt="Aurora Automotive digital billboards on a city tower" loading="lazy" width="1376" height="768">
+        <button type="button" class="pf-tile pf-tile--wide pf-tile--full" data-project="gpinterior" data-cat="social">
+          <img src="images/graphic/carousel_process_result.jpg" alt="GP Interior Instagram carousel: a Process slide followed by the finished Result living room" loading="lazy" width="1600" height="572" style="object-position: 50% 6%">
           <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Advertising</span><span class="pf-tile__title">Aurora Automotive</span></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Carousel</span><span class="pf-tile__title">GP Interior: Process to Result</span></span>
           <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </button>
-        <button type="button" class="pf-tile" data-project="gcube" data-cat="branding">
-          <img src="images/graphic/g_logo_showcase.jpg" alt="G monogram rendered as a glowing metal cube" loading="lazy" width="1024" height="1024">
+        <button type="button" class="pf-tile pf-tile--wide pf-tile--full pf-tile--contain" data-project="trending" data-cat="social">
+          <img src="images/graphic/trending_carousel.jpg?v=hd4" alt="Getit Media swipe carousel mapping a digital growth journey across GMB, Instagram, Facebook, YouTube, Google Ads and Meta Ads" loading="lazy" width="3032" height="616">
           <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Branding</span><span class="pf-tile__title">G-Cube Brand Mark</span></span>
-          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </button>
-        <button type="button" class="pf-tile" data-project="aethel" data-cat="branding print">
-          <img src="images/graphic/id_card_showcase.jpg" alt="Aethel Technologies employee ID card designs" loading="lazy" width="1024" height="1024">
-          <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Corporate identity</span><span class="pf-tile__title">Aethel Technologies</span></span>
-          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </button>
-        <button type="button" class="pf-tile" data-project="editorial" data-cat="print">
-          <img src="images/graphic/brochure_grid_showcase.jpg" alt="Grid of corporate brochures and magazine layouts" loading="lazy" width="1024" height="1024">
-          <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Print &amp; editorial</span><span class="pf-tile__title">Corporate Editorial Suite</span></span>
-          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </button>
-        <button type="button" class="pf-tile" data-project="sale" data-cat="advertising social">
-          <img src="images/graphic/retail_poster_sale.jpg" alt="Orange and black 50% off sale poster" loading="lazy" width="1024" height="1024">
-          <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Advertising</span><span class="pf-tile__title">Seasonal Sale Campaign</span></span>
-          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </button>
-        <button type="button" class="pf-tile pf-tile--wide" data-project="socialsuite" data-cat="social">
-          <img src="images/video/branding_phones.jpg" alt="Social launch creatives on Instagram, short video and X" loading="lazy" width="1376" height="768">
-          <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Social media</span><span class="pf-tile__title">Multi-platform Social Launch</span></span>
-          <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-        </button>
-        <button type="button" class="pf-tile" data-project="press" data-cat="print advertising">
-          <img src="images/graphic/newspaper_ad_mockup.jpg" alt="Newspaper print advertisement mockup" loading="lazy" width="1024" height="1024">
-          <span class="pf-tile__shade"></span>
-          <span class="pf-tile__meta"><span class="pf-tile__cat">Print advertising</span><span class="pf-tile__title">Newspaper Ad Placement</span></span>
+          <span class="pf-tile__meta"><span class="pf-tile__cat">Trending carousel</span><span class="pf-tile__title">Digital Growth Journey</span></span>
           <span class="pf-tile__go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </button>
       </div>
@@ -565,40 +534,31 @@
       <div class="pf-reel__intro">
         <p class="pf-eyebrow">Motion &amp; campaigns</p>
         <h2 class="pf-h2">Made to be<br>watched <em>twice.</em></h2>
-        <p class="pf-lead">Product films, live event coverage and studio finishing, cut for every screen your audience uses.</p>
+        <p class="pf-lead">Product videos, live event coverage and cinematic short films, cut for every screen your audience uses.</p>
         <span class="pf-reel__hint">Keep scrolling <i class="fa-solid fa-arrow-right"></i></span>
       </div>
 
       <button type="button" class="pf-reel__panel" data-project="drone">
-        <video class="pf-reel__media" poster="images/video/product_drone.jpg" muted loop playsinline preload="none"
-          width="1376" height="768">
-          <source src="images/video/reel-01.mp4" type="video/mp4">
-        </video>
+        <img class="pf-reel__media" src="images/video/myden_baskets.jpg?v=hq1" alt="Myden Natural Baskets product video" width="1072" height="598" loading="lazy">
         <span class="pf-reel__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
         <span class="pf-reel__meta">
-          <span><span class="pf-pill">Product film</span><span class="pf-reel__title">Strider X7 Product Film</span></span>
+          <span><span class="pf-pill">Product video</span><span class="pf-reel__title">Myden Natural Baskets</span></span>
           <span class="pf-reel__index" aria-hidden="true">01</span>
         </span>
       </button>
       <button type="button" class="pf-reel__panel" data-project="concert">
-        <video class="pf-reel__media" poster="images/video/event_concert.jpg" muted loop playsinline preload="none"
-          width="848" height="1264">
-          <source src="images/video/reel-02.mp4" type="video/mp4">
-        </video>
+        <img class="pf-reel__media" src="images/video/event_piaggio_launch.jpg" alt="Piaggio Ape E-City Swap launch event video" width="1080" height="620" loading="lazy">
         <span class="pf-reel__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
         <span class="pf-reel__meta">
-          <span><span class="pf-pill">Event video</span><span class="pf-reel__title">Live Event Coverage</span></span>
+          <span><span class="pf-pill">Event video</span><span class="pf-reel__title">Piaggio Launch Event</span></span>
           <span class="pf-reel__index" aria-hidden="true">02</span>
         </span>
       </button>
       <button type="button" class="pf-reel__panel" data-project="studio">
-        <video class="pf-reel__media" poster="images/graphic/video_editing_console.jpg" muted loop playsinline preload="none"
-          width="1376" height="768">
-          <source src="images/video/reel-03.mp4" type="video/mp4">
-        </video>
+        <img class="pf-reel__media" src="images/video/landscape_short_film.jpg?v=hd1" alt="Cinematic short film scene shot outside a heritage building in Pondicherry" width="1280" height="612" loading="lazy">
         <span class="pf-reel__play" aria-hidden="true"><i class="fa-solid fa-play"></i></span>
         <span class="pf-reel__meta">
-          <span><span class="pf-pill">Post-production</span><span class="pf-reel__title">Studio Edit &amp; Colour</span></span>
+          <span><span class="pf-pill">Short film</span><span class="pf-reel__title">Cinematic Short Film</span></span>
           <span class="pf-reel__index" aria-hidden="true">03</span>
         </span>
       </button>
@@ -965,6 +925,9 @@
         <div><dt>Tools</dt><dd id="pfModalTools"></dd></div>
       </dl>
       <div class="pf-modal__actions">
+        <a href="#" class="pf-btn pf-btn--ghost" id="pfModalWatch" target="_blank" rel="noopener noreferrer" hidden>
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i> Watch the reel
+        </a>
         <a href="contact.html" class="pf-btn pf-btn--primary">
           Start a similar project
           <span class="pf-btn__icon" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
@@ -980,7 +943,7 @@
 </div>
 
 <script src="js/navbar.js"></script>
-<script src="js/portfolio-showcase.js"></script>
+<script src="js/portfolio-showcase.js?v=20261003d"></script>
 <script src="js/scroll-anim.js"></script>
 </body>
 </html>

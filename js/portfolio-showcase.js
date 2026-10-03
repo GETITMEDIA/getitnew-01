@@ -115,135 +115,92 @@
       tools: 'Design & development',
       format: 'Responsive web'
     },
-    aurelia: {
-      title: 'Aurelia Parfum',
-      category: 'Product visual',
-      img: 'images/graphic/perfume_bottle_showcase.jpg',
-      summary: 'A moody, light-cut key visual that lets the bottle do the talking: amber glow, a lit marble plinth and a single beam of light, built to hold up from billboard to phone screen.',
+    mydenoffer: {
+      title: 'Myden Christmas Offer',
+      category: 'Offer poster',
+      img: 'images/graphic/myden_offer_poster.jpg',
+      summary: 'A festive Christmas offer poster for Myden’s natural rattan baskets: a bold 35% OFF headline, warm red-and-gold seasonal styling and the product front and centre, built to stop the scroll and drive store visits.',
       service: 'Graphic Design',
-      deliverables: 'Hero key visual, e-commerce crops, social teasers',
-      tools: 'Photoshop, Blender',
-      format: 'Print & digital'
+      deliverables: 'Offer poster, Instagram post, WhatsApp status creative',
+      tools: 'Photoshop, Illustrator',
+      format: 'Social & print'
     },
-    opulent: {
-      title: 'Opulent Timepieces',
-      category: 'Social media',
-      img: 'images/graphic/mobile_carousel_showcase.jpg',
-      summary: 'A premium Instagram feed system for a luxury watch label: dark, tactile product shots, a consistent grid rhythm and carousel templates the brand team can keep extending.',
+    gpinterior: {
+      title: 'GP Interior: Process to Result',
+      category: 'Carousel',
+      img: 'images/graphic/carousel_process_result.jpg',
+      contain: true,
+      summary: 'A before-and-after Instagram carousel for GP Interior: the first slide shows the team mid-installation, the swipe reveals the finished living room, with showroom, retail and factory addresses on every slide.',
       service: 'Social Media Marketing',
-      deliverables: 'Feed system, carousels, story templates',
-      tools: 'Photoshop, Figma',
+      deliverables: 'Swipe carousel, Process & Result slides',
+      tools: 'Photoshop',
       format: 'Instagram & Facebook'
     },
-    lights: {
-      title: 'Festival of Lights',
-      category: 'Poster design',
-      img: 'images/graphic/festival_poster_showcase.jpg',
-      summary: 'Ornate festival key art mixing a glowing mandala, traditional arch framing and a crowd of dancers, designed to feel celebratory at poster size and still read on a phone.',
+    kothari: {
+      title: 'Kothari Vidya Mandir Admissions',
+      category: 'Banner',
+      img: 'images/graphic/kothari_school_banner.jpg',
+      contain: true,
+      summary: 'A roadside admission hoarding for Kothari Vidya Mandir: a clear “admissions open” message, smiling students and contact details sized to read from a moving vehicle.',
       service: 'Graphic Design',
-      deliverables: 'Event poster, social announcement set, stage backdrop',
-      tools: 'Illustrator, Photoshop',
-      format: 'Print & social'
-    },
-    aurora: {
-      title: 'Aurora Automotive',
-      category: 'Advertising',
-      img: 'images/graphic/banner_design_showcase.jpg',
-      summary: '"The Future of Drive": a launch campaign built for digital billboards first, then adapted into display banners and a paid social ad set with one consistent visual idea.',
-      service: 'Google & Meta Ads',
-      deliverables: 'Digital billboard, display banners, launch ad set',
+      deliverables: 'Hoarding banner, flex print file, social version',
       tools: 'Photoshop, Illustrator',
-      format: 'Outdoor & paid digital'
+      format: 'Outdoor print'
     },
-    gcube: {
-      title: 'G-Cube Brand Mark',
-      category: 'Branding',
-      img: 'images/graphic/g_logo_showcase.jpg',
-      summary: 'A monogram mark rendered as a machined metal cube with a molten orange edge, giving the brand a 3D hero asset for launches, social avatars and motion stings.',
-      service: 'Branding & Logo Design',
-      deliverables: '3D logo render, avatar set, motion sting',
-      tools: 'Blender, Illustrator',
-      format: 'Brand identity'
-    },
-    aethel: {
-      title: 'Aethel Technologies',
-      category: 'Corporate identity',
-      img: 'images/graphic/id_card_showcase.jpg',
-      summary: 'An employee ID and badge system that carries the brand into the office: neon-edged cards, clear role hierarchy and print-ready specs for every department.',
-      service: 'Branding & Logo Design',
-      deliverables: 'ID cards, badge system, print specifications',
-      tools: 'Illustrator, InDesign',
-      format: 'Print'
-    },
-    editorial: {
-      title: 'Corporate Editorial Suite',
-      category: 'Print & editorial',
-      img: 'images/graphic/brochure_grid_showcase.jpg',
-      summary: 'A modular editorial system covering annual reports, brochures and a strategy magazine, with one grid, one type scale and an orange accent that ties every title together.',
-      service: 'Graphic Design',
-      deliverables: 'Annual report, brochure series, magazine layouts',
-      tools: 'InDesign, Photoshop',
-      format: 'Print & PDF'
-    },
-    sale: {
-      title: 'Seasonal Sale Campaign',
-      category: 'Advertising',
-      img: 'images/graphic/retail_poster_sale.jpg',
-      summary: 'A loud, high-contrast retail sale creative that works in-store and in-feed: one bold offer, one clear call to action, and variants sized for every placement.',
-      service: 'Google & Meta Ads',
-      deliverables: 'In-store poster, Meta ad variants, WhatsApp creatives',
-      tools: 'Illustrator, Photoshop',
-      format: 'Print & paid social'
-    },
-    socialsuite: {
-      title: 'Multi-platform Social Launch',
-      category: 'Social media',
-      img: 'images/video/branding_phones.jpg',
-      summary: 'One launch story told natively across Instagram, short-form video and X, with formats, captions and hooks tailored to how people actually scroll on each platform.',
+    trending: {
+      title: 'Digital Growth Journey',
+      category: 'Trending carousel',
+      img: 'images/graphic/trending_carousel.jpg?v=hd4',
+      contain: true,
+      summary: 'Our trending seamless swipe carousel: one continuous journey that walks followers from GMB through Instagram, Facebook, YouTube, Google Ads and Meta Ads to a single message — your digital growth partner.',
       service: 'Social Media Marketing',
-      deliverables: 'Reels, short-form videos, post and story sets',
-      tools: 'Premiere Pro, After Effects, Photoshop',
-      format: 'Instagram, YouTube Shorts, X'
+      deliverables: 'Seamless panorama carousel',
+      tools: 'Photoshop, Illustrator',
+      format: 'Instagram carousel'
     },
     press: {
-      title: 'Newspaper Ad Placement',
-      category: 'Print advertising',
-      img: 'images/graphic/newspaper_ad_mockup.jpg',
-      summary: 'A print ad and press layout designed around the newspaper grid, so the message stays sharp at small sizes and stands out on a busy page.',
+      title: 'The Pondy Times Front Page',
+      category: 'Newspaper ad',
+      img: 'images/graphic/pondy_times_newspaper_ad.jpg',
+      contain: true,
+      summary: 'A front-page “Breaking News” style newspaper ad in The Pondy Times that announces Getit Media as Pondicherry’s name for digital marketing and advertising, laid out to the paper’s grid.',
       service: 'Graphic Design',
-      deliverables: 'Newspaper ad, press kit layout',
+      deliverables: 'Front-page newspaper ad',
       tools: 'InDesign, Photoshop',
       format: 'Print'
     },
     drone: {
-      title: 'Strider X7 Product Film',
-      category: 'Video editing',
-      img: 'images/video/product_drone.jpg',
-      summary: 'A cinematic product film for a performance drone: moody CGI environments, glowing detail shots and a sound-led edit, cut down into teasers for launch week.',
+      title: 'Myden Natural Baskets',
+      category: 'Product video',
+      img: 'images/video/myden_baskets.jpg?v=hq1',
+      reel: 'https://www.instagram.com/reel/DZzLXeDima_/',
+      summary: 'A clean studio product reel for Myden’s handwoven rattan baskets: soft natural light, slow reveals of the weave from three angles and bold “Natural Baskets” titling, cut vertical for Instagram.',
       service: 'Video Editing',
-      deliverables: 'Product film, launch teaser, 15s ad cutdowns',
-      tools: 'Premiere Pro, After Effects, DaVinci Resolve',
-      format: '16:9, 9:16 & 1:1'
+      deliverables: 'Product reel, Instagram cut',
+      tools: 'Premiere Pro, After Effects',
+      format: '9:16 Reel'
     },
     concert: {
-      title: 'Live Event Coverage',
+      title: 'Piaggio Launch Event',
       category: 'Event video',
-      img: 'images/video/event_concert.jpg',
-      summary: 'Full live-event coverage, from the crowd energy to the stage production, delivered as an aftermovie plus same-day highlight reels for social.',
+      img: 'images/video/event_piaggio_launch.jpg',
+      reel: 'https://www.instagram.com/reel/Da5SLBQkbhK/',
+      summary: 'Launch-day coverage of the Piaggio Ape E-City Swap unveiling: the ribbon reveal, sparklers, guests and the vehicle itself, cut into a fast highlight reel while the launch was still news.',
       service: 'Video Editing',
-      deliverables: 'Aftermovie, highlight reels, same-day social edits',
+      deliverables: 'Event highlight reel, social cutdowns',
       tools: 'Premiere Pro, DaVinci Resolve',
-      format: '16:9 & 9:16'
+      format: '9:16 Reel'
     },
     studio: {
-      title: 'Studio Edit & Colour',
-      category: 'Post-production',
-      img: 'images/graphic/video_editing_console.jpg',
-      summary: 'Our in-house finishing pipeline: offline edit, colour grade and sound mix, so every commercial leaves the studio broadcast-ready and social-ready.',
+      title: 'Cinematic Short Film',
+      category: 'Short film',
+      img: 'images/video/landscape_short_film.jpg?v=hd1',
+      reel: 'https://www.instagram.com/reel/Da2uzMST4w8/',
+      summary: 'A wide-format short film shot on the heritage streets of Pondicherry: scripted scenes, cinematic 16:9 framing, colour grade and a sound-led edit built to hold the viewer to the last frame.',
       service: 'Video Editing',
-      deliverables: 'Commercial edit, colour grade, sound mix, social cutdowns',
-      tools: 'DaVinci Resolve, Premiere Pro, Audition',
-      format: 'Broadcast & social'
+      deliverables: 'Short film, Instagram cut',
+      tools: 'Premiere Pro, DaVinci Resolve',
+      format: '16:9 cinematic'
     }
   };
   var ORDER = Object.keys(PROJECTS);
@@ -270,7 +227,8 @@
       deliverables: $('#pfModalDeliverables'),
       tools: $('#pfModalTools'),
       format: $('#pfModalFormat'),
-      count: $('#pfModalCount')
+      count: $('#pfModalCount'),
+      watch: $('#pfModalWatch')
     };
     var current = 0;
     var lastFocus = null;
@@ -281,6 +239,7 @@
       var p = PROJECTS[ORDER[current]];
       el.img.src = p.img;
       el.img.alt = p.title;
+      el.img.classList.toggle('is-contain', !!p.contain);
       el.cat.textContent = p.category;
       el.title.textContent = p.title;
       el.summary.textContent = p.summary;
@@ -289,6 +248,10 @@
       el.tools.textContent = p.tools;
       el.format.textContent = p.format;
       el.count.textContent = (current + 1) + ' / ' + ORDER.length;
+      if (el.watch) {
+        el.watch.hidden = !p.reel;
+        if (p.reel) el.watch.href = p.reel;
+      }
     }
 
     function open(id) {

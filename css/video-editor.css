@@ -127,8 +127,8 @@ body {
    two ran together as one orange mass. Make it a quiet index instead. */
 .service-num {
     font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 800;
     letter-spacing: 3px;
     color: var(--theme-color1);
     display: flex;
@@ -344,6 +344,11 @@ body {
 }
 
 .overlay-content .service-desc { max-width: 44ch; }
+
+/* 02 Landscape: keep the actors' heads and the prop in the wide crop */
+.wide-video-link img {
+    object-position: 50% 22%;
+}
 
 /* 06 Event Videos: whole banner opens the reel */
 .service-overlay--video .bg-image {
@@ -825,7 +830,7 @@ body {
 
     .service-row { gap: 34px; }
     .service-block { gap: 24px; }
-    .service-num { font-size: 12.5px; letter-spacing: 2.4px; margin-bottom: 14px; }
+    .service-num { font-size: 15px; letter-spacing: 2.4px; margin-bottom: 14px; }
     .service-num::after { flex-basis: 32px; }
     .service-title { margin-bottom: 16px; }
     .service-desc { font-size: 15px; line-height: 1.75; }

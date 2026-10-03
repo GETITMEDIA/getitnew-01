@@ -1580,3 +1580,16 @@ body.graphic-page .preloader.loaded {
 .gd-cta__title {
   letter-spacing: 1px;
 }
+
+/* "Our Trending Carousel": full-width row so the long panorama shows big, edge to edge */
+.gd-bento__card--full {
+  grid-column: 1 / -1;
+}
+
+.gd-bento__card--strip {
+  background: #fde2d5; /* matches the carousel's peach edge so letterboxing is invisible */
+}
+
+.gd-bento__card--strip img {
+  object-fit: contain;
+}

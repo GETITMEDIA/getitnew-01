@@ -1667,3 +1667,14 @@ html.pf-lock { overflow: hidden; }
   .pf-hero .pf-collage__tag { font-size: 12px; }
 }
 
+
+/* Real client pieces that must show whole (panoramas, posters with text) */
+.pf-tile--contain { background: #fde2d5; }
+.pf-tile--contain img { object-fit: contain; }
+.pf-modal__media img.is-contain { object-fit: contain; }
+
+/* Full-width tiles for the long carousel panoramas */
+.pf-tile--full { grid-column: 1 / -1; grid-row: span 4; }
+@media (max-width: 1100px) {
+  .pf-tile--full { grid-column: 1 / -1; }
+}
