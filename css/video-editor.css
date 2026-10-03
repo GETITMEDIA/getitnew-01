@@ -186,6 +186,58 @@ body {
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(234, 90, 6, 0.2);
 }
 
+/* Clickable video thumbnail (03 Product Videos -> Instagram reel) */
+.service-video-link {
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.service-video-link img {
+    display: block;
+}
+
+.service-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 78px;
+    height: 78px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(234, 90, 6, 0.92);
+    color: #fff;
+    font-size: 1.6rem;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 10px rgba(234, 90, 6, 0.25), 0 12px 30px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-play i {
+    margin-left: 4px;
+}
+
+.service-video-link:hover .service-play,
+.service-video-link:focus-visible .service-play {
+    transform: translate(-50%, calc(-50% - 5px)) scale(1.08);
+    box-shadow: 0 0 0 16px rgba(234, 90, 6, 0.2), 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.service-video-link:focus-visible {
+    outline: 2px solid #ea5a06;
+    outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+    .service-play {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+    }
+}
+
 /* --- Layouts --- */
 
 /* Standard Row */
@@ -292,6 +344,222 @@ body {
 }
 
 .overlay-content .service-desc { max-width: 44ch; }
+
+/* 06 Event Videos: whole banner opens the reel */
+.service-overlay--video .bg-image {
+    object-position: 50% 45%;
+}
+
+.overlay-video-link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: 16px;
+}
+
+/* Text sits above the link but lets clicks fall through to it */
+.service-overlay--video .overlay-content {
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* Play button over the vehicle, clear of the right-aligned copy */
+.overlay-video-link .service-play {
+    left: 36%;
+}
+
+.overlay-video-link:hover .service-play,
+.overlay-video-link:focus-visible .service-play {
+    transform: translate(-50%, calc(-50% - 5px)) scale(1.08);
+    box-shadow: 0 0 0 16px rgba(234, 90, 6, 0.2), 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-video-link:focus-visible {
+    outline: 2px solid #ea5a06;
+    outline-offset: -4px;
+}
+
+@media (max-width: 991px) {
+    /* Copy is centred on smaller screens, so park the button in the corner */
+    .overlay-video-link .service-play {
+        top: 18px;
+        right: 18px;
+        left: auto;
+        width: 52px;
+        height: 52px;
+        font-size: 1.05rem;
+        transform: none;
+    }
+
+    .overlay-video-link:hover .service-play,
+    .overlay-video-link:focus-visible .service-play {
+        transform: scale(1.08);
+    }
+}
+
+/* 04 Branding & Reels: vertical reel shown in a phone frame */
+.reel-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+/* Soft brand glow behind the phone */
+.reel-stage::before {
+    content: '';
+    position: absolute;
+    width: 520px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(234, 90, 6, 0.28) 0%, rgba(234, 90, 6, 0.08) 45%, transparent 70%);
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.reel-phone {
+    position: relative;
+    z-index: 1;
+    display: block;
+    /* Fixed phone size: 300 x 533 (9:16) */
+    width: 300px;
+    height: 533px;
+    flex: 0 0 auto;
+    padding: 10px;
+    border-radius: 42px;
+    background: linear-gradient(160deg, #26262b, #0d0d10);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 2px rgba(0, 0, 0, 0.6);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Notch */
+.reel-phone::before {
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: 50%;
+    width: 84px;
+    height: 22px;
+    border-radius: 12px;
+    background: #0a0a0c;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.reel-phone:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 36px 70px rgba(0, 0, 0, 0.65), 0 0 60px rgba(234, 90, 6, 0.3), inset 0 0 0 2px rgba(0, 0, 0, 0.6);
+}
+
+.reel-phone:focus-visible {
+    outline: 2px solid #ea5a06;
+    outline-offset: 4px;
+}
+
+.reel-phone__screen {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 33px;
+}
+
+.service-image .reel-phone__screen img,
+.service-image:hover .reel-phone__screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+}
+
+.reel-phone__badge {
+    position: absolute;
+    top: 54px;
+    left: 16px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(10, 10, 12, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* Play sits over the podium, clear of the speaker's face */
+.reel-phone .service-play {
+    top: 57%;
+    width: 72px;
+    height: 72px;
+    font-size: 1.45rem;
+    z-index: 2;
+}
+
+.reel-phone:hover .service-play,
+.reel-phone:focus-visible .service-play {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 0 16px rgba(234, 90, 6, 0.2), 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+.reel-phone__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 80px 20px 24px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.75) 45%, transparent 100%);
+    color: #fff;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.reel-phone__caption strong {
+    display: block;
+    color: #fff; /* style.css paints <strong> #333 site-wide */
+    font-size: 1rem;
+    font-weight: 700;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.reel-phone__caption span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.reel-phone__caption span i {
+    color: #ea5a06;
+}
+
+@media (max-width: 767px) {
+    .reel-phone {
+        width: 260px;
+        height: 462px;
+        border-radius: 38px;
+    }
+
+    .reel-phone__screen { border-radius: 29px; }
+    .reel-phone .service-play { width: 62px; height: 62px; font-size: 1.25rem; }
+    .reel-phone__caption { padding: 70px 16px 20px; }
+}
+
 
 .overlay-content.right-align {
     align-items: flex-end;
