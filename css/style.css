@@ -6576,7 +6576,7 @@ Start sass Icon Single Box
 .services-section-two p.sec-descrption {
   margin: 0;
   max-width: 477px;
-  line-height: 1.5;
+  line-height: 1.6;
   font-size: 18px;
 }
 @media (max-width: 991.98px) {
@@ -7613,7 +7613,7 @@ Start sass Icon Single Box
   margin-top: -7px;
 }
 .testimonial-section-three .column-right .counter_box-testi .count-box {
-  font-weight: 500;
+  font-weight: 900;
   font-size: 62px;
   line-height: 56px;
   color: var(--theme-color1);
@@ -10935,7 +10935,7 @@ Start sass Icon Single Box
   border-bottom: 1px solid rgba(var(--theme-color-white-rgb), 0.15);
   margin-right: 48px;
   margin-bottom: 35px;
-  padding-bottom: 20px;
+  padding-bottom: 70px;
 }
 .why-choose-us-section .choose-single-box .choose-icon i {
   display: inline-block;
@@ -10947,14 +10947,14 @@ Start sass Icon Single Box
   text-align: center;
   color: var(--theme-color1);
   font-size: 26px;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   -webkit-transition: all 400ms linear;
   transition: all 400ms linear;
   cursor: pointer;
 }
 .why-choose-us-section .choose-single-box .choose-content .title {
    margin: 0 0 14px;
-    font-size: 36px;
+    /* font-size: 36px; */
     font-weight: 700;
     color: #ea5a06;
 }
@@ -10981,7 +10981,9 @@ Start sass Icon Single Box
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  top: -26px;
+  /* was -26px, which left the photo floating 26px above the bottom of the
+     dark arch behind it; 0 sits the photo flush with the arch */
+  top: 0;
 }
 .why-choose-us-section .choose-thumb img {
   width: 100%;
@@ -12578,7 +12580,7 @@ Progress Bar
 }
 .customar-service .highlighted-number {
   font-family: var(--heading-font-family);
-  font-weight: 500;
+  font-weight: 900;
   font-size: 20px;
   line-height: 30px;
   color: var(--theme-color1);

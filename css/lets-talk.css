@@ -386,7 +386,7 @@
   align-items: flex-start;
   gap: 14px;
   /* negative side margin keeps the hover panel but lines the icon up with the column title */
-  padding: 14px 12px;
+  padding: 8px 12px;
   margin: 0 -12px 8px;
   border-radius: 14px;
   background: transparent;
@@ -468,6 +468,22 @@ a.lt-contact-phone:focus-visible {
   color: var(--lt-accent);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* phone: two numbers per line ("+91 98439 26286 / 98439 26261"),
+   each number still its own tel: link */
+.lt-footer .lt-phone-row {
+  display: block;
+  white-space: nowrap;
+  font-size: clamp(0.75rem, 0.95vw, 0.92rem);
+}
+.lt-phone-row + .lt-phone-row {
+  margin-top: 4px;
+}
+.lt-phone-row a.lt-contact-phone {
+  display: inline;
+  color: inherit;
+  font-weight: inherit;
 }
 
 /* keep each email address on a single line */
@@ -751,5 +767,6 @@ a.lt-contact-phone:focus-visible {
 
 /* very small phones: let a long email wrap rather than overflow */
 @media (max-width: 360px) {
-  .lt-footer .lt-contact-email { white-space: normal; overflow-wrap: anywhere; }
+  .lt-footer .lt-contact-email,
+  .lt-footer .lt-phone-row { white-space: normal; overflow-wrap: anywhere; }
 }

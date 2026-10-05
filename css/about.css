@@ -458,8 +458,8 @@ h2.gm-sec-title,
    a label sitting above and below the statement line */
 .gm-sec-title__line {
   display: block;
-  font-size: var(--gm-title-quiet);
-  font-weight: 600;
+  font-size: 50px;
+  /* font-weight: 600; */
   letter-spacing: 0.06em;
   line-height: 1.25;
   color: #fff;
@@ -468,7 +468,7 @@ h2.gm-sec-title,
 
 /* the loud line: the section's actual subject */
 .gm-sec-title__line--accent {
-  font-size: var(--gm-title-loud);
+  /* font-size: 90px; */
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 0.98;
@@ -498,6 +498,7 @@ h2.gm-sec-title,
 .gm-sec-title__line--accent + .gm-sec-title__line {
   padding-left: 0;
   opacity: 0.92;
+  font-weight: 800;
 }
 
 @keyframes gmTitleFlow {

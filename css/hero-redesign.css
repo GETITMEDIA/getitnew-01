@@ -327,11 +327,7 @@
    whole h1 with a lighter multi-colour sweep; the "Be Seen" span below sets
    its own stronger gradient, so the accent still leads. */
 .gm-hero__heading {
-  background: linear-gradient(90deg,
-      #ffffff 0%,
-      #ffd23f 28%,
-      #ff8a3d 52%,
-      #ffffff 82%);
+  background:linear-gradient(100deg, #ff5a00 0%, #ff8a1f 18%, #ffb020 36%, #ffd23f 50%, #ffb020 64%, #ff8a1f 82%, #ff5a00 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -422,7 +418,7 @@
 
 /* ── Subtitle ── */
 .gm-hero__subtitle {
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-size: clamp(0.95rem, 1.6vw, 1rem);
   font-weight: 400;
   color: var(--gm-gray);
   line-height: 1.65;
