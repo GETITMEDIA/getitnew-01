@@ -521,7 +521,8 @@
     height: 3px;
   }
 
-  .au-title span {
+  .au-title span,
+  .au-title .au-title__accent {
     white-space: normal;
   }
 }

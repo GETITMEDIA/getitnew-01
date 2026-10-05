@@ -33,10 +33,20 @@
   animation: prFloat 6s ease-in-out infinite;
 }
 .pr-hero__tag small { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #ff8a3d; margin-bottom: 6px; }
-.pr-hero__tag b { display: block; font-size: 30px; color: #fff; line-height: 1.1; margin-bottom: 10px; }
-.pr-hero__tag i { display: block; height: 6px; border-radius: 4px; background: rgba(255,255,255,0.14); margin-top: 7px; }
-.pr-hero__tag i:nth-of-type(2) { width: 75%; }
-.pr-hero__tag i:nth-of-type(3) { width: 55%; }
+.pr-hero__tag b { display: block; line-height: 1; margin-bottom: 12px; }
+/* solid icon badge: the text ₹ glyph was thin and blurred on the tilted card */
+.pr-hero__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, #ff8a3d, #f26522);
+  box-shadow: 0 6px 16px -4px rgba(242, 101, 34, 0.6);
+  color: #fff; font-size: 18px;
+}
+.pr-hero__icon i { line-height: 1; }
+/* placeholder text bars (direct children only, not the icon) */
+.pr-hero__tag > i { display: block; height: 6px; border-radius: 4px; background: rgba(255,255,255,0.14); margin-top: 7px; }
+.pr-hero__tag > i:nth-of-type(2) { width: 75%; }
+.pr-hero__tag > i:nth-of-type(3) { width: 55%; }
 .pr-hero__tag--a { left: 6%;  top: 34%; transform: rotate(-8deg); }
 .pr-hero__tag--b { right: 7%; top: 22%; transform: rotate(7deg); animation-delay: -2s; border-color: rgba(255,138,61,0.7); }
 .pr-hero__tag--c { right: 18%; bottom: 8%; transform: rotate(-4deg); animation-delay: -4s; }

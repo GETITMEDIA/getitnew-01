@@ -1,0 +1,7 @@
+
+# Team admin runtime files (server-only, never commit)
+data/admin.json
+data/login-attempts.json
+data/team.lock
+data/team.json.tmp
+data/backups/

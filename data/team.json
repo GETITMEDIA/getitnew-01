@@ -1,0 +1,375 @@
+{
+    "version": 1,
+    "sections": [
+        {
+            "id": "sec_founder",
+            "module": "founder",
+            "anchor": "founder",
+            "status": "published",
+            "number": "",
+            "kicker": "",
+            "title": "Founder",
+            "description": "",
+            "extra": {
+                "stats": [
+                    {
+                        "value": "120+",
+                        "label": "Projects Delivered"
+                    },
+                    {
+                        "value": "5.2M+",
+                        "label": "Digital Ad Spend"
+                    },
+                    {
+                        "value": "20+",
+                        "label": "Team Managed"
+                    }
+                ],
+                "cta_text": "Who I Am",
+                "cta_link": "index.html#home",
+                "image_width": 1240,
+                "image_height": 1269
+            },
+            "members": [
+                {
+                    "id": "mem_anthoni",
+                    "name": "G. Anthoni Muthu",
+                    "designation": "Founder | Senior Digital Project Leader | Creative & Marketing Operator",
+                    "department": "Leadership",
+                    "image": "images/sir/sir-02.webp",
+                    "alt": "G. Anthoni Muthu",
+                    "email": "anthoni.g@getitmediasolutions.in",
+                    "status": "active",
+                    "order": 1
+                }
+            ],
+            "order": 1
+        },
+        {
+            "id": "sec_people",
+            "module": "people",
+            "anchor": "hr-profile",
+            "status": "published",
+            "number": "06",
+            "kicker": "The People Desk",
+            "title": "People Desk",
+            "description": "",
+            "extra": {
+                "video": "images/video/1.mp4",
+                "cta_text": "Let’s Grow Together",
+                "cta_link": "mailto:hrgetitmedia@gmail.com?subject=HR%20%E2%80%93%20GetIt%20Media",
+                "duties": [
+                    {
+                        "icon": "fa-solid fa-user-plus",
+                        "title": "Recruitment & Onboarding",
+                        "text": "From job post to first day — screening, interviews, offers and a first week that makes new joiners feel part of the team."
+                    },
+                    {
+                        "icon": "fa-solid fa-graduation-cap",
+                        "title": "Training & Growth",
+                        "text": "Skill sessions, performance reviews and clear career paths, so every specialist knows how to grow from junior to lead."
+                    },
+                    {
+                        "icon": "fa-solid fa-heart",
+                        "title": "Employee Engagement",
+                        "text": "Feedback, recognition and team moments that keep the floor motivated, connected and proud of the work."
+                    },
+                    {
+                        "icon": "fa-solid fa-file-invoice",
+                        "title": "Payroll & Compliance",
+                        "text": "Attendance, leave, payroll and HR policies — handled on time, kept fair, and always on record."
+                    }
+                ]
+            },
+            "members": [
+                {
+                    "id": "mem_shivani",
+                    "name": "Shivani P",
+                    "designation": "Human Resources · People & Culture",
+                    "department": "Human Resources",
+                    "image": "images/team/shivani-p.jpg",
+                    "alt": "Shivani P, Human Resources – People and Culture",
+                    "email": "hrgetitmedia@gmail.com",
+                    "status": "active",
+                    "order": 1
+                }
+            ],
+            "order": 2
+        },
+        {
+            "id": "sec_telesales",
+            "module": "telesales",
+            "anchor": "dept-sales",
+            "status": "published",
+            "number": "01",
+            "kicker": "Telesales",
+            "title": "First Contact",
+            "description": "Every project starts with a conversation. These two make sure it is the right one.",
+            "extra": [],
+            "members": [
+                {
+                    "id": "mem_priya",
+                    "name": "Priya",
+                    "designation": "Telesales Executive",
+                    "department": "Telesales",
+                    "image": "images/team/priya.jpg",
+                    "initials": "P",
+                    "status": "active",
+                    "order": 1
+                },
+                {
+                    "id": "mem_charu",
+                    "name": "Charu",
+                    "designation": "Telesales Executive",
+                    "department": "Telesales",
+                    "image": "images/team/charu.jpg",
+                    "initials": "C",
+                    "status": "hidden",
+                    "order": 2
+                }
+            ],
+            "order": 3
+        },
+        {
+            "id": "sec_development",
+            "module": "development",
+            "anchor": "creative-team",
+            "status": "published",
+            "number": "02",
+            "kicker": "Website Development",
+            "title": "Website Developers",
+            "description": "The people who design, build and maintain every site we ship.",
+            "extra": {
+                "bg_word": "BUILD",
+                "seal_text": "GETIT MEDIA · WEB DEVELOPMENT · "
+            },
+            "members": [
+                {
+                    "id": "mem_daniel",
+                    "name": "Daniel Raju D",
+                    "designation": "Web Developer",
+                    "department": "Website Development",
+                    "image": "images/team/daniel-raju.jpg",
+                    "initials": "DR",
+                    "note": "Code\nTest\nShip",
+                    "status": "active",
+                    "order": 1
+                },
+                {
+                    "id": "mem_mugundhan",
+                    "name": "Mugundhan K",
+                    "designation": "Senior Web Developer",
+                    "department": "Website Development",
+                    "image": "images/team/mugu.jpeg",
+                    "initials": "MK",
+                    "note": "Design\nBuild\nShip",
+                    "card_link": "#dept-design",
+                    "card_link_label": "Explore the design desk",
+                    "status": "active",
+                    "order": 2
+                },
+                {
+                    "id": "mem_sivakumar",
+                    "name": "Sivakumar S",
+                    "designation": "Mobile App Developer",
+                    "department": "Website Development",
+                    "image": "images/team/sivaa.PNG",
+                    "initials": "MM",
+                    "note": "Build\nOptimise\nGrow",
+                    "status": "active",
+                    "order": 3
+                },
+                {
+                    "id": "mem_charulatha",
+                    "name": "Charulatha R",
+                    "designation": "Web Developer",
+                    "department": "Website Development",
+                    "image": "images/team/charulatha-r.jpg",
+                    "initials": "CR",
+                    "note": "Plan\nCraft\nLaunch",
+                    "status": "active",
+                    "order": 4
+                }
+            ],
+            "order": 4
+        },
+        {
+            "id": "sec_social",
+            "module": "social",
+            "anchor": "dept-social",
+            "status": "published",
+            "number": "03",
+            "kicker": "Social Media Marketing",
+            "title": "Always *On*",
+            "description": "",
+            "extra": [],
+            "members": [
+                {
+                    "id": "mem_vigneshwari",
+                    "name": "Vigneshwari D",
+                    "designation": "Sr. Social Media Marketing",
+                    "department": "Social Media Marketing",
+                    "image": "images/team/Vicky.jpg.jpeg",
+                    "alt": "Vigneshwari D, Senior Social Media Marketing",
+                    "initials": "VD",
+                    "handle": "@vigneshwari.d",
+                    "badge": "live",
+                    "status": "active",
+                    "order": 1
+                },
+                {
+                    "id": "mem_siva",
+                    "name": "Siva S",
+                    "designation": "Sr. Social Media Marketing",
+                    "department": "Social Media Marketing",
+                    "image": "images/team/siva.jpeg",
+                    "alt": "Siva S, Senior Social Media Marketing",
+                    "initials": "SS",
+                    "handle": "@siva.s",
+                    "status": "active",
+                    "order": 2
+                },
+                {
+                    "id": "mem_devadarshini",
+                    "name": "Devadarshini S",
+                    "designation": "Social Media Marketing",
+                    "department": "Social Media Marketing",
+                    "image": "images/team/devadarshini-s.jpg",
+                    "initials": "DS",
+                    "handle": "@devadarshini.s",
+                    "status": "active",
+                    "order": 3
+                },
+                {
+                    "id": "mem_karishma",
+                    "name": "Karishma V",
+                    "designation": "Social Media Marketing",
+                    "department": "Social Media Marketing",
+                    "image": "images/team/hd/karishma.jpg",
+                    "initials": "KV",
+                    "handle": "@karishma.v",
+                    "status": "active",
+                    "order": 4
+                }
+            ],
+            "order": 5
+        },
+        {
+            "id": "sec_video",
+            "module": "video",
+            "anchor": "dept-video",
+            "status": "published",
+            "number": "04",
+            "kicker": "Video Editor",
+            "title": "The Unique Work",
+            "description": "four editors · timeline, grade and finish",
+            "extra": [],
+            "members": [
+                {
+                    "id": "mem_gokul",
+                    "name": "Gokulakrishnan M",
+                    "designation": "Video Editor",
+                    "department": "Video Editing",
+                    "image": "images/team/gokul.jpg",
+                    "initials": "GM",
+                    "status": "active",
+                    "order": 1
+                },
+                {
+                    "id": "mem_satheesh",
+                    "name": "Satheesh Kumar G",
+                    "designation": "Video Editor",
+                    "department": "Video Editing",
+                    "image": "uploads/team/satheesh-kumar-g-94b516d3.jpg",
+                    "initials": "SB",
+                    "status": "active",
+                    "description": "",
+                    "alt": "",
+                    "email": "",
+                    "phone": "",
+                    "linkedin": "",
+                    "instagram": "",
+                    "facebook": "",
+                    "website": "",
+                    "skills": "",
+                    "experience": "",
+                    "handle": "",
+                    "badge": "",
+                    "note": "",
+                    "card_link": "",
+                    "card_link_label": "",
+                    "order": 2
+                },
+                {
+                    "id": "mem_editor4",
+                    "name": "Full Name",
+                    "designation": "Video Editor",
+                    "department": "Video Editing",
+                    "image": "",
+                    "initials": "FN",
+                    "status": "hidden",
+                    "order": 3
+                }
+            ],
+            "order": 6
+        },
+        {
+            "id": "sec_design",
+            "module": "design",
+            "anchor": "dept-design",
+            "status": "published",
+            "number": "05",
+            "kicker": "Designer",
+            "title": "Make *It* Look Right",
+            "description": "",
+            "extra": {
+                "bg_word": "Design",
+                "slug": "GetIt Media · Graphic Design · Sheet 05 · 100%"
+            },
+            "members": [
+                {
+                    "id": "mem_prema",
+                    "name": "Prema K",
+                    "designation": "Senior Designer",
+                    "department": "Graphic Design",
+                    "image": "images/team/hd/prema.jpg",
+                    "initials": "PK",
+                    "status": "active",
+                    "order": 1
+                },
+                {
+                    "id": "mem_maha",
+                    "name": "Mahalakshmi N",
+                    "designation": "Graphic Designer",
+                    "department": "Graphic Design",
+                    "image": "images/team/hd/maha.jpg",
+                    "initials": "MN",
+                    "status": "active",
+                    "order": 2
+                },
+                {
+                    "id": "mem_jaganathan",
+                    "name": "Jaganathan V",
+                    "designation": "Graphic Designer",
+                    "department": "Graphic Design",
+                    "image": "images/team/hd/jaganathan.jpg",
+                    "initials": "SV",
+                    "status": "active",
+                    "order": 3
+                },
+                {
+                    "id": "mem_designer4",
+                    "name": "Full Name",
+                    "designation": "Senior Designer",
+                    "department": "Graphic Design",
+                    "image": "",
+                    "initials": "FN",
+                    "status": "hidden",
+                    "order": 4
+                }
+            ],
+            "order": 7
+        }
+    ],
+    "updated_at": "2026-10-05T08:00:58+02:00"
+}

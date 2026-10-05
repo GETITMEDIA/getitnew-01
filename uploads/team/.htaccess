@@ -1,0 +1,14 @@
+# Uploaded team photos: images only, never executed.
+<IfModule mod_php.c>
+  php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+  php_flag engine off
+</IfModule>
+<FilesMatch "(?i)\.(php\d?|phtml|phar|pl|py|cgi|sh|asp|aspx|jsp|htaccess)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "(?i)^(?!.*\.(jpe?g|png|webp)$).+$">
+  Require all denied
+</FilesMatch>
+Options -Indexes -ExecCGI

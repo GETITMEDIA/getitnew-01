@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Responsive fixes - tablet (768-1024px) and mobile (<=767px) ONLY.
+   --------------------------------------------------------------------------
+   Every rule sits inside a max-width media query, so desktop (1025px+) is
+   untouched. Found by an automated audit at 1024 / 768 / 375 / 320px:
+   no page scrolls sideways, so these fix the remaining problems - tap
+   targets under ~44px, one heading that is cut off, a label pushed past the
+   screen edge at 320px, and a few role/label texts below 10px.
+   Load this file LAST so it wins over the page stylesheets.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+  /* ---- all pages: mobile menu close button (38px -> 44px) ---- */
+  .mobile-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* ---- all pages: footer bottom links (26px tall -> 44px tap area) ---- */
+  .lt-bottom-nav > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* ---- portfolio.html ---- */
+  .pf-site-tab {
+    min-height: 44px;
+  }
+  .pf-cta__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* ---- price.html: breadcrumb "Home" link ---- */
+  .page-breadcrumb a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* ---- socialmedia.html: "Standard / Growth Engine" toggle and telemetry tabs ---- */
+  #btnOld,
+  #btnEngine,
+  .tele-btn {
+    min-height: 44px;
+  }
+
+  /* ---- team.html ---- */
+  .jbs__cta {
+    min-height: 44px;
+  }
+  .cm-card__go {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  /* "WEBSITE DEVELOPMENT" eyebrow rides a shrinking unit scale (7px at 375):
+     same formula as css/team-creative.css, with a 10px floor */
+  .cm__eyebrow {
+    font-size: max(10px, calc(12.5 * var(--cm-u)));
+  }
+
+  /* ---- website.html ---- */
+  .wx-slat__go {
+    min-height: 44px;
+  }
+  .wx-cta__contact a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* ---- digitalmarketing.html: "Explore ..." links, case-study filters, case-study popup buttons ---- */
+  #services-section a.pt-4,
+  #case-studies-section .filter-pill,
+  button[onclick="closeCaseModal()"] {
+    min-height: 44px;
+  }
+  button[onclick="closeCaseModal()"].absolute {
+    min-width: 44px;
+  }
+
+  /* ---- privacy-policy.html / terms-conditions.html: "Back to Home" ---- */
+  .legal-page p > a[href="index.html"] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  /* ---- team.html: member role lines (9-10px) are real content - 11px on phones ---- */
+  .sm-story__role,
+  .vd-card__role,
+  .cr-plate__role {
+    font-size: 11px;
+  }
+
+  /* ---- digitalmarketing.html: "#1 Position" (60px) was cut off inside its card ---- */
+  #seo-rank-counter {
+    font-size: clamp(2rem, 11vw, 3.75rem);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 479px) {
+
+  /* ---- digitalmarketing.html: growth-pipeline rows - the stage pill
+     (INTERACT / CONVERT / SCALE) was pushed past the screen edge at 320px.
+     Let it drop under the text instead. ---- */
+  #growth-section .justify-between {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}

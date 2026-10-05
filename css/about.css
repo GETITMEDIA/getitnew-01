@@ -450,7 +450,8 @@ h2.gm-sec-title,
 .gm-sec-title {
   /* one place to retune the pairing */
   --gm-title-quiet: 0.55em;
-  --gm-title-loud: 90px;
+  /* scales down on phones so long words ("Marketing", "themselves") never split */
+  --gm-title-loud: clamp(40px, 9vw + 8px, 90px);
 }
 
 /* the quiet white lines: smaller, lighter, gently tracked out so they read as

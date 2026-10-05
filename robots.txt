@@ -1,0 +1,13 @@
+# GetIt Media Solutions - https://www.getitmediasolutions.com
+# All pages, CSS, JS and images stay crawlable. Only build/dev folders and
+# scripts are blocked; leftover template pages carry a noindex meta tag instead
+# (they must stay crawlable so search engines can see that tag).
+
+User-agent: *
+Allow: /
+Disallow: /_backup/
+Disallow: /scratch/
+Disallow: /tools/
+Disallow: /*.py$
+
+Sitemap: https://www.getitmediasolutions.com/sitemap.xml

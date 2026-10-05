@@ -64,7 +64,8 @@
 
 .lt-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1.1fr 1.05fr 1fr;
+  /* contact column is widest so each email address fits on one line */
+  grid-template-columns: 1fr 1.05fr 1fr 1.3fr;
   gap: 0;
   position: relative;
   z-index: 2;
@@ -384,8 +385,9 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 16px;
-  margin-bottom: 10px;
+  /* negative side margin keeps the hover panel but lines the icon up with the column title */
+  padding: 14px 12px;
+  margin: 0 -12px 8px;
   border-radius: 14px;
   background: transparent;
   text-decoration: none;
@@ -428,7 +430,50 @@
   color: var(--lt-text);
   font-weight: 600;
   font-size: 0.98rem;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+.lt-contact-value + .lt-contact-value {
+  margin-top: 6px;
+}
+
+.lt-nowrap {
+  white-space: nowrap;
+}
+
+/* equal-width digits so the phone numbers line up in columns */
+.lt-contact-phone {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* each email / phone number is its own mailto: / tel: link */
+a.lt-contact-email,
+a.lt-contact-phone {
+  display: block;
+  width: fit-content;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a.lt-contact-phone + a.lt-contact-phone {
+  margin-top: 2px;
+}
+
+a.lt-contact-email:hover,
+a.lt-contact-email:focus-visible,
+a.lt-contact-phone:hover,
+a.lt-contact-phone:focus-visible {
+  color: var(--lt-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* keep each email address on a single line */
+.lt-footer .lt-contact-email {
+  white-space: nowrap;
+  font-size: clamp(0.75rem, 0.95vw, 0.92rem);
 }
 
 /* ---------------- Trust / feature bar ---------------- */
@@ -690,4 +735,21 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Phones: drop the "|" separators (they strand at line ends) and space the links evenly */
+@media (max-width: 575px) {
+  .lt-bottom-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+  }
+  .lt-bottom-nav > span { display: none; }
+  .lt-contact-value { overflow-wrap: break-word; }
+}
+
+/* very small phones: let a long email wrap rather than overflow */
+@media (max-width: 360px) {
+  .lt-footer .lt-contact-email { white-space: normal; overflow-wrap: anywhere; }
 }

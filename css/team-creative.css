@@ -657,3 +657,10 @@
 
   .cm__seal svg { animation: none; }
 }
+
+/* Admin panel: a Website Development section with more than four people.
+   The four tilted cards fill one row; extra cards wrap onto further rows,
+   reusing the four card variants. Four or fewer cards never get this class. */
+@media (min-width: 861px) {
+  .cm__stage--wrap { flex-wrap: wrap; row-gap: calc(140 * var(--cm-u)); }
+}

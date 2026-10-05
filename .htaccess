@@ -1,0 +1,11 @@
+# Serve the admin-managed Team page at its existing URL.
+# (Apache + mod_rewrite; on hosts without PHP the static team.html is served.)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^team\.html$ team.php [L]
+</IfModule>
+
+# Never serve data, include or lock files directly
+<FilesMatch "\.(json\.tmp|lock)$">
+  Require all denied
+</FilesMatch>

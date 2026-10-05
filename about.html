@@ -3,7 +3,28 @@
 
 <head>
   <meta charset="utf-8">
-  <title>GetIt Media | Digital Marketing Agency</title>
+  <title>About GetIt Media | Digital Marketing Company in Puducherry</title>
+  <meta name="description" content="Meet GetIt Media Solutions, a Puducherry digital marketing company that helps brands grow with strategy, creative design, ads, SEO and websites.">
+  <meta name="keywords" content="About GetIt Media Solutions, Digital Marketing Company in Puducherry, Digital Marketing Agency Pondicherry, Branding Agency Pondicherry, Google Partner in Pondicherry">
+  <link rel="canonical" href="https://www.getitmediasolutions.com/abouts.html">
+  <!-- Open Graph / social previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GetIt Media Solutions">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:title" content="About GetIt Media | Digital Marketing Company in Puducherry">
+  <meta property="og:description" content="Meet GetIt Media Solutions, a Puducherry digital marketing company that helps brands grow with strategy, creative design, ads, SEO and websites.">
+  <meta property="og:url" content="https://www.getitmediasolutions.com/abouts.html">
+  <meta property="og:image" content="https://www.getitmediasolutions.com/images/og/getit-media-og.jpg">
+  <meta property="og:image:alt" content="About GetIt Media | Digital Marketing Company in Puducherry">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About GetIt Media | Digital Marketing Company in Puducherry">
+  <meta name="twitter:description" content="Meet GetIt Media Solutions, a Puducherry digital marketing company that helps brands grow with strategy, creative design, ads, SEO and websites.">
+  <meta name="twitter:image" content="https://www.getitmediasolutions.com/images/og/getit-media-og.jpg">
+  <meta name="geo.region" content="IN-PY">
+  <meta name="geo.placename" content="Puducherry">
+  <!-- Montserrat is @imported from Google Fonts; warm the connection early -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Stylesheets -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
@@ -28,7 +49,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/theme-3color.css">
   <!-- Scroll reveal system -->
   <link href="css/scroll-anim.css" rel="stylesheet">
   <script>
@@ -44,6 +64,8 @@
   </script>
   <!-- Global font family override (must load last) -->
   <link href="css/global-font.css" rel="stylesheet">
+  <!-- tablet/mobile-only fixes; loaded last -->
+  <link href="css/responsive-fixes.css" rel="stylesheet">
 </head>
 
 <body>
@@ -319,7 +341,7 @@
         <div class="au-profile">
           <figure class="au-profile__media">
             <span class="au-profile__frame">
-              <img src="images/about/about-founder.jpg?v=20260924"
+              <img loading="lazy" decoding="async" src="images/about/about-founder.jpg?v=20260924"
                 alt="G. Anthoni Muthu, General Manager, at the GetIt Media Solutions office" width="1400" height="933"
                 decoding="async" data-sa-ignore>
             </span>
@@ -541,7 +563,7 @@
 
           <!-- Column 3: Brand -->
           <div class="lt-col">
-            <a href="index.html"><img class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png"
+            <a href="index.html"><img loading="lazy" decoding="async" class="lt-logo" src="images/logo/getit_logo_dark_trimmed.png"
                 alt="GetIt Media Solutions Private Limited" data-aos="fade-up"></a>
             <div class="lt-underline"></div>
             <p class="lt-brand-desc">A full-service digital marketing studio in Pondicherry </p>
@@ -565,29 +587,32 @@
             <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
             <div class="lt-underline"></div>
             <div class="lt-contact-list">
-              <a class="lt-contact-item" href="mailto:getitmediasolutions@gmail.com">
+              <div class="lt-contact-item">
                 <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
                 <span>
                   <p class="lt-contact-label">Email Us</p>
-                  <p class="lt-contact-value">getitmediasolutions@gmail.com </p>
-                  <p class="lt-contact-value"> anthoni.g@getitmediasolutions.in</p>
+                  <a class="lt-contact-value lt-contact-email" href="mailto:getitmediasolutions@gmail.com">getitmediasolutions@gmail.com</a>
+                  <a class="lt-contact-value lt-contact-email" href="mailto:anthoni.g@getitmediasolutions.in">anthoni.g@getitmediasolutions.in</a>
                 </span>
-              </a>
+              </div>
               <a class="lt-contact-item" href="https://maps.google.com/?q=Victoria+Nagar+Pondicherry" target="_blank"
                 rel="noopener">
                 <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
                 <span>
                   <p class="lt-contact-label">Address</p>
-                  <p class="lt-contact-value">No.10 2nd Floor, 4th Cross,<br>Victoria Nagar, Puducherry - 605005</p>
+                  <p class="lt-contact-value"><span class="lt-nowrap">No.10, 2nd Floor,</span><br><span class="lt-nowrap">4th Cross, Victoria Nagar,</span><br><span class="lt-nowrap">Puducherry - 605005</span></p>
                 </span>
               </a>
-              <a class="lt-contact-item" href="tel:+919843926286">
+              <div class="lt-contact-item">
                 <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
                 <span>
                   <p class="lt-contact-label">Phone</p>
-                  <p class="lt-contact-value">+91 98439 26286 / 98439 26261 / 0413-4900887 / 2204388 </p>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+919843926286">+91 98439 26286</a>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+919843926261">+91 98439 26261</a>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+914134900887">+91 413 490 0887</a>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+914132204388">+91 413 220 4388</a>
                 </span>
-              </a>
+              </div>
             </div>
           </div>
 
@@ -631,7 +656,7 @@
       <!-- Bottom footer bar -->
       <div class="lt-bottom">
         <div class="lt-bottom-brand">
-          <span class="lt-bottom-mark"><img src="images/favicon.png" alt="Getit Media"></span>
+          <span class="lt-bottom-mark"><img loading="lazy" decoding="async" src="images/favicon.png" alt="Getit Media"></span>
           <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
         </div>
         <nav class="lt-bottom-nav" aria-label="Footer">
@@ -648,7 +673,6 @@
   <!-- End Page Wrapper -->
 
 
-  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="js/jquery.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -687,29 +711,32 @@
   <h3 class="lt-col-title" data-aos="fade-up">Contact Info</h3>
   <div class="lt-underline"></div>
   <div class="lt-contact-list">
-    <a class="lt-contact-item" href="mailto:getitmediasolutions@gmail.com">
+    <div class="lt-contact-item">
       <span class="lt-contact-icon"><i class="fa-solid fa-envelope"></i></span>
       <span>
         <p class="lt-contact-label">Email Us</p>
-        <p class="lt-contact-value">getitmediasolutions@gmail.com </p>
-        <p class="lt-contact-value"> anthoni.g@getitmediasolutions.in</p>
+        <a class="lt-contact-value lt-contact-email" href="mailto:getitmediasolutions@gmail.com">getitmediasolutions@gmail.com</a>
+                  <a class="lt-contact-value lt-contact-email" href="mailto:anthoni.g@getitmediasolutions.in">anthoni.g@getitmediasolutions.in</a>
       </span>
-    </a>
+    </div>
     <a class="lt-contact-item" href="https://maps.google.com/?q=Victoria+Nagar+Pondicherry" target="_blank"
       rel="noopener">
       <span class="lt-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
       <span>
         <p class="lt-contact-label">Address</p>
-        <p class="lt-contact-value">No.10 2nd Floor, 4th Cross,<br>Victoria Nagar, Puducherry - 605005</p>
+        <p class="lt-contact-value"><span class="lt-nowrap">No.10, 2nd Floor,</span><br><span class="lt-nowrap">4th Cross, Victoria Nagar,</span><br><span class="lt-nowrap">Puducherry - 605005</span></p>
       </span>
     </a>
-    <a class="lt-contact-item" href="tel:+919843926286">
+    <div class="lt-contact-item">
       <span class="lt-contact-icon"><i class="fa-solid fa-phone"></i></span>
       <span>
         <p class="lt-contact-label">Phone</p>
-        <p class="lt-contact-value">+91 98439 26286 / 98439 26261 / 0413-4900887 / 2204388 </p>
+        <a class="lt-contact-value lt-contact-phone" href="tel:+919843926286">+91 98439 26286</a>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+919843926261">+91 98439 26261</a>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+914134900887">+91 413 490 0887</a>
+                  <a class="lt-contact-value lt-contact-phone" href="tel:+914132204388">+91 413 220 4388</a>
       </span>
-    </a>
+    </div>
   </div>
 </div>
 
@@ -753,7 +780,7 @@
 <!-- Bottom footer bar -->
 <div class="lt-bottom">
   <div class="lt-bottom-brand">
-    <span class="lt-bottom-mark"><img src="images/favicon.png" alt="Getit Media"></span>
+    <span class="lt-bottom-mark"><img loading="lazy" decoding="async" src="images/favicon.png" alt="Getit Media"></span>
     <p class="lt-bottom-copy">&copy; 2026 <strong>Getit Media Solutions</strong>.<br>All Rights Reserved.</p>
   </div>
   <nav class="lt-bottom-nav" aria-label="Footer">
@@ -770,7 +797,6 @@
 <!-- End Page Wrapper -->
 
 
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
