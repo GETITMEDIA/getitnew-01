@@ -15,8 +15,6 @@
   position: relative;
   overflow: hidden;
   padding: clamp(58px, 6.4vw, 104px) 0;
-  /* extra room at the head so the watermark name sits above the content */
-  padding-top: calc(clamp(58px, 6.4vw, 104px) + clamp(56px, 10vw, 170px));
   background:
     radial-gradient(ellipse 48% 58% at 24% 12%, rgba(var(--tm-orange-rgb), 0.15), transparent 62%),
     var(--tm-bg);
@@ -24,15 +22,19 @@
   isolation: isolate;
 }
 
-/* the name as an outlined watermark along the top of the section */
+/* background name: runs vertically down the right edge (was a horizontal
+   band across the top) */
 .ho__bgname {
   position: absolute;
-  left: 50%;
-  top: 0;
+  /* right edge lines up with the content (.tm-wrap: 1280px wide, 24px padding)
+     instead of the screen edge, so it sits in beside the text */
+  right: max(24px, calc((100% - 1280px) / 2 + 24px));
+  top: 50%;
   z-index: 1;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
   font-family: var(--tm-serif);
-  font-size: clamp(72px, 15vw, 250px);
+  font-size: clamp(56px, 8vw, 150px); /* sized to fit the section height when vertical */
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.02em;

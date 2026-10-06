@@ -40,7 +40,7 @@
 /* Title ------------------------------------------------------------------ */
 .jbs__title {
   position: absolute;
-  z-index: 1;
+  z-index: 3; /* in front of the photo */
   top: calc(56 * var(--u));
   right: calc(24 * var(--u));
   margin: 0;
@@ -74,9 +74,12 @@
 .jbs__person {
   position: absolute;
   z-index: 2;
-  top: calc(130 * var(--u));
-  left: calc(5 * var(--u));
-  width: calc(682 * var(--u));
+  /* was top 130 / left 5 / width 682: his head rose into the name.
+     Start below the name, slightly smaller so it still ends at the stage
+     bottom, same centre line. */
+  top: calc(182 * var(--u));
+  left: calc(30 * var(--u));
+  width: calc(632 * var(--u));
   margin: 0;
 }
 
@@ -116,7 +119,7 @@
 
 .jbs__stat-value {
   font-size: calc(54 * var(--u));
-  font-weight: 300;
+  font-weight: 800; /* was 300 (too thin) */
   line-height: 1;
   letter-spacing: -0.04em;
   color: var(--jbs-white);
@@ -125,7 +128,7 @@
 .jbs__stat-label {
   margin-top: calc(8 * var(--u));
   font-size: calc(14.6 * var(--u));
-  font-weight: 400;
+  font-weight: 500; /* was 400 */
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--jbs-text);

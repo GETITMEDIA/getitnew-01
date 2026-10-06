@@ -396,6 +396,92 @@ html.pf-lock { overflow: hidden; }
   font-size: clamp(1rem, 1.8vw, 1.5rem);
 }
 
+/* ========================================================== SHVIAN WORDMARK */
+.pf-shvian {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(88px, 12vw, 168px) var(--pf-gutter);
+  border-bottom: 1px solid var(--pf-line);
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(232, 88, 0, 0.13), transparent 48%),
+    #090909;
+  text-align: center;
+}
+.pf-shvian::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 70%);
+  content: "";
+  pointer-events: none;
+}
+.pf-shvian__inner {
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+.pf-shvian__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 clamp(28px, 4vw, 48px);
+  color: var(--pf-muted);
+  font-family: var(--pf-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.pf-shvian__label > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pf-accent-2);
+  box-shadow: 0 0 18px var(--pf-glow);
+}
+.pf-shvian__wordmark {
+  margin: 0;
+  color: var(--pf-text);
+  font-family: var(--pf-display);
+  font-size: clamp(3.6rem, 15vw, 12rem);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 0.86;
+  white-space: nowrap;
+}
+.pf-shvian__wordmark > span {
+  color: var(--pf-accent-2);
+}
+.pf-shvian__signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: clamp(28px, 4vw, 46px);
+}
+.pf-shvian__signature p {
+  margin: 0;
+  color: var(--pf-muted);
+  font-family: var(--pf-label);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.pf-shvian__rule {
+  width: clamp(24px, 5vw, 64px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pf-accent));
+}
+.pf-shvian__rule:last-child {
+  transform: rotate(180deg);
+}
+
 /* ============================================================ WORK STAGE */
 .pf-work {
   position: relative;
@@ -1677,4 +1763,22 @@ html.pf-lock { overflow: hidden; }
 .pf-tile--full { grid-column: 1 / -1; grid-row: span 4; }
 @media (max-width: 1100px) {
   .pf-tile--full { grid-column: 1 / -1; }
+}
+
+/* "Digital Growth Journey" strip (about 5:1): a 4-row tile left a peach band
+   above it and the label over the picture. Desktop: 2-row tile (the file is
+   2163x302, ~7:1), strip fills
+   it (only a few px trimmed top/bottom), no hover zoom so the ends stay in. */
+.pf-tile[data-project="trending"] { grid-row: span 2; }
+.pf-bento .pf-tile[data-project="trending"] img,
+.pf-bento .pf-tile[data-project="trending"]:hover img {
+  object-fit: cover;
+  object-position: center;
+  transform: none;
+}
+/* Phones: the strip is only ~70px tall at full width, so show it whole at the
+   top of a dark tile and let the label sit underneath it, not on it */
+@media (max-width: 640px) {
+  .pf-bento .pf-tile[data-project="trending"] { aspect-ratio: 16 / 9 !important; background: #111; }
+  .pf-bento .pf-tile[data-project="trending"] img { object-fit: contain; object-position: center 12%; }
 }

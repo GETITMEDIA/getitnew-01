@@ -4095,7 +4095,7 @@ Section Title
 }
 .sec-title .sub-title img {
   margin-right: 10px;
-  margin-top: -4px;
+  margin-top: 0; /* was -4px, which sat the star above the text line */
   -webkit-animation-name: rotateme;
   animation-name: rotateme;
   -webkit-animation-duration: 20s;
@@ -6653,7 +6653,7 @@ Start sass Icon Single Box
 .service_single_item-2 .service-single-inner {
   background: -webkit-gradient(linear, left bottom, left top, from(#0C0C0C), color-stop(98.44%, #1C1C1C));
   background: linear-gradient(0deg, #0C0C0C 0%, #1C1C1C 98.44%);
-  padding: 40px 30px 12px;
+  padding: 28px 30px 12px; /* top was 40px - shorter card */
   position: relative;
   z-index: 1;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -6684,11 +6684,14 @@ Start sass Icon Single Box
   -webkit-transform: scaleX(-1);
           transform: scaleX(-1);
 }
+/* was padding-right: 85px - a gutter for the "001." number, but the number
+   sits on the icon row above the title, and in the narrower 4-up cards the
+   gutter split words ("Developm/ent") */
 .service_single_item-2 .service_content {
-  padding-right: 85px;
+  padding-right: 0;
 }
 .service_single_item-2 .service_content .title {
-  margin: 26px 0 28px;
+  margin: 16px 0 18px; /* was 26px 0 28px - shorter card */
   cursor: pointer;
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
@@ -6706,7 +6709,7 @@ Start sass Icon Single Box
 }
 .service_single_item-2 .service-no {
   position: absolute;
-  top: 40px;
+  top: 28px; /* follows the card's top padding (was 40px) */
   right: 30px;
   font-weight: 500;
   font-size: 24px;
@@ -6737,11 +6740,18 @@ Start sass Icon Single Box
   transition: all 400ms linear;
 }
 .service_single_item-2 .service-img img {
+  /* full card width, 4:3 box (shorter card); square artwork trimmed a little top/bottom */
   width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+  border-radius: 12px;
 }
 /* square stand-in shown until a service has its own photo */
 .service_single_item-2 .service-img--pending {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3; /* same box as the other service images */
   display: grid;
   place-items: center;
   background:
@@ -18142,4 +18152,10 @@ Sidebar
 .team-contact-form .btn-style-submit:hover {
   background-color: var(--theme-color-white);
   color: var(--theme-color-black);
+}
+/* Square artwork (Google My Business card): show the whole image inside the
+   16:9 box instead of cropping it; white fill matches the artwork background */
+.service_single_item-2 .service-img img.service-img--contain {
+  object-fit: contain; /* whole artwork visible in the 4:3 box */
+  background: #fff;
 }

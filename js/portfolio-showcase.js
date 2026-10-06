@@ -75,16 +75,6 @@
       tools: 'Photoshop',
       format: 'Print & social'
     },
-    cola: {
-      title: 'Crushed Can Concept',
-      category: 'Concept art',
-      img: 'images/1/web/cola-concept.jpg',
-      summary: 'A surreal spec creative: a porcelain hand crushing a soda can against a flat teal backdrop, exploring how one bold, strange idea can carry an entire ad.',
-      service: 'Graphic Design',
-      deliverables: 'Concept key visual',
-      tools: 'Photoshop, 3D render',
-      format: 'Digital'
-    },
     welcord: {
       title: 'Welcord',
       category: 'Website',
@@ -125,6 +115,7 @@
       tools: 'Photoshop, Illustrator',
       format: 'Social & print'
     },
+    /* gpinterior hidden on request
     gpinterior: {
       title: 'GP Interior: Process to Result',
       category: 'Carousel',
@@ -136,6 +127,7 @@
       tools: 'Photoshop',
       format: 'Instagram & Facebook'
     },
+    */
     kothari: {
       title: 'Kothari Vidya Mandir Admissions',
       category: 'Banner',

@@ -363,6 +363,9 @@ function team_render_people(array $sec, array $members): string
     $parts = preg_split('/\s+/u', trim($m['name']));
     $last = count($parts) > 1 ? array_pop($parts) : '';
     $nameHtml = h(implode(' ', $parts)) . ($last !== '' ? ' <em>' . h($last) . '</em>' : '');
+    // vertical watermark: drop a trailing initial ("Shivani P" -> "Shivani"),
+    // which read as a stray shape when turned sideways
+    $bgName = trim(preg_replace('/\s+\p{L}\.?$/u', '', trim($m['name']))) ?: $m['name'];
     $duties = array_slice(array_values($x['duties'] ?? []), 0, 4);
     $nodes = $slides = '';
     foreach ($duties as $i => $d) {
@@ -408,7 +411,7 @@ HTML;
     }
     return <<<HTML
       <section class="ho" id="{$id}" aria-labelledby="hoName">
-        <span class="ho__bgname" aria-hidden="true">{$this_h($m['name'])}</span>
+        <span class="ho__bgname" aria-hidden="true">{$this_h($bgName)}</span>
         <div class="tm-wrap ho__inner">
 
           <div class="ho__stage">

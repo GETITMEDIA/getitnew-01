@@ -514,3 +514,86 @@ h2.gm-sec-title,
 }
 /* white sections (stats) keep the same type in dark ink */
 h2.gm-sec-title--on-light { color: #171f32; }
+
+/* ---------------- Name under the photo ----------------
+   Centred under the orange circle (.about-blob--main spans 27%-95% of the
+   stage, so its centre is at 61%): padding 27% left / 5% right. */
+.about-person {
+  margin-top: 6px;
+  padding-left: 27%;
+  padding-right: 5%;
+  text-align: center;
+}
+.about-person__name {
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 2.6vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  /* same flowing gradient as the "Digital Marketing" heading
+     (.about__title-line--accent) */
+  color: var(--about-accent);
+  background: linear-gradient(90deg,
+      #ffd23f 0%,
+      var(--about-accent) 25%,
+      #e6395a 50%,
+      var(--about-accent) 75%,
+      #ffd23f 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ltTalkFlow 5s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-person__name { animation: none; }
+}
+.about-person__role {
+  display: inline-block;
+  margin: 10px 0 0;
+  padding-bottom: 10px;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+  /* short grey rule under the title */
+  background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)) left bottom / 100% 1.5px no-repeat;
+}
+@media (max-width: 560px) {
+  .about-person { padding-left: 0; padding-right: 0; }
+}
+
+/* Same name style under the "Why Choose Us" photo: centred under the photo
+   (no circle offset) and kept above the decorative dot grid behind it. */
+.about-person.choose-person {
+  position: relative;
+  z-index: 2;
+  margin-top: 18px;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* the photo block is nudged 10px left on desktop (.choose-thumb margin-left) */
+@media (min-width: 992px) {
+  .about-person.choose-person { margin-left: -10px; }
+}
+
+/* Desktop: the dot grid sat behind the name. Hide it there and draw the
+   same dot image (same size and float animation) under the name instead -
+   in normal flow, so it is always below the name and inside the section.
+   Below 992px the original dot grid is unchanged. */
+@media (min-width: 992px) {
+  .why-choose-us-section .choose-thumb .dote-shape { display: none; }
+  .about-person.choose-person::after {
+    content: "";
+    display: block;
+    width: 264px;
+    max-width: 100%;
+    height: 84px;
+    margin: 22px auto 0;
+    background: url(../images/home-2/dot.png) center / contain no-repeat;
+    animation: float-bob2 3s linear infinite;
+  }
+}
+@media (min-width: 992px) and (prefers-reduced-motion: reduce) {
+  .about-person.choose-person::after { animation: none; }
+}

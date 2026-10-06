@@ -13,16 +13,16 @@
             "extra": {
                 "stats": [
                     {
-                        "value": "120+",
-                        "label": "Projects Delivered"
+                        "value": "17+",
+                        "label": "Years in Business"
                     },
                     {
-                        "value": "5.2M+",
-                        "label": "Digital Ad Spend"
+                        "value": "280+",
+                        "label": "Businesses Served"
                     },
                     {
-                        "value": "20+",
-                        "label": "Team Managed"
+                        "value": "19",
+                        "label": "Specialists"
                     }
                 ],
                 "cta_text": "Who I Am",
@@ -34,7 +34,7 @@
                 {
                     "id": "mem_anthoni",
                     "name": "G. Anthoni Muthu",
-                    "designation": "Founder | Senior Digital Project Leader | Creative & Marketing Operator",
+                    "designation": "General Manager",
                     "department": "Leadership",
                     "image": "images/sir/sir-02.webp",
                     "alt": "G. Anthoni Muthu",
@@ -181,14 +181,17 @@
                 },
                 {
                     "id": "mem_charulatha",
-                    "name": "Charulatha R",
+                    "name": "Full Name",
                     "designation": "Web Developer",
                     "department": "Website Development",
-                    "image": "images/team/charulatha-r.jpg",
-                    "initials": "CR",
+                    "image": "",
+                    "initials": "FN",
                     "note": "Plan\nCraft\nLaunch",
                     "status": "active",
-                    "order": 4
+                    "order": 4,
+                    "name_backup": "Charulatha R",
+                    "photo_backup": "images/team/charulatha-r.jpg",
+                    "alt": ""
                 }
             ],
             "order": 4
@@ -329,13 +332,17 @@
             "members": [
                 {
                     "id": "mem_prema",
-                    "name": "Prema K",
+                    "name": "Full Name",
                     "designation": "Senior Designer",
                     "department": "Graphic Design",
-                    "image": "images/team/hd/prema.jpg",
-                    "initials": "PK",
+                    "image": "",
+                    "initials": "FN",
                     "status": "active",
-                    "order": 1
+                    "order": 1,
+                    "photo_backup": "images/team/hd/prema.jpg",
+                    "hide_text": false,
+                    "name_backup": "Prema K",
+                    "alt": ""
                 },
                 {
                     "id": "mem_maha",
@@ -349,13 +356,17 @@
                 },
                 {
                     "id": "mem_jaganathan",
-                    "name": "Jaganathan V",
+                    "name": "Full Name",
                     "designation": "Graphic Designer",
                     "department": "Graphic Design",
-                    "image": "images/team/hd/jaganathan.jpg",
-                    "initials": "SV",
+                    "image": "",
+                    "initials": "FN",
                     "status": "active",
-                    "order": 3
+                    "order": 3,
+                    "photo_backup": "images/team/hd/jaganathan.jpg",
+                    "hide_text": false,
+                    "name_backup": "Jaganathan V",
+                    "alt": ""
                 },
                 {
                     "id": "mem_designer4",

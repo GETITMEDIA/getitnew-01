@@ -1801,3 +1801,7 @@
   align-items: flex-start;
   gap: 6px;
 }
+
+/* Admin "hide name & role" on a designer plate: keep the caption space so the
+   plates stay aligned, but show nothing (the name stays in the photo alt text) */
+.cr-plate__slug--hidden { visibility: hidden; }

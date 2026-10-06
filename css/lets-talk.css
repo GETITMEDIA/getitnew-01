@@ -149,7 +149,7 @@
 /* --- Column 1: Let's Talk --- */
 
 .lt-heading {
-  margin: 0 0 18px;
+  margin: 0 0 50px; /* was 18px: room for the arrow above the underline */
   font-weight: 800;
   font-size: clamp(2.2rem, 3.2vw, 2.9rem);
   line-height: 1.02;
@@ -180,24 +180,27 @@
 }
 
 .lt-heading-arrow {
+  /* looped hand-drawn arrow at the bottom-left of "TALK", below the letters
+     and above the underline (the heading's bottom margin makes the room) */
   position: absolute;
-  left: -14px;
-  top: 62%;
-  width: 62px;
-  height: 62px;
+  left: -6px;
+  top: calc(100% + 6px);
+  width: 72px;
+  height: 36px;
   overflow: visible;
   pointer-events: none;
+  /* glides up-right and back */
+  animation: ltArrowLaunch 2.2s ease-in-out infinite;
 }
 
-.lt-heading-arrow-path {
-  stroke-dasharray: 8 10;
-  animation: ltArrowFlow 1.4s linear infinite;
+@keyframes ltArrowLaunch {
+  0%, 100% { transform: translate(0, 0); opacity: 1; }
+  45%      { transform: translate(6px, -4px); opacity: 1; }
+  60%      { transform: translate(9px, -6px); opacity: 0.35; }
 }
 
-@keyframes ltArrowFlow {
-  to {
-    stroke-dashoffset: -36;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .lt-heading-arrow { animation: none; }
 }
 
 .lt-underline {
@@ -441,11 +444,6 @@
   white-space: nowrap;
 }
 
-/* equal-width digits so the phone numbers line up in columns */
-.lt-contact-phone {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-}
 
 /* each email / phone number is its own mailto: / tel: link */
 a.lt-contact-email,
