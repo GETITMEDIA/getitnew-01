@@ -1187,7 +1187,11 @@
 
 .bz__row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* auto-fit, not a fixed 2 columns: a lone card centres instead of sitting
+     in the left half, and a second card still lands beside it at the same
+     width as before */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 574px));
+  justify-content: center;
   gap: 52px;
   max-width: 1200px;
   margin: 0 auto;

@@ -15,7 +15,7 @@
   width: 100%;
   min-height: 720px;
   background-color: #ffffff;
-  background-image: url('../images/about/about-us-photo-gm-desk.jpg');
+  background-image: url('../images/about/about-us-an.jpeg');
   background-repeat: no-repeat;
   background-position: right center;
   /* show the whole photo (full height) instead of a zoomed crop */
@@ -362,4 +362,33 @@
     justify-content: space-between;
     padding-left: 20px;
   }
+}
+
+/* 7. Signature line - the name under the CTA */
+.gp-signature {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 22px 0 0 0;
+  padding-top: 16px;
+  /* short rule above the line, not a full-width border */
+  border-top: 1px solid var(--gp-orange-border);
+  width: fit-content;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.gp-signature__name {
+  font-weight: 500;
+  color: #111317;
+}
+
+.gp-signature__sep {
+  color: var(--gp-orange);
+}
+
+.gp-signature__role {
+  font-weight: 400;
+  color: #6b7280;
 }

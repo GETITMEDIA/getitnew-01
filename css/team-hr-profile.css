@@ -33,11 +33,12 @@
   z-index: 1;
   transform: translateY(-50%);
   writing-mode: vertical-rl;
+  text-orientation: upright;         /* letters stand up, one per line */
   font-family: var(--tm-serif);
-  font-size: clamp(56px, 8vw, 150px); /* sized to fit the section height when vertical */
-  font-weight: 700;
+  font-size: clamp(30px, 3.9vw, 76px); /* sized so the seven stacked letters fit the section height */
+  font-weight: 900;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;            /* the gap between the stacked letters */
   white-space: nowrap;
   color: rgba(255, 255, 255, 0.025);
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);

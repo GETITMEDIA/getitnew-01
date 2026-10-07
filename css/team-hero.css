@@ -170,8 +170,6 @@
   align-items: center;
   gap: calc(30 * var(--uc));
   margin-top: calc(30 * var(--uc));
-  /* one row on desktop: a wrapped roster adds a whole line and pushes the
-     hero past the fold; the button gives up width instead */
   flex-wrap: nowrap;
 }
 
@@ -213,71 +211,6 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.14);
   font-size: calc(14 * var(--uc));
-}
-
-/* --- roster cluster: real portraits, overlapped --- */
-.hz__roster {
-  display: flex;
-  flex: none;
-  align-items: center;
-  gap: calc(13 * var(--uc));
-}
-
-.hz__faces {
-  display: flex;
-}
-
-/* the portraits keep their size; flex would otherwise squash them together */
-.hz__faces > * {
-  flex: none;
-}
-
-.hz__faces img {
-  width: calc(40 * var(--uc));
-  height: calc(40 * var(--uc));
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 18%;
-  border: calc(3 * var(--uc)) solid var(--hz-cream);
-  margin-left: calc(-13 * var(--uc));
-  transition: transform 0.4s var(--hz-ease);
-}
-
-.hz__faces img:first-child {
-  margin-left: 0;
-}
-.hz__faces:hover img {
-  transform: translateY(calc(-3 * var(--uc)));
-}
-
-.hz__more {
-  display: grid;
-  place-items: center;
-  width: calc(40 * var(--uc));
-  height: calc(40 * var(--uc));
-  margin-left: calc(-13 * var(--uc));
-  border-radius: 50%;
-  border: calc(3 * var(--uc)) solid var(--hz-cream);
-  background: var(--hz-green);
-  color: #fff;
-  font-size: max(11px, calc(12 * var(--uc)));  /* readable floor on small screens */
-  font-weight: 600;
-}
-
-.hz__rosterText {
-  font-size: max(11px, calc(12 * var(--uc)));  /* readable floor on small screens */
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: calc(0.6 * var(--uc));
-  text-transform: uppercase;
-  color: #5a5a5a;
-  white-space: nowrap;
-}
-
-.hz__rosterText b {
-  display: block;
-  color: var(--hz-ink);
-  font-size: max(12px, calc(14 * var(--uc)));  /* readable floor on small screens */
 }
 
 /* =====================================================================
