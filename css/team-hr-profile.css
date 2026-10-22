@@ -113,11 +113,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 16%;
+  object-position: center top;
+  transform: translateY(6%);
+  transform-origin: center top;
   transition: transform 0.8s var(--tm-ease);
 }
 
-.ho__stage:hover .ho__shot { transform: scale(1.04); }
+.ho__stage:hover .ho__shot {
+  transform: translateY(3.5%) scale(1.03);
+}
 
 .ho__video {
   position: absolute;
@@ -400,7 +404,7 @@
   .ho__cta,
   .ho__cta i { transition: none; }
 
-  .ho__stage:hover .ho__shot { transform: none; }
+  .ho__stage:hover .ho__shot { transform: translateY(6%); }
   .ho-slide.is-active { transform: none; }
   .ho__cta:hover { transform: none; }
 }

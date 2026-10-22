@@ -1,3 +1,4 @@
+@import url('cassandra-font.css');
 /* ==========================================================================
    Global font family override - Montserrat
    --------------------------------------------------------------------------
@@ -104,4 +105,23 @@ option {
 .material-symbols-outlined,
 .material-icons {
   font-family: "Material Symbols Outlined" !important;
+}
+
+/* Cassandra Cursive Font loaded via cassandra-font.css */
+
+
+.font-cassandra,
+[style*="Cassandra"],
+[style*="cassandra"] {
+  font-family: 'Cassandra', 'Caveat', cursive !important;
+  font-style: italic !important;
+}
+
+.gm-hero__seen,
+.gm-hero__remembered,
+.gm-hero__heading span,
+.gm-hero__heading .lt-heading-accent {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
 }

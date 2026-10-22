@@ -17,13 +17,13 @@
 /* Headings and paragraphs are the elements that would visibly pop. Buttons,
    cards and images below the fold are handled by JS alone - no pre-hide
    needed for those, and skipping them keeps this selector list cheap. */
-.sa-armed section h1,
-.sa-armed section h2,
-.sa-armed section h3,
-.sa-armed section p,
-.sa-armed footer h2,
-.sa-armed footer h3,
-.sa-armed footer p {
+.sa-armed section:not([data-sa-skip]) h1,
+.sa-armed section:not([data-sa-skip]) h2,
+.sa-armed section:not([data-sa-skip]) h3,
+.sa-armed section:not([data-sa-skip]) p,
+.sa-armed footer:not([data-sa-skip]) h2,
+.sa-armed footer:not([data-sa-skip]) h3,
+.sa-armed footer:not([data-sa-skip]) p {
   opacity: 0;
 }
 
