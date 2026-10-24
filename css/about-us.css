@@ -286,7 +286,7 @@
 
 .au-say__lead {
   margin: 0;
-  font-size: clamp(1.15rem, 1.5vw, 1.6rem);
+  /* font-size: clamp(1.15rem, 1.5vw, 1.6rem); */
   font-weight: 600;
   line-height: 1.32;
   letter-spacing: -0.01em;
@@ -368,6 +368,7 @@
   font-size: clamp(0.84rem, 0.9vw, 0.96rem);
   line-height: 1.6;
   color: var(--au-body);
+  text-align: left;
 }
 
 .au-say__block p:last-child {
@@ -412,13 +413,16 @@
   display: block;
   /* hold each line on one row at desktop; released below 1440px where the
      column is too narrow for it */
+         font-weight: 400;
   white-space: nowrap;
+      font-size: 25px;
 }
 
 .au-title .au-title__accent {
   color: var(--au-accent);
   font-weight: 700;
   white-space: nowrap;
+  font-size: 52px;
 }
 
 .au-subtitle {
