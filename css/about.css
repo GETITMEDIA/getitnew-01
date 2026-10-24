@@ -551,13 +551,15 @@ h2.gm-sec-title--on-light { color: #171f32; }
 }
 .about-person__role {
   display: inline-block;
-  margin: 10px 0 0;
+  margin: 0px 0 0;
   padding-bottom: 10px;
   font-size: clamp(0.95rem, 1.3vw, 1.1rem);
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.72);
   /* short grey rule under the title */
   background: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)) left bottom / 100% 1.5px no-repeat;
+  line-height: 0.15;
+
 }
 @media (max-width: 560px) {
   .about-person { padding-left: 0; padding-right: 0; }
