@@ -527,7 +527,7 @@ h2.gm-sec-title--on-light { color: #171f32; }
 .about-person__name {
   margin: 0;
   font-weight: 900;
-  font-size: clamp(1.4rem, 2.6vw, 2.25rem);
+  font-size: clamp(1.4rem, 2.6vw, 2.4rem);
   line-height: 1.15;
   letter-spacing: 0.02em;
   text-transform: uppercase;
