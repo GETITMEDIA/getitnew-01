@@ -162,22 +162,173 @@
     pick(btns[0]);
   });
 
-  /* ---------------- lighting set ---------------- */
-  var set = document.getElementById('asSet');
-  var meta = document.getElementById('asLightMeta');
-  if (set) {
-    var lights = $$('.as-set__controls button');
-    lights.forEach(function (b) {
-      b.addEventListener('click', function () {
-        set.setAttribute('data-light', b.getAttribute('data-light'));
-        if (meta) meta.innerHTML = b.getAttribute('data-meta');
-        lights.forEach(function (x) {
-          var on = x === b;
-          x.classList.toggle('is-on', on);
-          x.setAttribute('aria-checked', on ? 'true' : 'false');
-        });
+  /* ---------------- stage 02: 3-image action showcase slider ---------------- */
+  var showcase = document.getElementById('as-stage-2');
+  if (showcase) {
+    var tabs = $$('.as-showcase__tab', showcase);
+    var thumbs = $$('.as-showcase__thumb', showcase);
+    var slides = $$('.as-showcase__slide', showcase);
+    var monitor = document.getElementById('asShowcaseMonitor');
+    var counterCurrent = document.getElementById('asShowcaseCounterCurrent');
+    var activeIdx = 0;
+    var autoTimer = null;
+    var duration = 4500; // 4.5 seconds per slide
+    var isPaused = false;
+
+    // Preload slides into memory to guarantee zero flicker
+    slides.forEach(function (slide) {
+      var img = $('img', slide);
+      if (img && img.src) {
+        var preloader = new Image();
+        preloader.src = img.src;
+      }
+    });
+
+    var activateSlide = function (idx) {
+      if (idx < 0 || idx >= slides.length) return;
+      activeIdx = idx;
+
+      // Update tabs
+      tabs.forEach(function (tab, i) {
+        var isActive = (i === idx);
+        tab.classList.toggle('is-active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+
+        var prog = $('.as-showcase__progress i', tab);
+        if (prog) {
+          prog.style.animation = 'none';
+          void prog.offsetWidth; // force reflow
+          if (isActive) {
+            prog.style.animation = '';
+          }
+        }
+      });
+
+      // Update thumbnails
+      thumbs.forEach(function (thumb, i) {
+        thumb.classList.toggle('is-active', i === idx);
+        thumb.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+
+      // Update main slides
+      slides.forEach(function (slide, i) {
+        var isActive = (i === idx);
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      // Update counter
+      if (counterCurrent) {
+        counterCurrent.textContent = '0' + (idx + 1);
+      }
+    };
+
+    var startAutoRotate = function () {
+      stopAutoRotate();
+      showcase.classList.remove('is-paused');
+      autoTimer = setInterval(function () {
+        if (!isPaused) {
+          var nextIdx = (activeIdx + 1) % slides.length;
+          activateSlide(nextIdx);
+        }
+      }, duration);
+    };
+
+    var stopAutoRotate = function () {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+      showcase.classList.add('is-paused');
+    };
+
+    var pauseShowcase = function () {
+      isPaused = true;
+      stopAutoRotate();
+    };
+
+    var resumeShowcase = function () {
+      isPaused = false;
+      startAutoRotate();
+    };
+
+    // Click on main monitor image switches to next slide
+    if (monitor) {
+      monitor.addEventListener('click', function () {
+        var nextIdx = (activeIdx + 1) % slides.length;
+        activateSlide(nextIdx);
+        startAutoRotate();
+      });
+
+      monitor.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          var nextIdx = (activeIdx + 1) % slides.length;
+          activateSlide(nextIdx);
+          startAutoRotate();
+        }
+      });
+    }
+
+    // Click on any of the 3 thumbnails switches directly to that image
+    thumbs.forEach(function (thumb, i) {
+      thumb.addEventListener('click', function (e) {
+        e.stopPropagation();
+        activateSlide(i);
+        startAutoRotate();
       });
     });
+
+    // Click and keyboard on the 3 content tabs
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () {
+        activateSlide(i);
+        startAutoRotate();
+      });
+
+      tab.addEventListener('keydown', function (e) {
+        var targetIdx = null;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+          targetIdx = (i + 1) % tabs.length;
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+          targetIdx = (i - 1 + tabs.length) % tabs.length;
+        } else if (e.key === 'Home') {
+          targetIdx = 0;
+        } else if (e.key === 'End') {
+          targetIdx = tabs.length - 1;
+        }
+        if (targetIdx !== null) {
+          e.preventDefault();
+          activateSlide(targetIdx);
+          tabs[targetIdx].focus();
+          startAutoRotate();
+        }
+      });
+    });
+
+    // Hover & Touch controls (Pause on hover/touch, resume when interaction ends)
+    showcase.addEventListener('mouseenter', pauseShowcase);
+    showcase.addEventListener('mouseleave', resumeShowcase);
+    showcase.addEventListener('touchstart', pauseShowcase, { passive: true });
+    showcase.addEventListener('touchend', function () {
+      setTimeout(resumeShowcase, 1200);
+    }, { passive: true });
+    showcase.addEventListener('focusin', pauseShowcase);
+    showcase.addEventListener('focusout', resumeShowcase);
+
+    // Pause when browser tab is inactive / hidden
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        stopAutoRotate();
+      } else if (!isPaused) {
+        startAutoRotate();
+      }
+    });
+
+    // Initialize first slide
+    activateSlide(0);
+    startAutoRotate();
   }
 
   /* ---------------- before / after grade ---------------- */

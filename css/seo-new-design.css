@@ -3,14 +3,15 @@
    ===================================================================== */
 
 /* Hero Section with Parallax Background Image */
-.seo-hero-new {
+.seo-hero-new,
+.super-hero {
   position: relative;
   min-height: 100vh;
   padding: 160px 20px 100px;
   background-color: #060609;
   background-image: 
     radial-gradient(circle at 50% 30%, rgba(6, 6, 9, 0.45) 0%, rgba(6, 6, 9, 0.92) 100%),
-    url('../images/seo_hero_bg.jpg');
+    url('../images/seo_hero_bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

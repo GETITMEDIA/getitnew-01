@@ -181,7 +181,7 @@ body.graphic-page .preloader.loaded {
 
 .gd-hero__title {
   font-family: var(--gd-font-serif);
-  font-size: clamp(48px, 10vw, 110px);
+  font-size: clamp(48px, 10vw, 142px);
   font-weight: 800;
   letter-spacing: 6px;
   text-transform: uppercase;
@@ -202,10 +202,11 @@ body.graphic-page .preloader.loaded {
   font-size: 16px;
   font-weight: 300;
   color: rgba(255,255,255,0.6);
-  max-width: 500px;
+  max-width: 680px;
   margin: 0 auto 40px;
   line-height: 1.7;
   letter-spacing: 0.3px;
+  text-wrap: balance;
 }
 
 .gd-hero__scroll {
@@ -1170,12 +1171,14 @@ body.graphic-page .preloader.loaded {
 }
 
 .gd-phone-text__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 12px 14px;
 }
 
 .gd-phone-text__tag {
+  display: inline-flex;
+  align-items: center;
   position: relative;
   padding: 9px 24px;
   border-radius: 999px;
@@ -1345,11 +1348,11 @@ body.graphic-page .preloader.loaded {
 
 .gd-cta__title {
   font-family: var(--gd-font-serif);
-  font-size: clamp(42px, 8vw, 72px);
+  font-size: clamp(42px, 8vw, 92px);
   font-weight: 800;
   letter-spacing: 8px;
   color: var(--gd-white);
-  margin: 0 0 20px;
+  margin: 0 0 0px;
   text-transform: uppercase;
   text-shadow: 0 4px 30px rgba(0,0,0,0.9);
 }

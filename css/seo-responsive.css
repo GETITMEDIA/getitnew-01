@@ -52,8 +52,8 @@ body.seo-page span {
    --------------------------------------------------------------- */
 .super-hero-h1 { font-size: clamp(30px, 5.2vw, 66px); }
 .super-hero-p  { font-size: clamp(15px, 1.25vw, 18px); }
-.super-title   { font-size: clamp(28px, 3.9vw, 52px); }
-.arsenal-title { font-size: clamp(30px, 4.2vw, 56px); }
+.super-title   { font-size: clamp(32px, 5.6vw, 82px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 20px; }
+.arsenal-title { font-size: clamp(32px, 5.8vw, 84px); line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 20px; }
 .arsenal-lead  { font-size: clamp(14.5px, 1.2vw, 16.5px); }
 .stat-value    { font-size: clamp(28px, 3.2vw, 44px); }
 .stat-affix    { font-size: clamp(17px, 1.9vw, 26px); }
@@ -270,11 +270,29 @@ body.seo-page span {
   }
 }
 
-/* Hero heading: keep "Capture High-Intent Revenue." on a single line,
-   scaling the font to the width of the text column */
+/* Hero heading: keep both lines spanning equal width from start to end */
 .super-hero-h1-wrap { width: 100%; container-type: inline-size; }
-.super-hero-h1 { font-size: clamp(20px, 5.9cqi, 66px); }
+.super-hero-h1 {
+  font-family: var(--seo-font-heading);
+  margin-bottom: 24px;
+}
 .super-hero-line { display: block; white-space: nowrap; }
+.super-hero-line--top {
+  font-size: clamp(32px, 10.1cqi, 114px);
+  line-height: 1.05;
+}
+.super-hero-line--sub {
+  font-size: clamp(20px, 5.85cqi, 66px);
+  line-height: 1.1;
+  margin-top: 6px;
+}
+
+/* Hero supporting text: start and end equal (justified) matching the hero block */
+.super-hero-p {
+  text-align: justify;
+  text-justify: inter-word;
+  max-width: 100%;
+}
 
 /* Hero trust bar: bold values were inheriting a dark colour and looked like blank gaps */
 .super-hero-trust .super-trust-item strong {

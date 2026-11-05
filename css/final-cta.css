@@ -145,6 +145,14 @@
   line-height: 1.65;
   max-width: 480px;
   margin-bottom: 32px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 540px) {
+  .cta-final-desc .desktop-break {
+    display: none;
+  }
 }
 
 /* Super Pill CTA Button */

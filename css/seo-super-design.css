@@ -86,7 +86,7 @@ body.seo-page {
   background-color: #040407;
   background-image: 
     radial-gradient(circle at 50% 30%, rgba(4, 4, 7, 0.35) 0%, rgba(4, 4, 7, 0.95) 100%),
-    url('../images/seo_hero_bg.jpg');
+    url('../images/seo_hero_bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

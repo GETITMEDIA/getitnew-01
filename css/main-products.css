@@ -40,7 +40,7 @@
 /* The long closing statement, unlike the short "Main Products" title, needs a
    white base so the payoff half can carry the accent. */
 .mp-heading--split { color: #ffffff; }
-.mp-heading__accent { color: #ea5a06; }
+.mp-heading__accent { color: #fafafa; }
 
 .mp-cards {
   display: flex;
@@ -107,7 +107,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 7px;
+  top: 15px;
   width: 4px;
   height: 4px;
   background-color: #d1d5db;

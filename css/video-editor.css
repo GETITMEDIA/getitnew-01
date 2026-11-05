@@ -45,6 +45,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+      font-size: 68px;
 }
 
 .white-text {
@@ -345,9 +346,9 @@ body {
 
 .overlay-content .service-desc { max-width: 44ch; }
 
-/* 02 Landscape: keep the actors' heads and the prop in the wide crop */
+/* 01 Landscape: centered on architectural mural and luxury hotel interior */
 .wide-video-link img {
-    object-position: 50% 22%;
+    object-position: 50% 32%;
 }
 
 /* 06 Event Videos: whole banner opens the reel */
@@ -849,4 +850,15 @@ body {
 /* 02 Landscape: a shorter banner so it doesn't dominate the section */
 @media (min-width: 768px) {
     .service-image-wide img { height: 340px; }
+}
+
+/* Section 08: keep "A PROUD MOMENT" on one line and "TO REMEMBER! ❤️" on the second line */
+.service-title--proud {
+    font-size: clamp(24px, 2.8vw, 42px);
+    line-height: 1.18;
+}
+.service-title--proud .title-line-1,
+.service-title--proud .title-line-2 {
+    white-space: nowrap;
+    display: inline-block;
 }

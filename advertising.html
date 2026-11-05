@@ -143,7 +143,7 @@
   <link href="css/lets-talk.css?v=20261020" rel="stylesheet">
   <link href="css/fontawesome.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="css/advertising.css?v=20261001" rel="stylesheet">
   <!-- Global font family override (must load last) -->
   <link href="css/global-font.css" rel="stylesheet">
@@ -203,7 +203,7 @@
                           class="mega-service__title">Video Editing</span></span></a>
                     <a href="advertising.html" class="mega-service" role="menuitem"><span
                         class="mega-service__icon">Ad</span><span class="mega-service__text"><span
-                          class="mega-service__title">Advertising</span></span></a>
+                          class="mega-service__title">Ad Film</span></span></a>
                   </div>
                   <div class="mega-promo">
                     <div class="mega-promo__content"><span class="mega-promo__badge">*</span>
@@ -258,7 +258,7 @@
                 class="mobile-service">Social Media Marketing</a><a href="searchengine.html" class="mobile-service">Search Engine
                 Optimization</a><a href="website.html" class="mobile-service">Website Design &amp; Development</a><a
                 href="graphic.html" class="mobile-service">Graphic Design</a><a href="video-editor.html"
-                class="mobile-service">Video Editing</a><a href="advertising.html" class="mobile-service">Advertising</a></div>
+                class="mobile-service">Video Editing</a><a href="advertising.html" class="mobile-service">Ad Film</a></div>
           </li>
           <li><a href="team.html" class="mobile-link">Team</a></li>
           <li><a href="portfolio.html" class="mobile-link">Portfolio</a></li>
@@ -427,57 +427,98 @@ We bring your advertisement to life with creative scriptwriting, the right cast,
           </div>
         </section>
 
-        <!-- ---------- STAGE 02 · PRODUCTION ---------- -->
-        <section class="as-stage as-stage--two" id="as-stage-2" aria-labelledby="asStage2Title">
+        <!-- ---------- STAGE 02 · PRODUCTION SHOWCASE ---------- -->
+        <section class="as-stage as-stage--two as-showcase-stage" id="as-stage-2" aria-labelledby="asStage2Title">
           <span class="as-stage__num as-display" aria-hidden="true" data-scroll-speed="-0.15">02</span>
-          <div class="as-wrap as-stage__grid as-stage__grid--flip">
-            <div class="as-stage__copy">
-              <p class="as-stage__label" data-as-reveal><b>Stage 02</b> Shoot</p>
-              <h2 class="as-stage__title as-display" id="asStage2Title" data-as-reveal>Production</h2>
-              <p class="as-stage__lead" data-as-reveal>Lights up, cameras rolling. Our crew directs, lights and captures
-                every product and model shot on set &mdash; photo and video in one day.</p>
+          <div class="as-wrap as-stage__grid as-stage__grid--flip as-showcase__grid">
+            
+            <!-- Left Side: Clean Visual Showcase (3 Images Slider) -->
+            <div class="as-stage__visual as-showcase__visual" data-as-reveal>
+              <div class="as-showcase__monitor" id="asShowcaseMonitor" role="button" aria-label="Click to switch to next action scene" tabindex="0">
+                <!-- Stacked Preloaded Slides (Zero flickering, double-buffered crossfade) -->
+                <div class="as-showcase__slides">
+                  <figure class="as-showcase__slide is-active" data-index="0" aria-hidden="false">
+                    <img src="images/advertising/actor_performance.jpg" alt="01 ACTING & PERFORMANCE - Actor actively delivering commercial performance on set" loading="eager">
+                  </figure>
+                  <figure class="as-showcase__slide" data-index="1" aria-hidden="true">
+                    <img src="images/advertising/script_presentation.jpg" alt="02 SCRIPT & PRESENTATION - Creative director presenting storyboard and script" loading="lazy">
+                  </figure>
+                  <figure class="as-showcase__slide" data-index="2" aria-hidden="true">
+                    <img src="images/advertising/director_rehearsal.jpg" alt="03 ON-SET DIRECTING - Director guiding actors and live scene action" loading="lazy">
+                  </figure>
+                </div>
 
-              <div class="as-items" data-as-reveal data-items>
-                <div class="as-items__list" role="tablist" aria-label="Production steps">
-                  <button type="button" role="tab" data-icon="fa-camera" data-text="High-resolution stills for ads, catalogues, websites and social posts.">Photography</button>
-                  <button type="button" role="tab" data-icon="fa-video" data-text="Ad films, Reels and product videos shot in 4K for every screen size.">Videography</button>
-                  <button type="button" role="tab" data-icon="fa-camera-rotate" data-text="Lenses, angles, gimbals and rigs set up for each shot on the list.">Camera Setup</button>
-                  <button type="button" role="tab" data-icon="fa-sun" data-text="Key, fill, rim and spot lights shaped to make your product look its best.">Lighting</button>
-                  <button type="button" role="tab" data-icon="fa-bullhorn" data-text="A director on set guiding talent, framing and mood so every take stays on brief.">Creative Direction</button>
-                  <button type="button" role="tab" data-icon="fa-box-open" data-text="Hero shots, details and in-use angles that show off every product feature.">Product Shooting</button>
-                  <button type="button" role="tab" data-icon="fa-user-tie" data-text="Lifestyle and fashion shots with models bringing your product to life.">Model Shooting</button>
-                  <button type="button" role="tab" data-icon="fa-clapperboard" data-text="Crew, schedule and set managed on the day so you just watch it happen.">On-Set Production</button>
+                <!-- Clean Slide Index Indicator -->
+                <div class="as-showcase__counter" aria-hidden="true">
+                  <span id="asShowcaseCounterCurrent">01</span> / 03
                 </div>
-                <div class="as-items__panel" role="tabpanel" aria-live="polite">
-                  <span class="as-items__icon"><i class="fa-solid fa-camera"></i></span>
-                  <div><strong class="as-items__name">Photography</strong><p class="as-items__text">High-resolution stills for ads, catalogues, websites and social posts.</p></div>
-                </div>
+              </div>
+
+              <!-- 3 Clickable Action Thumbnails -->
+              <div class="as-showcase__thumbs" role="tablist" aria-label="Select Action Image">
+                <button type="button" class="as-showcase__thumb is-active" data-index="0" aria-label="Show 01 Acting & Performance">
+                  <img src="images/advertising/actor_performance.jpg" alt="Acting & Performance">
+                  <span class="as-showcase__thumb-label">01 ACTING</span>
+                </button>
+                <button type="button" class="as-showcase__thumb" data-index="1" aria-label="Show 02 Script & Presentation">
+                  <img src="images/advertising/script_presentation.jpg" alt="Script & Presentation">
+                  <span class="as-showcase__thumb-label">02 SCRIPT</span>
+                </button>
+                <button type="button" class="as-showcase__thumb" data-index="2" aria-label="Show 03 On-Set Directing">
+                  <img src="images/advertising/director_rehearsal.jpg" alt="On-Set Directing">
+                  <span class="as-showcase__thumb-label">03 DIRECTING</span>
+                </button>
               </div>
             </div>
 
-            <!-- live lighting set -->
-            <div class="as-stage__visual as-set" data-as-reveal>
-              <div class="as-set__stage" id="asSet" data-light="key">
-                <figure class="as-reveal-img as-set__shot">
-                  <img src="images/graphic/perfume_bottle_showcase.jpg" alt="Perfume bottle lit on a product shoot set" loading="lazy">
-                </figure>
-                <span class="as-set__light" aria-hidden="true"></span>
-                <span class="as-set__frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <span class="as-set__rec" aria-hidden="true"><i></i> Rolling</span>
-                <span class="as-set__meta" aria-hidden="true" id="asLightMeta">Key light &middot; 5600K</span>
+            <!-- Right Side: Content with 3 Selectable Action Items -->
+            <div class="as-stage__copy as-showcase__copy" data-as-reveal>
+              <p class="as-stage__label" id="asStage2Tag"><b>Stage 02</b> Production</p>
+              <h2 class="as-stage__title as-display" id="asStage2Title"> Production</h2>
+              <p class="as-stage__lead" id="asStage2Lead">From script reading to live performance and on-set directing. Experience the real action behind high-impact commercial storytelling.</p>
+
+              <!-- Selectable 3 Action Items -->
+              <div class="as-showcase__tabs" role="tablist" aria-label="Commercial Action Categories">
+                
+                <!-- 01 ACTING & PERFORMANCE -->
+                <button type="button" class="as-showcase__tab is-active" role="tab" id="tab-action-0" aria-selected="true" tabindex="0" data-index="0">
+                  <span class="as-showcase__tab-num">01</span>
+                  <div class="as-showcase__tab-body">
+                    <div class="as-showcase__tab-head">
+                      <strong class="as-showcase__tab-title">ACTING & PERFORMANCE</strong>
+                    </div>
+                    <p class="as-showcase__tab-desc">Actors actively performing scene dialogue, expressions, and character dynamics following the approved script.</p>
+                  </div>
+                  <div class="as-showcase__progress" aria-hidden="true"><i></i></div>
+                </button>
+
+                <!-- 02 SCRIPT & PRESENTATION -->
+                <button type="button" class="as-showcase__tab" role="tab" id="tab-action-1" aria-selected="false" tabindex="-1" data-index="1">
+                  <span class="as-showcase__tab-num">02</span>
+                  <div class="as-showcase__tab-body">
+                    <div class="as-showcase__tab-head">
+                      <strong class="as-showcase__tab-title">SCRIPT & PRESENTATION</strong>
+                    </div>
+                    <p class="as-showcase__tab-desc">Creative lead presenting scene breakdowns, visual cues, and narrative storyboards to guide the performance.</p>
+                  </div>
+                  <div class="as-showcase__progress" aria-hidden="true"><i></i></div>
+                </button>
+
+                <!-- 03 ON-SET DIRECTING -->
+                <button type="button" class="as-showcase__tab" role="tab" id="tab-action-2" aria-selected="false" tabindex="-1" data-index="2">
+                  <span class="as-showcase__tab-num">03</span>
+                  <div class="as-showcase__tab-body">
+                    <div class="as-showcase__tab-head">
+                      <strong class="as-showcase__tab-title">ON-SET DIRECTING</strong>
+                    </div>
+                    <p class="as-showcase__tab-desc">Director guiding talent through live takes, dialing in pace, emotional delivery, and blocking on set.</p>
+                  </div>
+                  <div class="as-showcase__progress" aria-hidden="true"><i></i></div>
+                </button>
+
               </div>
-              <div class="as-set__controls" role="radiogroup" aria-label="Try the lighting">
-                <span class="as-set__hint"><i class="fa-solid fa-hand-pointer"></i> Try the lights</span>
-                <button type="button" class="is-on" data-light="key" data-meta="Key light &middot; 5600K" role="radio" aria-checked="true">Key</button>
-                <button type="button" data-light="rim" data-meta="Rim light &middot; 3200K" role="radio" aria-checked="false">Rim</button>
-                <button type="button" data-light="soft" data-meta="Soft box &middot; 4800K" role="radio" aria-checked="false">Soft</button>
-                <button type="button" data-light="spot" data-meta="Spotlight &middot; 3000K" role="radio" aria-checked="false">Spot</button>
-              </div>
-              <figure class="as-set__drone" data-depth="1.2">
-                <img src="images/video/product_drone.jpg" alt="" loading="lazy">
-                <figcaption>Aerial &middot; B-cam</figcaption>
-              </figure>
             </div>
+
           </div>
         </section>
 
@@ -492,9 +533,9 @@ We bring your advertisement to life with creative scriptwriting, the right cast,
                 sound-design every frame, then deliver it ready to publish.</p>
 
               <div class="as-items" data-as-reveal data-items>
-                <div class="as-items__list" role="tablist" aria-label="Post-production steps">
+                <div class="as-items__list as-items__list--equal" role="tablist" aria-label="Post-production steps">
                   <button type="button" role="tab" data-icon="fa-scissors" data-text="The best takes cut together with pace and rhythm that holds attention.">Video Editing</button>
-                  <button type="button" role="tab" data-icon="fa-microphone-lines" data-text="Professional voice artists recording in Tamil, English, Hindi and more, lip-synced and mixed so your ad speaks every audience's language.">Voice dubbing</button>
+                  <button type="button" role="tab" data-icon="fa-microphone-lines" data-text="Professional voice artists recording in Tamil, English, Hindi and more, lip-synced and mixed so your ad speaks every audience's language.">Voice Dubbing</button>
                   <button type="button" role="tab" data-icon="fa-palette" data-text="A consistent colour look across every shot that matches your brand.">Color Grading</button>
                   <button type="button" role="tab" data-icon="fa-shapes" data-text="Animated text, logos and graphics that explain and grab attention.">Motion Graphics</button>
                   <button type="button" role="tab" data-icon="fa-music" data-text="Music, voice-over and sound effects mixed so the ad sounds as good as it looks.">Sound Design</button>
@@ -511,8 +552,8 @@ We bring your advertisement to life with creative scriptwriting, the right cast,
             <!-- before / after grade + timeline -->
             <div class="as-stage__visual as-edit" data-as-reveal>
               <div class="as-compare" id="asCompare" style="--pos: 50%;">
-                <img class="as-compare__raw" src="images/graphic/banner_design_showcase.jpg" alt="Ungraded raw footage" loading="lazy">
-                <div class="as-compare__graded"><img src="images/graphic/banner_design_showcase.jpg" alt="Colour graded final footage" loading="lazy"></div>
+                <img class="as-compare__raw" src="images/advertising/post_production_suite.jpg" alt="Ungraded raw footage" loading="lazy">
+                <div class="as-compare__graded"><img src="images/advertising/post_production_suite.jpg" alt="Colour graded final footage" loading="lazy"></div>
                 <span class="as-compare__tag as-compare__tag--raw">Raw</span>
                 <span class="as-compare__tag as-compare__tag--graded">Graded</span>
                 <span class="as-compare__handle" aria-hidden="true"><i class="fa-solid fa-arrows-left-right"></i></span>
@@ -540,23 +581,21 @@ We bring your advertisement to life with creative scriptwriting, the right cast,
             </div>
 
             <div class="as-devices" id="asDevices">
-              <article class="as-device as-device--phone" data-as-reveal>
-                <div class="as-device__screen"><img src="images/graphic/mobile_carousel_showcase.jpg" alt="Social media ad on a phone" loading="lazy"></div>
-                <div class="as-device__label"><i class="fa-brands fa-instagram"></i><div><strong>Social Media</strong><span>Reels &middot; Stories &middot; Posts</span></div></div>
+              <article class="as-device as-device--card" data-as-reveal>
+                <div class="as-device__screen"><img src="images/ads/1.png" alt="Social Media Reels &amp; Posts" loading="lazy"></div>
+                <div class="as-device__label"><i class="fa-brands fa-instagram"></i><div><strong>Social Media</strong><span>Post &middot; Reels &middot; Stories</span></div></div>
               </article>
-              <article class="as-device as-device--web" data-as-reveal>
-                <div class="as-device__bar"><i></i><i></i><i></i><span>yourbrand.com</span></div>
-                <div class="as-device__screen"><img src="images/video/branding_phones.jpg" alt="Website banner using shoot content" loading="lazy"></div>
-                <div class="as-device__label"><i class="fa-solid fa-globe"></i><div><strong>TV </strong><span>Banners &middot; Product pages</span></div></div>
+              <article class="as-device as-device--card" data-as-reveal>
+                <div class="as-device__screen"><img src="images/ads/2.png" alt="TV Commercial Broadcast" loading="lazy"></div>
+                <div class="as-device__label"><i class="fa-solid fa-tv"></i><div><strong>TV Advertisement</strong><span>Broadcast &middot; Commercial</span></div></div>
               </article>
-              <article class="as-device as-device--board" data-as-reveal>
-                <div class="as-device__screen"><img src="images/graphic/banner_design_showcase.jpg" alt="Advertisement on an outdoor billboard" loading="lazy"></div>
-                <div class="as-device__label"><i class="fa-solid fa-rectangle-ad"></i><div><strong>Cinema Theatre
-</strong><span>Digital &middot; Outdoor &middot; Print</span></div></div>
+              <article class="as-device as-device--card" data-as-reveal>
+                <div class="as-device__screen"><img src="images/ads/3.png" alt="Cinema Theatre Big Screen Promotion" loading="lazy"></div>
+                <div class="as-device__label"><i class="fa-solid fa-film"></i><div><strong>Cinema Theatre</strong><span>Theatre Ad &middot; Big Screen</span></div></div>
               </article>
-              <article class="as-device as-device--print" data-as-reveal>
-                <div class="as-device__screen"><img src="images/graphic/festival_poster_showcase.jpg" alt="Festival marketing campaign poster" loading="lazy"></div>
-                <div class="as-device__label"><i class="fa-solid fa-bullhorn"></i><div><strong>Marketing Campaigns</strong><span>Launches &middot; Festivals</span></div></div>
+              <article class="as-device as-device--card" data-as-reveal>
+                <div class="as-device__screen"><img src="images/ads/4.png" alt="Marketing Campaigns &amp; Meta Ads" loading="lazy"></div>
+                <div class="as-device__label"><i class="fa-solid fa-bullhorn"></i><div><strong>Marketing Campaigns</strong><span>Meta Ads &middot; Lead Gen</span></div></div>
               </article>
             </div>
           </div>

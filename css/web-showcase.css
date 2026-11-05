@@ -253,8 +253,9 @@ body.website-page .lt-footer { overflow: hidden; }
 .wx-line {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.14em;
+  padding-bottom: 20px;
   margin-bottom: -0.14em;
+  padding-top:20px;
 }
 
 .wx-line > span {
@@ -434,7 +435,7 @@ body.website-page .lt-footer { overflow: hidden; }
 }
 
 .wx-hero__sub {
-  max-width: 40ch;
+  max-width: 33ch;
   margin: 0 0 34px;
   padding-left: 20px;
   border-left: 1px solid var(--wx-line-2);
@@ -1677,6 +1678,15 @@ body.website-page .lt-footer { overflow: hidden; }
   line-height: 0.98;
   letter-spacing: -1.5px;
   text-transform: uppercase;
+}
+.wx-cta__title small,
+.wx-cta__title .wx-cta__sub {
+  display: inline-block;
+  font-size: clamp(20px, 3.4vw, 48px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 8px;
 }
 
 .wx-cta__title em {
