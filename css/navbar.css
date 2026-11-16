@@ -160,9 +160,12 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  font-size: 0.945rem;
-  font-weight: 500;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  line-height: 1;
+  text-transform: uppercase;
   color: var(--charcoal);
   border: none;
   background: none;
@@ -424,6 +427,7 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   color: var(--white);
   font-size: 1rem;
   font-weight: 600;
+  text-transform: uppercase;
   white-space: nowrap;
   box-shadow: 0 10px 24px -10px rgba(234, 90, 6, 0.5);
   transition: transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
@@ -448,6 +452,10 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   background: var(--accent);
   box-shadow: none;
   justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  padding: 14px 24px;
 }
 .navbar__actions .btn-contact.header-btn-main:hover,
 .mobile-menu .btn-contact.header-btn-main:hover {
@@ -561,8 +569,10 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   justify-content: space-between;
   width: 100%;
   padding: 15px 12px;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--charcoal);
   border-bottom: 1px solid var(--border-soft);
   transition: color var(--fast) var(--ease), padding-left var(--fast) var(--ease);
@@ -639,7 +649,7 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
 @media (max-width: 1180px) {
   .navbar__inner { padding: 0 24px; }
   .nav-list { gap: 10px; }
-  .nav-link { padding: 10px 12px; font-size: 0.9rem; }
+  .nav-link { padding: 10px 10px; font-size: 0.76rem; letter-spacing: 0.09em; }
   .navbar__actions { gap: 12px; }
 }
 

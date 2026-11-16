@@ -244,13 +244,13 @@
                     "order": 3
                 },
                 {
-                    "id": "mem_karishma",
-                    "name": "Karishma V",
-                    "designation": "Social Media Marketing",
+                    "id": "mem_lijun",
+                    "name": "LIJUN M",
+                    "designation": "Social Media Executive",
                     "department": "Social Media Marketing",
-                    "image": "images/team/hd/karishma.jpg",
-                    "initials": "KV",
-                    "handle": "@karishma.v",
+                    "image": "images/team/team_01/isaac.png",
+                    "initials": "LM",
+                    "handle": "@lijun.m",
                     "status": "active",
                     "order": 4
                 }
@@ -268,16 +268,6 @@
             "description": "four editors · timeline, grade and finish",
             "extra": [],
             "members": [
-                {
-                    "id": "mem_gokul",
-                    "name": "Gokulakrishnan M",
-                    "designation": "Video Editor",
-                    "department": "Video Editing",
-                    "image": "images/team/gokul.jpg",
-                    "initials": "GM",
-                    "status": "active",
-                    "order": 1
-                },
                 {
                     "id": "mem_satheesh",
                     "name": "Satheesh Kumar G",
@@ -301,6 +291,16 @@
                     "note": "",
                     "card_link": "",
                     "card_link_label": "",
+                    "order": 1
+                },
+                {
+                    "id": "mem_editor1",
+                    "name": "Full Name",
+                    "designation": "Video Editor",
+                    "department": "Video Editing",
+                    "image": "",
+                    "initials": "FN",
+                    "status": "active",
                     "order": 2
                 },
                 {
